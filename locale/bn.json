@@ -1,0 +1,16 @@
+{
+  "navigation": {
+    "home": "বাড়ি",
+    "packages": "প্যাকেজ",
+    "news": "খবর",
+    "blog": "ব্লগ",
+    "faq": "FAQ",
+    "about_us": "আমাদের সম্পর্কে",
+    "contact_us": "যোগাযোগ করুন",
+    "login": "প্রবেশ করুন",
+    "sign_up": "নিবন্ধন করুন"
+  },
+  "Index": {
+    "title": "Hello world! 2242424"
+  }
+}

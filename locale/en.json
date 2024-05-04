@@ -1,0 +1,16 @@
+{
+  "navigation": {
+    "home": "Home",
+    "packages": "Packages",
+    "news": "News",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "about_us": "About Us",
+    "contact_us": "Contact Us",
+    "login": "Log In",
+    "sign_up": "Sign Up"
+  },
+  "Index": {
+    "title": "Hello world!"
+  }
+}

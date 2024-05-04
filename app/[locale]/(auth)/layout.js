@@ -7,7 +7,6 @@ const RootLayout = ({ children }) => {
       <div className="container mx-auto">
         <AuthNavbar />
         {children}
-
       </div>
       <Footer />
     </>
