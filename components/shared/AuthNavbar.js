@@ -69,7 +69,7 @@ export default function AuthNavbar() {
                             <a className="md:px-5 py-4 block hover:text-green-400" href="#">Log In</a>
                         </li>
                         <li>
-                            <a class="btn-hover color-5 md:px-12 py-4" href="#">Sign up</a>
+                            <a class="btn-hover color-5 md:px-6 py-3" href="#">Sign up</a>
                         </li>
                     </ul>
                 </div>
