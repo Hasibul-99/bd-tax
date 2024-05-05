@@ -5,7 +5,6 @@ import Image from 'next/image';
 const { Option } = Select;
 const { Title, Text } = Typography;
 
-
 export default function SignUp() {
 
   const onFinish = (values) => {
