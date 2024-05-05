@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 import { Button, Select, Form, Input, Typography, Space, ConfigProvider } from 'antd';
-import Image from 'next/image';
 const { Option } = Select;
 const { Title, Text } = Typography;
 

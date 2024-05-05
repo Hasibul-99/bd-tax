@@ -1,13 +1,11 @@
 "use client"
 import React from 'react'
 import { Button, Select, Form, Input, Typography, Space, Checkbox, ConfigProvider } from 'antd';
-import Image from 'next/image';
 import Link from 'next/link'
-const { Option } = Select;
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 export default function SignIn() {
-  
+
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -87,7 +85,7 @@ export default function SignIn() {
         </Space>
 
         <img className='mt-5 m-auto' src="/assets/images/Frame.png" alt="logo" />
-        
+
         <Space>
           <img src='/assets/icons/sms.svg' alt="sms" width={20} />
           support@bdtax.com.bd
@@ -97,7 +95,7 @@ export default function SignIn() {
           <img src='/assets/icons/call.svg' alt="sms" width={20} />
           01409-991225
         </Space>
-      <br/>
+        <br />
         <Space className='mt-2'>
           Made in
           <img src='/assets/images/bangladesh.png' alt="sms" width={20} />
