@@ -56,6 +56,6 @@ body {
 }
 
 .btn-hover.color-5 {
-  background-image: linear-gradient(to right, #126A25, #23D049, #23D049, #126A25);
+  background-image: linear-gradient(to right, #126A25, #23D049, #23D049, #126A25) !important;
   box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
 }

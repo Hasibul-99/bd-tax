@@ -4,9 +4,11 @@ import Footer from "@/components/shared/Footer";
 const RootLayout = ({ children }) => {
   return (
     <>
-      <div className="container mx-auto">
+      <div className="">
         <AuthNavbar />
-        {children}
+        <div className="bg-slate-100 container mx-auto">
+          {children}
+        </div>
       </div>
       <Footer />
     </>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Select, Space } from 'antd';
 import Image from 'next/image';
 import { useTranslations } from "next-intl";
 import LanguageChange from '../common/LanguageChange';
@@ -9,11 +8,11 @@ export default function AuthNavbar() {
     const t = useTranslations("navigation");
 
     return (
-        <header>
+        <header className='container mx-auto'>
             <nav className="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-gray-700 bg-white">
                 <div>
                     <a href="#">
-                        <Image width={200} height={60} src="/assets/images/logo.png" />
+                        <Image width={200} height={60} src="/assets/images/logo.png" alt="logo" />
                     </a>
                 </div>
                 <a href="#">
