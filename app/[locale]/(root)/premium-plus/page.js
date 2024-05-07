@@ -1,3 +1,4 @@
+'use client'
 
 import { ConfigProvider, Button, Space } from 'antd';
 import Link from 'next/link'
