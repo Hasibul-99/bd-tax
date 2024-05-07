@@ -1,11 +1,18 @@
-import { Space, ConfigProvider, Tag, Button } from 'antd';
+import { Space, ConfigProvider, Button } from 'antd';
 
 export default function Home() {
   return (
-    <div class="container mx-auto px-30">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-1.5 bg-white py-10 px-4">
+    <div class="container mx-auto px-30 ">
+      <div className='bg-white py-10 px-4'>
+        <h3 className='text-xl font-semibold'>Welcome back, Tareq</h3>
+        <div className='text-center bg-slate-100 mt-4 py-5 rounded-md '>
+          <h5 className='text-base font-semibold'>Tax Year 2022-2023</h5>
+          <p>Please choose a Tax Prep package </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 bg-white pb-10 px-4">
 
-        <div class="block max-w-[20rem] rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative">
+        <div class="block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative">
           <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] start-1/3'>Most Popular</div>
           <div class="bg-[#FFFDCC] rounded-tl-xl rounded-tr-xl border-b-2 border-[#D4AF37] px-6 py-3">
             <h1 class="font-bold mb-2">
@@ -83,7 +90,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div class="block max-w-[20rem] rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative">
+        <div class="block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative">
           <div class="bg-[#dffdd1] rounded-tl-xl rounded-tr-xl border-b-2 border-[#4B7F52] px-6 py-3">
             <h1 class="font-bold mb-2">
               <Space>
@@ -160,7 +167,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div class="block max-w-[20rem] rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative">
+        <div class="block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative">
           <div class="bg-[#f5f5f5] rounded-tl-xl rounded-tr-xl border-b-2 border-[#0F172A] px-6 py-3">
             <h1 class="font-bold mb-2">
               <Space>
