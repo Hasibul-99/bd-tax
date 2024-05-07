@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export default function Docs() {
     return (
-        <div class="container mx-auto px-30 py-10 ">
+        <div className="container mx-auto px-30 py-10 ">
             <div className='bg-white py-5 px-4 rounded-md'>
                 <div className='bg-slate-100 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
                     <div>

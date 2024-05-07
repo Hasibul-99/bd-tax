@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function PremiumPlus() {
   return (
-    <div class="container mx-auto px-30 ">
+    <div className="container mx-auto px-30 ">
       <div className='bg-white py-5 px-4'>
         <h3 className='text-xl font-semibold'>Welcome back, Tareq</h3>
         <div className='bg-amber-100 my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
