@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import { ConfigProvider, Button, Space } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
