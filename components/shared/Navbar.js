@@ -24,7 +24,7 @@ export default function Navbar() {
                             </a>
                             <a href="#" className="py-4 px-2 font-semibold">
                                 <Space>
-                                    <img src='/assets/icons/Docs.svg' />
+                                    <img src='/assets/icons/docs.svg' />
                                     Docs
                                 </Space>
                             </a>
