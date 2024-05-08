@@ -12,7 +12,7 @@ export default function PremiumPlus() {
           <div>
             <h5 className='text-base font-semibold'>
               <Space>
-                <img src='/assets/icons/ok.svg' alt="Premium Plus" />
+                <img src='/assets/images/Premium-Plus.png' alt="Premium Plus" />
                 Premium Plus
               </Space>
             </h5>

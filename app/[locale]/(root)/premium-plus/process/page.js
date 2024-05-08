@@ -1,8 +1,19 @@
 'use client'
 
-import { ConfigProvider, Button, Space } from 'antd';
+import Doc from '@/components/shared/premium-plus/Doc';
+import Payment from '@/components/shared/premium-plus/Payment';
+import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo';
+import Submit from '@/components/shared/premium-plus/Submit';
+import { Steps, Space, ConfigProvider } from 'antd';
+import React, { useState } from 'react';
 
 export default function PremiumPlusProcess() {
+    const [current, setCurrent] = useState(0);
+    const onChange = (value) => {
+        console.log('onChange:', value);
+        setCurrent(value);
+    };
+
     return (
         <div className="container mx-auto px-30 ">
             <div className='bg-white py-5 px-4'>
@@ -11,7 +22,7 @@ export default function PremiumPlusProcess() {
                     <div>
                         <h5 className='text-base font-semibold'>
                             <Space>
-                                <img src='/assets/icons/ok.svg' alt="Premium Plus" />
+                                <img src='/assets/images/Premium-Plus.png' alt="Premium Plus" />
                                 Premium Plus
                             </Space>
                         </h5>
@@ -25,7 +36,65 @@ export default function PremiumPlusProcess() {
                         </p>
                     </div>
                 </div>
-                <p className='text-sm'>Excellent choice with Premium Plus! Trust us for accurate tax prep and hassle-free submission</p>
+
+                <ConfigProvider
+                    theme={{
+                        token: {
+                            colorPrimary: "#126A25",
+                        },
+                        components: {
+                            Button: {
+                                colorPrimary: "#126A25",
+                            },
+                        },
+                    }}
+                >
+                    <Steps
+                        type="navigation"
+                        size="small"
+                        current={current}
+                        onChange={onChange}
+                        className="site-navigation-steps"
+                        items={[
+                            {
+                                status: 'home',
+                                title: 'Home',
+                                icon: '',
+                            },
+                            {
+                                status: 'personal-info',
+                                title: 'Personal Info',
+                            },
+                            {
+                                status: 'doc',
+                                title: 'Doc',
+                            },
+                            {
+                                status: 'payment',
+                                title: 'Payment',
+                            },
+                            {
+                                status: 'submit',
+                                title: 'Submit',
+                            },
+                        ]}
+                    />
+                </ConfigProvider>
+
+                <div>
+                    {
+                        current === 1 ? <PersonalInfo/> : '' 
+                    }
+                    {
+                        current === 2 ? <Doc/> : '' 
+                    }
+                    {
+                        current === 3 ? <Payment/> : '' 
+                    }
+                    {
+                        current === 4 ? <Submit/> : '' 
+                    }
+                </div>
             </div>
         </div>
     )
