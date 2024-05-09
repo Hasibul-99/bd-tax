@@ -1,6 +1,5 @@
-import React from 'react'
-import Image from 'next/image';
 import { Space } from 'antd';
+import Image from 'next/image';
 
 // https://codepen.io/its7rishi/pen/qBPmENP
 export default function Navbar() {
