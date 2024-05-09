@@ -1,6 +1,7 @@
 'use client'
 
 import Doc from '@/components/shared/premium-plus/Doc';
+import LoadingStep from '@/components/shared/premium-plus/LoadingStep';
 import Payment from '@/components/shared/premium-plus/Payment';
 import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo';
 import Submit from '@/components/shared/premium-plus/Submit';
@@ -8,7 +9,7 @@ import { Steps, Space, ConfigProvider } from 'antd';
 import React, { useState } from 'react';
 
 export default function PremiumPlusProcess() {
-    const [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(1);
     const onChange = (value) => {
         console.log('onChange:', value);
         setCurrent(value);
@@ -82,6 +83,9 @@ export default function PremiumPlusProcess() {
                 </ConfigProvider>
 
                 <div>
+                {
+                        current === 0 ? <LoadingStep/> : '' 
+                    }
                     {
                         current === 1 ? <PersonalInfo/> : '' 
                     }

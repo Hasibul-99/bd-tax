@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "../style/style.scss";
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 const inter = Inter({ subsets: ["latin"] });
