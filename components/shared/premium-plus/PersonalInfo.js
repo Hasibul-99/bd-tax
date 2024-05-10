@@ -1,6 +1,5 @@
-import React from 'react'
 import { RightOutlined } from '@ant-design/icons';
-import { Button, DatePicker, Form, Input, Select, ConfigProvider, Row, Col } from 'antd';
+import { Button, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from 'antd';
 const { Option } = Select;
 
 export default function PersonalInfo() {
@@ -9,7 +8,7 @@ export default function PersonalInfo() {
   };
   return (
     <div className='py-10 px-20'>
-      <h3 className='text-xl font-semibold'>Welcome back, Tareq</h3>
+      <h3 className='text-xl font-semibold'>Please enter your personal info</h3>
 
       <ConfigProvider
         theme={{
