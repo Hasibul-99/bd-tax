@@ -43,7 +43,7 @@ export default function Doc() {
               className='mt-5'
               size="large"
               dataSource={data}
-              renderItem={(item) => <List.Item className={selected === item ? 'active' : ''}
+              renderItem={(item) => <List.Item className={selected === item ? 'bg-[#E2ECE5] rounded-md !text-[#126A25]' : ''}
                 style={{ 'border-block-end': 0 }}>{item}</List.Item>}
             />
           </div>
