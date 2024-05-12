@@ -21,7 +21,7 @@ const RootLayout = ({ children }) => {
             <MoreLeftNavebar />
           </Col>
           <Col className="gutter-row " span={18}>
-            <div className="bg-slate-100 container mx-auto">
+            <div>
               {children}
             </div>
           </Col>

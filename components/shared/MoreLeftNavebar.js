@@ -13,8 +13,8 @@ const data = [
   {
     id: 2,
     icon: '/assets/icons/my-payment.svg',
-    url: '/my-payment',
-    name: 'My Payment'
+    url: '/my-payments',
+    name: 'My Payments'
   },
   {
     id: 3,
