@@ -1,5 +1,6 @@
 'use client'
 
+import MoreHeader from '@/components/shared/MoreHeader';
 import MoreLeftNavebar from '@/components/shared/MoreLeftNavebar';
 import { Col, Row } from 'antd';
 
@@ -7,6 +8,7 @@ const RootLayout = ({ children }) => {
   return (
     <>
       <div className="bg-[#F8FAFC] container mx-auto my-6">
+        <MoreHeader />
         <Row
           gutter={{
             xs: 8,

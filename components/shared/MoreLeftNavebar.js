@@ -62,7 +62,7 @@ export default function MoreLeftNavebar() {
   const [selected, setSelected] = useState(1);
 
   return (
-    <div>
+    <div className='bg-white px-6 py-3'>
       <List
         className='mt-5'
         size="large"
