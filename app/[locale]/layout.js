@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
-import "../style/style.scss";
-import { NextIntlClientProvider, useMessages } from 'next-intl';
+import "../../style/style.scss";
+import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,10 +10,10 @@ export const metadata = {
 };
 
 export default function RootLayout(props) {
-  const { children } = props;
+  const { children, params } = props;
 
   return (
-    <html lang="en">
+    <html lang={params?.locale || 'en'}>
       <body className={inter.className}>{children}</body>
     </html>
   );

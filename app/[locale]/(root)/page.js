@@ -1,6 +1,9 @@
-import { Space, ConfigProvider, Button } from 'antd';
+import { Button, Col, ConfigProvider, Row, Space } from 'antd';
+import Link from 'next/link';
 
-export default function Home() {
+export default function Home(props) {
+  const { params: { locale } } = props;
+
   return (
     <div className="container mx-auto px-30 ">
       <div className='bg-white py-10 px-4'>
@@ -15,7 +18,7 @@ export default function Home() {
         <div className="block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative">
           <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] start-1/3'>Most Popular</div>
           <div className="bg-[#FFFDCC] rounded-tl-xl rounded-tr-xl border-b-2 border-[#D4AF37] px-6 py-3">
-            <h1 className="font-bold mb-2">
+            <h1 className="font-bold">
               <Space>
                 <img src='/assets/images/Premium-Plus.png' alt="Premium Plus" />
                 Premium Plus (৳ 2950)
@@ -35,32 +38,52 @@ export default function Home() {
                 },
               }}
             >
-              <Button type="primary" className='w-full' size='large'>Select</Button>
+              <Button type="primary" className='w-full' size='large'>
+                <Link href={`/${locale}/premium-plus`}>Select</Link>
+              </Button>
             </ConfigProvider>
           </div>
           <div className="p-6">
             <ul>
-              <li className="flex gap-x-2">
-                <div>
-                  <img src='/assets/icons/star.svg' alt="Premium Plus" width={80} className='mt-1' />
-                </div>
-                <p className='font-semibold'>Available in Metro City only: Dhaka, Narayanganj, Gazipur, Chattogram, Comilla, Rajshahi, Rangpur, Sylhet, Mymensingh, Barishal & Khulna</p>
+              <li >
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/star.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row" span={21}>
+                    <p className='font-semibold '>Available in Metro City only: Dhaka, Narayanganj, Gazipur, Chattogram, Comilla, Rajshahi, Rangpur, Sylhet, Mymensingh, Barishal & Khulna</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1">
-                <div>
-                  <img src='/assets/icons/star.svg' alt="Premium Plus" width={35} className='mt-1' />
-                </div>
-                <p className=''>Our experienced tax consultant will prepare your tax return</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/star.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Our experienced tax consultant will prepare your tax return</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/star.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p className=''>Submit your tax return by the BDTax team</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/star.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Submit your tax return by the BDTax team</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/star.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p>Unlimited download of your tax return PDF file</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/star.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p>Unlimited download of your tax return PDF file</p>
+                  </Col>
+                </Row>
               </li>
             </ul>
           </div>
@@ -70,21 +93,35 @@ export default function Home() {
             </h5>
 
             <ul>
-              <li className="flex gap-x-2 pt-1">
-                <div>
-                  <img src='/assets/icons/Check.svg' alt="Premium Plus" width={35} className='mt-1' />
-                </div>
-                <p className=''>Get 24/7 support from our online BDTax specialists</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p>Get 24/7 support from our online BDTax specialists</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p className=''>Store your return related documents securely</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p>Store your return related documents securely</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p>Receive bank-level data encryption and protection</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p>Receive bank-level data encryption and protection</p>
+                  </Col>
+                </Row>
               </li>
             </ul>
           </div>
@@ -92,7 +129,7 @@ export default function Home() {
 
         <div className="block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative">
           <div className="bg-[#dffdd1] rounded-tl-xl rounded-tr-xl border-b-2 border-[#4B7F52] px-6 py-3">
-            <h1 className="font-bold mb-2">
+            <h1 className="font-bold">
               <Space>
                 <img src='/assets/images/Auto Layout Horizontal (1).png' alt="Premium Plus" />
                 Premium (৳ 2450)
@@ -112,32 +149,53 @@ export default function Home() {
                 },
               }}
             >
-              <Button type="primary" className='w-full' size='large'>Select</Button>
+              <Button type="primary" className='w-full' size='large'>
+                <Link href={`/${locale}/premium`}>Select</Link>
+              </Button>
             </ConfigProvider>
           </div>
           <div className="p-6">
             <ul>
-              <li className="flex gap-x-2">
-                <div>
-                  <img src='/assets/icons/Check.svg' alt="Premium Plus" width={80} className='mt-1' />
-                </div>
-                <p className='font-semibold'>Available in Metro City only: Dhaka, Narayanganj, Gazipur, Chattogram, Comilla, Rajshahi, Rangpur, Sylhet, Mymensingh, Barishal & Khulna</p>
+              <li className="">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className='font-semibold'>Available in Metro City only: Dhaka, Narayanganj, Gazipur, Chattogram, Comilla, Rajshahi, Rangpur, Sylhet, Mymensingh, Barishal & Khulna</p>
+
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1">
-                <div>
-                  <img src='/assets/icons/Check.svg' alt="Premium Plus" width={35} className='mt-1' />
-                </div>
-                <p className=''>Our experienced tax consultant will prepare your tax return</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Our experienced tax consultant will prepare your tax return</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p className=''>Submit your tax return by the BDTax team</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Submit your tax return by the BDTax team</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p>Unlimited download of your tax return PDF file</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Unlimited download of your tax return PDF file</p>
+                  </Col>
+                </Row>
               </li>
             </ul>
           </div>
@@ -147,21 +205,36 @@ export default function Home() {
             </h5>
 
             <ul>
-              <li className="flex gap-x-2 pt-1">
-                <div>
-                  <img src='/assets/icons/Check.svg' alt="Premium Plus" width={35} className='mt-1' />
-                </div>
-                <p className=''>Get 24/7 support from our online BDTax specialists</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Get 24/7 support from our online BDTax specialists</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p className=''>Store your return related documents securely</p>
+              <li className="">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Store your return related documents securely</p>
+
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p>Receive bank-level data encryption and protection</p>
+              <li className="">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p>Receive bank-level data encryption and protection</p>
+                  </Col>
+                </Row>
               </li>
             </ul>
           </div>
@@ -169,10 +242,10 @@ export default function Home() {
 
         <div className="block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative">
           <div className="bg-[#f5f5f5] rounded-tl-xl rounded-tr-xl border-b-2 border-[#0F172A] px-6 py-3">
-            <h1 className="font-bold mb-2">
+            <h1 className="font-bold">
               <Space>
                 <img src='/assets/images/Auto Layout Horizontal (2).png' alt="Premium Plus" />
-                Premium (৳ 2450)
+                Standard (৳ 550)
               </Space>
             </h1>
             <p className='my-2'>Relax! Our Tax experts at BDTax handle it all. Trust us for seamless tax prep and submission. Stress-free tax season starts here</p>
@@ -189,32 +262,53 @@ export default function Home() {
                 },
               }}
             >
-              <Button type="primary" className='w-full border-[#0F172A] text-[#0F172A]' size='large'>Select</Button>
+              <Button type="primary" className='w-full border-[#0F172A] text-[#0F172A]' size='large'>
+                <Link href={`/${locale}/standard`}>Select</Link>
+              </Button>
             </ConfigProvider>
           </div>
           <div className="p-6">
             <ul>
-              <li className="flex gap-x-2">
-                <div>
-                  <img src='/assets/icons/Check.svg' alt="Premium Plus" width={80} className='mt-1' />
-                </div>
-                <p className='font-semibold'>Available in Metro City only: Dhaka, Narayanganj, Gazipur, Chattogram, Comilla, Rajshahi, Rangpur, Sylhet, Mymensingh, Barishal & Khulna</p>
+              <li className="">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className='font-semibold'>Available in Metro City only: Dhaka, Narayanganj, Gazipur, Chattogram, Comilla, Rajshahi, Rangpur, Sylhet, Mymensingh, Barishal & Khulna</p>
+
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1">
-                <div>
-                  <img src='/assets/icons/Check.svg' alt="Premium Plus" width={35} className='mt-1' />
-                </div>
-                <p className=''>Our experienced tax consultant will prepare your tax return</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Our experienced tax consultant will prepare your tax return</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p className=''>Submit your tax return by the BDTax team</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Submit your tax return by the BDTax team</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p>Unlimited download of your tax return PDF file</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p>Unlimited download of your tax return PDF file</p>
+                  </Col>
+                </Row>
               </li>
             </ul>
           </div>
@@ -224,21 +318,35 @@ export default function Home() {
             </h5>
 
             <ul>
-              <li className="flex gap-x-2 pt-1">
-                <div>
-                  <img src='/assets/icons/Check.svg' alt="Premium Plus" width={35} className='mt-1' />
-                </div>
-                <p className=''>Get 24/7 support from our online BDTax specialists</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Get 24/7 support from our online BDTax specialists</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p className=''>Store your return related documents securely</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p className=''>Store your return related documents securely</p>
+                  </Col>
+                </Row>
               </li>
-              <li className="flex gap-x-2 pt-1"><div>
-                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={30} className='mt-1' />
-              </div>
-                <p>Receive bank-level data encryption and protection</p>
+              <li className="pt-1">
+                <Row gutter={16}>
+                  <Col className="gutter-row p-0" span={3}>
+                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                  </Col>
+                  <Col className="gutter-row pt-1" span={21}>
+                    <p>Receive bank-level data encryption and protection</p>
+                  </Col>
+                </Row>
               </li>
             </ul>
           </div>
