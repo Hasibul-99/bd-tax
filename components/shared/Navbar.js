@@ -1,8 +1,11 @@
 import { Space } from 'antd';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // https://codepen.io/its7rishi/pen/qBPmENP
-export default function Navbar() {
+export default function Navbar({ locale }) {
+    console.log("props", locale);
+
     return (
         <nav className=" shadow-lg">
             <div className="max-w-6xl mx-auto">
@@ -15,36 +18,36 @@ export default function Navbar() {
                         </div>
                         {/* Primary Navbar items */}
                         <div className="hidden md:flex items-center space-x-1 gap-x-5 navbar-content">
-                            <a href="#" className="py-4 px-2 font-semibold active">
+                            <Link href={`/${locale}/home`} className="py-4 px-2 font-semibold active">
                                 <Space>
                                     <img src='/assets/icons/Home.svg' alt="home" />
                                     Home
                                 </Space>
-                            </a>
-                            <a href="#" className="py-4 px-2 font-semibold">
+                            </Link>
+                            <Link href={`/${locale}/docs`} className="py-4 px-2 font-semibold">
                                 <Space>
                                     <img src='/assets/icons/docs.svg' />
                                     Docs
                                 </Space>
-                            </a>
-                            <a href="#" className="py-4 px-2 font-semibold">
+                            </Link>
+                            <Link href={`/${locale}/tax-genius`} className="py-4 px-2 font-semibold">
                                 <Space>
                                     <img src='/assets/icons/tax-genius.svg' />
                                     Tax Genius
                                 </Space>
-                            </a>
-                            <a href="#" className="py-4 px-2 font-semibold">
+                            </Link>
+                            <Link href={`/${locale}/contact-us`} className="py-4 px-2 font-semibold">
                                 <Space>
                                     <img src='/assets/icons/message-question.svg' />
                                     Contact Us
                                 </Space>
-                            </a>
-                            <a href="#" className="py-4 px-2 font-semibold">
+                            </Link>
+                            <Link href={`/${locale}/more/profile`} className="py-4 px-2 font-semibold">
                                 <Space>
                                     <img src='/assets/icons/more.svg' />
                                     More
                                 </Space>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     {/* Secondary Navbar items */}

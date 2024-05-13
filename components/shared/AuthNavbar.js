@@ -1,56 +1,56 @@
-import React from 'react'
-import Image from 'next/image';
 import { useTranslations } from "next-intl";
+import Image from 'next/image';
+import Link from "next/link";
 import LanguageChange from '../common/LanguageChange';
 
 // https://codepen.io/Blockshot/pen/rNwOYBE
-export default function AuthNavbar() {
+export default function AuthNavbar({ locale }) {
     const t = useTranslations("navigation");
 
     return (
         <header className='container mx-auto'>
             <nav className="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-gray-700 bg-white">
                 <div>
-                    <a href="#">
+                    <Link href={`/${locale}`}>
                         <Image width={200} height={60} src="/assets/images/logo.png" alt="logo" />
-                    </a>
+                    </Link>
                 </div>
-                <a href="#">
+                <Link href={`/${locale}`}>
                     <svg xmlns="<http://www.w3.org/2000/svg>" id="menu-button" className="h-6 w-6 cursor-pointer md:hidden block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                </a>
+                </Link>
                 <div className="hidden w-full md:flex md:items-center md:w-auto " id="menu">
                     <ul className="text-base text-gray-700 pt-4 md:mt-3 md:flex md:justify-between items-center md:pt-0">
                         <li>
-                            <a className="md:px-5 py-4 block hover:text-green-400" href="#">{t(`home`)}</a>
+                            <Link href={`/${locale}/home`} className="md:px-5 py-4 block hover:text-green-400">{t(`home`)}</Link>
                         </li>
                         <li>
-                            <a className="md:px-5 py-4 block hover:text-green-400" href="#">{t(`packages`)}</a>
+                            <Link href={`/${locale}/`} className="md:px-5 py-4 block hover:text-green-400">{t(`packages`)}</Link>
                         </li>
                         <li>
-                            <a className="md:px-5 py-4 block hover:text-green-400" href="#">{t(`news`)}</a>
+                            <Link href={`/${locale}/faq`} className="md:px-5 py-4 block hover:text-green-400">{t(`news`)}</Link>
                         </li>
                         <li>
-                            <a className="md:px-5 py-4 block hover:text-green-400" href="#">{t(`blog`)}</a>
+                            <Link href={`/${locale}/faq`} className="md:px-5 py-4 block hover:text-green-400">{t(`blog`)}</Link>
                         </li>
                         <li>
-                            <a className="md:px-5 py-4 block hover:text-green-400" href="#">{t(`faq`)}</a>
+                            <Link href={`/${locale}/faq`} className="md:px-5 py-4 block hover:text-green-400">{t(`faq`)}</Link>
                         </li>
                         <li>
-                            <a className="md:px-5 py-4 block hover:text-green-400" href="#">{t(`about_us`)}</a>
+                            <Link href={`/${locale}/about-us`} className="md:px-5 py-4 block hover:text-green-400">{t(`about_us`)}</Link>
                         </li>
                         <li>
-                            <a className="md:px-5 py-4 block hover:text-green-400" href="#">{t(`contact_us`)}</a>
+                            <Link href={`/${locale}/contact-us`} className="md:px-5 py-4 block hover:text-green-400">{t(`contact_us`)}</Link>
                         </li>
                         <li>
-                            <LanguageChange/>
+                            <LanguageChange />
                         </li>
                         <li>
-                            <a className="md:px-5 py-4 block hover:text-green-400" href="#">{t(`login`)}</a>
+                            <Link href={`/${locale}/signin`} className="md:px-5 py-4 block hover:text-green-400">{t(`login`)}</Link>
                         </li>
                         <li>
-                            <a className="btn-hover color-5 md:px-6 py-3" href="#">{t(`sign_up`)}</a>
+                            <Link href={`/${locale}/signup`} className="btn-hover color-5 md:px-6 py-3">{t(`sign_up`)}</Link>
                         </li>
                     </ul>
                 </div>

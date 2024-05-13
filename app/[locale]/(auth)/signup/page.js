@@ -1,6 +1,5 @@
 "use client"
-import React from 'react'
-import { Button, Select, Form, Input, Typography, Space, ConfigProvider } from 'antd';
+import { Button, ConfigProvider, Form, Input, Select, Space, Typography } from 'antd';
 const { Option } = Select;
 const { Title, Text } = Typography;
 
@@ -150,7 +149,7 @@ export default function SignUp() {
           <img src='/assets/icons/sms.svg' alt="sms" width={20} />
           support@bdtax.com.bd
         </Space>
-
+        <br />
         <Space>
           <img src='/assets/icons/call.svg' alt="sms" width={20} />
           01409-991225

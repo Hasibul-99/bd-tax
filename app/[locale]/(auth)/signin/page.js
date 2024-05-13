@@ -1,7 +1,6 @@
 "use client"
-import React from 'react'
-import { Button, Select, Form, Input, Typography, Space, Checkbox, ConfigProvider } from 'antd';
-import Link from 'next/link'
+import { Button, Checkbox, ConfigProvider, Form, Input, Space, Typography } from 'antd';
+import Link from 'next/link';
 const { Text } = Typography;
 
 export default function SignIn() {
@@ -90,7 +89,7 @@ export default function SignIn() {
           <img src='/assets/icons/sms.svg' alt="sms" width={20} />
           support@bdtax.com.bd
         </Space>
-
+        <br />
         <Space>
           <img src='/assets/icons/call.svg' alt="sms" width={20} />
           01409-991225

@@ -1,8 +1,7 @@
 "use client"
 
-import React from 'react'
-import { ConfigProvider, Button, Space } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
+import { Button, ConfigProvider, Space } from 'antd';
 import Link from 'next/link';
 
 
@@ -63,7 +62,7 @@ export default function Docs() {
                         <Space>
                             Filling Status:
                             <span className='font-semibold'>Complete</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Order Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
@@ -73,7 +72,7 @@ export default function Docs() {
                         <Space>
                             Filling Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Total Tax Paid:
                             <span className='font-semibold'>25,000</span>
@@ -111,6 +110,7 @@ export default function Docs() {
                             Filling Status:
                             <span className='font-semibold'>Complete</span>
                         </Space>
+                        <br />
                         <Space>
                             Order Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
@@ -120,7 +120,7 @@ export default function Docs() {
                         <Space>
                             Filling Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Total Tax Paid:
                             <span className='font-semibold'>25,000</span>
@@ -157,7 +157,7 @@ export default function Docs() {
                         <Space>
                             Filling Status:
                             <span className='font-semibold'>Complete</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Order Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
@@ -167,7 +167,7 @@ export default function Docs() {
                         <Space>
                             Filling Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Total Tax Paid:
                             <span className='font-semibold'>25,000</span>
@@ -204,7 +204,7 @@ export default function Docs() {
                         <Space>
                             Filling Status:
                             <span className='font-semibold'>Complete</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Order Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
@@ -214,7 +214,7 @@ export default function Docs() {
                         <Space>
                             Filling Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Total Tax Paid:
                             <span className='font-semibold'>25,000</span>
@@ -251,7 +251,7 @@ export default function Docs() {
                         <Space>
                             Filling Status:
                             <span className='font-semibold'>Complete</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Order Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
@@ -261,7 +261,7 @@ export default function Docs() {
                         <Space>
                             Filling Date:
                             <span className='font-semibold'>Nov 25th, 2023</span>
-                        </Space>
+                        </Space><br />
                         <Space>
                             Total Tax Paid:
                             <span className='font-semibold'>25,000</span>
