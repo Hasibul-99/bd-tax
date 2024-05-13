@@ -7,19 +7,19 @@ const data = [
   {
     id: 1,
     icon: '/assets/icons/profile.svg',
-    url: '/profile',
+    url: '/more/profile',
     name: 'Profile'
   },
   {
     id: 2,
     icon: '/assets/icons/my-payment.svg',
-    url: '/my-payments',
+    url: '/more/my-payments',
     name: 'My Payments'
   },
   {
     id: 3,
     icon: '/assets/icons/tax-planning.svg',
-    url: '/tax-planning',
+    url: '/more/tax-planning',
     name: 'Tax Planning'
   },
   {
