@@ -17,10 +17,10 @@ const RootLayout = ({ children }) => {
             lg: 32,
           }}
         >
-          <Col className="gutter-row " span={6}>
+          <Col className="gutter-row " xs={0} sm={0} md={6}>
             <MoreLeftNavebar />
           </Col>
-          <Col className="gutter-row " span={18}>
+          <Col className="gutter-row " xs={24} sm={24} md={18}>
             <div>
               {children}
             </div>

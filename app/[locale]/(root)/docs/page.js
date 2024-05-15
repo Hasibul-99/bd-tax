@@ -36,7 +36,7 @@ export default function Doc() {
           lg: 32,
         }}
       >
-        <Col className="gutter-row " span={6}>
+        <Col className="gutter-row " xs={24} sm={24} md={6}>
           <div className='bg-white p-6 my-5 rounded-md'>
             <h3>Tax Year</h3>
             <List
@@ -49,7 +49,7 @@ export default function Doc() {
           </div>
         </Col>
 
-        <Col className="gutter-row" span={18}>
+        <Col className="gutter-row" xs={24} sm={24} md={18}>
           <div className='bg-white p-6 my-5 rounded-md'>
             <h3>Tax Year</h3>
 

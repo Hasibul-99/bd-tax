@@ -20,7 +20,7 @@ const data = [
 ];
 
 export default function Doc() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const props = {
     name: 'file',
     multiple: true,

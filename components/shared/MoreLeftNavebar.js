@@ -1,4 +1,5 @@
 
+import { moreNaveData } from '@/scripts/helper';
 import { List, Space } from 'antd';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -66,7 +67,7 @@ export default function MoreLeftNavebar() {
       <List
         className='mt-5'
         size="large"
-        dataSource={data}
+        dataSource={moreNaveData}
         renderItem={(item) => <List.Item className={selected === item.id ? 'bg-[#E2ECE5] rounded-md !text-[#126A25]' : '' + item.id == 9 ? ' !bg-[#FFEBEA] rounded-md !text-[#BA040A]' : ''}
           style={{ 'border-block-end': 0 }}>
           <Link href={item.url}>

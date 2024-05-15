@@ -1,3 +1,4 @@
+import { moreNaveData } from '@/scripts/helper';
 import { Space } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,10 +10,10 @@ export default function Navbar({ locale }) {
     return (
         <nav className=" shadow-lg">
             <div className="max-w-6xl mx-auto">
-                <div className="flex justify-between">
+                <div className="flex justify-between mx-6 md:mx-0">
                     <div className="flex space-x-7">
                         <div>
-                            <a href="#" className="flex items-center py-4 px-2">
+                            <a href="/" className="flex items-center py-4 px-2">
                                 <Image width={100} height={60} src="/assets/images/logo-2.png" alt="logo" />
                             </a>
                         </div>
@@ -72,27 +73,44 @@ export default function Navbar({ locale }) {
             {/* mobile menu */}
             <div className="hidden mobile-menu">
                 <ul className>
-                    <li className="active"><a href="index.html" className="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">
-                        <Space>
-                            <img src='/assets/icons/Home.svg' />
-                            Home
-                        </Space></a></li>
-                    <li><a href="#services" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"><Space>
-                        <img src='/assets/icons/Docs.svg' />
-                        Docs
-                    </Space></a></li>
-                    <li><a href="#about" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"><Space>
-                        <img src='/assets/icons/tax-genius.svg' />
-                        Tax Genius
-                    </Space></a></li>
-                    <li><a href="#contact" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"><Space>
-                        <img src='/assets/icons/message-question.svg' />
-                        Contact Us
-                    </Space></a></li>
-                    <li><a href="#contact" className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"><Space>
-                        <img src='/assets/icons/more.svg' />
-                        More
-                    </Space></a></li>
+                    <li className="active">
+                        <Link href={`/${locale}/home`} className="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">
+                            <Space>
+                                <img src='/assets/icons/Home.svg' />
+                                Home
+                            </Space>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={`/${locale}/docs`} className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"><Space>
+                            <img src='/assets/icons/docs.svg' />
+                            Docs
+                        </Space>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={`/${locale}/tax-genius`} className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"><Space>
+                            <img src='/assets/icons/tax-genius.svg' />
+                            Tax Genius
+                        </Space>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={`/${locale}/contact-us`} className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"><Space>
+                            <img src='/assets/icons/message-question.svg' />
+                            Contact Us
+                        </Space>
+                        </Link>
+                    </li>
+                    {
+                        moreNaveData.map(item => <li key={item.id}>
+                            <Link href={`/${locale}+ ${item.url}`} className="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300"><Space>
+                                <img src={item.icon} alt={item.name} />
+                                {item.name}
+                            </Space>
+                            </Link>
+                        </li>)
+                    }
                 </ul>
             </div>
         </nav>

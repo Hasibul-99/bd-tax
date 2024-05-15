@@ -31,10 +31,10 @@ export default function Profile() {
           size='large'
         >
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className="gutter-row" xs={24} sm={24} md={4}>
               First Name *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className="gutter-row" xs={24} sm={24} md={20}>
               <Form.Item
                 name="first_name"
                 rules={[
@@ -50,10 +50,10 @@ export default function Profile() {
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className="gutter-row" xs={24} sm={24} md={4}>
               Last Name *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className="gutter-row" xs={24} sm={24} md={20}>
               <Form.Item
                 name="last_name"
                 rules={[
@@ -70,10 +70,10 @@ export default function Profile() {
 
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className="gutter-row" xs={24} sm={24} md={4}>
               ETIN *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className="gutter-row" xs={24} sm={24} md={20}>
               <Form.Item
                 label=""
                 name="etin"
@@ -91,10 +91,10 @@ export default function Profile() {
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className="gutter-row" xs={24} sm={24} md={4}>
               National ID *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className="gutter-row" xs={24} sm={24} md={20}>
               <Form.Item
                 label=""
                 name="nid"
@@ -112,10 +112,10 @@ export default function Profile() {
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className="gutter-row" xs={24} sm={24} md={4}>
               DOB *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className="gutter-row" xs={24} sm={24} md={20}>
               <Form.Item
                 label=""
                 name="dob"
@@ -133,10 +133,10 @@ export default function Profile() {
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className="gutter-row" xs={24} sm={24} md={4}>
               Gender *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className="gutter-row" xs={24} sm={24} md={20}>
               <Form.Item
                 label=""
                 name="gender"

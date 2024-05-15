@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "../../style/style.scss";
 import "../globals.css";
+import Script from 'next/script'
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +16,7 @@ export default function RootLayout(props) {
 
   return (
     <html lang={params?.locale || 'en'}>
+      <Script src="js/script.js"></Script>
       <body className={inter.className}>{children}</body>
     </html>
   );
