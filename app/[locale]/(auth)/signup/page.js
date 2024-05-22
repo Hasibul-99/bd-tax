@@ -1,13 +1,46 @@
 "use client"
+
+import { useRouter } from "next/navigation";
+import { HEAR_ABOUT_US, REGISTRATION } from '@/scripts/api';
+import { getData, postData } from '@/scripts/api-service';
 import { Button, ConfigProvider, Form, Input, Select, Space, Typography } from 'antd';
+import { useEffect, useState } from 'react';
+import { alertPop } from "@/scripts/helper";
 const { Option } = Select;
 const { Title, Text } = Typography;
 
 export default function SignUp() {
+  const [form] = Form.useForm();
+  const [hearAboutUs, setHearAboutUs] = useState([]);
+  const router = useRouter();
+ 
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Success:', values);
+    let res = await postData(REGISTRATION, values, 'no_token', 'showError');
+
+    if (res) {
+      if (res.code === "error") {
+        console.log(res);
+        form.setFields(res?.errors)
+      } else {
+        alertPop("success", res.message);
+        router.push('signin')
+      }
+    }
   };
+
+  const getHearAboutUs = async () => {
+    let res = await getData(HEAR_ABOUT_US, 'no_token')
+    if (res) {
+      let masterData = res?.data;
+      setHearAboutUs(masterData);
+    }
+  };
+
+  useEffect(() => {
+    getHearAboutUs()
+  }, [])
 
   return (
     <div classname="flex items-center h-screen w-full">
@@ -29,8 +62,9 @@ export default function SignUp() {
           }}
         >
           <Form
-            className='mt-6'
+            className='mt-6 text-left' 
             name="basic"
+            form={form}
             onFinish={onFinish}
             autoComplete="off"
             size='large'
@@ -66,6 +100,11 @@ export default function SignUp() {
                   required: true,
                   message: 'Please input ETIN!',
                 },
+                {
+                  required: true,
+                  message: "A value must be entered",
+                  pattern: new RegExp(/^[0-9]+$/)
+                }
               ]}
             >
               <Input placeholder='ETIN *' />
@@ -78,18 +117,26 @@ export default function SignUp() {
                   required: true,
                   message: 'Please input email!',
                 },
+                {
+                  pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                  message: "Please enter a valid email address",
+                }
               ]}
             >
               <Input placeholder='Email *' />
             </Form.Item>
 
             <Form.Item
-              name="phone"
+              name="mobile"
               rules={[
                 {
                   required: true,
-                  message: 'Please input phone!',
+                  message: 'Please input mobile!',
                 },
+                {
+                  pattern: /^(?:\+?88)?01[15-9]\d{8}$/,
+                  message: "Please enter a valid mobile no",
+                }
               ]}
             >
               <Input placeholder='Phone *' />
@@ -104,11 +151,11 @@ export default function SignUp() {
                 },
               ]}
             >
-              <Input placeholder='Password *' />
+              <Input.Password placeholder='Password *' />
             </Form.Item>
 
             <Form.Item
-              name="confirm_password"
+              name="c_password"
               rules={[
                 {
                   required: true,
@@ -116,12 +163,12 @@ export default function SignUp() {
                 },
               ]}
             >
-              <Input placeholder='Confirm Password *' />
+              <Input.Password placeholder='Confirm Password *' />
             </Form.Item>
 
             <Form.Item
               className='text-left'
-              name="hear_about_us"
+              name="hearaboutus"
               rules={[
                 {
                   required: false,
@@ -131,9 +178,10 @@ export default function SignUp() {
               <Select
                 placeholder="How did you hear about us"
               >
-                <Option value="male">male</Option>
-                <Option value="female">female</Option>
-                <Option value="other">other</Option>
+                {hearAboutUs.length ? <>
+                  {
+                    hearAboutUs.map((item, idx) => <Option value={item} key={idx}>{item}</Option>)}
+                </> : ''}
               </Select>
             </Form.Item>
 
