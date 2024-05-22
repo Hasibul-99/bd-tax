@@ -16,12 +16,10 @@ export default function SignUp() {
  
 
   const onFinish = async (values) => {
-    console.log('Success:', values);
     let res = await postData(REGISTRATION, values, 'no_token', 'showError');
 
     if (res) {
       if (res.code === "error") {
-        console.log(res);
         form.setFields(res?.errors)
       } else {
         alertPop("success", res.message);

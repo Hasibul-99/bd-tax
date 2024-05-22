@@ -60,7 +60,7 @@ export const postData = async (query, data, no_token, showError) => {
             }
         }
     } catch (error) {
-        console.log("error?.response?.data", error?.response?.data?.data);
+        console.log("error?.response?.data", error?.response?.data?.data?.message);
 
         if (showError && error?.response?.data?.data && Object.keys(error?.response?.data?.data).length) {
             let errors = [];
@@ -68,7 +68,6 @@ export const postData = async (query, data, no_token, showError) => {
             for (const property in error?.response?.data?.data) {
                 errors.push({
                     name: property, // required
-                    // value: "myemail@@gmail.com",//optional
                     errors: error?.response?.data?.data[property],
                 })
 
@@ -78,13 +77,7 @@ export const postData = async (query, data, no_token, showError) => {
                 errors: errors
             }
         }
-        checkRes(error?.response?.status);
-        Array.isArray(error?.response?.data?.messages)
-            ? error.response.data.messages.map((err) => {
-                alertPop("error", err);
-                console.log("err", err);
-            })
-            : console.log("error", error); //errorHandle(error);
+        alertPop("error", error?.response?.data?.data?.message);
         return false;
     }
 };

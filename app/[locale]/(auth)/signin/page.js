@@ -1,12 +1,38 @@
 "use client"
+
+import { LOGIN } from '@/scripts/api';
+import { postData } from '@/scripts/api-service';
+import { alertPop } from '@/scripts/helper';
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 import { Button, Checkbox, ConfigProvider, Form, Input, Space, Typography } from 'antd';
 import Link from 'next/link';
 const { Text } = Typography;
 
 export default function SignIn() {
+  const [form] = Form.useForm();
+  const router = useRouter();
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const onFinish = async (values) => {
+    let res = await postData(LOGIN, values, 'no_token');
+
+    if (res) {
+      if (res.code === "error") {
+        form.setFields(res?.errors)
+      } else {
+        let masterData = res?.data?.data;
+        console.log("masterData", masterData);
+        Cookies.set('bdtax_token', masterData?.token);
+        Cookies.set('bdtax_user', masterData);
+        alertPop("success", masterData?.message);
+
+        if (masterData.first_time) {
+          router.push('/')
+        } else {
+          router.push('home')
+        }
+      }
+    }
   };
 
   return (
@@ -33,6 +59,7 @@ export default function SignIn() {
             onFinish={onFinish}
             autoComplete="off"
             size='large'
+            form={form}
           >
             <Form.Item
               name="email"
@@ -41,6 +68,10 @@ export default function SignIn() {
                   required: true,
                   message: 'Please input email!',
                 },
+                {
+                  pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                  message: "Please enter a valid email address",
+                }
               ]}
             >
               <Input placeholder='Email *' />
@@ -55,7 +86,7 @@ export default function SignIn() {
                 },
               ]}
             >
-              <Input placeholder='Password *' />
+              <Input.Password placeholder='Password *' />
             </Form.Item>
 
             <Form.Item
@@ -74,11 +105,11 @@ export default function SignIn() {
           </Form>
         </ConfigProvider>
 
-        <Space>
+        <Space className='mb-3'>
           New to BDTax?
           <Link href="signup" className='text-emerald-700 hover:text-emerald-700'>Create Account</Link>
         </Space>
-
+        <br />
         <Space>
           <Link href="signup" className='text-emerald-700 hover:text-emerald-700'>Forgot Password?</Link>
         </Space>
