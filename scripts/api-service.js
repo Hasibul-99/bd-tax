@@ -1,9 +1,10 @@
 import axios from "axios";
 import { checkRes, alertPop } from "./helper";
+import Cookies from "js-cookie";
 
 axios.defaults.headers.post['Accept'] = 'application/json';
 const base_url = process.env.NEXT_PUBLIC_BASE_URL;
-
+const token = Cookies.get("bdtax_token") || "";
 
 
 /* query ---> api url to query with

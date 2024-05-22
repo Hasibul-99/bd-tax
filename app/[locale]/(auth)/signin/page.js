@@ -21,9 +21,9 @@ export default function SignIn() {
         form.setFields(res?.errors)
       } else {
         let masterData = res?.data?.data;
-        console.log("masterData", masterData);
+        
         Cookies.set('bdtax_token', masterData?.token);
-        Cookies.set('bdtax_user', masterData);
+        Cookies.set('bdtax_user', JSON.stringify(masterData));
         alertPop("success", masterData?.message);
 
         if (masterData.first_time) {
