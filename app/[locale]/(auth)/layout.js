@@ -1,5 +1,6 @@
 import AuthNavbar from "@/components/shared/AuthNavbar";
 import Footer from "@/components/shared/Footer";
+import Script from 'next/script'
 
 const RootLayout = (props) => {
   const { children, params: { locale } } = props;
@@ -13,6 +14,8 @@ const RootLayout = (props) => {
         </div>
       </div>
       <Footer />
+      {/* <Script src="js/script.js"></Script> */}
+
     </>
   );
 };

@@ -11,7 +11,7 @@ export default function SignIn() {
 
   return (
     <div classname="flex items-center h-screen w-full">
-      <div className="w-full p-6 m-4 md:max-w-sm md:mx-auto text-center">
+      <div className="p-6 m-4 md:max-w-sm md:mx-auto text-center">
         <h1 className="block w-full font-bold mb-2">Sign In</h1>
         <Text type="secondary">Stress-free tax season starts here!</Text>
 
