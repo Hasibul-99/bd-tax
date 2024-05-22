@@ -9,7 +9,7 @@ import { Steps, Space, ConfigProvider } from 'antd';
 import React, { useState } from 'react';
 
 export default function PremiumPlusProcess() {
-    const [current, setCurrent] = useState(3);
+    const [current, setCurrent] = useState(1);
     const onChange = (value) => {
         console.log('onChange:', value);
         setCurrent(value);

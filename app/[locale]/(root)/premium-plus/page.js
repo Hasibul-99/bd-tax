@@ -126,7 +126,7 @@ export default function PremiumPlus() {
             }}
           >
             <Button type="primary" size='large' className='md:px-10'>
-              <Link href={'/'}>
+              <Link href={'premium-plus/process'}>
                 Let's GO
               </Link>
             </Button>
