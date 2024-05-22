@@ -21,7 +21,7 @@ export default function SignIn() {
         form.setFields(res?.errors)
       } else {
         let masterData = res?.data?.data;
-        
+
         Cookies.set('bdtax_token', masterData?.token);
         Cookies.set('bdtax_user', JSON.stringify(masterData));
         alertPop("success", masterData?.message);
@@ -54,7 +54,7 @@ export default function SignIn() {
           }}
         >
           <Form
-            className='mt-6'
+            className='mt-6 text-left'
             name="basic"
             onFinish={onFinish}
             autoComplete="off"

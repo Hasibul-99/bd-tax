@@ -3,7 +3,7 @@ import { checkRes, alertPop } from "./helper";
 import Cookies from "js-cookie";
 
 axios.defaults.headers.post['Accept'] = 'application/json';
-const base_url = process.env.NEXT_PUBLIC_BASE_URL;
+const base_url = process.env.NEXT_PUBLIC_BASE_URL || 'https://newdevapi.bdtax.com.bd/public/api/';
 const token = Cookies.get("bdtax_token") || "";
 
 
