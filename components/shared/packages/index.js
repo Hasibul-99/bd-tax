@@ -8,7 +8,7 @@ import { PACKAGE_LIST } from '@/scripts/api';
 import { getData } from '@/scripts/api-service';
 import { useEffect, useState } from 'react';
 
-export default function Packages({ locale }) {
+export default function Packages({ locale, ssrData }) {
     const [packageList, setPackageList] = useState()
 
     const getPackagesList = async () => {
@@ -20,7 +20,11 @@ export default function Packages({ locale }) {
     }
 
     useEffect(() => {
-        getPackagesList()
+        if (ssrData) {
+            setPackageList(ssrData);
+        } else {
+            getPackagesList()
+        } 
     }, [])
 
     return (

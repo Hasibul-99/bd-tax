@@ -7,7 +7,7 @@ export default function PremiumPlus(props) {
     return (
         <>
             {
-                pack ? <>
+                pack ? <div>
                     <div className="block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative">
                         <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] start-1/3'>Most Popular</div>
                         <div className="bg-[#FFFDCC] rounded-tl-xl rounded-tr-xl border-b-2 border-[#D4AF37] px-6 py-3">
@@ -93,7 +93,7 @@ export default function PremiumPlus(props) {
                             </ul>
                         </div> */}
                     </div>
-                </> : ''
+                </div> : ''
             }
         </>
     )
