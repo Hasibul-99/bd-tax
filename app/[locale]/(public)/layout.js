@@ -1,21 +1,8 @@
-'use client'
-
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
-import Cookies from "js-cookie";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 const RootLayout = (props) => {
     const { children, params: { locale } } = props;
-    const router = useRouter();
-    const token = Cookies.get('bdtax_token');
-
-    useEffect(() => {
-        if (!token) {
-            router.push('signin');
-        }
-    }, [token])
 
     return (
         <>
