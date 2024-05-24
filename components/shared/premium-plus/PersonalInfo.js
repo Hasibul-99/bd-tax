@@ -4,6 +4,7 @@ import { RightOutlined } from '@ant-design/icons';
 import { Button, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from 'antd';
 import { useEffect } from 'react';
 import dayjs from 'dayjs';
+import { alertPop } from '@/scripts/helper';
 const { Option } = Select;
 
 export default function PersonalInfo({setCurrent}) {
@@ -27,10 +28,9 @@ export default function PersonalInfo({setCurrent}) {
     let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError');
 
     if (res) {
-
-      console.log("res", res);
-
-      // setCurrent(2);
+      let masterData = res.data;
+      alertPop("success", masterData?.message);
+      setCurrent(2);
     }
   };
 

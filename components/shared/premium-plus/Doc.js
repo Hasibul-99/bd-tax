@@ -1,4 +1,4 @@
-import { Select, Upload, ConfigProvider, Space, List, Avatar, Button } from "antd";
+import { Select, Upload, ConfigProvider, Space, List, Avatar, Button, Row, Col } from "antd";
 const { Dragger } = Upload;
 import { RightOutlined } from '@ant-design/icons';
 import { useState } from "react";
@@ -21,6 +21,7 @@ const data = [
 
 export default function Doc() {
   const [loading, setLoading] = useState(false);
+
   const props = {
     name: 'file',
     multiple: true,
@@ -76,26 +77,36 @@ export default function Doc() {
                 },
               }}
             >
-              <Select
-                showSearch
-                placeholder="Select a file type"
-                optionFilterProp="children"
-                className="w-full my-3"
-                options={[
-                  {
-                    value: 'jack',
-                    label: 'Salay statement',
-                  },
-                  {
-                    value: 'lucy',
-                    label: 'Bank Statemant',
-                  },
-                  {
-                    value: 'tom',
-                    label: 'Insuranse statement ',
-                  },
-                ]}
-              />
+              <Row gutter={16}>
+                <Col className="gutter-row" span={20}>
+                  <Select
+                    showSearch
+                    placeholder="Select a file type"
+                    optionFilterProp="children"
+                    className="w-full my-3"
+                    options={[
+                      {
+                        value: 'jack',
+                        label: 'Salay statement',
+                      },
+                      {
+                        value: 'lucy',
+                        label: 'Bank Statemant',
+                      },
+                      {
+                        value: 'tom',
+                        label: 'Insuranse statement ',
+                      },
+                    ]}
+                  />
+                </Col>
+                <Col className="gutter-row" span={4}>
+                  <Button type="primary" className='px-10 mt-3 flex m-auto' >
+                    Submit
+                  </Button>
+                </Col>
+              </Row>
+
 
               <Dragger {...props}>
                 <p className="ant-upload-drag-icon">
