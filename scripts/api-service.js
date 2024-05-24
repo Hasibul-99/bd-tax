@@ -39,29 +39,22 @@ export const getData = async (query, no_token) => {
      no_token ---> acts as a flag for no need to use token */
 
 export const postData = async (query, data, no_token, showError) => {
+    console.log("hello");
     try {
         let res = await axios({
             method: "post",
             url: `${base_url}${query}`,
             headers: no_token ? {} : {
                 'Authorization': `Bearer ${token}`,
-                "lang": i18n?.language || 'en'
+                "lang": 'en'
             },
             data: data,
         });
         if (checkRes(res?.data.code || res?.data.status_code)) {
             return res;
-        } else {
-            if (res?.data?.errors && Object.keys(res.data.errors).length !== 0) {
-                let error = res.data.errors;
-
-                for (const prop in error) {
-                    if (error[prop][0]) alert(error[prop][0])
-                }
-            }
         }
     } catch (error) {
-        console.log("error?.response?.data", error?.response?.data?.data?.message);
+        console.log("error?.response?.data", error);
 
         if (showError && error?.response?.data?.data && Object.keys(error?.response?.data?.data).length) {
             let errors = [];

@@ -7,6 +7,8 @@ import Standard from '@/components/shared/packages/Standard';
 import { PACKAGE_LIST } from '@/scripts/api';
 import { getData } from '@/scripts/api-service';
 import { useEffect, useState } from 'react';
+import Cookies from "js-cookie";
+const token = Cookies.get('bdtax_token');
 
 export default function Packages({ locale, ssrData }) {
     const [packageList, setPackageList] = useState()
@@ -20,12 +22,12 @@ export default function Packages({ locale, ssrData }) {
     }
 
     useEffect(() => {
-        if (ssrData) {
-            setPackageList(ssrData);
-        } else {
+        if (token) {
             getPackagesList()
+        } else {
+            setPackageList(ssrData);
         } 
-    }, [])
+    }, [token])
 
     return (
         <>
@@ -46,7 +48,7 @@ export default function Packages({ locale, ssrData }) {
                                     packageList.packages.map(item => {
                                         return item.title === "Premium Plus" ? <PremiumPlus locale={locale} pack={item} /> : 
                                         item.title === "Premium " ? <Premium locale={locale} pack={item} /> : 
-                                        item.title === "Standard" ? <Standard ocale={locale} pack={item} /> : ''
+                                        item.title === "Standard" ? <Standard locale={locale} pack={item} /> : ''
                                     })
                                 }
                             </> : ''

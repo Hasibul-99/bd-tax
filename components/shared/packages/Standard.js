@@ -1,8 +1,19 @@
+import { TEMP_PACKAGES } from '@/scripts/api';
+import { postData } from '@/scripts/api-service';
 import { Button, Col, ConfigProvider, Row, Space } from 'antd';
-import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 export default function Standard(props) {
     const { locale, pack } = props;
+    const router = useRouter();
+
+    const tempUserPackages = async() => {
+        let res = await postData(TEMP_PACKAGES, {package_id: pack.id});
+
+        if (res) {
+            router.push(`/${locale}/premium-plus`)
+        }
+    }
 
     return (
         <div>
@@ -30,8 +41,9 @@ export default function Standard(props) {
                                     },
                                 }}
                             >
-                                <Button type="primary" className='w-full border-[#0F172A] text-[#0F172A]' size='large'>
-                                    <Link href={`/${locale}/standard`}>Select</Link>
+                                <Button type="primary" className='w-full border-[#0F172A] text-[#0F172A]' size='large' onClick={() => tempUserPackages()}>
+                                    {/* <Link href={`/${locale}/standard`}>Select</Link> */}
+                                    Select
                                 </Button>
                             </ConfigProvider>
                         </div>

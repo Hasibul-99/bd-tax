@@ -1,7 +1,8 @@
 import Packages from '@/components/shared/packages';
+import { GUEST_PACKAGE_LIST } from '@/scripts/api';
 
 async function getData() {
-  const res = await fetch(`${process.env.BASE_URL || 'https://newdevapi.bdtax.com.bd/public/api/'}guest-package-list`)
+  const res = await fetch(`${process.env.BASE_URL || 'https://newdevapi.bdtax.com.bd/public/api/'}${GUEST_PACKAGE_LIST}`)
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
  
