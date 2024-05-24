@@ -1,5 +1,6 @@
 'use client'
 
+import WelcomeMessage from '@/components/shared/WelcomeMessage';
 import Doc from '@/components/shared/premium-plus/Doc';
 import LoadingStep from '@/components/shared/premium-plus/LoadingStep';
 import Payment from '@/components/shared/premium-plus/Payment';
@@ -10,6 +11,7 @@ import React, { useState } from 'react';
 
 export default function PremiumPlusProcess() {
     const [current, setCurrent] = useState(1);
+
     const onChange = (value) => {
         console.log('onChange:', value);
         setCurrent(value);
@@ -18,7 +20,7 @@ export default function PremiumPlusProcess() {
     return (
         <div className="container mx-auto px-30 ">
             <div className='bg-white py-5 px-4'>
-                <h3 className='text-xl font-semibold'>Welcome back, Tareq</h3>
+                <WelcomeMessage/>
                 <div className='bg-amber-100 my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
                     <div>
                         <h5 className='text-base font-semibold'>
@@ -87,7 +89,7 @@ export default function PremiumPlusProcess() {
                         current === 0 ? <LoadingStep/> : '' 
                     }
                     {
-                        current === 1 ? <PersonalInfo/> : '' 
+                        current === 1 ? <PersonalInfo setCurrent={setCurrent}/> : '' 
                     }
                     {
                         current === 2 ? <Doc/> : '' 

@@ -8,4 +8,10 @@ export const GUEST_PACKAGE_LIST = "guest-package-list";
 export const PACKAGE_LIST = 'packages-list'
 export const TEMP_PACKAGES = 'tempPackages'
 
+// Get user step
+export const GET_USER_STEP = 'get-user-step'
+
+// Get Profile
+export const GET_USER_PROFILE = "get-user-profile"
+export const PACKAGE_WISE_PROFILE = "packagewiseProfile"
 
