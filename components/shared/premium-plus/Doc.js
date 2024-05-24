@@ -1,7 +1,9 @@
 import { Select, Upload, ConfigProvider, Space, List, Avatar, Button, Row, Col } from "antd";
 const { Dragger } = Upload;
 import { RightOutlined } from '@ant-design/icons';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getData } from "@/scripts/api-service";
+import { GET_FILES } from "@/scripts/api";
 
 
 const data = [
@@ -21,6 +23,8 @@ const data = [
 
 export default function Doc() {
   const [loading, setLoading] = useState(false);
+  const [fileType, setFileType] = useState();
+  const [uploadedFile, setUploadedFile] = useState();
 
   const props = {
     name: 'file',
@@ -44,6 +48,21 @@ export default function Doc() {
       console.log('Dropped files', e.dataTransfer.files);
     },
   };
+
+  const getPageFiles = async () => {
+    let res = await getData(GET_FILES);
+
+    if (res) {
+      console.log("res", res);
+      let masterData = res?.data[0];
+      setFileType(masterData?.file_type)
+      setUploadedFile(masterData?.user_upload)
+    }
+  }
+
+  useEffect(() => {
+    getPageFiles()
+  }, [])
 
   return (
     <>
@@ -84,20 +103,10 @@ export default function Doc() {
                     placeholder="Select a file type"
                     optionFilterProp="children"
                     className="w-full my-3"
-                    options={[
-                      {
-                        value: 'jack',
-                        label: 'Salay statement',
-                      },
-                      {
-                        value: 'lucy',
-                        label: 'Bank Statemant',
-                      },
-                      {
-                        value: 'tom',
-                        label: 'Insuranse statement ',
-                      },
-                    ]}
+                    options={fileType?.length ? fileType.map(item => ({
+                      value: item.id,
+                      label: item.title,
+                    })) : []}
                   />
                 </Col>
                 <Col className="gutter-row" span={4}>
@@ -159,7 +168,6 @@ export default function Doc() {
                 <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
               </Button>
             </ConfigProvider>
-
           </div>
         </>
       }

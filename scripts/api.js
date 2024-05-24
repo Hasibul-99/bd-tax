@@ -15,3 +15,5 @@ export const GET_USER_STEP = 'get-user-step'
 export const GET_USER_PROFILE = "get-user-profile"
 export const PACKAGE_WISE_PROFILE = "packagewiseProfile"
 
+// Get user file and uploaded users uploaded file list
+export const GET_FILES = "get-files"

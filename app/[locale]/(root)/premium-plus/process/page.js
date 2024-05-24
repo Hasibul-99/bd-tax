@@ -13,7 +13,6 @@ export default function PremiumPlusProcess() {
     const [current, setCurrent] = useState(1);
 
     const onChange = (value) => {
-        console.log('onChange:', value);
         setCurrent(value);
     };
 

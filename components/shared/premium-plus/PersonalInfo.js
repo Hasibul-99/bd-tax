@@ -11,8 +11,6 @@ export default function PersonalInfo({setCurrent}) {
   const [form] = Form.useForm();
 
   const onFinish = async(values) => {
-    console.log('Success:', values);
-
     let profile = {
       first_name: values.first_name,
       last_name: values.last_name,
@@ -22,8 +20,6 @@ export default function PersonalInfo({setCurrent}) {
       Contact: values.mobile,
       DOB: dayjs(values.dob).format('DD-MM-YYYY')
     };
-
-    console.log("profile", profile);
 
     let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError');
 
@@ -49,7 +45,7 @@ export default function PersonalInfo({setCurrent}) {
           email: masterData.Email,
           mobile: masterData.Contact,
           Gender: masterData.Gender,
-          dob: masterData.DOB ? dayjs(masterData.DOB).format('DD/MM/YYYY') : undefined
+          dob: masterData.DOB ? dayjs(masterData.DOB) : undefined
         })
       }
     }
