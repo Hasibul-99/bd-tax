@@ -71,7 +71,8 @@ export const postData = async (query, data, no_token, showError) => {
                 errors: errors
             }
         }
-        alertPop("error", error?.response?.data?.data?.message);
+        if (error.response.status) checkRes(error.response.status)
+        alertPop("error", error?.response?.data?.message || error?.response?.data?.data?.message);
         return false;
     }
 };

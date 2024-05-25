@@ -18,6 +18,7 @@ export default function PersonalInfo({setCurrent}) {
       Gender: values.gender,
       Email: values.email,
       Contact: values.mobile,
+      NationalId: values.NationalId,
       DOB: dayjs(values.dob).format('DD-MM-YYYY')
     };
 
@@ -41,10 +42,10 @@ export default function PersonalInfo({setCurrent}) {
           first_name: masterData.first_name,
           last_name: masterData.last_name,
           etin: masterData.ETIN,
-          nid: masterData.NationalId,
+          NationalId: masterData.NationalId,
           email: masterData.Email,
           mobile: masterData.Contact,
-          Gender: masterData.Gender,
+          gender: masterData.Gender,
           dob: masterData.DOB ? dayjs(masterData.DOB) : undefined
         })
       }
