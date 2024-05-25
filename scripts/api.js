@@ -18,3 +18,4 @@ export const PACKAGE_WISE_PROFILE = "packagewiseProfile"
 // Get user file and uploaded users uploaded file list
 export const GET_FILES = "get-files"
 export const UPLOAD_FILES = "upload-file"
+export const DELETE_FILE = "delete-file/"

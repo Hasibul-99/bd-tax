@@ -39,7 +39,6 @@ export const getData = async (query, no_token) => {
      no_token ---> acts as a flag for no need to use token */
 
 export const postData = async (query, data, no_token, showError) => {
-    console.log("hello");
     try {
         let res = await axios({
             method: "post",
@@ -74,5 +73,35 @@ export const postData = async (query, data, no_token, showError) => {
         if (error.response.status) checkRes(error.response.status)
         alertPop("error", error?.response?.data?.message || error?.response?.data?.data?.message);
         return false;
+    }
+};
+
+
+
+export const deleteData = async (query, no_token) => {
+    try {
+        let data = await axios.delete(`${base_url}${query}`, {
+            headers: no_token
+                ? {}
+                : {
+                    'Authorization': `Bearer ${token}`,
+                },
+        });
+        return data;
+        // if (checkRes(data.status)) {
+        //     // setUserProfile();
+        //     return data;
+        // } else {
+        //     toast.error(msg_undefined);
+        // }
+    } catch (error) {
+        // checkRes(error?.response?.status);
+        // error.response?.data?.messages &&
+        // typeof error.response?.data?.messages === "object"
+        // ? error.response.data.messages.map((err) => {
+        //     alertPop(error_status, err);
+        //     })
+        // : errorHandle(error);
+        // return false;
     }
 };

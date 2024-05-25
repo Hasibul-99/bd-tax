@@ -91,7 +91,7 @@ export default function PremiumPlusProcess() {
                         current === 1 ? <PersonalInfo setCurrent={setCurrent}/> : '' 
                     }
                     {
-                        current === 2 ? <Doc/> : '' 
+                        current === 2 ? <Doc setCurrent={setCurrent}/> : '' 
                     }
                     {
                         current === 3 ? <Payment/> : '' 

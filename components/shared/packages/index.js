@@ -18,6 +18,8 @@ export default function Packages({ locale, ssrData }) {
 
         if (res) {
             setPackageList(res?.data)
+        } else {
+            setPackageList(ssrData);
         }
     }
 
