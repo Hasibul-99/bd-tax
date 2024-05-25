@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Space, Card, Button, ConfigProvider } from 'antd';
+import { getData } from '@/scripts/api-service';
+import { GET_PAYMENT_METHOD } from '@/scripts/api';
 
-export default function Payment() {
+export default function Payment({salaryData, setCurrent}) {
+
+  const getPaymentData = async() => {
+    let res = await getData(GET_PAYMENT_METHOD)
+  }
+
+  useEffect(() => {
+    getPaymentData()
+  }, [])
+
   return (
     <div className='py-10 px-20'>
       <h3 className='text-xl font-semibold'>WE have auto calculated your tax</h3>
       <Card className='mt-4 border-0 border-l-4 bg-[#EFFEF2] border-emerald-600'>
         <p>Estimated Tax Due</p>
-        <p><span className='text-lime-600'>৳</span> 25000</p>
+        <p><span className='text-lime-600'>৳</span> {salaryData?.tax_amount || 0}</p>
       </Card>
       <Space className='text-[#F97316] my-6'>
         <img src='/assets/icons/warning.svg' alt="warning" />

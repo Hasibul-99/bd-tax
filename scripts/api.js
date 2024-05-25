@@ -19,3 +19,7 @@ export const PACKAGE_WISE_PROFILE = "packagewiseProfile"
 export const GET_FILES = "get-files"
 export const UPLOAD_FILES = "upload-file"
 export const DELETE_FILE = "delete-file/"
+
+// Process Salary Doc
+export const PROCESS_SALARY_DOC = "process-salary-doc"
+export const GET_PAYMENT_METHOD = "get-payment-method"
