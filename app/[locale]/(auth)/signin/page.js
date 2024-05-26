@@ -7,11 +7,14 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { Button, Checkbox, ConfigProvider, Form, Input, Space, Typography } from 'antd';
 import Link from 'next/link';
+import { useState } from 'react';
+import LoadingStep from '@/components/shared/premium-plus/LoadingStep';
 const { Text } = Typography;
 
 export default function SignIn() {
   const [form] = Form.useForm();
   const router = useRouter();
+  const [loading, setLoading] = useState(false)
 
   const onFinish = async (values) => {
     let res = await postData(LOGIN, values, 'no_token');
@@ -22,18 +25,36 @@ export default function SignIn() {
       } else {
         let masterData = res?.data?.data;
 
+        setLoading(true);
         Cookies.set('bdtax_token', masterData?.token);
         Cookies.set('bdtax_user', JSON.stringify(masterData));
         alertPop("success", masterData?.message);
 
-        if (masterData.first_time) {
-          router.push('/')
-        } else {
-          router.push('home')
-        }
+        setTimeout(() => {
+          if (masterData.first_time) {
+            window.location = "/";
+            // router.push('/')
+          } else {
+            // router.push('home')
+            window.location = "home";
+          }
+        }, 5000)
       }
     }
   };
+
+  if (loading) {
+    return <>
+      <div className='text-center h-96 flex justify-items-center items-center relative'>
+        <div>
+          <img className='image' src='/assets/icons/loading.svg' alt="Premium Plus" />
+        </div>
+        <div className='absolute inset-x-11'>
+          <p>Establishing secure connection. </p>
+        </div>
+      </div>
+    </>
+  }
 
   return (
     <div classname="flex items-center h-screen w-full">

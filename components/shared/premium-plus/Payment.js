@@ -1,12 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Space, Card, Button, ConfigProvider } from 'antd';
 import { getData } from '@/scripts/api-service';
 import { GET_PAYMENT_METHOD } from '@/scripts/api';
 
 export default function Payment({salaryData, setCurrent}) {
+  const [paymentData, setPaymentData] = useState()
 
   const getPaymentData = async() => {
-    let res = await getData(GET_PAYMENT_METHOD)
+    let res = await getData(GET_PAYMENT_METHOD);
+
+    if (res) {
+      let masterData = res?.data;
+      console.log("master", masterData);
+      setPaymentData(masterData)
+    }
+  }
+
+  const makePayment = () => {
+    window.location = paymentData?.sslgatewayLink;
   }
 
   useEffect(() => {
@@ -29,11 +40,11 @@ export default function Payment({salaryData, setCurrent}) {
 
       <div className='my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
         <div className='flex'>
-          <img src='/assets/images/visa.png' alt="warning" />
-          <img src='/assets/images/master.png' alt="warning" />
-          <img src='/assets/images/discover.png' alt="warning" />
-          <img src='/assets/images/amex.png' alt="warning" />
-          <img src='/assets/images/bkash.png' alt="warning" />
+          <a href={paymentData?.sslgatewayLink}><img src='/assets/images/visa.png' alt="warning" /></a>
+          <a href={paymentData?.sslgatewayLink}><img src='/assets/images/master.png' alt="warning" /></a>
+          <a href={paymentData?.sslgatewayLink}><img src='/assets/images/discover.png' alt="warning" /></a>
+          <a href={paymentData?.sslgatewayLink}><img src='/assets/images/amex.png' alt="warning" /></a>
+          <a href={paymentData?.bkashURL}><img src='/assets/images/bkash.png' alt="warning" /></a>
         </div>
 
         <div className='md:text-right md:ml-auto'>
@@ -49,13 +60,12 @@ export default function Payment({salaryData, setCurrent}) {
               },
             }}
           >
-            <Button type="primary" className='w-full' size='large'>
+            <Button disabled={!paymentData?.sslgatewayLink} type="primary" className='w-full' size='large' onClick={() => makePayment()}>
               <Space>
                 <img src='/assets/icons/lock.svg' alt="Premium-Plus" /> Make Payment
               </Space>
             </Button>
           </ConfigProvider>
-
         </div>
       </div>
     </div>

@@ -19,9 +19,9 @@ export const getData = async (query, no_token) => {
             },
         });
 
-        if (checkRes(data.status)) {
+        // if (checkRes(data.status)) {
             return data?.data;
-        }
+        // }
     } catch (error) {
         // checkRes(error?.response?.status);
         // error.response?.data?.messages &&
