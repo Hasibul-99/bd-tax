@@ -23,3 +23,6 @@ export const DELETE_FILE = "delete-file/"
 // Process Salary Doc
 export const PROCESS_SALARY_DOC = "process-salary-doc"
 export const GET_PAYMENT_METHOD = "get-payment-method"
+
+// Home Page
+export const GET_ORDER_HISTORY = "get-order-history"
