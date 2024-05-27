@@ -1,13 +1,26 @@
+'use client'
+
+import { TEMP_PACKAGES } from '@/scripts/api';
+import { postData } from '@/scripts/api-service';
 import { Button, Col, ConfigProvider, Row, Space } from 'antd';
-import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 export default function PremiumPlus(props) {
     const { locale, pack } = props;
+    const router = useRouter();
+
+    const tempUserPackages = async() => {
+        let res = await postData(TEMP_PACKAGES, {package_id: pack.id});
+
+        if (res) {
+            router.push(`/${locale}/premium-plus`)
+        }
+    }
 
     return (
         <>
             {
-                pack ? <>
+                pack ? <div>
                     <div className="block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative">
                         <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] start-1/3'>Most Popular</div>
                         <div className="bg-[#FFFDCC] rounded-tl-xl rounded-tr-xl border-b-2 border-[#D4AF37] px-6 py-3">
@@ -31,8 +44,9 @@ export default function PremiumPlus(props) {
                                     },
                                 }}
                             >
-                                <Button type="primary" className='w-full' size='large'>
-                                    <Link href={`/${locale}/premium-plus`}>Select</Link>
+                                <Button type="primary" className='w-full' size='large' onClick={() => tempUserPackages()}>
+                                    {/* <Link href={`/${locale}/premium-plus`}>Select</Link> */}
+                                    Select
                                 </Button>
                             </ConfigProvider>
                         </div>
@@ -93,7 +107,7 @@ export default function PremiumPlus(props) {
                             </ul>
                         </div> */}
                     </div>
-                </> : ''
+                </div> : ''
             }
         </>
     )

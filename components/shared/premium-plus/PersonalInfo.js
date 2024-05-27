@@ -1,11 +1,61 @@
+import { GET_USER_PROFILE, PACKAGE_WISE_PROFILE } from '@/scripts/api';
+import { getData, postData } from '@/scripts/api-service';
 import { RightOutlined } from '@ant-design/icons';
 import { Button, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from 'antd';
+import { useEffect } from 'react';
+import dayjs from 'dayjs';
+import { alertPop } from '@/scripts/helper';
 const { Option } = Select;
 
-export default function PersonalInfo() {
-  const onFinish = (values) => {
-    console.log('Success:', values);
+export default function PersonalInfo({setCurrent}) {
+  const [form] = Form.useForm();
+
+  const onFinish = async(values) => {
+    let profile = {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      ETIN: values.etin,
+      Gender: values.gender,
+      Email: values.email,
+      Contact: values.mobile,
+      NationalId: values.nid,
+      DOB: dayjs(values.dob).format('DD-MM-YYYY')
+    };
+
+    let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError');
+
+    if (res) {
+      let masterData = res.data;
+      alertPop("success", masterData?.message);
+      setCurrent(2);
+    }
   };
+
+  const getUserData = async () => {
+    let res = await getData(GET_USER_PROFILE);
+
+    if (res) {
+      let masterData = res?.data;
+
+      if (masterData) {
+        form.setFieldsValue({
+          first_name: masterData.first_name,
+          last_name: masterData.last_name,
+          etin: masterData.ETIN,
+          NationalId: masterData.NationalId,
+          email: masterData.Email,
+          mobile: masterData.Contact,
+          gender: masterData.Gender,
+          dob: masterData.DOB ? dayjs(masterData.DOB) : undefined
+        })
+      }
+    }
+  }
+
+  useEffect(() => {
+    getUserData()
+  }, [])
+
   return (
     <div className='py-10 px-20'>
       <h3 className='text-xl font-semibold'>Please enter your personal info</h3>
@@ -24,6 +74,7 @@ export default function PersonalInfo() {
       >
         <Form
           name="basic"
+          form={form}
           className='mt-10'
           onFinish={onFinish}
           autoComplete="off"
@@ -76,13 +127,17 @@ export default function PersonalInfo() {
             </Col>
             <Col className="gutter-row" span={20}>
               <Form.Item
-                label=""
                 name="etin"
                 rules={[
                   {
                     required: true,
                     message: 'Please input your ETIN!',
                   },
+                  {
+                    required: true,
+                    message: "A value must be entered",
+                    pattern: new RegExp(/^[0-9]+$/)
+                  }
                 ]}
               >
                 <Input />
@@ -97,13 +152,17 @@ export default function PersonalInfo() {
             </Col>
             <Col className="gutter-row" span={20}>
               <Form.Item
-                label=""
                 name="nid"
                 rules={[
                   {
                     required: true,
                     message: 'Please input your National ID!',
                   },
+                  {
+                    required: true,
+                    message: "A value must be entered",
+                    pattern: new RegExp(/^[0-9]+$/)
+                  }
                 ]}
               >
                 <Input />
@@ -114,11 +173,57 @@ export default function PersonalInfo() {
 
           <Row gutter={16}>
             <Col className="gutter-row" span={4}>
+              Email *
+            </Col>
+            <Col className="gutter-row" span={20}>
+              <Form.Item
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input email!',
+                  },
+                  {
+                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                    message: "Please enter a valid email address",
+                  }
+                ]}
+              >
+                <Input placeholder='Email *' />
+              </Form.Item>
+
+            </Col>
+          </Row>
+
+          <Row gutter={16}>
+            <Col className="gutter-row" span={4}>
+              Mobile *
+            </Col>
+            <Col className="gutter-row" span={20}>
+              <Form.Item
+                name="mobile"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input mobile!',
+                  },
+                  {
+                    pattern: /^(?:\+?88)?01[15-9]\d{8}$/,
+                    message: "Please enter a valid mobile no",
+                  }
+                ]}
+              >
+                <Input placeholder='Phone *' />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row gutter={16}>
+            <Col className="gutter-row" span={4}>
               DOB *
             </Col>
             <Col className="gutter-row" span={20}>
               <Form.Item
-                label=""
                 name="dob"
                 rules={[
                   {
@@ -149,13 +254,12 @@ export default function PersonalInfo() {
                 ]}
               >
                 <Select
-                  placeholder="Select a option and change input text above"
-                  // onChange={onGenderChange}
+                  placeholder="Select gender"
                   allowClear
                 >
-                  <Option value="male">male</Option>
-                  <Option value="female">female</Option>
-                  <Option value="other">other</Option>
+                  <Option value="male">Male</Option>
+                  <Option value="female">Female</Option>
+                  {/* <Option value="other">other</Option> */}
                 </Select>
               </Form.Item>
 
@@ -166,7 +270,7 @@ export default function PersonalInfo() {
             <Button type="primary" htmlType="submit" className='px-10 mt-5 flex m-auto' >
               Next
 
-              <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }}/>
+              <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
             </Button>
           </Form.Item>
         </Form>

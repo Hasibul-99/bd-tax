@@ -19,9 +19,9 @@ export const getData = async (query, no_token) => {
             },
         });
 
-        if (checkRes(data.status)) {
+        // if (checkRes(data.status)) {
             return data?.data;
-        }
+        // }
     } catch (error) {
         // checkRes(error?.response?.status);
         // error.response?.data?.messages &&
@@ -45,23 +45,15 @@ export const postData = async (query, data, no_token, showError) => {
             url: `${base_url}${query}`,
             headers: no_token ? {} : {
                 'Authorization': `Bearer ${token}`,
-                "lang": i18n?.language || 'en'
+                "lang": 'en'
             },
             data: data,
         });
         if (checkRes(res?.data.code || res?.data.status_code)) {
             return res;
-        } else {
-            if (res?.data?.errors && Object.keys(res.data.errors).length !== 0) {
-                let error = res.data.errors;
-
-                for (const prop in error) {
-                    if (error[prop][0]) alert(error[prop][0])
-                }
-            }
         }
     } catch (error) {
-        console.log("error?.response?.data", error?.response?.data?.data?.message);
+        console.log("error?.response?.data", error);
 
         if (showError && error?.response?.data?.data && Object.keys(error?.response?.data?.data).length) {
             let errors = [];
@@ -78,7 +70,38 @@ export const postData = async (query, data, no_token, showError) => {
                 errors: errors
             }
         }
-        alertPop("error", error?.response?.data?.data?.message);
+        if (error.response.status) checkRes(error.response.status)
+        alertPop("error", error?.response?.data?.message || error?.response?.data?.data?.message);
         return false;
+    }
+};
+
+
+
+export const deleteData = async (query, no_token) => {
+    try {
+        let data = await axios.delete(`${base_url}${query}`, {
+            headers: no_token
+                ? {}
+                : {
+                    'Authorization': `Bearer ${token}`,
+                },
+        });
+        return data;
+        // if (checkRes(data.status)) {
+        //     // setUserProfile();
+        //     return data;
+        // } else {
+        //     toast.error(msg_undefined);
+        // }
+    } catch (error) {
+        // checkRes(error?.response?.status);
+        // error.response?.data?.messages &&
+        // typeof error.response?.data?.messages === "object"
+        // ? error.response.data.messages.map((err) => {
+        //     alertPop(error_status, err);
+        //     })
+        // : errorHandle(error);
+        // return false;
     }
 };

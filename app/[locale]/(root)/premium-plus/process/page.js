@@ -1,24 +1,46 @@
 'use client'
 
+import WelcomeMessage from '@/components/shared/WelcomeMessage';
 import Doc from '@/components/shared/premium-plus/Doc';
 import LoadingStep from '@/components/shared/premium-plus/LoadingStep';
 import Payment from '@/components/shared/premium-plus/Payment';
 import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo';
 import Submit from '@/components/shared/premium-plus/Submit';
+import { PROCESS_SALARY_DOC } from '@/scripts/api';
+import { getData } from '@/scripts/api-service';
 import { Steps, Space, ConfigProvider } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function PremiumPlusProcess() {
     const [current, setCurrent] = useState(1);
+    const [loadingPSD, setLoadingPSD] = useState(true);
+    const [salaryData, setSalaryData] = useState()
+
     const onChange = (value) => {
-        console.log('onChange:', value);
         setCurrent(value);
     };
+
+    const getPrecessSalaryDoc = async() => {
+        let res = await getData(PROCESS_SALARY_DOC);
+
+        if (res) {
+            console.log("da", res);
+
+            let masterData = res?.data;
+            setSalaryData(masterData);
+        }
+    }
+
+    useEffect(() => {
+        if (current === 3) {
+            getPrecessSalaryDoc()
+        }
+    }, [current])
 
     return (
         <div className="container mx-auto px-30 ">
             <div className='bg-white py-5 px-4'>
-                <h3 className='text-xl font-semibold'>Welcome back, Tareq</h3>
+                <WelcomeMessage/>
                 <div className='bg-amber-100 my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
                     <div>
                         <h5 className='text-base font-semibold'>
@@ -30,7 +52,7 @@ export default function PremiumPlusProcess() {
                     </div>
                     <div className='md:text-right md:ml-auto'>
                         <p className='text-sm font-semibold'>
-                            Tax Due: 25,000
+                            Tax Due: {salaryData?.tax_amount || 0}
                         </p>
                         <p className='text-xs'>
                             Tax Year 2023 -2024
@@ -83,17 +105,14 @@ export default function PremiumPlusProcess() {
                 </ConfigProvider>
 
                 <div>
-                {
-                        current === 0 ? <LoadingStep/> : '' 
+                    {
+                        current === 1 ? <PersonalInfo setCurrent={setCurrent}/> : '' 
                     }
                     {
-                        current === 1 ? <PersonalInfo/> : '' 
+                        current === 2 ? <Doc setCurrent={setCurrent}/> : '' 
                     }
                     {
-                        current === 2 ? <Doc/> : '' 
-                    }
-                    {
-                        current === 3 ? <Payment/> : '' 
+                        current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent}/> : '' 
                     }
                     {
                         current === 4 ? <Submit/> : '' 

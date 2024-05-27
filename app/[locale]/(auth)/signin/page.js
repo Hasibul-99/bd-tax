@@ -3,15 +3,17 @@
 import { LOGIN } from '@/scripts/api';
 import { postData } from '@/scripts/api-service';
 import { alertPop } from '@/scripts/helper';
-import { Button, Checkbox, ConfigProvider, Form, Input, Space } from 'antd';
+import { Button, Checkbox, ConfigProvider, Form, Input, Space, Typography } from 'antd';
 import Cookies from "js-cookie";
 import Link from 'next/link';
-import { useRouter } from "next/navigation";
-// const { Text } = Typography;
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+const { Text } = Typography;
 
 export default function SignIn() {
   const [form] = Form.useForm();
   const router = useRouter();
+  const [loading, setLoading] = useState(false)
 
   const onFinish = async (values) => {
     let res = await postData(LOGIN, values, 'no_token');
@@ -22,24 +24,42 @@ export default function SignIn() {
       } else {
         let masterData = res?.data?.data;
 
+        setLoading(true);
         Cookies.set('bdtax_token', masterData?.token);
         Cookies.set('bdtax_user', JSON.stringify(masterData));
         alertPop("success", masterData?.message);
 
-        if (masterData.first_time) {
-          router.push('/')
-        } else {
-          router.push('home')
-        }
+        setTimeout(() => {
+          if (masterData.first_time) {
+            window.location = "/";
+            // router.push('/')
+          } else {
+            // router.push('home')
+            window.location = "home";
+          }
+        }, 5000)
       }
     }
   };
+
+  if (loading) {
+    return <>
+      <div className='text-center h-96 flex justify-items-center items-center relative'>
+        <div>
+          <img className='image' src='/assets/icons/loading.svg' alt="Premium Plus" />
+        </div>
+        <div className='absolute inset-x-11'>
+          <p>Establishing secure connection. </p>
+        </div>
+      </div>
+    </>
+  }
 
   return (
     <div classname="flex items-center h-screen w-full">
       <div className="p-6 m-4 md:max-w-sm md:mx-auto text-center">
         <h1 className="block w-full font-bold mb-2">Sign In</h1>
-        {/* <Text type="secondary">Stress-free tax season starts here!</Text> */}
+        <Text type="secondary">Stress-free tax season starts here!</Text>
 
         <ConfigProvider
           theme={{

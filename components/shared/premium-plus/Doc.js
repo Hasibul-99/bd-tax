@@ -1,7 +1,10 @@
-import { Select, Upload, ConfigProvider, Space, List, Avatar, Button } from "antd";
+import { Select, Upload, ConfigProvider, Space, List, Modal, Avatar, Button, Row, Col, Form } from "antd";
 const { Dragger } = Upload;
 import { RightOutlined } from '@ant-design/icons';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { deleteData, getData, postData } from "@/scripts/api-service";
+import { DELETE_FILE, GET_FILES, UPLOAD_FILES } from "@/scripts/api";
+import { alertPop } from "@/scripts/helper";
 
 
 const data = [
@@ -19,11 +22,15 @@ const data = [
   },
 ];
 
-export default function Doc() {
+export default function Doc({ setCurrent }) {
+  const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [fileType, setFileType] = useState();
+  const [uploadedFile, setUploadedFile] = useState();
+
   const props = {
     name: 'file',
-    multiple: true,
+    multiple: false,
     action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
     beforeUpload() {
       return false;
@@ -43,6 +50,56 @@ export default function Doc() {
       console.log('Dropped files', e.dataTransfer.files);
     },
   };
+
+  const getPageFiles = async () => {
+    let res = await getData(GET_FILES);
+
+    if (res) {
+      console.log("res", res);
+      let masterData = res?.data[0];
+      setFileType(masterData?.file_type)
+      setUploadedFile(masterData?.user_upload)
+    }
+  }
+
+  const onFinish = async (values) => {
+    let formData = new FormData();
+
+    formData.append('file_type', values?.file_type);   //append the values with key, value pair
+    formData.append('img', values?.Img?.file);
+
+    let res = await postData(UPLOAD_FILES, formData, null, true);
+
+    if (res) {
+      if (res.code === "error") {
+        form.setFields(res?.errors)
+      } else {
+        form.resetFields();
+        let masterData = res?.data?.data
+
+        setUploadedFile(oldArray => [...oldArray, masterData]);
+      }
+    }
+  }
+
+  const deleteFile = (fileId) => {
+    Modal.warning({
+      title: 'Are you sure you want to delete this file?',
+      // content: 'some messages...some messages...',
+      async onOk() {
+        let res = await deleteData(DELETE_FILE + fileId)
+        if (res) {
+          setUploadedFile(l => l.filter(item => item.id !== fileId));
+          alertPop('success', res?.data?.message);
+        }
+      },
+    });
+
+  }
+
+  useEffect(() => {
+    getPageFiles()
+  }, [])
 
   return (
     <>
@@ -76,55 +133,89 @@ export default function Doc() {
                 },
               }}
             >
-              <Select
-                showSearch
-                placeholder="Select a file type"
-                optionFilterProp="children"
-                className="w-full my-3"
-                options={[
-                  {
-                    value: 'jack',
-                    label: 'Salay statement',
-                  },
-                  {
-                    value: 'lucy',
-                    label: 'Bank Statemant',
-                  },
-                  {
-                    value: 'tom',
-                    label: 'Insuranse statement ',
-                  },
-                ]}
-              />
+              <Form
+                className='mt-6 text-left'
+                name="basic"
+                onFinish={onFinish}
+                autoComplete="off"
+                size='large'
+                form={form}
+              >
+                <Row gutter={16}>
+                  <Col className="gutter-row" span={20}>
+                    <Form.Item
+                      name="file_type"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input file type',
+                        },
+                      ]}
+                    >
+                      <Select
+                        showSearch
+                        placeholder="Select a file type"
+                        optionFilterProp="children"
+                        className="w-full my-3"
+                        options={fileType?.length ? fileType.map(item => ({
+                          value: item.id,
+                          label: item.title,
+                        })) : []}
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col className="gutter-row" span={4}>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit" className='px-10 mt-3 flex m-auto' >
+                        Submit
+                      </Button>
+                    </Form.Item>
+                  </Col>
+                </Row>
 
-              <Dragger {...props}>
-                <p className="ant-upload-drag-icon">
-                  <img className="m-auto" src="/assets/images/download.png" alt="download" />
-                </p>
-                <p className="ant-upload-text">File size limit 20 mb</p>
-                <div className="ant-upload-hint mt-3">
-                  <div className="rounded border border-[#126A25] w-48 py-1 m-auto mt-4 bg-green-200">
-                    <Space>
-                      <img src='/assets/icons/file.svg' alt="Select File" />
-                      Select File
-                    </Space>
-                  </div>
-                  <p className="mt-3 font-semibold">or drop a file</p>
-                </div>
-              </Dragger>
+                <Form.Item
+                  name="Img"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input File!',
+                    },
+                  ]}
+                >
+                  <Dragger {...props}>
+                    <p className="ant-upload-drag-icon">
+                      <img className="m-auto" src="/assets/images/download.png" alt="download" />
+                    </p>
+                    <p className="ant-upload-text">File size limit 20 mb</p>
+                    <div className="ant-upload-hint mt-3">
+                      <div className="rounded border border-[#126A25] w-48 py-1 m-auto mt-4 bg-green-200">
+                        <Space>
+                          <img src='/assets/icons/file.svg' alt="Select File" />
+                          Select File
+                        </Space>
+                      </div>
+                      <p className="mt-3 font-semibold">or drop a file</p>
+                    </div>
+                  </Dragger>
+                </Form.Item>
+
+              </Form>
+
+
+
             </ConfigProvider>
 
             <List
               itemLayout="horizontal"
-              dataSource={data}
+              dataSource={uploadedFile || []}
               renderItem={(item, index) => (
-                <List.Item actions={[<a key="list-loadmore-edit">
+                <List.Item actions={[<a key={index} onClick={() => { deleteFile(item.id) }}>
                   <img src='/assets/icons/delete.svg' alt="Select File" />
                 </a>]}>
                   <List.Item.Meta
                     avatar={<Avatar src={`/assets/icons/Check.svg`} />}
-                    title={<a href="#">{item.title}</a>}
-                    description="Salary Statement . 96KB"
+                    title={<p>{item.title}</p>}
+                  // description="Salary Statement . 96KB"
                   />
                 </List.Item>
               )}
@@ -143,12 +234,11 @@ export default function Doc() {
                 },
               }}
             >
-              <Button type="primary" htmlType="submit" className='px-10 mt-5 flex m-auto' >
+              <Button type="primary" htmlType="submit" className='px-10 mt-5 flex m-auto' onClick={() => { setCurrent(3) }}>
                 Next
                 <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
               </Button>
             </ConfigProvider>
-
           </div>
         </>
       }

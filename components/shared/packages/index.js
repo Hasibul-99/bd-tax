@@ -7,21 +7,37 @@ import Standard from '@/components/shared/packages/Standard';
 import { PACKAGE_LIST } from '@/scripts/api';
 import { getData } from '@/scripts/api-service';
 import { useEffect, useState } from 'react';
+import { Button, Col, ConfigProvider, Row } from 'antd';
+import Cookies from "js-cookie";
+import CardViewPremiumPlus from './cardView/PremiumPlus';
+import CardViewPremium from './cardView/Premium';
+import CardViewStandard from './cardView/Standard';
 
-export default function Packages({ locale }) {
+export default function Packages({ locale, ssrData }) {
+    const token = Cookies.get('bdtax_token');
     const [packageList, setPackageList] = useState()
+    const [showPackages, setShowPackages] = useState(true);
 
     const getPackagesList = async () => {
         let res = await getData(PACKAGE_LIST);
 
+        console.log("res?.data", res?.data);
+
         if (res) {
             setPackageList(res?.data)
+            setShowPackages(!res?.data?.current_package_id)
+        } else {
+            setPackageList(ssrData);
         }
     }
 
     useEffect(() => {
-        getPackagesList()
-    }, [])
+        if (token) {
+            getPackagesList()
+        } else {
+            setPackageList(ssrData);
+        }
+    }, [token])
 
     return (
         <>
@@ -35,19 +51,52 @@ export default function Packages({ locale }) {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 bg-white pb-10 px-4">
-                        {
-                            packageList.packages?.length ? <>
-                                {
-                                    packageList.packages.map(item => {
-                                        return item.title === "Premium Plus" ? <PremiumPlus locale={locale} pack={item} /> : 
-                                        item.title === "Premium " ? <Premium locale={locale} pack={item} /> : 
-                                        item.title === "Standard" ? <Standard ocale={locale} pack={item} /> : ''
-                                    })
-                                }
-                            </> : ''
-                        }
-                    </div>
+                    {
+                        packageList.current_package_id ? <>
+                            <div className='mb-10 mt-5'>
+                                <Row>
+                                    <Col span={10} offset={8}>
+                                        <ConfigProvider
+                                            theme={{
+                                                token: {
+                                                    colorPrimary: "#126A25",
+                                                },
+                                                components: {
+                                                    Button: {
+                                                        colorPrimary: "#126A25",
+                                                    },
+                                                },
+                                            }}
+                                        >
+                                            <Button type="primary" ghost size='large' className='w-full mb-5' onClick={() => setShowPackages(thumb => !thumb)}> View All Packages </Button>
+                                        </ConfigProvider>
+
+                                        {
+                                            packageList.current_package_id_title === "Premium Plus" ? <CardViewPremiumPlus locale={locale} packageList={packageList} /> : 
+                                            packageList.current_package_id_title === "Premium " ? <CardViewPremium locale={locale} packageList={packageList}/> :
+                                            packageList.current_package_id_title === "Standard" ? <CardViewStandard locale={locale} packageList={packageList}/> : ''
+                                        }
+                                    </Col>
+                                </Row>
+                            </div>
+                        </> : ''
+                    }
+
+                    {
+                        showPackages ? <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${packageList.current_package_id ? '2' : '3'} gap-x-5 bg-white pb-10 px-4`}>
+                            {
+                                packageList.packages?.length ? <>
+                                    {
+                                        packageList.packages.map(item => {
+                                            return item.title === "Premium Plus" && packageList.current_package_id_title !== "Premium Plus" ? <PremiumPlus locale={locale} pack={item} /> :
+                                                item.title === "Premium " && packageList.current_package_id_title !== "Premium " ? <Premium locale={locale} pack={item} /> :
+                                                    item.title === "Standard" && packageList.current_package_id_title !== "Standard"  ? <Standard locale={locale} pack={item} /> : ''
+                                        })
+                                    }
+                                </> : ''
+                            }
+                        </div> : ''
+                    }
                 </> : ''
             }
         </>

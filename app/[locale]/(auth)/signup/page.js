@@ -3,11 +3,11 @@
 import { HEAR_ABOUT_US, REGISTRATION } from '@/scripts/api';
 import { getData, postData } from '@/scripts/api-service';
 import { alertPop } from "@/scripts/helper";
-import { Button, ConfigProvider, Form, Input, Select, Space } from 'antd';
+import { Button, ConfigProvider, Form, Input, Select, Space, Typography } from 'antd';
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from 'react';
 const { Option } = Select;
-// const { Title, Text } = Typography;
+const { Title, Text } = Typography;
 
 export default function SignUp() {
   const [form] = Form.useForm();
@@ -44,8 +44,8 @@ export default function SignUp() {
     <div classname="flex items-center h-screen w-full">
       <div className="w-full p-6 m-4 md:max-w-sm md:mx-auto text-center">
         <h1 className="block w-full font-bold mb-2">Registration</h1>
-        {/* <Title level={5} className='!mb-0'>#1 Tax Software in Bangladesh</Title>
-        <Text type="secondary">Let’s Create your BDTax account</Text> */}
+        <Title level={5} className='!mb-0'>#1 Tax Software in Bangladesh</Title>
+        <Text type="secondary">Let’s Create your BDTax account</Text>
 
         <ConfigProvider
           theme={{
