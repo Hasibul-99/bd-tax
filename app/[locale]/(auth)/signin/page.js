@@ -3,11 +3,11 @@
 import { LOGIN } from '@/scripts/api';
 import { postData } from '@/scripts/api-service';
 import { alertPop } from '@/scripts/helper';
-import { useRouter } from "next/navigation";
+import { Button, Checkbox, ConfigProvider, Form, Input, Space } from 'antd';
 import Cookies from "js-cookie";
-import { Button, Checkbox, ConfigProvider, Form, Input, Space, Typography } from 'antd';
 import Link from 'next/link';
-const { Text } = Typography;
+import { useRouter } from "next/navigation";
+// const { Text } = Typography;
 
 export default function SignIn() {
   const [form] = Form.useForm();
@@ -39,7 +39,7 @@ export default function SignIn() {
     <div classname="flex items-center h-screen w-full">
       <div className="p-6 m-4 md:max-w-sm md:mx-auto text-center">
         <h1 className="block w-full font-bold mb-2">Sign In</h1>
-        <Text type="secondary">Stress-free tax season starts here!</Text>
+        {/* <Text type="secondary">Stress-free tax season starts here!</Text> */}
 
         <ConfigProvider
           theme={{
