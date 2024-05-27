@@ -4,15 +4,20 @@ import { useTranslations } from "next-intl";
 import Image from 'next/image';
 import Link from "next/link";
 import LanguageChange from '../common/LanguageChange';
-import { useEffect } from "react";
+import { usePathname } from 'next/navigation'
 
 // https://codepen.io/Blockshot/pen/rNwOYBE
 export default function AuthNavbar({ locale }) {
+    const pathname = usePathname()
     const t = useTranslations("navigation");
 
     const handelToggle = () => {
         const authMenu = document.querySelector('#menu');
         authMenu.classList.toggle('hidden');
+    }
+
+    const isActiveUrl = (url) => {
+        return url === pathname;
     }
 
     return (
@@ -55,10 +60,10 @@ export default function AuthNavbar({ locale }) {
                             <LanguageChange />
                         </li>
                         <li>
-                            <Link href={`/${locale}/signin`} className="md:px-5 py-4 block hover:text-green-400">{t(`login`)}</Link>
+                            <Link href={`/${locale}/signin`} className={isActiveUrl(`/${locale}/signin`) ? "btn-hover color-5 md:px-6 py-3" : "md:px-5 py-4 block hover:text-green-400"}>{t(`login`)}</Link>
                         </li>
                         <li>
-                            <Link href={`/${locale}/signup`} className="btn-hover color-5 md:px-6 py-3">{t(`sign_up`)}</Link>
+                            <Link href={`/${locale}/signup`} className={isActiveUrl(`/${locale}/signup`) ? "btn-hover color-5 md:px-6 py-3" : "md:px-5 py-4 block hover:text-green-400"}>{t(`sign_up`)}</Link>
                         </li>
                     </ul>
                 </div>

@@ -1,11 +1,19 @@
+'use client'
+
 import { moreNaveData } from '@/scripts/helper';
 import { Space } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation'
 
 // https://codepen.io/its7rishi/pen/qBPmENP
 export default function Navbar({ locale }) {
+    const pathname = usePathname()
     console.log("props", locale);
+
+    const isActiveUrl = (url) => {
+        return url === pathname;
+    }
 
     return (
         <nav className=" shadow-lg">
@@ -19,31 +27,31 @@ export default function Navbar({ locale }) {
                         </div>
                         {/* Primary Navbar items */}
                         <div className="hidden md:flex items-center space-x-1 gap-x-5 navbar-content">
-                            <Link href={`/${locale}/home`} className="py-4 px-2 font-semibold active">
+                            <Link href={`/${locale}/home`} className={`py-4 px-2 font-semibold ${isActiveUrl(`/${locale}/home`) ? 'active' : '' }`}>
                                 <Space>
                                     <img src='/assets/icons/Home.svg' alt="home" />
                                     Home
                                 </Space>
                             </Link>
-                            <Link href={`/${locale}/docs`} className="py-4 px-2 font-semibold">
+                            <Link href={`/${locale}/docs`} className={`py-4 px-2 font-semibold ${isActiveUrl(`/${locale}/docs`) ? 'active' : '' }`}>
                                 <Space>
                                     <img src='/assets/icons/docs.svg' />
                                     Docs
                                 </Space>
                             </Link>
-                            <Link href={`/${locale}/tax-genius`} className="py-4 px-2 font-semibold">
+                            <Link href={`/${locale}/tax-genius`} className={`py-4 px-2 font-semibold ${isActiveUrl(`/${locale}/tax-genius`) ? 'active' : '' }`}>
                                 <Space>
                                     <img src='/assets/icons/tax-genius.svg' />
                                     Tax Genius
                                 </Space>
                             </Link>
-                            <Link href={`/${locale}/contact-us`} className="py-4 px-2 font-semibold">
+                            <Link href={`/${locale}/contact-us`} className={`py-4 px-2 font-semibold ${isActiveUrl(`/${locale}/contact-us`) ? 'active' : '' }`}>
                                 <Space>
                                     <img src='/assets/icons/message-question.svg' />
                                     Contact Us
                                 </Space>
                             </Link>
-                            <Link href={`/${locale}/more/profile`} className="py-4 px-2 font-semibold">
+                            <Link href={`/${locale}/more/profile`} className={`py-4 px-2 font-semibold ${isActiveUrl(`/${locale}/more/`) ? 'active' : '' }`}>
                                 <Space>
                                     <img src='/assets/icons/more.svg' />
                                     More
