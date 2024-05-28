@@ -1,9 +1,32 @@
 'use client'
 
-import { ConfigProvider, Button, Space } from 'antd';
-import Link from 'next/link'
+import { Space, ConfigProvider, Button } from 'antd';
+import WelcomeMessage from '@/components/shared/WelcomeMessage';
+import GetUserStep from '@/components/shared/get-user-step';
+import { GET_USER_STEP } from '@/scripts/api';
+import { getData } from '@/scripts/api-service';
+import { useEffect, useState } from 'react';
+
 
 export default function Standard() {
+    const [steps, setSteps] = useState();
+    const [addiInfo, setAdiinfo] = useState()
+  
+    const getUserStep = async () => {
+      let res = await getData(GET_USER_STEP);
+  
+      if (res) {
+        console.log("res", res);
+        let masterData = res?.data;
+        setSteps(masterData?.steps)
+        setAdiinfo(masterData?.addi_info)
+      }
+    }
+  
+    useEffect(() => {
+      getUserStep()
+    }, [])
+
   return (
     <div className="container mx-auto px-30 ">
             <div className='bg-white py-5 px-4'>
@@ -19,7 +42,7 @@ export default function Standard() {
                     </div>
                     <div className='md:text-right md:ml-auto'>
                         <p className='text-sm font-semibold pt-6'>
-                            Tax Due: 25,000
+                            Tax Due: 0
                         </p>
                     </div>
                 </div>
@@ -56,110 +79,7 @@ export default function Standard() {
                 </div>
             </div>
 
-            <div className='bg-white py-5 px-4 mt-4 rounded'>
-                <h5 className='text-base font-semibold mb-6'>This is what to expect next</h5>
-
-                <div className='bg-slate-100 mb-6 pt-6 pb-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-                    <div>
-                        <h5 className='text-sm font-semibold'>
-                            <Space>
-                                <span className='bg-slate-200 px-3 py-2 rounded-full'>1</span>
-                                Enter Personal Info
-                            </Space>
-                        </h5>
-                    </div>
-                    <div className='text-right ml-auto'>
-                        <h5 className='text-sm font-semibold'>
-                            <img src='/assets/icons/PropertyPersonalInfo.svg' width={40} alt="Premium Plus" />
-                        </h5>
-                    </div>
-                </div>
-
-                <div className='bg-slate-100 mb-6 pt-6 pb-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-                    <div>
-                        <h5 className='text-sm font-semibold'>
-                            <Space>
-                                <span className='bg-slate-200 px-3 py-2 rounded-full'>2</span>
-                                Upload documents
-                            </Space>
-                        </h5>
-                    </div>
-                    <div className='text-right ml-auto'>
-                        <h5 className='text-sm font-semibold'>
-                            <img src='/assets/icons/PropertyDocuments.svg' width={40} alt="Premium Plus" />
-                        </h5>
-                    </div>
-                </div>
-
-                <div className='bg-slate-100 mb-6 pt-6 pb-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-                    <div>
-                        <h5 className='text-sm font-semibold'>
-                            <Space>
-                                <span className='bg-slate-200 px-3 py-2 rounded-full'>3</span>
-                                Make payment
-                            </Space>
-                        </h5>
-                    </div>
-                    <div className='text-right ml-auto'>
-                        <h5 className='text-sm font-semibold'>
-                            <img src='/assets/icons/PropertyPayment.svg' width={40} alt="Premium Plus" />
-                        </h5>
-                    </div>
-                </div>
-
-                <div className='bg-slate-100 mb-6 pt-6 pb-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-                    <div>
-                        <h5 className='text-sm font-semibold'>
-                            <Space>
-                                <span className='bg-slate-200 px-3 py-2 rounded-full'>4</span>
-                                We will prepare your return
-                            </Space>
-                        </h5>
-                    </div>
-                    <div className='text-right ml-auto'>
-                        <h5 className='text-sm font-semibold'>
-                            <img src='/assets/icons/PropertyPrepare.svg' width={40} alt="Premium Plus" />
-                        </h5>
-                    </div>
-                </div>
-
-                <div className='bg-slate-100 mb-6 pt-6 pb-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-                    <div>
-                        <h5 className='text-sm font-semibold'>
-                            <Space>
-                                <span className='bg-slate-200 px-3 py-2 rounded-full'>5</span>
-                                We will submit your return
-                            </Space>
-                        </h5>
-                    </div>
-                    <div className='text-right ml-auto'>
-                        <h5 className='text-sm font-semibold'>
-                            <img src='/assets/icons/PropertySubmitReturn.svg' width={40} alt="Premium Plus" />
-                        </h5>
-                    </div>
-                </div>
-
-                <div className='text-center'>
-                    <ConfigProvider
-                        theme={{
-                            token: {
-                                colorPrimary: "#4B7F52",
-                            },
-                            components: {
-                                Button: {
-                                    colorPrimary: "#4B7F52",
-                                },
-                            },
-                        }}
-                    >
-                        <Button type="primary" size='large' className='md:px-10'>
-                            <Link href={'/'}>
-                                Let's GO
-                            </Link>
-                        </Button>
-                    </ConfigProvider>
-                </div>
-            </div>
+            <GetUserStep steps={steps} addiInfo={addiInfo} context='standard'/>
         </div>
   )
 }

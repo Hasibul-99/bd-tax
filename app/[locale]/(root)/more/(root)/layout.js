@@ -4,7 +4,11 @@ import MoreHeader from '@/components/shared/MoreHeader';
 import MoreLeftNavebar from '@/components/shared/MoreLeftNavebar';
 import { Col, Row } from 'antd';
 
-const RootLayout = ({ children }) => {
+const RootLayout = (props) => {
+  const { children, params: { locale } } = props;
+
+  console.log("props", props);
+
   return (
     <>
       <div className="bg-[#F8FAFC] container mx-auto my-6">
@@ -18,7 +22,7 @@ const RootLayout = ({ children }) => {
           }}
         >
           <Col className="gutter-row " xs={0} sm={0} md={6}>
-            <MoreLeftNavebar />
+            <MoreLeftNavebar locale={locale} />
           </Col>
           <Col className="gutter-row " xs={24} sm={24} md={18}>
             <div>

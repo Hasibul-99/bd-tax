@@ -52,7 +52,7 @@ export const moreNaveData = [
   {
     id: 9,
     icon: '/assets/icons/logout.svg',
-    url: '/logout',
+    url: '/',
     name: 'Logout'
   },
 ];
