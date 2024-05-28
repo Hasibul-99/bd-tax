@@ -1,7 +1,9 @@
 "use client"
 
-import { Avatar, Col, List, Row } from 'antd';
-import { useState } from 'react';
+import { GET_ALL_TAX_YEAR, GET_USER_FILE_BY_TAX_YEAR } from '@/scripts/api';
+import { getData, postData } from '@/scripts/api-service';
+import { Avatar, Col, List, Row, Empty } from 'antd';
+import { useEffect, useState } from 'react';
 const data = [
   '2023-2024',
   '2022-2023',
@@ -25,7 +27,48 @@ const data1 = [
 ];
 
 export default function Doc() {
-  const [selected, setSelected] = useState('2023-2024')
+  const [selected, setSelected] = useState();
+  const [taxYears, setTaxYears] = useState();
+  const [fileList, setFileList] = useState();
+
+  const getAllTaxYear = async () => {
+    let res = await getData(GET_ALL_TAX_YEAR);
+
+    if (res) {
+      let masterData = res?.data;
+
+      setTaxYears(masterData);
+      setSelected(masterData[0]);
+    }
+  }
+
+  const getTaxFileByYear = async () => {
+    let res = await getData(GET_USER_FILE_BY_TAX_YEAR + `?tax_year=${selected}`);
+
+    if (res) {
+      console.log("res", res);
+      setFileList(res?.data)
+    }
+  }
+
+  const isPDF = (file_path) => {
+    if (file_path) {
+
+      if (file_path.includes(".pdf")) return true;
+      else return false;
+    } else return false;
+  }
+
+  useEffect(() => {
+    if (selected) {
+      getTaxFileByYear()
+    }
+  }, [selected])
+
+  useEffect(() => {
+    getAllTaxYear()
+  }, []);
+
   return (
     <div className='container mx-auto my-6 h-full'>
       <Row
@@ -42,8 +85,9 @@ export default function Doc() {
             <List
               className='mt-5'
               size="large"
-              dataSource={data}
-              renderItem={(item) => <List.Item className={selected === item ? 'bg-[#E2ECE5] rounded-md !text-[#126A25]' : ''}
+              dataSource={taxYears}
+              renderItem={(item) => <List.Item onClick={() => setSelected(item)}
+                className={selected === item ? 'bg-[#E2ECE5] rounded-md !text-[#126A25] cursor-pointer' : 'cursor-pointer '}
                 style={{ 'border-block-end': 0 }}>{item}</List.Item>}
             />
           </div>
@@ -53,27 +97,35 @@ export default function Doc() {
           <div className='bg-white p-6 my-5 rounded-md'>
             <h3>Tax Year</h3>
 
-            <List
-              className='mt-5'
-              itemLayout="horizontal"
-              dataSource={data1}
-              renderItem={(item, index) => (
-                <List.Item
-                  actions={[
-                    <a key="list-loadmore-edit cursor-pointer">
-                      <img src='/assets/icons/folder.svg' alt="folder" />
-                    </a>,
-                    <a key="list-loadmore-more cursor-pointer">
-                      <img src='/assets/icons/delete.svg' alt="delete" />
-                    </a>]}>
-                  <List.Item.Meta
-                    avatar={<Avatar shape="square" size={64} src={`/assets/images/image.png`} />}
-                    title={<a>{item.title}</a>}
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                  />
-                </List.Item>
-              )}
-            />
+            {
+              fileList?.length ? <>
+                <List
+                  className='mt-5'
+                  itemLayout="horizontal"
+                  dataSource={data1}
+                  renderItem={(item, index) => (
+                    <List.Item
+                      actions={[
+                        <a key="list-loadmore-edit cursor-pointer">
+                          <img src='/assets/icons/folder.svg' alt="folder" />
+                        </a>,
+                        <a key="list-loadmore-more cursor-pointer">
+                          <img src='/assets/icons/delete.svg' alt="delete" />
+                        </a>]}>
+                      <List.Item.Meta
+                        avatar={isPDF(item.file_path) ? <>
+                          <object data={`${process.env.NEXT_PUBLIC_PUBLIC_URL}${item.file_path}`} type="application/pdf" width="100%" height="100%">
+                            <p>Alternative text - include a link <a href={`${process.env.NEXT_PUBLIC_PUBLIC_URL}${item.file_path}`}>to the PDF!</a></p>
+                          </object>
+                        </> : <Avatar shape="square" size={64} src={`${process.env.NEXT_PUBLIC_PUBLIC_URL}${item.file_path}`} />}
+                        title={<a>{item.title}</a>}
+                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                      />
+                    </List.Item>
+                  )}
+                />
+              </> : <Empty description={false} />
+            }
           </div>
         </Col>
       </Row>

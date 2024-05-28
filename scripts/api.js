@@ -29,3 +29,7 @@ export const GET_ORDER_HISTORY = "get-order-history"
 
 // Get Order Status
 export const GET_ORDER_STATUS = "get-order-status"
+
+// User Docs
+export const GET_ALL_TAX_YEAR = "getAllTaxYear"
+export const GET_USER_FILE_BY_TAX_YEAR = "get-user-file-by-tax-year"
