@@ -1,7 +1,7 @@
 import { ConfigProvider, Button, Space } from 'antd';
 import Link from 'next/link'
 
-export default function GetUserStep({steps, addiInfo}) {
+export default function GetUserStep({steps, addiInfo, context="premium-plus"}) {
     const showIcons = (idx) => {
         if (idx === 0) return '/assets/icons/PropertyPersonalInfo.svg'
         else if (idx === 1) return '/assets/icons/PropertyDocuments.svg'
@@ -53,7 +53,7 @@ export default function GetUserStep({steps, addiInfo}) {
                     }}
                 >
                     <Button type="primary" size='large' className='md:px-10'>
-                        <Link href={'premium-plus/process'}>
+                        <Link href={`${context}/process`}>
                             {addiInfo?.go_button_title || "Let's GO"}
                         </Link>
                     </Button>

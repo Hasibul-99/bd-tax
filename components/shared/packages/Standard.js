@@ -11,7 +11,7 @@ export default function Standard(props) {
         let res = await postData(TEMP_PACKAGES, {package_id: pack.id});
 
         if (res) {
-            router.push(`/${locale}/premium-plus`)
+            router.push(`/${locale}/standard`)
         }
     }
 
