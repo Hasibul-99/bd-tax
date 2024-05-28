@@ -12,7 +12,7 @@ export default function Navbar({ locale }) {
     console.log("props", locale);
 
     const isActiveUrl = (url) => {
-        return url === pathname;
+        return pathname.startsWith(url)  //pathname;
     }
 
     return (
