@@ -3,6 +3,7 @@
 import WelcomeMessage from '@/components/shared/WelcomeMessage';
 import Doc from '@/components/shared/premium-plus/Doc';
 import LoadingStep from '@/components/shared/premium-plus/LoadingStep';
+import OrderStatus from '@/components/shared/premium-plus/OrderStatus';
 import Payment from '@/components/shared/premium-plus/Payment';
 import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo';
 import Submit from '@/components/shared/premium-plus/Submit';
@@ -97,6 +98,10 @@ export default function PremiumPlusProcess() {
                                 title: 'Payment',
                             },
                             {
+                                status: 'status',
+                                title: 'Order Status',
+                            },
+                            {
                                 status: 'submit',
                                 title: 'Submit',
                             },
@@ -115,7 +120,10 @@ export default function PremiumPlusProcess() {
                         current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent}/> : '' 
                     }
                     {
-                        current === 4 ? <Submit/> : '' 
+                        current === 4 ? <OrderStatus setCurrent={setCurrent}/> : ''
+                    }
+                    {
+                        current === 5 ? <Submit/> : '' 
                     }
                 </div>
             </div>

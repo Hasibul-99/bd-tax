@@ -55,7 +55,6 @@ export default function Doc({ setCurrent }) {
     let res = await getData(GET_FILES);
 
     if (res) {
-      console.log("res", res);
       let masterData = res?.data[0];
       setFileType(masterData?.file_type)
       setUploadedFile(masterData?.user_upload)

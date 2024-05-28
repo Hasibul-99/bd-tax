@@ -26,3 +26,6 @@ export const GET_PAYMENT_METHOD = "get-payment-method"
 
 // Home Page
 export const GET_ORDER_HISTORY = "get-order-history"
+
+// Get Order Status
+export const GET_ORDER_STATUS = "get-order-status"
