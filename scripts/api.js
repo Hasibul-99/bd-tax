@@ -1,6 +1,8 @@
 // Auth
 export const LOGIN = 'sanctum/token'
 export const REGISTRATION = 'register'
+export const FORGET_PASSWORD = "forgot-password"
+export const SUBMIT_PASSWORD = "submit-password"
 export const HEAR_ABOUT_US = 'hear-about-us'
 
 // Store User Package Selection
