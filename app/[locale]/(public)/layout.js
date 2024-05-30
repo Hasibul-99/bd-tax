@@ -8,7 +8,7 @@ const RootLayout = (props) => {
         <>
             <div className="bg-[#F8FAFC]">
                 <Navbar locale={locale} />
-                <div className="bg-slate-100 container mx-auto">
+                <div className="bg-slate-100 container mx-auto min-h-[80vh]">
                     {children}
                 </div>
             </div>
