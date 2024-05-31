@@ -131,7 +131,7 @@ export default function SignIn() {
         </Space>
         <br />
         <Space>
-          <Link href="signup" className='text-emerald-700 hover:text-emerald-700'>Forgot Password?</Link>
+          <Link href="forget-password" className='text-emerald-700 hover:text-emerald-700'>Forgot Password?</Link>
         </Space>
 
         <img className='mt-5 m-auto' src="/assets/images/Frame.png" alt="logo" />

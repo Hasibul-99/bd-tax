@@ -25,7 +25,7 @@ export default function AuthNavbar({ locale }) {
             <nav className="flex flex-wrap items-center justify-between w-full py-4 md:py-0 text-lg text-gray-700 bg-white">
                 <div>
                     <Link href={`/${locale}`}>
-                        <Image width={150} height={60} src="/assets/images/logo.png" alt="logo" />
+                        <Image width={100} height={60} src="/assets/images/logo-2.png" alt="logo" />
                     </Link>
                 </div>
                 {/* <Link href={`#`}> */}

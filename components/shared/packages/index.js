@@ -32,11 +32,11 @@ export default function Packages({ locale, ssrData }) {
     }
 
     useEffect(() => {
-        if (token) {
+        // if (token) {
             getPackagesList()
-        } else {
+        // } else {
             setPackageList(ssrData);
-        }
+        // }
     }, [token])
 
     return (
