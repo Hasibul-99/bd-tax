@@ -4,12 +4,6 @@ import { GET_ALL_TAX_YEAR, GET_USER_FILE_BY_TAX_YEAR } from '@/scripts/api';
 import { getData, postData } from '@/scripts/api-service';
 import { Avatar, Col, List, Row, Empty } from 'antd';
 import { useEffect, useState } from 'react';
-const data = [
-  '2023-2024',
-  '2022-2023',
-  '2021-2022',
-  '2020-2021',
-];
 
 const data1 = [
   {
@@ -102,22 +96,23 @@ export default function Doc() {
                 <List
                   className='mt-5'
                   itemLayout="horizontal"
-                  dataSource={data1}
+                  dataSource={fileList}
                   renderItem={(item, index) => (
                     <List.Item
                       actions={[
-                        <a key="list-loadmore-edit cursor-pointer">
+                        <a key="list-loadmore-edit cursor-pointer" href={`${process.env.NEXT_PUBLIC_PUBLIC_URL}public/${item.file_path}`} target="_blank"> 
                           <img src='/assets/icons/folder.svg' alt="folder" />
                         </a>,
-                        <a key="list-loadmore-more cursor-pointer">
-                          <img src='/assets/icons/delete.svg' alt="delete" />
-                        </a>]}>
+                        // <a key="list-loadmore-more cursor-pointer">
+                        //   <img src='/assets/icons/delete.svg' alt="delete" />
+                        // </a>
+                      ]}>
                       <List.Item.Meta
                         avatar={isPDF(item.file_path) ? <>
-                          <object data={`${process.env.NEXT_PUBLIC_PUBLIC_URL}${item.file_path}`} type="application/pdf" width="100%" height="100%">
-                            <p>Alternative text - include a link <a href={`${process.env.NEXT_PUBLIC_PUBLIC_URL}${item.file_path}`}>to the PDF!</a></p>
+                          <object data={`${process.env.NEXT_PUBLIC_PUBLIC_URL}public/${item.file_path}`} type="application/pdf" width="100%" height="100%">
+                            <p>Alternative text - include a link <a href={`${process.env.NEXT_PUBLIC_PUBLIC_URL}public/${item.file_path}`}>to the PDF!</a></p>
                           </object>
-                        </> : <Avatar shape="square" size={64} src={`${process.env.NEXT_PUBLIC_PUBLIC_URL}${item.file_path}`} />}
+                        </> : <Avatar shape="square" size={64} src={`${process.env.NEXT_PUBLIC_PUBLIC_URL}public/${item.file_path}`} />}
                         title={<a>{item.title}</a>}
                         description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                       />
