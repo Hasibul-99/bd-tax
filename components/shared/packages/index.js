@@ -6,17 +6,18 @@ import PremiumPlus from '@/components/shared/packages/PremiumPlus';
 import Standard from '@/components/shared/packages/Standard';
 import { PACKAGE_LIST } from '@/scripts/api';
 import { getData } from '@/scripts/api-service';
-import { useEffect, useState } from 'react';
 import { Button, Col, ConfigProvider, Row } from 'antd';
 import Cookies from "js-cookie";
-import CardViewPremiumPlus from './cardView/PremiumPlus';
+import { useEffect, useState } from 'react';
 import CardViewPremium from './cardView/Premium';
+import CardViewPremiumPlus from './cardView/PremiumPlus';
 import CardViewStandard from './cardView/Standard';
 
 export default function Packages({ locale, ssrData }) {
     const token = Cookies.get('bdtax_token');
     const [packageList, setPackageList] = useState()
     const [showPackages, setShowPackages] = useState(true);
+    const [isShowAllPackages, setIsShowAllPackages] = useState(0);
 
     const getPackagesList = async () => {
         let res = await getData(PACKAGE_LIST);
@@ -26,6 +27,7 @@ export default function Packages({ locale, ssrData }) {
         if (res) {
             setPackageList(res?.data)
             setShowPackages(!res?.data?.current_package_id)
+            setIsShowAllPackages(res?.data?.show_more_package);
         } else {
             setPackageList(ssrData);
         }
@@ -33,9 +35,9 @@ export default function Packages({ locale, ssrData }) {
 
     useEffect(() => {
         // if (token) {
-            getPackagesList()
+        getPackagesList()
         // } else {
-            setPackageList(ssrData);
+        setPackageList(ssrData);
         // }
     }, [token])
 
@@ -56,25 +58,29 @@ export default function Packages({ locale, ssrData }) {
                             <div className='mb-10 mt-5'>
                                 <Row>
                                     <Col span={10} offset={8}>
-                                        <ConfigProvider
-                                            theme={{
-                                                token: {
-                                                    colorPrimary: "#126A25",
-                                                },
-                                                components: {
-                                                    Button: {
-                                                        colorPrimary: "#126A25",
-                                                    },
-                                                },
-                                            }}
-                                        >
-                                            <Button type="primary" ghost size='large' className='w-full mb-5' onClick={() => setShowPackages(thumb => !thumb)}> View All Packages </Button>
-                                        </ConfigProvider>
+                                        {
+                                            isShowAllPackages ? <>
+                                                <ConfigProvider
+                                                    theme={{
+                                                        token: {
+                                                            colorPrimary: "#126A25",
+                                                        },
+                                                        components: {
+                                                            Button: {
+                                                                colorPrimary: "#126A25",
+                                                            },
+                                                        },
+                                                    }}
+                                                >
+                                                    <Button type="primary" ghost size='large' className='w-full mb-5' onClick={() => setShowPackages(thumb => !thumb)}> View All Packages </Button>
+                                                </ConfigProvider>
+                                            </> : ''
+                                        }
 
                                         {
-                                            packageList.current_package_id_title === "Premium Plus" ? <CardViewPremiumPlus locale={locale} packageList={packageList} /> : 
-                                            packageList.current_package_id_title === "Premium " ? <CardViewPremium locale={locale} packageList={packageList}/> :
-                                            packageList.current_package_id_title === "Standard" ? <CardViewStandard locale={locale} packageList={packageList}/> : ''
+                                            packageList.current_package_id_title === "Premium Plus" ? <CardViewPremiumPlus locale={locale} packageList={packageList} /> :
+                                                packageList.current_package_id_title === "Premium " ? <CardViewPremium locale={locale} packageList={packageList} /> :
+                                                    packageList.current_package_id_title === "Standard" ? <CardViewStandard locale={locale} packageList={packageList} /> : ''
                                         }
                                     </Col>
                                 </Row>
@@ -90,7 +96,7 @@ export default function Packages({ locale, ssrData }) {
                                         packageList.packages.map(item => {
                                             return item.title === "Premium Plus" && packageList.current_package_id_title !== "Premium Plus" ? <PremiumPlus locale={locale} pack={item} /> :
                                                 item.title === "Premium " && packageList.current_package_id_title !== "Premium " ? <Premium locale={locale} pack={item} /> :
-                                                    item.title === "Standard" && packageList.current_package_id_title !== "Standard"  ? <Standard locale={locale} pack={item} /> : ''
+                                                    item.title === "Standard" && packageList.current_package_id_title !== "Standard" ? <Standard locale={locale} pack={item} /> : ''
                                         })
                                     }
                                 </> : ''
