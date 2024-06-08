@@ -1,5 +1,6 @@
 "use client"
 
+import WelcomeMessage from "@/components/shared/WelcomeMessage";
 import { Button, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from "antd";
 const { Option } = Select;
 
@@ -10,7 +11,7 @@ export default function Profile() {
 
   return (
     <div className="bg-white py-6 px-6">
-      <h3 className='text-xl font-semibold'>Welcome back, Tareq</h3>
+      <WelcomeMessage />
       <ConfigProvider
         theme={{
           token: {

@@ -1,4 +1,4 @@
-import { notification } from 'antd'
+import { notification } from 'antd';
 import Cookies from "js-cookie";
 
 export const moreNaveData = [
@@ -19,6 +19,12 @@ export const moreNaveData = [
     icon: '/assets/icons/tax-planning.svg',
     url: '/more/tax-planning',
     name: 'Tax Planning'
+  },
+  {
+    id: 4,
+    icon: '/assets/icons/package.svg',
+    url: '/more/orderStatus',
+    name: 'Order Status'
   },
   {
     id: 4,

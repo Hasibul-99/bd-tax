@@ -4,7 +4,7 @@ import { RightOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Card, ConfigProvider, Space } from 'antd';
 import { useEffect, useState } from 'react';
 
-export default function OrderStatus({ setCurrent }) {
+export default function OrderStatus({ setCurrent, showNextButtons = true }) {
     const [orderStatus, setOrderStatus] = useState()
 
     const getOrdereStatus = async () => {
@@ -77,32 +77,37 @@ export default function OrderStatus({ setCurrent }) {
                 }
             </div>
 
-            <div className='text-center'>
-                <ConfigProvider
-                    theme={{
-                        token: {
-                            colorPrimary: "#4B7F52",
-                        },
-                        components: {
-                            Button: {
-                                colorPrimary: "#4B7F52",
-                            },
-                        },
-                    }}
-                >
-                    <Space>
-                        <Button type="primary" className='px-10 mt-5 flex m-auto' onClick={() => { setCurrent(5) }}>
-                            Next
-                            <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
-                        </Button>
+            {
+                showNextButtons ? <>
+                    <div className='text-center'>
+                        <ConfigProvider
+                            theme={{
+                                token: {
+                                    colorPrimary: "#4B7F52",
+                                },
+                                components: {
+                                    Button: {
+                                        colorPrimary: "#4B7F52",
+                                    },
+                                },
+                            }}
+                        >
+                            <Space>
+                                <Button type="primary" className='px-10 mt-5 flex m-auto' onClick={() => { setCurrent(5) }}>
+                                    Next
+                                    <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
+                                </Button>
 
-                        <Button type="primary" className='px-10 mt-5 flex m-auto'>
-                            <UserOutlined />
-                            Refer Friends
-                        </Button>
-                    </Space>
-                </ConfigProvider>
-            </div>
+                                <Button type="primary" className='px-10 mt-5 flex m-auto'>
+                                    <UserOutlined />
+                                    Refer Friends
+                                </Button>
+                            </Space>
+                        </ConfigProvider>
+                    </div>
+                </> : ''
+            }
+
         </div>
     )
 }
