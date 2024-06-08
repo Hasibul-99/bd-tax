@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { Card } from 'antd';
-import { ConfigProvider, Button, Space } from 'antd';
-import { getData } from '@/scripts/api-service';
 import { GET_ORDER_STATUS } from '@/scripts/api';
+import { getData } from '@/scripts/api-service';
+import { RightOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Card, ConfigProvider, Space } from 'antd';
+import { useEffect, useState } from 'react';
 
-
-export default function OrderStatus() {
+export default function OrderStatus({ setCurrent }) {
     const [orderStatus, setOrderStatus] = useState()
 
-    const getOrdereStatus = async() => {
+    const getOrdereStatus = async () => {
         const res = await getData(GET_ORDER_STATUS);
 
         if (res) {
             setOrderStatus(res?.data);
-            console.log("res ==", res);
-
         }
     }
 
@@ -30,7 +27,7 @@ export default function OrderStatus() {
             else if (idx === 5) return '/assets/icons/status-submit.svg'
             else return '/assets/icons/status-submit.svg'
         }
-        
+
         return ''
     }
 
@@ -61,7 +58,7 @@ export default function OrderStatus() {
                                     <h5 className='text-sm font-semibold'>
                                         <Space>
                                             <span className='bg-slate-200 px-3 py-2 rounded-full'>{idx + 1}</span>
-                                            <span className={`${step.status == '1' ? 'text-green-700 ' : ''}`}>{step?.title}</span> 
+                                            <span className={`${step.status == '1' ? 'text-green-700 ' : ''}`}>{step?.title}</span>
                                         </Space>
                                     </h5>
                                 </div>
@@ -93,11 +90,17 @@ export default function OrderStatus() {
                         },
                     }}
                 >
-                    <Button type="primary" size='large' className='md:px-10'>
-                        {/* <Link href={'premium-plus/process'}> */}
+                    <Space>
+                        <Button type="primary" className='px-10 mt-5 flex m-auto' onClick={() => { setCurrent(5) }}>
+                            Next
+                            <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
+                        </Button>
+
+                        <Button type="primary" className='px-10 mt-5 flex m-auto'>
+                            <UserOutlined />
                             Refer Friends
-                        {/* </Link> */}
-                    </Button>
+                        </Button>
+                    </Space>
                 </ConfigProvider>
             </div>
         </div>

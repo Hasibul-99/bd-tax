@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { Space, Card, Button, ConfigProvider } from 'antd';
-import { getData } from '@/scripts/api-service';
 import { GET_PAYMENT_METHOD } from '@/scripts/api';
+import { getData } from '@/scripts/api-service';
+import { Button, Card, ConfigProvider, Space } from 'antd';
+import { useEffect, useState } from 'react';
 
-export default function Payment({salaryData, setCurrent}) {
+const sslgatewayLink = "https://sandbox.sslcommerz.com/EasyCheckOut/testcde0f4c406338f42fea8c14054389c04d98";
+
+export default function Payment({ salaryData, setCurrent, setPaymentLink, setShowPayment }) {
   const [paymentData, setPaymentData] = useState()
 
-  const getPaymentData = async() => {
+  const getPaymentData = async () => {
     let res = await getData(GET_PAYMENT_METHOD);
 
     if (res) {
@@ -17,7 +19,9 @@ export default function Payment({salaryData, setCurrent}) {
   }
 
   const makePayment = () => {
-    window.location = paymentData?.sslgatewayLink;
+    // window.location = paymentData?.sslgatewayLink;
+    setPaymentLink(paymentData?.sslgatewayLink || sslgatewayLink);
+    setShowPayment(true);
   }
 
   useEffect(() => {
