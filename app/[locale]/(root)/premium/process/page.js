@@ -2,15 +2,14 @@
 
 import WelcomeMessage from '@/components/shared/WelcomeMessage';
 import Doc from '@/components/shared/premium-plus/Doc';
-import LoadingStep from '@/components/shared/premium-plus/LoadingStep';
 import OrderStatus from '@/components/shared/premium-plus/OrderStatus';
 import Payment from '@/components/shared/premium-plus/Payment';
 import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo';
 import Submit from '@/components/shared/premium-plus/Submit';
 import { PROCESS_SALARY_DOC } from '@/scripts/api';
 import { getData } from '@/scripts/api-service';
-import { Steps, Space, ConfigProvider } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { ConfigProvider, Space, Steps } from 'antd';
+import { useEffect, useState } from 'react';
 
 export default function PremiumPlusProcess() {
     const [current, setCurrent] = useState(1);
@@ -21,7 +20,7 @@ export default function PremiumPlusProcess() {
         setCurrent(value);
     };
 
-    const getPrecessSalaryDoc = async() => {
+    const getPrecessSalaryDoc = async () => {
         let res = await getData(PROCESS_SALARY_DOC);
 
         if (res) {
@@ -41,7 +40,7 @@ export default function PremiumPlusProcess() {
     return (
         <div className="container mx-auto px-30 ">
             <div className='bg-white py-5 px-4'>
-                <WelcomeMessage/>
+                <WelcomeMessage />
                 <div className='bg-amber-100 my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
                     <div>
                         <h5 className='text-base font-semibold'>
@@ -101,29 +100,29 @@ export default function PremiumPlusProcess() {
                                 status: 'status',
                                 title: 'Order Status',
                             },
-                            {
-                                status: 'submit',
-                                title: 'Submit',
-                            },
+                            // {
+                            //     status: 'submit',
+                            //     title: 'Submit',
+                            // },
                         ]}
                     />
                 </ConfigProvider>
 
                 <div>
                     {
-                        current === 1 ? <PersonalInfo setCurrent={setCurrent}/> : '' 
+                        current === 1 ? <PersonalInfo setCurrent={setCurrent} /> : ''
                     }
                     {
-                        current === 2 ? <Doc setCurrent={setCurrent}/> : '' 
+                        current === 2 ? <Doc setCurrent={setCurrent} /> : ''
                     }
                     {
-                        current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent}/> : '' 
+                        current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent} /> : ''
                     }
                     {
-                        current === 4 ? <OrderStatus setCurrent={setCurrent}/> : ''
+                        current === 4 ? <OrderStatus setCurrent={setCurrent} /> : ''
                     }
                     {
-                        current === 5 ? <Submit/> : '' 
+                        current === 5 ? <Submit /> : ''
                     }
                 </div>
             </div>

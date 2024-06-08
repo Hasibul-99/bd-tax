@@ -1,11 +1,10 @@
-import { TEMP_PACKAGES } from '@/scripts/api';
-import { postData } from '@/scripts/api-service';
 import { Button, Col, ConfigProvider, Row, Space } from 'antd';
+import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { useState } from 'react';
 
 export default function CardViewPremium(props) {
-    const { locale, pack } = props;
+    const { locale, packageList } = props;
     const router = useRouter();
     const [showDetails, setShowDetails] = useState(false);
 
