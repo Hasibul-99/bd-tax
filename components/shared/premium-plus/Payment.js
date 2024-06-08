@@ -3,7 +3,8 @@ import { getData } from '@/scripts/api-service';
 import { Button, Card, ConfigProvider, Space } from 'antd';
 import { useEffect, useState } from 'react';
 
-const sslgatewayLink = "https://sandbox.sslcommerz.com/EasyCheckOut/testcde0f4c406338f42fea8c14054389c04d98";
+// https://sandbox.sslcommerz.com/EasyCheckOut/testcde0f4c406338f42fea8c14054389c04d98
+const sslgatewayLink = "";
 
 export default function Payment({ salaryData, setCurrent, setPaymentLink, setShowPayment }) {
   const [paymentData, setPaymentData] = useState()
