@@ -4,6 +4,7 @@ import { HEAR_ABOUT_US, REGISTRATION } from '@/scripts/api';
 import { getData, postData } from '@/scripts/api-service';
 import { alertPop } from "@/scripts/helper";
 import { Button, ConfigProvider, Form, Input, Select, Space, Typography } from 'antd';
+import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from 'react';
 const { Option } = Select;
@@ -191,6 +192,8 @@ export default function SignUp() {
           </Form>
         </ConfigProvider>
 
+        <Link href="signin" className='text-emerald-700 hover:text-emerald-700'>Already have account</Link>
+        <br />
         <Space>
           <img src='/assets/icons/sms.svg' alt="sms" width={20} />
           support@bdtax.com.bd

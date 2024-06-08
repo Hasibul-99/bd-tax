@@ -11,8 +11,6 @@ export default function MoreLeftNavebar({ locale }) {
   const pathname = usePathname()
   const [selected, setSelected] = useState(1);
 
-  console.log("pathname", pathname);
-
   const handelChange = (name) => {
     if (name === 'Logout') {
       Cookies.remove("bdtax_token");
