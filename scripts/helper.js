@@ -68,12 +68,12 @@ export const checkRes = (param) => {
     return true;
   } else if (param === 401) {
     Cookies.remove("bdtax_token");
-    window.location = "en/signin";
-    localStorage.removeItem('canpacPermissions');
+    Cookies.remove("bdtax_user");
+    window.location = "/en/signin";
   } else if (param === 403) {
     Cookies.remove("bdtax_token");
-    window.location = "en/signin";
-    localStorage.removeItem('canpacPermissions');
+    Cookies.remove("bdtax_user");
+    window.location = "/en/signin";
   } else {
     return false;
   }

@@ -15,6 +15,7 @@ export default function MoreLeftNavebar({ locale }) {
     if (name === 'Logout') {
       Cookies.remove("bdtax_token");
       Cookies.remove("bdtax_user");
+      window.location = "/en/signin";
     }
   }
 
