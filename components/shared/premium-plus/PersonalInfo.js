@@ -7,10 +7,10 @@ import dayjs from 'dayjs';
 import { alertPop } from '@/scripts/helper';
 const { Option } = Select;
 
-export default function PersonalInfo({setCurrent}) {
+export default function PersonalInfo({ setCurrent }) {
   const [form] = Form.useForm();
 
-  const onFinish = async(values) => {
+  const onFinish = async (values) => {
     let profile = {
       first_name: values.first_name,
       last_name: values.last_name,
@@ -18,16 +18,20 @@ export default function PersonalInfo({setCurrent}) {
       Gender: values.gender,
       Email: values.email,
       Contact: values.mobile,
-      NationalId: values.nid,
+      NationalId: values.NationalId,
       DOB: dayjs(values.dob).format('DD-MM-YYYY')
     };
 
     let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError');
 
     if (res) {
-      let masterData = res.data;
-      alertPop("success", masterData?.message);
-      setCurrent(2);
+      if (res.code === "error") {
+        form.setFields(res?.errors)
+      } else {
+        let masterData = res.data;
+        alertPop("success", masterData?.message);
+        setCurrent(2);
+      }
     }
   };
 
@@ -152,7 +156,7 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
             <Col className="gutter-row" span={20}>
               <Form.Item
-                name="nid"
+                name="NationalId"
                 rules={[
                   {
                     required: true,
