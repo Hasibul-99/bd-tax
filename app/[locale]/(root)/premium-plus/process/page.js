@@ -26,8 +26,6 @@ export default function PremiumPlusProcess() {
         let res = await getData(PROCESS_SALARY_DOC);
 
         if (res) {
-            console.log("da", res);
-
             let masterData = res?.data;
             setSalaryData(masterData);
         }
@@ -43,7 +41,7 @@ export default function PremiumPlusProcess() {
         <div className="container mx-auto px-30 ">
             {
                 showPayment && paymentLink ? <>
-                    <iframe id="myIframe" src={paymentLink} style={{ width: "100%", height: "100vh" }} frameborder="0"></iframe>
+                    <iframe id="myIframe" src={paymentLink} style={{ width: "100%", height: "100vh" }} frameBorder="0"></iframe>
                 </> : <></>
             }
 

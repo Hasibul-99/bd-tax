@@ -3,8 +3,8 @@ import { getData } from '@/scripts/api-service';
 import { Button, Card, ConfigProvider, Space } from 'antd';
 import { useEffect, useState } from 'react';
 
-// https://sandbox.sslcommerz.com/EasyCheckOut/testcde0f4c406338f42fea8c14054389c04d98
-const sslgatewayLink = "";
+// https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca
+const sslgatewayLink = "https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca";
 
 export default function Payment({ salaryData, setCurrent, setPaymentLink, setShowPayment }) {
   const [paymentData, setPaymentData] = useState()
@@ -19,9 +19,9 @@ export default function Payment({ salaryData, setCurrent, setPaymentLink, setSho
     }
   }
 
-  const makePayment = () => {
+  const makePayment = (url) => {
     // window.location = paymentData?.sslgatewayLink;
-    setPaymentLink(paymentData?.sslgatewayLink || sslgatewayLink);
+    setPaymentLink(url || sslgatewayLink);
     setShowPayment(true);
   }
 
@@ -45,11 +45,11 @@ export default function Payment({ salaryData, setCurrent, setPaymentLink, setSho
 
       <div className='my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
         <div className='flex'>
-          <a href={paymentData?.sslgatewayLink}><img src='/assets/images/visa.png' alt="warning" /></a>
-          <a href={paymentData?.sslgatewayLink}><img src='/assets/images/master.png' alt="warning" /></a>
-          <a href={paymentData?.sslgatewayLink}><img src='/assets/images/discover.png' alt="warning" /></a>
-          <a href={paymentData?.sslgatewayLink}><img src='/assets/images/amex.png' alt="warning" /></a>
-          <a href={paymentData?.bkashURL}><img src='/assets/images/bkash.png' alt="warning" /></a>
+          <a onClick={() => makePayment(paymentData?.sslgatewayLink)}><img src='/assets/images/visa.png' alt="warning" /></a>
+          <a onClick={() => makePayment(paymentData?.sslgatewayLink)}><img src='/assets/images/master.png' alt="warning" /></a>
+          <a onClick={() => makePayment(paymentData?.sslgatewayLink)}><img src='/assets/images/discover.png' alt="warning" /></a>
+          <a onClick={() => makePayment(paymentData?.sslgatewayLink)}><img src='/assets/images/amex.png' alt="warning" /></a>
+          <a onClick={() => makePayment(paymentData?.bkashURL)}><img src='/assets/images/bkash.png' alt="warning" /></a>
         </div>
 
         <div className='md:text-right md:ml-auto'>
@@ -65,7 +65,7 @@ export default function Payment({ salaryData, setCurrent, setPaymentLink, setSho
               },
             }}
           >
-            <Button disabled={!paymentData?.sslgatewayLink} type="primary" className='w-full' size='large' onClick={() => makePayment()}>
+            <Button disabled={!paymentData?.sslgatewayLink} type="primary" className='w-full' size='large' onClick={() => makePayment(paymentData?.sslgatewayLink)}>
               <Space>
                 <img src='/assets/icons/lock.svg' alt="Premium-Plus" /> Make Payment
               </Space>
