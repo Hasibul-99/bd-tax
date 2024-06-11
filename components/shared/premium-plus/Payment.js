@@ -4,13 +4,13 @@ import { Button, Card, ConfigProvider, Space } from 'antd';
 import { useEffect, useState } from 'react';
 
 // https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca
-const sslgatewayLink = "https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca";
+const sslgatewayLink = "";
 
 export default function Payment({ salaryData, setCurrent, setPaymentLink, setShowPayment }) {
   const [paymentData, setPaymentData] = useState()
 
   const getPaymentData = async () => {
-    let res = await getData(GET_PAYMENT_METHOD);
+    let res = await getData(GET_PAYMENT_METHOD + '?request_from=web' );
 
     if (res) {
       let masterData = res?.data;

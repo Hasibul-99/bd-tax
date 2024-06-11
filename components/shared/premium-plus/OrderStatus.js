@@ -4,7 +4,7 @@ import { RightOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Card, ConfigProvider, Space } from 'antd';
 import { useEffect, useState } from 'react';
 
-export default function OrderStatus({ setCurrent, showNextButtons = true }) {
+export default function OrderStatus({ setCurrent, showNextButtons = true, showNextButton = true }) {
     const [orderStatus, setOrderStatus] = useState()
 
     const getOrdereStatus = async () => {
@@ -93,10 +93,12 @@ export default function OrderStatus({ setCurrent, showNextButtons = true }) {
                             }}
                         >
                             <Space>
-                                <Button type="primary" className='px-10 mt-5 flex m-auto' onClick={() => { setCurrent(5) }}>
-                                    Next
-                                    <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
-                                </Button>
+                                {
+                                    showNextButton ? <Button type="primary" className='px-10 mt-5 flex m-auto' onClick={() => { setCurrent(5) }}>
+                                        Next
+                                        <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
+                                    </Button> : ''
+                                }
 
                                 <Button type="primary" className='px-10 mt-5 flex m-auto'>
                                     <UserOutlined />

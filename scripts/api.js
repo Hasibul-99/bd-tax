@@ -35,3 +35,8 @@ export const GET_ORDER_STATUS = "get-order-status"
 // User Docs
 export const GET_ALL_TAX_YEAR = "getAllTaxYear"
 export const GET_USER_FILE_BY_TAX_YEAR = "get-user-file-by-tax-year"
+
+export const GET_DOWNLOAD_TAX_FILE = "download-tax-file";
+export const SAVE_CONSENT_DOC = "save-consent";
+export const SAVE_USER_SIGNATURE = "save-user-signature";
+
