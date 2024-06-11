@@ -5,10 +5,12 @@ import { Space } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
+import Cookies from "js-cookie";
 
 // https://codepen.io/its7rishi/pen/qBPmENP
 export default function Navbar({ locale }) {
     const pathname = usePathname()
+    const token = Cookies.get('bdtax_token');
     console.log("props", locale);
 
     const isActiveUrl = (url) => {
@@ -51,7 +53,7 @@ export default function Navbar({ locale }) {
                                     Contact Us
                                 </Space>
                             </Link>
-                            <Link href={`/${locale}/more/profile`} className={`py-4 px-2 font-semibold ${isActiveUrl(`/${locale}/more/`) ? 'active' : '' }`}>
+                            <Link href={token ? `/${locale}/more/profile` : `/${locale}/signin`} className={`py-4 px-2 font-semibold ${isActiveUrl(`/${locale}/more/`) ? 'active' : '' }`}>
                                 <Space>
                                     <img src='/assets/icons/more.svg' />
                                     More
