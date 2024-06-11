@@ -1,15 +1,15 @@
 'use client'
 
+import PersonalInfo from '@/components/shared/StandardForm/PersonalInfo';
 import WelcomeMessage from '@/components/shared/WelcomeMessage';
 import Doc from '@/components/shared/premium-plus/Doc';
 import LoadingStep from '@/components/shared/premium-plus/LoadingStep';
 import OrderStatus from '@/components/shared/premium-plus/OrderStatus';
 import Payment from '@/components/shared/premium-plus/Payment';
-import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo';
 import Submit from '@/components/shared/premium-plus/Submit';
 import { PROCESS_SALARY_DOC } from '@/scripts/api';
 import { getData } from '@/scripts/api-service';
-import { Steps, Space, ConfigProvider } from 'antd';
+import { Steps, Space, ConfigProvider, Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 export default function PremiumPlusProcess() {
@@ -42,22 +42,45 @@ export default function PremiumPlusProcess() {
         <div className="container mx-auto px-30 ">
             <div className='bg-white py-5 px-4'>
                 <WelcomeMessage/>
-                <div className='bg-amber-100 my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+                <div className='bg-[#dfdfdf] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
                     <div>
                         <h5 className='text-base font-semibold'>
                             <Space>
-                                <img src='/assets/images/Premium-Plus.png' alt="Premium Plus" />
-                                Premium Plus
+                                <img src='/assets/images/Auto Layout Horizontal (2).png' alt="Premium Plus" />
+                                Standard
                             </Space>
                         </h5>
                     </div>
                     <div className='md:text-right md:ml-auto'>
-                        <p className='text-sm font-semibold'>
-                            Tax Due: {salaryData?.tax_amount || 0}
+                        <p className='text-sm font-semibold pt-6'>
+                            Tax Due: 0
                         </p>
-                        <p className='text-xs'>
-                            Tax Year 2023 -2024
-                        </p>
+                    </div>
+                </div>
+
+                <div className='bg-amber-100 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+                    <div className='text-base '>
+                        Upgrade to <span className='font-semibold'>Premium Plus</span>  for a hassle free tax submission.
+                    </div>
+                    <div className='md:text-right md:ml-auto'>
+                        <ConfigProvider
+                            theme={{
+                                token: {
+                                    colorPrimary: "#D4AF37",
+                                },
+                                components: {
+                                    Button: {
+                                        colorPrimary: "#D4AF37",
+                                    },
+                                },
+                            }}
+                        >
+                            <Button type="primary" className='w-full text-slate-950 hover:text-slate-950' size='large'>
+                                <Space>
+                                    <img src='/assets/icons/pp.svg' alt="Premium-Plus" /> Upgrade
+                                </Space>
+                            </Button>
+                        </ConfigProvider>
                     </div>
                 </div>
 

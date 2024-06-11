@@ -30,7 +30,7 @@ export default function Standard() {
   return (
     <div className="container mx-auto px-30 ">
             <div className='bg-white py-5 px-4'>
-                <h3 className='text-xl font-semibold'>Welcome back, Tareq</h3>
+                <WelcomeMessage/>
                 <div className='bg-[#dfdfdf] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
                     <div>
                         <h5 className='text-base font-semibold'>
