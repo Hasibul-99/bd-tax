@@ -1,12 +1,26 @@
 "use client"
 
+import { SUBMIT_CONTACT } from "@/scripts/api";
+import { postData } from "@/scripts/api-service";
+import { alertPop } from "@/scripts/helper";
 import { Button, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from "antd";
 const { Option } = Select;
 const { TextArea } = Input;
 
 export default function ContactUs() {
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const [form] = Form.useForm();
+  
+  const onFinish = async (values) => {
+    let res = await postData(SUBMIT_CONTACT, values, 'no_token', 'showError');
+
+    if (res) {
+      if (res.code === "error") {
+        form.setFields(res?.errors)
+      } else {
+        alertPop("success", res.data?.message);
+        form.resetFields();
+      }
+    }
   };
 
   return (
@@ -27,6 +41,7 @@ export default function ContactUs() {
         <Form
           className='mt-6'
           name="basic"
+          form={form}
           onFinish={onFinish}
           autoComplete="off"
           size='large'
@@ -41,11 +56,11 @@ export default function ContactUs() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input First Name!',
+                    message: 'Please input Name!',
                   },
                 ]}
               >
-                <Input placeholder='First Name *' />
+                <Input placeholder='Name *' />
               </Form.Item>
             </Col>
           </Row>
@@ -60,8 +75,12 @@ export default function ContactUs() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input Last Name!',
+                    message: 'Please input email!',
                   },
+                  {
+                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                    message: "Please enter a valid email address",
+                  }
                 ]}
               >
                 <Input placeholder='Last Name *' />
@@ -70,7 +89,7 @@ export default function ContactUs() {
           </Row>
 
 
-          <Row gutter={16}>
+          {/* <Row gutter={16}>
             <Col className="gutter-row" xs={24} sm={24} md={4}>
               Subject *
             </Col>
@@ -89,7 +108,7 @@ export default function ContactUs() {
               </Form.Item>
 
             </Col>
-          </Row>
+          </Row> */}
 
           <Row gutter={16}>
             <Col className="gutter-row" xs={24} sm={24} md={4}>
@@ -98,11 +117,11 @@ export default function ContactUs() {
             <Col className="gutter-row" xs={24} sm={24} md={20}>
               <Form.Item
                 label=""
-                name="nid"
+                name="body"
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your National ID!',
+                    message: 'Please input Message!',
                   },
                 ]}
               >

@@ -40,3 +40,5 @@ export const GET_DOWNLOAD_TAX_FILE = "download-tax-file";
 export const SAVE_CONSENT_DOC = "save-consent";
 export const SAVE_USER_SIGNATURE = "save-user-signature";
 
+// submit-contact
+export const SUBMIT_CONTACT = "submit-contact";

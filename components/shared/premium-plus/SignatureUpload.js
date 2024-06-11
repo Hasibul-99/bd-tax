@@ -35,7 +35,7 @@ export default function SignatureUpload({ offsetWidth = 1000, setShow }) {
             }
         } else {
             const formData = new FormData();
-            formData.append("signature ", signPad.current.toDataURL());
+            formData.append("signature", signPad.current.toDataURL());
 
             let res = await postData(SAVE_USER_SIGNATURE, formData);
 
