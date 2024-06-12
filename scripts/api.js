@@ -43,3 +43,6 @@ export const SAVE_USER_SIGNATURE = "save-user-signature";
 
 // submit-contact
 export const SUBMIT_CONTACT = "submit-contact";
+
+export const GET_AREAS = "get-areas"
+export const GET_DIVISIONS = "get-divisions"

@@ -1,4 +1,4 @@
-import { GET_USER_PROFILE, PACKAGE_WISE_PROFILE } from '@/scripts/api';
+import { GET_AREAS, GET_DIVISIONS, GET_USER_PROFILE, PACKAGE_WISE_PROFILE } from '@/scripts/api';
 import { getData, postData } from '@/scripts/api-service';
 import { RightOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from 'antd';
@@ -12,6 +12,9 @@ const { TextArea } = Input;
 export default function PersonalInfo({ setCurrent }) {
     const [form] = Form.useForm();
     const [sameAddres, setSameAddress] = useState()
+    const [areaList, setAreaList] = useState([]);
+    const [divisionList, setDivisionList] = useState([]);
+    const [districtList, setDistrictList] = useState([]);
 
     const onFinish = async (values) => {
         let profile = {
@@ -75,8 +78,38 @@ export default function PersonalInfo({ setCurrent }) {
         }
     }
 
+    const getAreaData = async () => {
+        let res = await getData(GET_AREAS);
+        if (res) {
+            setAreaList(res?.data)
+        }
+    }
+
+    const getDivisionData = async() => {
+        let res = await getData(GET_DIVISIONS);
+        if (res) {
+            setDivisionList(res.data);
+        }
+    }
+
+    const HandelDivision = (val) => {
+        console.log(val);
+        if (val) {
+            let data = divisionList.find(item => item.id === val);
+
+            if (data) {
+                console.log("data", data);
+
+                setDistrictList(data?.dis);
+                form.resetFields(['DistrictId']);
+            }
+        }
+    }
+
     useEffect(() => {
-        getUserData()
+        getUserData();
+        getAreaData();
+        getDivisionData();
     }, [])
 
     return (
@@ -483,7 +516,7 @@ export default function PersonalInfo({ setCurrent }) {
                                 ]}
                             >
                                 <Select
-                                    placeholder="Select Status"
+                                    placeholder="Select"
                                     allowClear
                                 >
                                     <Option value="N">NO</Option>
@@ -509,11 +542,14 @@ export default function PersonalInfo({ setCurrent }) {
                                 ]}
                             >
                                 <Select
-                                    placeholder="Select Status"
+                                    placeholder="Select Area "
                                     allowClear
                                 >
-                                    <Option value="N">NO</Option>
-                                    <Option value="Y">YES</Option>
+                                    {areaList?.length ? <>
+                                        {
+                                            areaList.map(item => <Option value={item.id}>{item.name}</Option>)
+                                        }
+                                    </> : ''}
                                 </Select>
                             </Form.Item>
                         </Col>
@@ -534,13 +570,7 @@ export default function PersonalInfo({ setCurrent }) {
                                     },
                                 ]}
                             >
-                                <Select
-                                    placeholder="Select Status"
-                                    allowClear
-                                >
-                                    <Option value="N">NO</Option>
-                                    <Option value="Y">YES</Option>
-                                </Select>
+                                <Input />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -581,11 +611,18 @@ export default function PersonalInfo({ setCurrent }) {
                                 ]}
                             >
                                 <Select
-                                    placeholder="Select Status"
+                                    placeholder="Select Division"
                                     allowClear
+                                    onChange={HandelDivision}
                                 >
-                                    <Option value="N">NO</Option>
-                                    <Option value="Y">YES</Option>
+                                    {
+                                        divisionList?.length ? <>
+                                            {
+                                                divisionList.map(item => <Option value={item.id}>{item.title}</Option>)
+                                            }
+                                        </> : ''
+                                    }
+                                
                                 </Select>
                             </Form.Item>
                         </Col>
@@ -607,10 +644,17 @@ export default function PersonalInfo({ setCurrent }) {
                                 ]}
                             >
                                 <Select
-                                    placeholder="Select Status"
+                                    placeholder="Select District"
                                     allowClear
                                 >
-                                    <Option value="N">NO</Option>
+                                    {
+                                        districtList?.length ? <>
+                                            {
+                                                districtList.map(item => <Option value={item.id}>{item.name}</Option>)
+                                            }
+                                        </> : ''
+                                    }
+                                    
                                     <Option value="Y">YES</Option>
                                 </Select>
                             </Form.Item>
