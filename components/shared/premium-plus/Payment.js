@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 // https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca
 const sslgatewayLink = "";
 
-export default function Payment({ salaryData, setCurrent }) {
+export default function Payment({ salaryData, setCurrent, context }) {
   const [paymentData, setPaymentData] = useState()
 
   const getPaymentData = async () => {
@@ -24,6 +24,7 @@ export default function Payment({ salaryData, setCurrent }) {
 
   useEffect(() => {
     getPaymentData()
+    localStorage.setItem("packageType", context);
   }, [])
 
   return (

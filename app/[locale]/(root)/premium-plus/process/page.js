@@ -10,11 +10,14 @@ import { PROCESS_SALARY_DOC } from '@/scripts/api';
 import { getData } from '@/scripts/api-service';
 import { ConfigProvider, Space, Steps } from 'antd';
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation'
 
 export default function PremiumPlusProcess() {
+    const searchParams = useSearchParams()
     const [current, setCurrent] = useState(1);
     const [loadingPSD, setLoadingPSD] = useState(true);
     const [salaryData, setSalaryData] = useState();
+    const status = searchParams.get('status');
 
     const onChange = (value) => {
         setCurrent(value);
@@ -34,6 +37,16 @@ export default function PremiumPlusProcess() {
             getPrecessSalaryDoc()
         }
     }, [current])
+
+    useEffect(() => {
+        if (status) {
+            if (status === 'success') {
+                setCurrent(4)
+            } else {
+                setCurrent(3)
+            }
+        }
+    }, [status])
 
     return (
         <div className="container mx-auto px-30 ">
@@ -120,7 +133,7 @@ export default function PremiumPlusProcess() {
                         current === 2 ? <Doc setCurrent={setCurrent} /> : ''
                     }
                     {
-                        current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent} /> : ''
+                        current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent} context={'premium-plus'}/> : ''
                     }
                     {
                         current === 4 ? <OrderStatus setCurrent={setCurrent} /> : ''
