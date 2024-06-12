@@ -15,8 +15,6 @@ export default function PremiumPlusProcess() {
     const [current, setCurrent] = useState(1);
     const [loadingPSD, setLoadingPSD] = useState(true);
     const [salaryData, setSalaryData] = useState()
-    const [showPayment, setShowPayment] = useState(false);
-    const [paymentLink, setPaymentLink] = useState();
 
     const onChange = (value) => {
         setCurrent(value);
@@ -39,13 +37,13 @@ export default function PremiumPlusProcess() {
 
     return (
         <div className="container mx-auto px-30 ">
-            {
+            {/* {
                 showPayment && paymentLink ? <>
                     <iframe id="myIframe" src={paymentLink} frameborder="0" allowfullscreen
                     style={{ width: "100%", height: "100vh" }} ></iframe>
                 </> : <></>
-            }
-            <div className={`${showPayment ? 'hidden' : ''}`}>
+            } */}
+            <div>
                 <div className={`bg-white py-5 px-4 `}>
                     <WelcomeMessage />
                     <div className='bg-[#e6f8e9] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
@@ -155,7 +153,7 @@ export default function PremiumPlusProcess() {
                             current === 2 ? <Doc setCurrent={setCurrent} /> : ''
                         }
                         {
-                            current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent} setPaymentLink={setPaymentLink} setShowPayment={setShowPayment} /> : ''
+                            current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent}/> : ''
                         }
                         {
                             current === 4 ? <OrderStatus setCurrent={setCurrent} /> : ''
