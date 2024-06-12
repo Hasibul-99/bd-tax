@@ -1,7 +1,7 @@
 import { GET_AREAS, GET_DIVISIONS, GET_USER_PROFILE, PACKAGE_WISE_PROFILE } from '@/scripts/api';
 import { getData, postData } from '@/scripts/api-service';
 import { RightOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from 'antd';
+import { Button, Checkbox, Col, ConfigProvider, DatePicker, Form, Input, InputNumber, Row, Select } from 'antd';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { alertPop } from '@/scripts/helper';
@@ -12,6 +12,7 @@ const { TextArea } = Input;
 export default function PersonalInfo({ setCurrent }) {
     const [form] = Form.useForm();
     const [sameAddres, setSameAddress] = useState()
+    const [userData, setUserData] = useState()
     const [areaList, setAreaList] = useState([]);
     const [divisionList, setDivisionList] = useState([]);
     const [districtList, setDistrictList] = useState([]);
@@ -64,6 +65,8 @@ export default function PersonalInfo({ setCurrent }) {
             let masterData = res?.data;
 
             if (masterData) {
+                setUserData(masterData);
+                
                 form.setFieldsValue({
                     first_name: masterData.first_name,
                     last_name: masterData.last_name,
@@ -73,6 +76,22 @@ export default function PersonalInfo({ setCurrent }) {
                     mobile: masterData.Contact,
                     gender: masterData.Gender,
                     dob: masterData.DOB ? dayjs(masterData.DOB) : undefined,
+                    Status: masterData.Status,
+                    ResidentialStatus: masterData.ResidentialStatus,
+                    Disability: masterData.Disability,
+                    FathersName: masterData.FathersName,
+                    MothersName: masterData.MothersName,
+                    NoOfAdultInFamily: masterData.NoOfAdultInFamily,
+                    NoOfChildInFamily: masterData.NoOfChildInFamily,
+                    FreedomFighter: masterData.FreedomFighter,
+                    GovernmentEmployee: masterData.GovernmentEmployee,
+                    AreaOfResidence: parseInt(masterData.AreaOfResidence),
+                    TaxesZone: masterData.TaxesZone,
+                    TaxesCircle : masterData.TaxesCircle,
+                    DivisionId: masterData.DivisionId,
+                    DistrictId: masterData.DistrictId,
+                    PresentAddress: masterData.PresentAddress,
+                    PermanentAddress: masterData.PresentAddress,
                 })
             }
         }
@@ -92,19 +111,22 @@ export default function PersonalInfo({ setCurrent }) {
         }
     }
 
-    const HandelDivision = (val) => {
-        console.log(val);
+    const HandelDivision = (val, notReset=true) => {
         if (val) {
             let data = divisionList.find(item => item.id === val);
 
             if (data) {
-                console.log("data", data);
-
                 setDistrictList(data?.dis);
-                form.resetFields(['DistrictId']);
+                if (notReset) form.resetFields(['DistrictId']);
             }
         }
     }
+
+    useEffect(() => {
+        if (userData && divisionList.length) {
+            HandelDivision(userData.DivisionId, false);
+        }
+    }, [divisionList, userData])
 
     useEffect(() => {
         getUserData();
@@ -450,7 +472,7 @@ export default function PersonalInfo({ setCurrent }) {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <InputNumber className='w-full'/>
                             </Form.Item>
                         </Col>
                     </Row>
@@ -469,7 +491,7 @@ export default function PersonalInfo({ setCurrent }) {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <InputNumber className='w-full'/>
                             </Form.Item>
                         </Col>
                     </Row>
@@ -547,7 +569,7 @@ export default function PersonalInfo({ setCurrent }) {
                                 >
                                     {areaList?.length ? <>
                                         {
-                                            areaList.map(item => <Option value={item.id}>{item.name}</Option>)
+                                            areaList.map(item => <Option value={item.id} key={item.id}>{item.name}</Option>)
                                         }
                                     </> : ''}
                                 </Select>
@@ -618,7 +640,7 @@ export default function PersonalInfo({ setCurrent }) {
                                     {
                                         divisionList?.length ? <>
                                             {
-                                                divisionList.map(item => <Option value={item.id}>{item.title}</Option>)
+                                                divisionList.map(item => <Option value={item.id} key={item.id}>{item.title}</Option>)
                                             }
                                         </> : ''
                                     }
@@ -650,12 +672,10 @@ export default function PersonalInfo({ setCurrent }) {
                                     {
                                         districtList?.length ? <>
                                             {
-                                                districtList.map(item => <Option value={item.id}>{item.name}</Option>)
+                                                districtList.map(item => <Option value={item.id} key={item.id}>{item.name}</Option>)
                                             }
                                         </> : ''
                                     }
-                                    
-                                    <Option value="Y">YES</Option>
                                 </Select>
                             </Form.Item>
                         </Col>
@@ -680,7 +700,7 @@ export default function PersonalInfo({ setCurrent }) {
                         </Col>
                     </Row>
 
-                    <Checkbox onChange={(e) => { setSameAddress(e.target.checked) }}>Both are same address.</Checkbox>
+                    <Checkbox onChange={(e) => { setSameAddress(e.target.checked) }} className="mb-5">Both are same address.</Checkbox>
 
                     {
                         sameAddres ? <>
