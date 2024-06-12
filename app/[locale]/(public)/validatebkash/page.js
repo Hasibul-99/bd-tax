@@ -19,8 +19,6 @@ export default function validatebkash() {
 
         // if (res) {
             setTimeout(() => {
-                console.log("localStorage.getItem", localStorage.getItem("packageType"));
-                
                 router.push(`${packageType || localStorage.getItem("packageType")}/process?status=${status}`);
             }, 5000)
         // }
