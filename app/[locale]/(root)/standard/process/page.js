@@ -5,6 +5,7 @@ import WelcomeMessage from '@/components/shared/WelcomeMessage';
 import Doc from '@/components/shared/premium-plus/Doc';
 import LoadingStep from '@/components/shared/premium-plus/LoadingStep';
 import OrderStatus from '@/components/shared/premium-plus/OrderStatus';
+import Income from '@/components/shared/StandardForm/Inome'
 import Payment from '@/components/shared/premium-plus/Payment';
 import Submit from '@/components/shared/premium-plus/Submit';
 import { PROCESS_SALARY_DOC } from '@/scripts/api';
@@ -66,11 +67,11 @@ export default function PremiumPlusProcess() {
                         <ConfigProvider
                             theme={{
                                 token: {
-                                    colorPrimary: "#D4AF37",
+                                    colorPrimary: "#4B7F52",
                                 },
                                 components: {
                                     Button: {
-                                        colorPrimary: "#D4AF37",
+                                        colorPrimary: "#4B7F52",
                                     },
                                 },
                             }}
@@ -137,7 +138,7 @@ export default function PremiumPlusProcess() {
                         current === 1 ? <PersonalInfo setCurrent={setCurrent}/> : '' 
                     }
                     {
-                        current === 2 ? <Doc setCurrent={setCurrent}/> : '' 
+                        current === 2 ? <Income/> : '' 
                     }
                     {
                         current === 3 ? <Payment salaryData={salaryData} setCurrent={setCurrent}/> : '' 
