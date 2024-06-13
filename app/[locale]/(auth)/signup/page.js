@@ -42,7 +42,7 @@ export default function SignUp() {
   }, [])
 
   return (
-    <div className="flex items-center h-screen w-full">
+    <div className="flex items-center w-full">
       <div className="w-full p-6 m-4 md:max-w-sm md:mx-auto text-center">
         <h1 className="block w-full font-bold mb-2">Registration</h1>
         <Title level={5} className='!mb-0'>#1 Tax Software in Bangladesh</Title>
