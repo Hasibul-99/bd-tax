@@ -42,7 +42,6 @@ export default function Standard(props) {
                                 }}
                             >
                                 <Button type="primary" className='w-full border-[#0F172A] text-[#0F172A]' size='large' onClick={() => tempUserPackages()}>
-                                    {/* <Link href={`/${locale}/standard`}>Select</Link> */}
                                     Select
                                 </Button>
                             </ConfigProvider>
