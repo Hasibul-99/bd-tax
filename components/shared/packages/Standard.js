@@ -53,7 +53,7 @@ export default function Standard(props) {
                                     pack.more.map((item, idx) => <li className="mb-3" key={idx}>
                                         <Row gutter={16}>
                                             <Col className="gutter-row p-0" span={3}>
-                                                <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                                                <img src='/assets/icons/star_3.svg' alt="Premium Plus" width={25} className='mt-1' />
                                             </Col>
                                             <Col className="gutter-row pt-1" span={21}>
                                                 <p className={idx === 0 ? 'font-semibold' : ''}>{item}</p>

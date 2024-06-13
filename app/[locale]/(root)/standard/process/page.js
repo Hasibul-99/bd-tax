@@ -113,8 +113,8 @@ export default function PremiumPlusProcess() {
                                 title: 'Personal Info',
                             },
                             {
-                                status: 'doc',
-                                title: 'Doc',
+                                status: 'income',
+                                title: 'Income',
                             },
                             {
                                 status: 'payment',

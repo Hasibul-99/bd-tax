@@ -54,7 +54,7 @@ export default function Premium(props) {
                                         <li key={idx} className='mb-3'>
                                             <Row gutter={16}>
                                                 <Col className="gutter-row p-0" span={3}>
-                                                    <img src='/assets/icons/Check.svg' alt="Premium Plus" width={25} className='mt-1' />
+                                                    <img src='/assets/icons/star_2.svg' alt="Premium Plus" width={25} className='mt-1' />
                                                 </Col>
                                                 <Col className="gutter-row pt-1" span={21}>
                                                     <p className={idx === 0 ? 'font-semibold' : ''}>{item}</p>
