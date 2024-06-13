@@ -12,7 +12,7 @@ export default function ForgetPassword() {
     const [stepOneRes, setStepOneRes] = useState(null)
 
     return (
-        <div classname="flex items-center h-screen w-full">
+        <div className="flex items-center h-screen w-full">
             <div className="p-6 m-4 md:max-w-sm md:mx-auto text-center">
                 <h1 className="block w-full font-bold mb-2">Forget Password</h1>
                 <Text type="secondary">Stress-free tax season starts here!</Text>
