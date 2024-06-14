@@ -1,0 +1,24 @@
+.primaryButton {
+  background: radial-gradient(
+    220.74% 152.97% at 28.26% 155.35%,
+    #126a25,
+    #23d049 100%
+  );
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  letter-spacing: 0.01em;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &:hover {
+    background: radial-gradient(
+      220.74% 152.97% at 28.26% 155.35%,
+      #126a25,
+      #23d049 100%
+    );
+  }
+}
