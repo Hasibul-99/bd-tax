@@ -1,24 +1,108 @@
-.primaryButton {
-  background: radial-gradient(
-    220.74% 152.97% at 28.26% 155.35%,
-    #126a25,
-    #23d049 100%
-  );
-  border-radius: 15px;
-  font-weight: 600;
-  font-size: 1.125rem;
-  line-height: 1.375rem;
-  letter-spacing: 0.01em;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+.primary-plus-Button {
+  box-sizing: border-box;
 
-  &:hover {
-    background: radial-gradient(
-      220.74% 152.97% at 28.26% 155.35%,
-      #126a25,
-      #23d049 100%
-    );
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10.0465px 20.093px;
+  gap: 8.37px;
+
+  width: 100%;
+  height: 46px;
+
+  background: linear-gradient(88.76deg, #d4af37 1.13%, #f7ab3c 97.72%);
+  color: #000000;
+  box-shadow: 0px 3.34884px 16.7442px rgba(247, 176, 59, 0.5);
+  border-radius: 12px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background: linear-gradient(
+      88.76deg,
+      #d4af37 1.13%,
+      #f7ab3c 97.72%
+    ) !important;
+    color: #000000 !important;
+  }
+}
+
+.primary-Button {
+  /* Auto Layout Horizontal */
+
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10.0465px 20.093px;
+  gap: 8.37px;
+
+  width: 100%;
+  height: 46px;
+
+  background: linear-gradient(267.87deg, #468054 2.86%, #22512e 97.87%);
+  box-shadow: 0px 3.34884px 16.7442px rgba(68, 124, 81, 0.5);
+  border-radius: 12px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background: linear-gradient(
+      267.87deg,
+      #468054 2.86%,
+      #22512e 97.87%
+    ) !important;
+  }
+}
+
+.standard-button {
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10.0465px 20.093px;
+  gap: 8.37px;
+
+  width: 100%;
+  height: 46px;
+
+  background: rgba(239, 254, 242, 0.15);
+  color: #0d0d12;
+  border: 0.5px solid #303133;
+  backdrop-filter: blur(8.37209px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 12px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background: rgba(239, 254, 242, 0.15) !important;
+    color: #0d0d12 !important;
   }
 }
