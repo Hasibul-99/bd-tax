@@ -1,6 +1,6 @@
 import {TEMP_PACKAGES} from '@/scripts/api'
 import {postData} from '@/scripts/api-service'
-import {Button, Col, Row, Space} from 'antd'
+import {Button, Col, Row} from 'antd'
 import {useRouter} from 'next/navigation'
 
 export default function Premium(props) {
@@ -17,22 +17,19 @@ export default function Premium(props) {
 
   return (
     <div>
-      <div className='block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative'>
+      <div className='block rounded-[20px]  border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative'>
         {pack ? (
           <>
-            <div className='bg-[#dffdd1] rounded-tl-xl rounded-tr-xl border-b-2 border-[#4B7F52] px-6 py-3'>
-              <h1 className='font-bold'>
-                <Space>
-                  <img
-                    src='/assets/images/Auto Layout Horizontal (1).png'
-                    alt='Premium Plus'
-                  />
-                  <span>
-                    {pack.title} (৳{pack.price})
-                  </span>
-                </Space>
-              </h1>
-              <p className='my-2'>{pack.description}</p>
+            <div className='premium-card-landing'>
+              <div className='packages-price'>
+                <div className='p-image'>
+                  <img src='/assets/images/premium.png' alt='Premium' />
+                </div>
+                <span className='price-text'>
+                  {pack.title} (৳{pack.price})
+                </span>
+              </div>
+              <p className='pack-details'>{pack.description}</p>
 
               <Button
                 type='primary'

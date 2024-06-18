@@ -7,26 +7,6 @@
   color: #020617;
 }
 
-.premium-plus-card-landing {
-  box-sizing: border-box;
-
-  /* Auto layout */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
-  gap: 18px;
-
-  background: rgba(212, 175, 55, 0.2);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 20px 20px 0px 0px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
 .packages-price {
   display: flex;
   flex-direction: row;
@@ -48,6 +28,23 @@
     border-radius: 12px;
   }
 
+  .p-image {
+    padding: 10.0465px;
+    // width: 36px;
+    // height: 36px;
+    background: linear-gradient(267.87deg, #468054 2.86%, #22512e 97.87%);
+    box-shadow: 0px 3.34884px 16.7442px rgba(68, 124, 81, 0.5);
+    border-radius: 12px;
+  }
+
+  .s-image {
+    padding: 10.0465px;
+
+    background: #0f172a;
+    box-shadow: 0px 3.34884px 16.7442px rgba(15, 23, 42, 0.25);
+    border-radius: 12px;
+  }
+
   .price-text {
     font-style: normal;
     font-weight: 600;
@@ -59,4 +56,64 @@
     /* slate/900 */
     color: #0f172a;
   }
+}
+
+.premium-plus-card-landing {
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 18px;
+
+  background: rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 20px 20px 0px 0px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.premium-card-landing {
+  box-sizing: border-box;
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 18px;
+
+  background: rgba(75, 127, 82, 0.15);
+  border: 1px solid rgba(75, 127, 82, 0.4);
+  border-radius: 16px 16px 0px 0px;
+  padding: 16px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.standard-card-landing {
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+
+  background: #f2f2f2;
+  border: 1px solid rgba(15, 23, 42, 0.25);
+  border-radius: 20px 20px 0px 0px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
