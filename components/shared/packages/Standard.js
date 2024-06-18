@@ -1,6 +1,6 @@
 import {TEMP_PACKAGES} from '@/scripts/api'
 import {postData} from '@/scripts/api-service'
-import {Button, Col, Row} from 'antd'
+import {Button} from 'antd'
 import {useRouter} from 'next/navigation'
 
 export default function Standard(props) {
@@ -40,25 +40,25 @@ export default function Standard(props) {
                 Select
               </Button>
             </div>
-            <div className='p-6'>
+            <div className='p-4'>
               <ul>
                 {pack.more.map((item, idx) => (
-                  <li className='mb-3' key={idx}>
-                    <Row gutter={16}>
-                      <Col className='gutter-row p-0' span={3}>
-                        <img
-                          src='/assets/icons/star_3.svg'
-                          alt='Premium Plus'
-                          width={25}
-                          className='mt-1'
-                        />
-                      </Col>
-                      <Col className='gutter-row pt-1' span={21}>
-                        <p className={idx === 0 ? 'font-semibold' : ''}>
-                          {item}
-                        </p>
-                      </Col>
-                    </Row>
+                  <li className='package-details' key={idx}>
+                    <div className='pp-details'>
+                      <img
+                        src='/assets/icons/star_3.svg'
+                        alt='Premium Plus'
+                        width={16}
+                        className='mt-1'
+                      />
+                      <div
+                        className={
+                          idx === 0 ? 'font-semibold mt-0.5' : 'mt-0.5'
+                        }
+                      >
+                        {item}
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ul>
