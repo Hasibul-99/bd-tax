@@ -1,36 +1,38 @@
 'use client'
 
-import AuthNavbar from "@/components/shared/AuthNavbar";
-import Footer from "@/components/shared/Footer";
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import AuthNavbar from '@/components/shared/AuthNavbar'
+import Footer from '@/components/shared/Footer'
+import Cookies from 'js-cookie'
+import {useRouter} from 'next/navigation'
+import {useEffect} from 'react'
 
 const RootLayout = (props) => {
-  const { children, params: { locale } } = props;
-  const router = useRouter();
-  const token = Cookies.get('bdtax_token');
+  const {
+    children,
+    params: {locale},
+  } = props
+  const router = useRouter()
+  const token = Cookies.get('bdtax_token')
 
   useEffect(() => {
-    console.log(token);
+    console.log(token)
     if (token) {
-      router.push('/');
+      router.push('/')
     }
   }, [token])
 
   return (
     <>
-      <div >
+      <div>
         <AuthNavbar locale={locale} />
-        <div className="bg-slate-100 container mx-auto min-h-[80vh]">
+        <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh]'>
           {children}
         </div>
       </div>
       <Footer />
       {/* <Script src="js/script.js"></Script> */}
-
     </>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout
