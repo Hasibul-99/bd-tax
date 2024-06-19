@@ -34,6 +34,7 @@ export default function OrderStatus({ setCurrent, showNextButtons = true, showNe
     useEffect(() => {
         getOrdereStatus()
     }, [])
+    
     return (
         <div>
             <Card title="Order Info" className=''>
