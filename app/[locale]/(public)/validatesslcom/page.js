@@ -1,47 +1,24 @@
 'use client'
 
-import {GET_ORDER_STATUS, GET_VALIDATE_BKASH} from '@/scripts/api'
-import {getData} from '@/scripts/api-service'
 import {ConfigProvider, Result, Spin} from 'antd'
 import {useRouter, useSearchParams} from 'next/navigation'
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
 
-export default function validatebkash() {
+export default function validatesslcom() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const paymentID = searchParams.get('paymentID')
   const status = searchParams.get('status')
-  const [packageType, setPackageType] = useState()
 
-  const validatebkashPayment = async () => {
-    let res = await getData(
-      GET_VALIDATE_BKASH + `?paymentID=${paymentID}&status=${status}`
-    )
-
-    // if (res) {
+  const handelOnload = () => {
     setTimeout(() => {
       router.push(
-        `${
-          packageType || localStorage.getItem('packageType')
-        }/process?status=${status}`
+        `${localStorage.getItem('packageType')}/process?status=${status}`
       )
     }, 5000)
-    // }
-  }
-
-  const getOrdereStatus = async () => {
-    const res = await getData(GET_ORDER_STATUS)
-
-    if (res) {
-      console.log(res?.data)
-    }
   }
 
   useEffect(() => {
-    validatebkashPayment()
-    getOrdereStatus()
-
-    setPackageType(localStorage.getItem('packageType'))
+    handelOnload()
   }, [])
 
   return (
