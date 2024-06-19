@@ -20,20 +20,23 @@ export default function Navbar({locale}) {
   return (
     <nav className='pt-6'>
       <div className='container mx-auto'>
-        <div className='flex justify-between mx-6 md:mx-0 bg-white rounded-[100px] px-4'>
+        <div className='flex justify-between mx-6 md:mx-0 bg-white rounded-[100px] px-4 py-2.5'>
           <div className='flex space-x-7'>
-            <div>
-              <a href='/' className='flex items-center py-4 px-2'>
+            <div className=''>
+              <a
+                href='/'
+                className='flex items-center bg-[#F8FAFC] rounded-[100px] px-4 py-1'
+              >
                 <Image
-                  width={100}
-                  height={60}
+                  width={82}
+                  height={44}
                   src='/assets/images/logo-2.png'
                   alt='logo'
                 />
               </a>
             </div>
             {/* Primary Navbar items */}
-            <div className='hidden md:flex items-center space-x-1 gap-x-5 navbar-content'>
+            <div className='hidden md:flex items-center space-x-1 gap-x-5 navbar-content bg-[#F8FAFC] rounded-[100px] px-4'>
               <Link
                 href={`/${locale}/home`}
                 className={`py-4 px-2 font-semibold ${
@@ -93,10 +96,16 @@ export default function Navbar({locale}) {
           </div>
           {/* Secondary Navbar items */}
           <div className='hidden md:flex items-center space-x-3 '>
-            <a href='#' className='py-2 px-2 font-medium'>
+            <a
+              href='#'
+              className='py-2 px-2 font-medium bg-[#F8FAFC] rounded-[145px]'
+            >
               <img src='/assets/icons/Group.svg' />
             </a>
-            <a href='#' className='py-2 px-2 font-medium'>
+            <a
+              href='#'
+              className='py-2 px-2 font-medium bg-[#F8FAFC] rounded-[145px]'
+            >
               <img src='/assets/icons/Frame.svg' />
             </a>
           </div>
