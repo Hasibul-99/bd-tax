@@ -1,104 +1,121 @@
-"use client"
+'use client'
 
-import { LOGIN } from '@/scripts/api';
-import { postData } from '@/scripts/api-service';
-import { alertPop } from '@/scripts/helper';
-import { Button, Checkbox, ConfigProvider, Form, Input, Space, Typography } from 'antd';
-import Cookies from "js-cookie";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-const { Text } = Typography;
+import {LOGIN} from '@/scripts/api'
+import {postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
+import {
+  Button,
+  Checkbox,
+  ConfigProvider,
+  Form,
+  Input,
+  Space,
+  Typography,
+} from 'antd'
+import Cookies from 'js-cookie'
+import Link from 'next/link'
+import {useRouter} from 'next/navigation'
+import {useState} from 'react'
+const {Text} = Typography
 
 export default function SignIn() {
-  const [form] = Form.useForm();
-  const router = useRouter();
+  const [form] = Form.useForm()
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
 
   const onFinish = async (values) => {
-    let res = await postData(LOGIN, values, 'no_token');
+    let res = await postData(LOGIN, values, 'no_token')
 
     if (res) {
-      if (res.code === "error") {
+      if (res.code === 'error') {
         form.setFields(res?.errors)
       } else {
-        let masterData = res?.data?.data;
+        let masterData = res?.data?.data
 
-        setLoading(true);
-        Cookies.set('bdtax_token', masterData?.token);
-        Cookies.set('bdtax_user', JSON.stringify(masterData));
-        alertPop("success", masterData?.message);
+        setLoading(true)
+        Cookies.set('bdtax_token', masterData?.token)
+        Cookies.set('bdtax_user', JSON.stringify(masterData))
+        alertPop('success', masterData?.message)
 
         setTimeout(() => {
           if (masterData.first_time) {
-            window.location = "/";
+            window.location = '/'
             // router.push('/')
           } else {
             // router.push('home')
-            window.location = "home";
+            window.location = 'home'
           }
         }, 5000)
       }
     }
-  };
+  }
 
   if (loading) {
-    return <>
-      <div className='text-center h-96 flex justify-items-center items-center relative'>
-        <div>
-          <img className='image' src='/assets/icons/loading.svg' alt="Premium Plus" />
+    return (
+      <>
+        <div className='text-center h-96 flex justify-items-center items-center relative'>
+          <div>
+            <img
+              className='image'
+              src='/assets/icons/loading.svg'
+              alt='Premium Plus'
+            />
+          </div>
+          <div className='absolute inset-x-11'>
+            <p>Establishing secure connection. </p>
+          </div>
         </div>
-        <div className='absolute inset-x-11'>
-          <p>Establishing secure connection. </p>
-        </div>
-      </div>
-    </>
+      </>
+    )
   }
 
   return (
-    <div className="flex items-center w-full">
-      <div className="w-full p-6 m-4 md:max-w-sm md:mx-auto text-center">
-        <h1 className="block w-full font-bold mb-2">Sign In</h1>
-        <Text type="secondary">Stress-free tax season starts here!</Text>
+    <div className='flex items-center w-full'>
+      <div className='w-full p-6 m-4 md:max-w-sm md:mx-auto text-center'>
+        <h1 className='block w-full font-bold mb-2 text-[22px]'>Sign In</h1>
+        <Text type='secondary' className='!text-[#475569]'>
+          Stress-free tax season starts here!
+        </Text>
 
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: "#126A25",
+              colorPrimary: '#126A25',
             },
             components: {
               Button: {
-                colorPrimary: "#126A25",
+                colorPrimary: '#126A25',
               },
             },
           }}
         >
           <Form
             className='mt-6 text-left'
-            name="basic"
+            name='basic'
             onFinish={onFinish}
-            autoComplete="off"
+            autoComplete='off'
             size='large'
             form={form}
           >
             <Form.Item
-              name="email"
+              name='email'
               rules={[
                 {
                   required: true,
                   message: 'Please input email!',
                 },
                 {
-                  pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                  message: "Please enter a valid email address",
-                }
+                  pattern:
+                    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                  message: 'Please enter a valid email address',
+                },
               ]}
             >
               <Input placeholder='Email *' />
             </Form.Item>
 
             <Form.Item
-              name="password"
+              name='password'
               rules={[
                 {
                   required: true,
@@ -111,14 +128,18 @@ export default function SignIn() {
 
             <Form.Item
               className='text-left'
-              name="remember"
-              valuePropName="checked"
+              name='remember'
+              valuePropName='checked'
             >
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
 
             <Form.Item>
-              <Button className='w-full btn-hover color-5 !m-0 !h-11 !rounded-xl' type="primary" htmlType="submit">
+              <Button
+                className='w-full btn-hover color-5 !m-0 !h-11 !rounded-xl'
+                type='primary'
+                htmlType='submit'
+              >
                 Log In
               </Button>
             </Form.Item>
@@ -127,28 +148,42 @@ export default function SignIn() {
 
         <Space className='mb-3'>
           New to BDTax?
-          <Link href="signup" className='text-emerald-700 hover:text-emerald-700'>Create Account</Link>
+          <Link
+            href='signup'
+            className='text-emerald-700 hover:text-emerald-700'
+          >
+            Create Account
+          </Link>
         </Space>
         <br />
         <Space>
-          <Link href="forget-password" className='text-emerald-700 hover:text-emerald-700'>Forgot Password?</Link>
+          <Link
+            href='forget-password'
+            className='text-emerald-700 hover:text-emerald-700'
+          >
+            Forgot Password?
+          </Link>
         </Space>
 
-        <img className='mt-5 m-auto' src="/assets/images/Frame.png" alt="logo" />
+        <img
+          className='mt-5 m-auto'
+          src='/assets/images/Frame.png'
+          alt='logo'
+        />
 
         <Space>
-          <img src='/assets/icons/sms.svg' alt="sms" width={20} />
+          <img src='/assets/icons/sms.svg' alt='sms' width={20} />
           support@bdtax.com.bd
         </Space>
         <br />
         <Space>
-          <img src='/assets/icons/call.svg' alt="sms" width={20} />
+          <img src='/assets/icons/call.svg' alt='sms' width={20} />
           01409-991225
         </Space>
         <br />
         <Space className='mt-2'>
           Made in
-          <img src='/assets/images/bangladesh.png' alt="sms" width={20} />
+          <img src='/assets/images/bangladesh.png' alt='sms' width={20} />
         </Space>
       </div>
     </div>
