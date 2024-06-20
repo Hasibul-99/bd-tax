@@ -106,3 +106,12 @@
     color: #0d0d12 !important;
   }
 }
+
+.view-all-pack {
+  background: #effef2 !important;
+  border: 0.5px solid #126a25 !important;
+  backdrop-filter: blur(8.37209px);
+  -webkit-backdrop-filter: blur(8.37209px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 12px;
+}

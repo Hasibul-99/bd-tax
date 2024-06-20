@@ -6,7 +6,7 @@ import PremiumPlus from '@/components/shared/packages/PremiumPlus'
 import Standard from '@/components/shared/packages/Standard'
 import {PACKAGE_LIST} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
-import {Button, Col, ConfigProvider, Row} from 'antd'
+import {Button, Col, Row} from 'antd'
 import Cookies from 'js-cookie'
 import {useEffect, useState} from 'react'
 import CardViewPremium from './cardView/Premium'
@@ -57,34 +57,20 @@ export default function Packages({locale, ssrData}) {
 
           {packageList.current_package_id ? (
             <>
-              <div className='mb-10 mt-5'>
+              <div className='mb-10 bg-white pb-10 rounded-b-2xl'>
                 <Row>
                   <Col span={10} offset={8}>
                     {isShowAllPackages ? (
                       <>
-                        <ConfigProvider
-                          theme={{
-                            token: {
-                              colorPrimary: '#126A25',
-                            },
-                            components: {
-                              Button: {
-                                colorPrimary: '#126A25',
-                              },
-                            },
-                          }}
+                        <Button
+                          type='primary'
+                          ghost
+                          size='large'
+                          className='w-full mb-5 view-all-pack font-medium text-sm leading-5 !text-custom-green'
+                          onClick={() => setShowPackages((thumb) => !thumb)}
                         >
-                          <Button
-                            type='primary'
-                            ghost
-                            size='large'
-                            className='w-full mb-5'
-                            onClick={() => setShowPackages((thumb) => !thumb)}
-                          >
-                            {' '}
-                            View All Packages{' '}
-                          </Button>
-                        </ConfigProvider>
+                          View All Packages
+                        </Button>
                       </>
                     ) : (
                       ''
@@ -118,9 +104,9 @@ export default function Packages({locale, ssrData}) {
 
           {showPackages ? (
             <div
-              className={`rounded-b-2xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${
+              className={`rounded-[20px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${
                 packageList.current_package_id ? '2' : '3'
-              } gap-x-5 bg-white pb-10 px-4`}
+              } gap-x-5 bg-white pb-10 pt-6 px-4`}
             >
               {packageList.packages?.length ? (
                 <>
