@@ -15,6 +15,10 @@ module.exports = {
       colors: {
         'custom-green': '#126A25',
       },
+      backgroundImage: {
+        'custom-gradient':
+          'linear-gradient(39.1deg, #126A25 0.46%, #23D049 110.68%)',
+      },
     },
     container: {
       padding: {
