@@ -45,7 +45,7 @@ export default function Packages({locale, ssrData}) {
     <>
       {packageList ? (
         <>
-          <div className='bg-white py-10 px-4 rounded-t-2xl'>
+          <div className='bg-white pt-6 pb-10 px-4 rounded-t-2xl'>
             <WelcomeMessage />
             <div className='text-center bg-slate-100 mt-4 py-5 rounded-[12px] '>
               <h5 className='text-base font-semibold'>
