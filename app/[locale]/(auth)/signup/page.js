@@ -204,11 +204,7 @@ export default function SignUp() {
             </Form.Item>
 
             <Form.Item>
-              <Button
-                className='w-full btn-hover color-5 !m-0 !h-11 !rounded-xl'
-                type='primary'
-                htmlType='submit'
-              >
+              <Button className='prime-button' type='primary' htmlType='submit'>
                 Register
               </Button>
             </Form.Item>

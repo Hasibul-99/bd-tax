@@ -115,3 +115,25 @@
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 12px;
 }
+
+.prime-button {
+  width: 100%;
+  background: linear-gradient(39.1deg, #126a25 0.46%, #23d049 110.68%);
+  box-shadow: 0px 3.34884px 16.7442px rgba(68, 124, 81, 0.5);
+  border-color: #23d049;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 7px;
+  gap: 7.56px;
+
+  &:hover {
+    background: linear-gradient(
+      39.1deg,
+      #126a25 0.46%,
+      #23d049 110.68%
+    ) !important;
+  }
+}

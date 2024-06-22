@@ -115,6 +115,7 @@ export default function SignIn() {
             </Form.Item>
 
             <Form.Item
+              className='mb-1'
               name='password'
               rules={[
                 {
@@ -127,7 +128,7 @@ export default function SignIn() {
             </Form.Item>
 
             <Form.Item
-              className='text-left'
+              className='text-left mb-1'
               name='remember'
               valuePropName='checked'
             >
@@ -135,12 +136,15 @@ export default function SignIn() {
             </Form.Item>
 
             <Form.Item>
-              <Button
-                className='w-full btn-hover color-5 !m-0 !h-11 !rounded-xl'
-                type='primary'
-                htmlType='submit'
-              >
-                Log In
+              <Button className='prime-button' type='primary' htmlType='submit'>
+                <Space>
+                  <img
+                    src='/assets/icons/home-white.svg'
+                    alt='sms'
+                    width={20}
+                  />
+                  Log In
+                </Space>
               </Button>
             </Form.Item>
           </Form>
