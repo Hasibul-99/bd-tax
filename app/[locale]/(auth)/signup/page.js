@@ -229,11 +229,25 @@ export default function SignUp() {
           01409-991225
         </Space>
 
-        <img
-          className='w-full mt-5'
-          src='/assets/images/Frame-3.png'
-          alt='logo'
-        />
+        <div className='flex justify-center items-center p-0 gap-8'>
+          <img
+            className=''
+            src='/assets/icons/bangladesh_copyright_logo-min 2.svg'
+            alt='bangladesh'
+          />
+
+          <img
+            className=''
+            src='/assets/icons/start_award_logo-min-removebg-preview 1.svg'
+            alt='start'
+          />
+
+          <img
+            className=''
+            src='/assets/icons/Champion_final3-min-removebg-preview 1.svg'
+            alt='Champion'
+          />
+        </div>
       </div>
     </div>
   )
