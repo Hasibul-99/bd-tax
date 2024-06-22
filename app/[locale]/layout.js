@@ -26,7 +26,7 @@ export default async function LocaleLayout(props) {
   return (
     <html lang={params?.locale || 'en'}>
       <Script src='js/script.js'></Script>
-      <body className={`${poppins.variable}`}>
+      <body className={poppins.className}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
