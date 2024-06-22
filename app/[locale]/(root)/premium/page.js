@@ -4,7 +4,7 @@ import WelcomeMessage from '@/components/shared/WelcomeMessage'
 import GetUserStep from '@/components/shared/get-user-step'
 import {GET_USER_STEP} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
-import {Button, ConfigProvider, Space} from 'antd'
+import {Button, Space} from 'antd'
 import {useEffect, useState} from 'react'
 
 export default function Premium() {
@@ -49,33 +49,16 @@ export default function Premium() {
         </div>
 
         <div className='bg-amber-100 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
-          <div className='text-base '>
+          <div className='text-base pt-2.5'>
             Upgrade to <span className='font-semibold'>Premium Plus</span> for a
             hassle free tax submission.
           </div>
           <div className='md:text-right md:ml-auto'>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: '#D4AF37',
-                },
-                components: {
-                  Button: {
-                    colorPrimary: '#D4AF37',
-                  },
-                },
-              }}
-            >
-              <Button
-                type='primary'
-                className='w-full text-slate-950 hover:text-slate-950'
-                size='large'
-              >
-                <Space>
-                  <img src='/assets/icons/pp.svg' alt='Premium-Plus' /> Upgrade
-                </Space>
-              </Button>
-            </ConfigProvider>
+            <Button type='primary' className='w-full pp-upgrade ' size='large'>
+              <Space>
+                <img src='/assets/icons/pp.svg' alt='Premium-Plus' /> Upgrade
+              </Space>
+            </Button>
           </div>
         </div>
 

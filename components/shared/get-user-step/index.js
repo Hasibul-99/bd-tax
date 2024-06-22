@@ -44,7 +44,7 @@ export default function GetUserStep({
         ''
       )}
 
-      <div className='text-center'>
+      <div className='text-center mt-8'>
         <Button
           type='primary'
           size='large'

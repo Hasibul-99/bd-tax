@@ -167,3 +167,30 @@
     background: #effef2 !important;
   }
 }
+
+.pp-upgrade {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 6.98px;
+
+  margin: 0 auto;
+  height: 45px;
+
+  background: linear-gradient(88.76deg, #d4af37 1.13%, #f7ab3c 97.72%);
+  box-shadow: 0px 2.7907px 13.9535px rgba(247, 176, 59, 0.5);
+  border-radius: 10px;
+  color: #0f172a;
+
+  &:hover {
+    background: linear-gradient(
+      88.76deg,
+      #d4af37 1.13%,
+      #f7ab3c 97.72%
+    ) !important;
+    color: #0f172a !important;
+  }
+}
