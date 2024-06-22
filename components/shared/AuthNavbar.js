@@ -58,7 +58,7 @@ export default function AuthNavbar({locale}) {
           id='menu'
         >
           <ul className='text-gray-700 pt-4 md:mt-3 md:flex md:justify-between items-center md:pt-0 text-sm'>
-            <li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/${locale}/home`}
                 className='md:px-5 py-4 block hover:text-green-400'
@@ -66,7 +66,7 @@ export default function AuthNavbar({locale}) {
                 {t(`home`)}
               </Link>
             </li>
-            <li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/${locale}/`}
                 className='md:px-5 py-4 block hover:text-green-400'
@@ -74,7 +74,7 @@ export default function AuthNavbar({locale}) {
                 {t(`packages`)}
               </Link>
             </li>
-            <li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/${locale}/faq`}
                 className='md:px-5 py-4 block hover:text-green-400'
@@ -82,7 +82,7 @@ export default function AuthNavbar({locale}) {
                 {t(`news`)}
               </Link>
             </li>
-            <li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/${locale}/faq`}
                 className='md:px-5 py-4 block hover:text-green-400'
@@ -90,7 +90,7 @@ export default function AuthNavbar({locale}) {
                 {t(`blog`)}
               </Link>
             </li>
-            <li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/${locale}/faq`}
                 className='md:px-5 py-4 block hover:text-green-400'
@@ -98,7 +98,7 @@ export default function AuthNavbar({locale}) {
                 {t(`faq`)}
               </Link>
             </li>
-            <li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/${locale}/about-us`}
                 className='md:px-5 py-4 block hover:text-green-400'
@@ -106,7 +106,7 @@ export default function AuthNavbar({locale}) {
                 {t(`about_us`)}
               </Link>
             </li>
-            <li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/${locale}/contact-us`}
                 className='md:px-5 py-4 block hover:text-green-400'
@@ -117,7 +117,7 @@ export default function AuthNavbar({locale}) {
             <li>
               <LanguageChange />
             </li>
-            <li className='md:px-2.5'>
+            <li className='font-normal text-base leading-5 text-[#020617] md:px-2.5'>
               <Link
                 href={`/${locale}/signin`}
                 className={
@@ -129,7 +129,7 @@ export default function AuthNavbar({locale}) {
                 {t(`login`)}
               </Link>
             </li>
-            <li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/${locale}/signup`}
                 className={

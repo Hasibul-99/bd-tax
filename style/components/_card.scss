@@ -138,3 +138,9 @@
     gap: 8px;
   }
 }
+
+.lang-select {
+  .ant-select-selector {
+    border-radius: 10px;
+  }
+}
