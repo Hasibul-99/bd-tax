@@ -191,6 +191,8 @@
 }
 
 .site-navigation-steps {
+  width: 70%;
+
   .ant-steps-item-icon {
     display: none;
   }
@@ -208,6 +210,15 @@
     .ant-steps-item-title {
       font-weight: 600;
       color: #126a25;
+    }
+  }
+
+  .ant-steps-item {
+    &:after {
+      border-top: 2px solid #475569 !important;
+      border-inline-end: 2px solid #475569 !important;
+      width: 9px !important;
+      height: 9px !important;
     }
   }
 }
