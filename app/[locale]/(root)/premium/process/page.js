@@ -49,7 +49,7 @@ export default function PremiumPlusProcess() {
   }, [status])
 
   return (
-    <div className='container mx-auto px-30 '>
+    <div className='container mx-auto px-30 mt-5 pb-16'>
       {/* {
                 showPayment && paymentLink ? <>
                     <iframe id="myIframe" src={paymentLink} frameborder="0" allowfullscreen
@@ -57,7 +57,7 @@ export default function PremiumPlusProcess() {
                 </> : <></>
             } */}
       <div>
-        <div className={`bg-white py-5 px-4 `}>
+        <div className={`bg-white py-5 px-4 rounded-[20px]`}>
           <WelcomeMessage />
           <div className='bg-[#e6f8e9] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
             <div>
@@ -102,71 +102,72 @@ export default function PremiumPlusProcess() {
               of the way.
             </p>
           </div>
-        </div>
-        <div className='bg-white py-5 px-4'>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: '#126A25',
-              },
-              components: {
-                Button: {
+
+          <div className=' py-5 px-4'>
+            <ConfigProvider
+              theme={{
+                token: {
                   colorPrimary: '#126A25',
                 },
-              },
-            }}
-          >
-            <Steps
-              type='navigation'
-              size='small'
-              current={current}
-              onChange={onChange}
-              className='site-navigation-steps'
-              items={[
-                {
-                  status: 'home',
-                  title: 'Home',
-                  icon: '',
+                components: {
+                  Button: {
+                    colorPrimary: '#126A25',
+                  },
                 },
-                {
-                  status: 'personal-info',
-                  title: 'Personal Info',
-                },
-                {
-                  status: 'doc',
-                  title: 'Doc',
-                },
-                {
-                  status: 'payment',
-                  title: 'Payment',
-                },
-                {
-                  status: 'status',
-                  title: 'Order Status',
-                },
-                // {
-                //     status: 'submit',
-                //     title: 'Submit',
-                // },
-              ]}
-            />
-          </ConfigProvider>
-
-          <div>
-            {current === 1 ? <PersonalInfo setCurrent={setCurrent} /> : ''}
-            {current === 2 ? <Doc setCurrent={setCurrent} /> : ''}
-            {current === 3 ? (
-              <Payment
-                salaryData={salaryData}
-                setCurrent={setCurrent}
-                context={'premium'}
+              }}
+            >
+              <Steps
+                type='navigation'
+                size='small'
+                current={current}
+                onChange={onChange}
+                className='site-navigation-steps'
+                items={[
+                  {
+                    status: 'home',
+                    title: 'Home',
+                    icon: '',
+                  },
+                  {
+                    status: 'personal-info',
+                    title: 'Personal Info',
+                  },
+                  {
+                    status: 'doc',
+                    title: 'Doc',
+                  },
+                  {
+                    status: 'payment',
+                    title: 'Payment',
+                  },
+                  {
+                    status: 'status',
+                    title: 'Order Status',
+                  },
+                  // {
+                  //     status: 'submit',
+                  //     title: 'Submit',
+                  // },
+                ]}
               />
-            ) : (
-              ''
-            )}
-            {current === 4 ? <OrderStatus setCurrent={setCurrent} /> : ''}
-            {current === 5 ? <Submit /> : ''}
+            </ConfigProvider>
           </div>
+        </div>
+
+        <div className='bg-white mt-6 rounded-[20px]'>
+          {current === 1 ? <PersonalInfo setCurrent={setCurrent} /> : ''}
+          {current === 2 ? <Doc setCurrent={setCurrent} /> : ''}
+          {current === 3 ? (
+            <Payment
+              salaryData={salaryData}
+              setCurrent={setCurrent}
+              context={'premium'}
+            />
+          ) : (
+            ''
+          )}
+          {current === 4 ? <OrderStatus setCurrent={setCurrent} /> : ''}
+          {current === 5 ? <Submit /> : ''}
         </div>
       </div>
     </div>

@@ -38,8 +38,8 @@ export default function PremiumPlusProcess() {
   }, [current])
 
   return (
-    <div className='container mx-auto px-30 '>
-      <div className='bg-white py-5 px-4'>
+    <div className='container mx-auto px-30 mt-5 pb-16'>
+      <div className='bg-white py-5 px-4 rounded-[20px]'>
         <WelcomeMessage />
         <div className='bg-[#dfdfdf] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
           <div>
@@ -119,18 +119,18 @@ export default function PremiumPlusProcess() {
             ]}
           />
         </ConfigProvider>
+      </div>
 
-        <div>
-          {current === 1 ? <PersonalInfo setCurrent={setCurrent} /> : ''}
-          {current === 2 ? <Income /> : ''}
-          {current === 3 ? (
-            <Payment salaryData={salaryData} setCurrent={setCurrent} />
-          ) : (
-            ''
-          )}
-          {current === 4 ? <OrderStatus setCurrent={setCurrent} /> : ''}
-          {current === 5 ? <Submit /> : ''}
-        </div>
+      <div className='bg-white mt-6 rounded-[20px]'>
+        {current === 1 ? <PersonalInfo setCurrent={setCurrent} /> : ''}
+        {current === 2 ? <Income /> : ''}
+        {current === 3 ? (
+          <Payment salaryData={salaryData} setCurrent={setCurrent} />
+        ) : (
+          ''
+        )}
+        {current === 4 ? <OrderStatus setCurrent={setCurrent} /> : ''}
+        {current === 5 ? <Submit /> : ''}
       </div>
     </div>
   )

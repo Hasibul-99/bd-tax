@@ -216,7 +216,7 @@ export default function Doc({setCurrent}) {
                     </p>
                     <p className='ant-upload-text'>File size limit 20 mb</p>
                     <div className='ant-upload-hint mt-3'>
-                      <div className='rounded border border-[#126A25] w-48 py-1 m-auto mt-4 bg-green-200'>
+                      <div className='refer-friend-button w-72 m-auto py-2.5'>
                         <Space>
                           <img src='/assets/icons/file.svg' alt='Select File' />
                           Select File

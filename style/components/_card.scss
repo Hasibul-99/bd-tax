@@ -189,3 +189,25 @@
     }
   }
 }
+
+.site-navigation-steps {
+  .ant-steps-item-icon {
+    display: none;
+  }
+
+  .ant-steps-item-title {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 140%;
+  }
+
+  .ant-steps-item-active {
+    &:before {
+      display: none !important;
+    }
+    .ant-steps-item-title {
+      font-weight: 600;
+      color: #126a25;
+    }
+  }
+}
