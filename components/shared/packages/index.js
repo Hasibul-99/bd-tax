@@ -104,7 +104,7 @@ export default function Packages({locale, ssrData}) {
 
           {showPackages ? (
             <div
-              className={`rounded-[20px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${
+              className={`rounded-b-[20px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${
                 packageList.current_package_id ? '2' : '3'
               } gap-x-5 bg-white pb-10 pt-6 px-4`}
             >

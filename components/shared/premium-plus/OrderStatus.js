@@ -1,6 +1,6 @@
 import {GET_ORDER_STATUS} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
-import {RightOutlined, UserOutlined} from '@ant-design/icons'
+import {RightOutlined} from '@ant-design/icons'
 import {Button, Card, Space} from 'antd'
 import {useEffect, useState} from 'react'
 
@@ -124,7 +124,7 @@ export default function OrderStatus({
               )}
 
               <Button type='primary' className='refer-friend-button'>
-                <UserOutlined />
+                <img src='/assets/icons/user-add.svg' alt='useradd' />
                 Refer Friends
               </Button>
             </Space>

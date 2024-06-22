@@ -144,3 +144,48 @@
     border-radius: 10px;
   }
 }
+
+.expect {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+
+  .expect-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 10px;
+    height: 48px;
+
+    background: #f8fafc;
+    border-radius: 12px;
+    width: 100%;
+    .content-text {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 140%;
+    }
+    .number-card {
+      width: 27px;
+      height: 28px;
+      border-radius: 45px;
+      background: #e2e8f0;
+      position: relative;
+
+      .number {
+        position: absolute;
+        height: 14px;
+        left: 10px;
+        top: 5px;
+      }
+    }
+  }
+}
