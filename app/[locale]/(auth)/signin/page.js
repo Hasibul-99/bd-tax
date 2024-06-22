@@ -73,7 +73,7 @@ export default function SignIn() {
     <div className='flex items-center w-full'>
       <div className='w-full p-6 m-4 md:max-w-sm md:mx-auto text-center'>
         <h1 className='block w-full font-bold mb-2 text-[22px]'>Sign In</h1>
-        <Text type='secondary' className='!text-[#475569]'>
+        <Text type='secondary' className='!text-[#475569] text-[13px]'>
           Stress-free tax season starts here!
         </Text>
 

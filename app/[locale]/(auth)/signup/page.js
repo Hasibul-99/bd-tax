@@ -57,7 +57,7 @@ export default function SignUp() {
         <Title level={5} className='!mb-0'>
           #1 Tax Software in Bangladesh
         </Title>
-        <Text type='secondary' className='!text-[#475569]'>
+        <Text type='secondary' className='!text-[#475569] text-[13px]'>
           Let’s Create your BDTax account
         </Text>
 

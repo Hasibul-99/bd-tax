@@ -18,6 +18,16 @@ module.exports = {
       backgroundImage: {
         'custom-gradient':
           'linear-gradient(39.1deg, #126A25 0.46%, #23D049 110.68%)',
+        'custom-gradient-yellow':
+          'linear-gradient(88.76deg, #D4AF37 1.13%, #F7AB3C 97.72%)',
+      },
+      boxShadow: {
+        custom: '0px 2.7907px 13.9535px rgba(247, 176, 59, 0.5)',
+      },
+      spacing: {
+        6.98: '6.98px',
+        109.98: '109.98px',
+        45: '45px',
       },
     },
     container: {
