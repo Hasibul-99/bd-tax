@@ -143,32 +143,18 @@ export default function Inome() {
         </ConfigProvider>
       </div>
 
-      <div className='text-center'>
-        <ConfigProvider
-          className='text-center'
-          theme={{
-            token: {
-              colorPrimary: '#126A25',
-            },
-            components: {
-              Button: {
-                colorPrimary: '#126A25',
-              },
-            },
-          }}
+      <div className='text-center my-6'>
+        <Button
+          type='primary'
+          htmlType='submit'
+          className='prime-button w-52 m-auto '
+          size='large'
         >
-          <Button
-            type='primary'
-            htmlType='submit'
-            className='btn-hover color-5 !h-11 !rounded-xl px-10 mt-5 m-auto'
-            size='large'
-          >
-            <Space>
-              Next
-              <RightOutlined style={{fontSize: '12px', marginTop: '8px'}} />
-            </Space>
-          </Button>
-        </ConfigProvider>
+          <Space>
+            Next
+            <RightOutlined style={{fontSize: '12px', marginTop: '8px'}} />
+          </Space>
+        </Button>
       </div>
     </div>
   )

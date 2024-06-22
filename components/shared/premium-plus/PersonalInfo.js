@@ -1,14 +1,23 @@
-import { GET_USER_PROFILE, PACKAGE_WISE_PROFILE } from '@/scripts/api';
-import { getData, postData } from '@/scripts/api-service';
-import { RightOutlined } from '@ant-design/icons';
-import { Button, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from 'antd';
-import { useEffect } from 'react';
-import dayjs from 'dayjs';
-import { alertPop } from '@/scripts/helper';
-const { Option } = Select;
+import {GET_USER_PROFILE, PACKAGE_WISE_PROFILE} from '@/scripts/api'
+import {getData, postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
+import {RightOutlined} from '@ant-design/icons'
+import {
+  Button,
+  Col,
+  ConfigProvider,
+  DatePicker,
+  Form,
+  Input,
+  Row,
+  Select,
+} from 'antd'
+import dayjs from 'dayjs'
+import {useEffect} from 'react'
+const {Option} = Select
 
-export default function PersonalInfo({ setCurrent }) {
-  const [form] = Form.useForm();
+export default function PersonalInfo({setCurrent}) {
+  const [form] = Form.useForm()
 
   const onFinish = async (values) => {
     let profile = {
@@ -19,27 +28,27 @@ export default function PersonalInfo({ setCurrent }) {
       Email: values.email,
       Contact: values.mobile,
       NationalId: values.NationalId,
-      DOB: dayjs(values.dob).format('DD-MM-YYYY')
-    };
+      DOB: dayjs(values.dob).format('DD-MM-YYYY'),
+    }
 
-    let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError');
+    let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError')
 
     if (res) {
-      if (res.code === "error") {
+      if (res.code === 'error') {
         form.setFields(res?.errors)
       } else {
-        let masterData = res.data;
-        alertPop("success", masterData?.message);
-        setCurrent(2);
+        let masterData = res.data
+        alertPop('success', masterData?.message)
+        setCurrent(2)
       }
     }
-  };
+  }
 
   const getUserData = async () => {
-    let res = await getData(GET_USER_PROFILE);
+    let res = await getData(GET_USER_PROFILE)
 
     if (res) {
-      let masterData = res?.data;
+      let masterData = res?.data
 
       if (masterData) {
         form.setFieldsValue({
@@ -50,7 +59,7 @@ export default function PersonalInfo({ setCurrent }) {
           email: masterData.Email,
           mobile: masterData.Contact,
           gender: masterData.Gender,
-          dob: masterData.DOB ? dayjs(masterData.DOB) : undefined
+          dob: masterData.DOB ? dayjs(masterData.DOB) : undefined,
         })
       }
     }
@@ -67,30 +76,30 @@ export default function PersonalInfo({ setCurrent }) {
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#126A25",
+            colorPrimary: '#126A25',
           },
           components: {
             Button: {
-              colorPrimary: "#126A25",
+              colorPrimary: '#126A25',
             },
           },
         }}
       >
         <Form
-          name="basic"
+          name='basic'
           form={form}
           className='mt-10'
           onFinish={onFinish}
-          autoComplete="off"
+          autoComplete='off'
           size='large'
         >
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className='gutter-row' span={4}>
               First Name *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className='gutter-row' span={20}>
               <Form.Item
-                name="first_name"
+                name='first_name'
                 rules={[
                   {
                     required: true,
@@ -103,15 +112,14 @@ export default function PersonalInfo({ setCurrent }) {
             </Col>
           </Row>
 
-
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className='gutter-row' span={4}>
               Last Name *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className='gutter-row' span={20}>
               <Form.Item
-                label=""
-                name="last_name"
+                label=''
+                name='last_name'
                 rules={[
                   {
                     required: true,
@@ -121,17 +129,16 @@ export default function PersonalInfo({ setCurrent }) {
               >
                 <Input />
               </Form.Item>
-
             </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className='gutter-row' span={4}>
               ETIN *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className='gutter-row' span={20}>
               <Form.Item
-                name="etin"
+                name='etin'
                 rules={[
                   {
                     required: true,
@@ -139,24 +146,23 @@ export default function PersonalInfo({ setCurrent }) {
                   },
                   {
                     required: true,
-                    message: "A value must be entered",
-                    pattern: new RegExp(/^[0-9]+$/)
-                  }
+                    message: 'A value must be entered',
+                    pattern: new RegExp(/^[0-9]+$/),
+                  },
                 ]}
               >
                 <Input />
               </Form.Item>
-
             </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className='gutter-row' span={4}>
               National ID *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className='gutter-row' span={20}>
               <Form.Item
-                name="NationalId"
+                name='NationalId'
                 rules={[
                   {
                     required: true,
@@ -164,48 +170,47 @@ export default function PersonalInfo({ setCurrent }) {
                   },
                   {
                     required: true,
-                    message: "A value must be entered",
-                    pattern: new RegExp(/^[0-9]+$/)
-                  }
+                    message: 'A value must be entered',
+                    pattern: new RegExp(/^[0-9]+$/),
+                  },
                 ]}
               >
                 <Input />
               </Form.Item>
-
             </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className='gutter-row' span={4}>
               Email *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className='gutter-row' span={20}>
               <Form.Item
-                name="email"
+                name='email'
                 rules={[
                   {
                     required: true,
                     message: 'Please input email!',
                   },
                   {
-                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                    message: "Please enter a valid email address",
-                  }
+                    pattern:
+                      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                    message: 'Please enter a valid email address',
+                  },
                 ]}
               >
                 <Input placeholder='Email *' />
               </Form.Item>
-
             </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className='gutter-row' span={4}>
               Mobile *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className='gutter-row' span={20}>
               <Form.Item
-                name="mobile"
+                name='mobile'
                 rules={[
                   {
                     required: true,
@@ -213,8 +218,8 @@ export default function PersonalInfo({ setCurrent }) {
                   },
                   {
                     pattern: /^(?:\+?88)?01[15-9]\d{8}$/,
-                    message: "Please enter a valid mobile no",
-                  }
+                    message: 'Please enter a valid mobile no',
+                  },
                 ]}
               >
                 <Input placeholder='Phone *' />
@@ -223,12 +228,12 @@ export default function PersonalInfo({ setCurrent }) {
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className='gutter-row' span={4}>
               DOB *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className='gutter-row' span={20}>
               <Form.Item
-                name="dob"
+                name='dob'
                 rules={[
                   {
                     required: true,
@@ -238,18 +243,17 @@ export default function PersonalInfo({ setCurrent }) {
               >
                 <DatePicker className='w-full' />
               </Form.Item>
-
             </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" span={4}>
+            <Col className='gutter-row' span={4}>
               Gender *
             </Col>
-            <Col className="gutter-row" span={20}>
+            <Col className='gutter-row' span={20}>
               <Form.Item
-                label=""
-                name="gender"
+                label=''
+                name='gender'
                 rules={[
                   {
                     required: true,
@@ -257,24 +261,23 @@ export default function PersonalInfo({ setCurrent }) {
                   },
                 ]}
               >
-                <Select
-                  placeholder="Select gender"
-                  allowClear
-                >
-                  <Option value="male">Male</Option>
-                  <Option value="female">Female</Option>
+                <Select placeholder='Select gender' allowClear>
+                  <Option value='male'>Male</Option>
+                  <Option value='female'>Female</Option>
                   {/* <Option value="other">other</Option> */}
                 </Select>
               </Form.Item>
-
             </Col>
           </Row>
 
-          <Form.Item className='text-center '>
-            <Button type="primary" htmlType="submit" className='px-10 mt-5 flex m-auto' >
+          <Form.Item className='text-center my-6'>
+            <Button
+              type='primary'
+              htmlType='submit'
+              className='prime-button w-52 m-auto'
+            >
               Next
-
-              <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
+              <RightOutlined style={{fontSize: '12px', marginTop: '7px'}} />
             </Button>
           </Form.Item>
         </Form>

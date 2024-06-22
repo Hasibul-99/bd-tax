@@ -1,11 +1,22 @@
-import { Select, Upload, ConfigProvider, Space, List, Modal, Avatar, Button, Row, Col, Form } from "antd";
-const { Dragger } = Upload;
-import { RightOutlined } from '@ant-design/icons';
-import { useEffect, useState } from "react";
-import { deleteData, getData, postData } from "@/scripts/api-service";
-import { DELETE_FILE, GET_FILES, UPLOAD_FILES } from "@/scripts/api";
-import { alertPop } from "@/scripts/helper";
-
+import {DELETE_FILE, GET_FILES, UPLOAD_FILES} from '@/scripts/api'
+import {deleteData, getData, postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
+import {RightOutlined} from '@ant-design/icons'
+import {
+  Avatar,
+  Button,
+  Col,
+  ConfigProvider,
+  Form,
+  List,
+  Modal,
+  Row,
+  Select,
+  Space,
+  Upload,
+} from 'antd'
+import {useEffect, useState} from 'react'
+const {Dragger} = Upload
 
 const data = [
   {
@@ -20,63 +31,63 @@ const data = [
   {
     title: 'Ant Design Title 4',
   },
-];
+]
 
-export default function Doc({ setCurrent }) {
-  const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-  const [fileType, setFileType] = useState();
-  const [uploadedFile, setUploadedFile] = useState();
+export default function Doc({setCurrent}) {
+  const [form] = Form.useForm()
+  const [loading, setLoading] = useState(false)
+  const [fileType, setFileType] = useState()
+  const [uploadedFile, setUploadedFile] = useState()
 
   const props = {
     name: 'file',
     multiple: false,
     action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
     beforeUpload() {
-      return false;
+      return false
     },
     onChange(info) {
-      const { status } = info.file;
+      const {status} = info.file
       if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
+        console.log(info.file, info.fileList)
       }
       if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
+        message.success(`${info.file.name} file uploaded successfully.`)
       } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`${info.file.name} file upload failed.`)
       }
     },
     onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
+      console.log('Dropped files', e.dataTransfer.files)
     },
-  };
+  }
 
   const getPageFiles = async () => {
-    let res = await getData(GET_FILES);
+    let res = await getData(GET_FILES)
 
     if (res) {
-      let masterData = res?.data[0];
+      let masterData = res?.data[0]
       setFileType(masterData?.file_type)
       setUploadedFile(masterData?.user_upload)
     }
   }
 
   const onFinish = async (values) => {
-    let formData = new FormData();
+    let formData = new FormData()
 
-    formData.append('file_type', values?.file_type);   //append the values with key, value pair
-    formData.append('img', values?.Img?.file);
+    formData.append('file_type', values?.file_type) //append the values with key, value pair
+    formData.append('img', values?.Img?.file)
 
-    let res = await postData(UPLOAD_FILES, formData, null, true);
+    let res = await postData(UPLOAD_FILES, formData, null, true)
 
     if (res) {
-      if (res.code === "error") {
+      if (res.code === 'error') {
         form.setFields(res?.errors)
       } else {
-        form.resetFields();
+        form.resetFields()
         let masterData = res?.data?.data
 
-        setUploadedFile(oldArray => [...oldArray, masterData]);
+        setUploadedFile((oldArray) => [...oldArray, masterData])
       }
     }
   }
@@ -88,12 +99,11 @@ export default function Doc({ setCurrent }) {
       async onOk() {
         let res = await deleteData(DELETE_FILE + fileId)
         if (res) {
-          setUploadedFile(l => l.filter(item => item.id !== fileId));
-          alertPop('success', res?.data?.message);
+          setUploadedFile((l) => l.filter((item) => item.id !== fileId))
+          alertPop('success', res?.data?.message)
         }
       },
-    });
-
+    })
   }
 
   useEffect(() => {
@@ -102,48 +112,55 @@ export default function Doc({ setCurrent }) {
 
   return (
     <>
-      {
-        loading ? <>
+      {loading ? (
+        <>
           <div className='text-center h-96 flex justify-items-center items-center relative'>
-            <div className="w-[700px] absolute inset-y-1/3 inset-x-1/3">
-              <div className="relative w-full sm:w-1/2 bg-gray-200 rounded">
-                <div style={{ width: '100%' }} className="absolute top-0 h-4 rounded shim-green" />
+            <div className='w-[700px] absolute inset-y-1/3 inset-x-1/3'>
+              <div className='relative w-full sm:w-1/2 bg-gray-200 rounded'>
+                <div
+                  style={{width: '100%'}}
+                  className='absolute top-0 h-4 rounded shim-green'
+                />
               </div>
             </div>
 
-            <div className="m-auto  ">
+            <div className='m-auto  '>
               <p>Curious about owed taxed? Hang tight as we </p>
               <p>process your dicument</p>
             </div>
           </div>
-        </> : <>
+        </>
+      ) : (
+        <>
           <div className='py-10 px-20'>
-            <h3 className='text-xl font-semibold'>Please upload your Tax documents</h3>
+            <h3 className='text-xl font-semibold'>
+              Please upload your Tax documents
+            </h3>
 
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: "#126A25",
+                  colorPrimary: '#126A25',
                 },
                 components: {
                   Button: {
-                    colorPrimary: "#126A25",
+                    colorPrimary: '#126A25',
                   },
                 },
               }}
             >
               <Form
                 className='mt-6 text-left'
-                name="basic"
+                name='basic'
                 onFinish={onFinish}
-                autoComplete="off"
+                autoComplete='off'
                 size='large'
                 form={form}
               >
                 <Row gutter={16}>
-                  <Col className="gutter-row" span={20}>
+                  <Col className='gutter-row' span={20}>
                     <Form.Item
-                      name="file_type"
+                      name='file_type'
                       rules={[
                         {
                           required: true,
@@ -153,19 +170,27 @@ export default function Doc({ setCurrent }) {
                     >
                       <Select
                         showSearch
-                        placeholder="Select a file type"
-                        optionFilterProp="children"
-                        className="w-full my-3"
-                        options={fileType?.length ? fileType.map(item => ({
-                          value: item.id,
-                          label: item.title,
-                        })) : []}
+                        placeholder='Select a file type'
+                        optionFilterProp='children'
+                        className='w-full my-3'
+                        options={
+                          fileType?.length
+                            ? fileType.map((item) => ({
+                                value: item.id,
+                                label: item.title,
+                              }))
+                            : []
+                        }
                       />
                     </Form.Item>
                   </Col>
-                  <Col className="gutter-row" span={4}>
+                  <Col className='gutter-row' span={4}>
                     <Form.Item>
-                      <Button type="primary" htmlType="submit" className='px-10 mt-3 flex m-auto' >
+                      <Button
+                        type='primary'
+                        htmlType='submit'
+                        className='mt-2 prime-button w-52 m-auto'
+                      >
                         Submit
                       </Button>
                     </Form.Item>
@@ -173,7 +198,7 @@ export default function Doc({ setCurrent }) {
                 </Row>
 
                 <Form.Item
-                  name="Img"
+                  name='Img'
                   rules={[
                     {
                       required: true,
@@ -182,65 +207,71 @@ export default function Doc({ setCurrent }) {
                   ]}
                 >
                   <Dragger {...props}>
-                    <p className="ant-upload-drag-icon">
-                      <img className="m-auto" src="/assets/images/download.png" alt="download" />
+                    <p className='ant-upload-drag-icon'>
+                      <img
+                        className='m-auto'
+                        src='/assets/images/download.png'
+                        alt='download'
+                      />
                     </p>
-                    <p className="ant-upload-text">File size limit 20 mb</p>
-                    <div className="ant-upload-hint mt-3">
-                      <div className="rounded border border-[#126A25] w-48 py-1 m-auto mt-4 bg-green-200">
+                    <p className='ant-upload-text'>File size limit 20 mb</p>
+                    <div className='ant-upload-hint mt-3'>
+                      <div className='rounded border border-[#126A25] w-48 py-1 m-auto mt-4 bg-green-200'>
                         <Space>
-                          <img src='/assets/icons/file.svg' alt="Select File" />
+                          <img src='/assets/icons/file.svg' alt='Select File' />
                           Select File
                         </Space>
                       </div>
-                      <p className="mt-3 font-semibold">or drop a file</p>
+                      <p className='mt-3 font-semibold'>or drop a file</p>
                     </div>
                   </Dragger>
                 </Form.Item>
-
               </Form>
-
-
-
             </ConfigProvider>
 
             <List
-              itemLayout="horizontal"
+              itemLayout='horizontal'
               dataSource={uploadedFile || []}
               renderItem={(item, index) => (
-                <List.Item actions={[<a key={index} onClick={() => { deleteFile(item.id) }}>
-                  <img src='/assets/icons/delete.svg' alt="Select File" />
-                </a>]}>
+                <List.Item
+                  actions={[
+                    <a
+                      key={index}
+                      onClick={() => {
+                        deleteFile(item.id)
+                      }}
+                    >
+                      <img src='/assets/icons/delete.svg' alt='Select File' />
+                    </a>,
+                  ]}
+                >
                   <List.Item.Meta
                     avatar={<Avatar src={`/assets/icons/Check.svg`} />}
                     title={<p>{item.title}</p>}
-                  // description="Salary Statement . 96KB"
+                    // description="Salary Statement . 96KB"
                   />
                 </List.Item>
               )}
             />
-            <p>Don’t have all the documents? Don’t worry Click “Next” and upload documents later.</p>
+            <p>
+              Don’t have all the documents? Don’t worry Click “Next” and upload
+              documents later.
+            </p>
 
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "#126A25",
-                },
-                components: {
-                  Button: {
-                    colorPrimary: "#126A25",
-                  },
-                },
+            <Button
+              type='primary'
+              htmlType='submit'
+              className='prime-button w-52 m-auto mt-8'
+              onClick={() => {
+                setCurrent(3)
               }}
             >
-              <Button type="primary" htmlType="submit" className='px-10 mt-5 flex m-auto' onClick={() => { setCurrent(3) }}>
-                Next
-                <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
-              </Button>
-            </ConfigProvider>
+              Next
+              <RightOutlined style={{fontSize: '12px', marginTop: '7px'}} />
+            </Button>
           </div>
         </>
-      }
+      )}
     </>
   )
 }

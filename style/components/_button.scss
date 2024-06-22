@@ -137,3 +137,33 @@
     ) !important;
   }
 }
+
+.refer-friend-button {
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 20.093px;
+  gap: 8.37px;
+
+  color: #147529;
+
+  background: #effef2;
+  border: 0.5px solid #126a25;
+  backdrop-filter: blur(8.37209px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 12px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+
+  &:hover {
+    color: #147529 !important;
+    background: #effef2 !important;
+  }
+}
