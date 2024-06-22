@@ -26,7 +26,7 @@ export default function Standard(props) {
                   <img src='/assets/images/standerd.png' alt='standard' />
                 </div>
                 <span className='price-text'>
-                  {pack.title} (৳{pack.price})
+                  {pack.title} (৳ {pack.price})
                 </span>
               </div>
               <p className='pack-details'>{pack.description}</p>
