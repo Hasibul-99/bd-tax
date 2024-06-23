@@ -1,8 +1,9 @@
 'use client'
 
-import Income from '@/components/shared/StandardForm/Inome'
 import PersonalInfo from '@/components/shared/StandardForm/PersonalInfo'
+import Prospects from '@/components/shared/StandardForm/Prospects'
 import WelcomeMessage from '@/components/shared/WelcomeMessage'
+import Doc from '@/components/shared/premium-plus/Doc'
 import OrderStatus from '@/components/shared/premium-plus/OrderStatus'
 import Payment from '@/components/shared/premium-plus/Payment'
 import Submit from '@/components/shared/premium-plus/Submit'
@@ -101,8 +102,12 @@ export default function PremiumPlusProcess() {
                 title: 'Personal Info',
               },
               {
-                status: 'income',
-                title: 'Income',
+                status: 'prospects',
+                title: 'Prospects',
+              },
+              {
+                status: 'doc',
+                title: 'Doc',
               },
               {
                 status: 'payment',
@@ -123,14 +128,15 @@ export default function PremiumPlusProcess() {
 
       <div className='bg-white mt-6 rounded-[20px]'>
         {current === 1 ? <PersonalInfo setCurrent={setCurrent} /> : ''}
-        {current === 2 ? <Income /> : ''}
-        {current === 3 ? (
+        {current === 2 ? <Prospects /> : ''}
+        {current === 3 ? <Doc setCurrent={setCurrent} nextCurrent={4} /> : ''}
+        {current === 4 ? (
           <Payment salaryData={salaryData} setCurrent={setCurrent} />
         ) : (
           ''
         )}
-        {current === 4 ? <OrderStatus setCurrent={setCurrent} /> : ''}
-        {current === 5 ? <Submit /> : ''}
+        {current === 5 ? <OrderStatus setCurrent={setCurrent} /> : ''}
+        {current === 6 ? <Submit /> : ''}
       </div>
     </div>
   )

@@ -18,22 +18,7 @@ import {
 import {useEffect, useState} from 'react'
 const {Dragger} = Upload
 
-const data = [
-  {
-    title: 'Ant Design Title 1',
-  },
-  {
-    title: 'Ant Design Title 2',
-  },
-  {
-    title: 'Ant Design Title 3',
-  },
-  {
-    title: 'Ant Design Title 4',
-  },
-]
-
-export default function Doc({setCurrent}) {
+export default function Doc({setCurrent, nextCurrent}) {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
   const [fileType, setFileType] = useState()
@@ -229,30 +214,54 @@ export default function Doc({setCurrent}) {
               </Form>
             </ConfigProvider>
 
-            <List
-              itemLayout='horizontal'
-              dataSource={uploadedFile || []}
-              renderItem={(item, index) => (
-                <List.Item
-                  actions={[
-                    <a
-                      key={index}
-                      onClick={() => {
-                        deleteFile(item.id)
-                      }}
+            {uploadedFile?.length ? (
+              <>
+                <List
+                  className=''
+                  itemLayout='horizontal'
+                  dataSource={uploadedFile || []}
+                  footer={<div></div>}
+                  renderItem={(item, index) => (
+                    <List.Item
+                      actions={[
+                        <a
+                          key={index}
+                          onClick={() => {
+                            deleteFile(item.id)
+                          }}
+                        >
+                          <img
+                            src='/assets/icons/delete.svg'
+                            alt='Select File'
+                          />
+                        </a>,
+                      ]}
                     >
-                      <img src='/assets/icons/delete.svg' alt='Select File' />
-                    </a>,
-                  ]}
-                >
-                  <List.Item.Meta
-                    avatar={<Avatar src={`/assets/icons/Check.svg`} />}
-                    title={<p>{item.title}</p>}
-                    // description="Salary Statement . 96KB"
-                  />
-                </List.Item>
-              )}
-            />
+                      <List.Item.Meta
+                        avatar={
+                          <Avatar
+                            src={`/assets/icons/check-circle.svg`}
+                            size={24}
+                          />
+                        }
+                        title={
+                          <div>
+                            <h5 className='font-semibold text-[13px] leading-[18px] text-custom-slate'>
+                              salary.pdf
+                            </h5>
+                            <span className='font-normal text-[12px] leading-[17px] text-custom-gray'>
+                              {item.title}
+                            </span>
+                          </div>
+                        }
+                        // description="Salary Statement . 96KB"
+                      />
+                    </List.Item>
+                  )}
+                />
+              </>
+            ) : null}
+
             <p>
               Don’t have all the documents? Don’t worry Click “Next” and upload
               documents later.
@@ -263,7 +272,7 @@ export default function Doc({setCurrent}) {
               htmlType='submit'
               className='prime-button w-52 m-auto mt-8'
               onClick={() => {
-                setCurrent(3)
+                setCurrent(nextCurrent || 3)
               }}
             >
               Next

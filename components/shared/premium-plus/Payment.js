@@ -1,6 +1,6 @@
 import {GET_PAYMENT_METHOD} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
-import {Button, Card, ConfigProvider, Space} from 'antd'
+import {Button, Card, Space} from 'antd'
 import {useEffect, useState} from 'react'
 
 // https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca
@@ -69,31 +69,18 @@ export default function Payment({salaryData, setCurrent, context}) {
         </div>
 
         <div className='md:text-right md:ml-auto'>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: '#126A25',
-              },
-              components: {
-                Button: {
-                  colorPrimary: '#126A25',
-                },
-              },
-            }}
+          <Button
+            disabled={!paymentData?.sslgatewayLink}
+            type='primary'
+            className='prime-button w-52 m-auto'
+            size='large'
+            onClick={() => makePayment()}
           >
-            <Button
-              disabled={!paymentData?.sslgatewayLink}
-              type='primary'
-              className='w-full'
-              size='large'
-              onClick={() => makePayment()}
-            >
-              <Space>
-                <img src='/assets/icons/lock.svg' alt='Premium-Plus' /> Make
-                Payment
-              </Space>
-            </Button>
-          </ConfigProvider>
+            <Space>
+              <img src='/assets/icons/lock.svg' alt='Premium-Plus' /> Make
+              Payment
+            </Space>
+          </Button>
         </div>
       </div>
     </div>

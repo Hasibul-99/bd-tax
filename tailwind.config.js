@@ -14,6 +14,8 @@ module.exports = {
       },
       colors: {
         'custom-green': '#126A25',
+        'custom-slate': '#020617',
+        'custom-gray': '#404B5A',
       },
       backgroundImage: {
         'custom-gradient':

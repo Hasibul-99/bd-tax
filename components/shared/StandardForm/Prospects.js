@@ -14,7 +14,7 @@ import {
 import {Fragment, useEffect, useState} from 'react'
 const {Title, Text} = Typography
 
-export default function Inome() {
+export default function Prospects() {
   const [contentData, setContentData] = useState()
 
   const getIncomeAssetLiabilySourceList = async () => {
@@ -32,8 +32,8 @@ export default function Inome() {
   }, [])
 
   return (
-    <div>
-      <div className='md:mt-8 md:h-[80vh] md:overflow-y-scroll scrollbar'>
+    <div className='py-10 px-20 md:mt-8 '>
+      <div className='md:h-[80vh] md:overflow-y-scroll scrollbar'>
         <ConfigProvider
           theme={{
             token: {
