@@ -120,9 +120,6 @@ export default function Doc() {
                         >
                           <img src='/assets/icons/folder.svg' alt='folder' />
                         </a>,
-                        // <a key="list-loadmore-more cursor-pointer">
-                        //   <img src='/assets/icons/delete.svg' alt="delete" />
-                        // </a>
                       ]}
                     >
                       <List.Item.Meta
