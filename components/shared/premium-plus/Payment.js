@@ -28,7 +28,7 @@ export default function Payment({salaryData, setCurrent, context}) {
   }, [])
 
   return (
-    <div className='py-10 px-20'>
+    <div className='py-10 px-10'>
       <h3 className='text-xl font-semibold'>
         WE have auto calculated your tax
       </h3>

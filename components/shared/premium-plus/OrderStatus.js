@@ -1,4 +1,4 @@
-import {GET_ORDER_STATUS} from '@/scripts/api'
+import {GET_ORDER_STATUS, GET_PAYMENT_STATUS} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
 import {RightOutlined} from '@ant-design/icons'
 import {Button, Card, Space} from 'antd'
@@ -16,6 +16,14 @@ export default function OrderStatus({
 
     if (res) {
       setOrderStatus(res?.data)
+    }
+  }
+
+  const getPaymentStatus = async () => {
+    const res = await getData(GET_PAYMENT_STATUS)
+
+    if (res) {
+      // setOrderStatus(res?.data)
     }
   }
 
@@ -37,12 +45,13 @@ export default function OrderStatus({
 
   useEffect(() => {
     getOrdereStatus()
+    getPaymentStatus()
   }, [])
 
   return (
-    <div>
-      <Card title='Order Info' className=''>
-        <div className='border-l-2 border-zinc-800 rounded-l-md px-3 mb-2'>
+    <div className='py-6 px-6'>
+      <Card title='Order Info' className='order-info rounded-lg'>
+        <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
           <p>
             Thank you for your order{' '}
             <span className='font-semibold'>#45678624</span>.{' '}
@@ -50,12 +59,12 @@ export default function OrderStatus({
           <p>Now you can relax as BDTax experts handle your tax return. </p>
         </div>
 
-        <div className='border-l-2 border-zinc-800 rounded-l-md px-3 mb-2'>
+        <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
           <p>Your assigned consultant will contact you within 24 hours.</p>
         </div>
       </Card>
 
-      <div className='bg-white py-5 px-4 mt-4 rounded'>
+      <div className='bg-white py-5 mt-4 rounded'>
         <h5 className='text-base font-semibold mb-6'>Order Status</h5>
 
         {orderStatus?.length ? (
