@@ -29,25 +29,25 @@ export const moreNaveData = [
   {
     id: 4,
     icon: '/assets/icons/package.svg',
-    url: '/package',
+    url: '/',
     name: 'Packages',
   },
   {
     id: 5,
     icon: '/assets/icons/referral.svg',
-    url: '/referral',
+    url: '/more/referral',
     name: 'Referral Program',
   },
   {
     id: 6,
     icon: '/assets/icons/communiaction.svg',
-    url: '/communiaction',
+    url: '/more/communiaction',
     name: 'Communications',
   },
   {
     id: 7,
     icon: '/assets/icons/settings.svg',
-    url: '/settings',
+    url: '/more/settings',
     name: 'Settings',
   },
   {
