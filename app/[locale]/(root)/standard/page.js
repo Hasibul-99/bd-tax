@@ -61,7 +61,7 @@ export default function Standard() {
           </div>
         </div>
         {/* bg-amber-100 */}
-        <div className=' my-2 py-5 px-4 mx-auto rounded-2xl'>
+        <div className=' my-2 py-5 px-4 mx-auto rounded-2xl text-base font-normal text-gray-900 leading-7'>
           <p>Congratulations on selecting the Premium package!</p>
           <p>
             Trust us for precise tax preparation, ensuring accuracy every step

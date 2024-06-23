@@ -95,14 +95,6 @@ export default function PremiumPlusProcess() {
             </div>
           </div>
 
-          <div className='bg-amber-100 my-2 py-5 px-4 mx-auto rounded-2xl'>
-            <p>Congratulations on selecting the Premium package!</p>
-            <p>
-              Trust us for precise tax preparation, ensuring accuracy every step
-              of the way.
-            </p>
-          </div>
-
           <div className=' py-5 px-4'>
             <ConfigProvider
               theme={{
