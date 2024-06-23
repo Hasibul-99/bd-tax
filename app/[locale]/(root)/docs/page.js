@@ -1,24 +1,14 @@
 'use client'
 
-import {GET_ALL_TAX_YEAR, GET_USER_FILE_BY_TAX_YEAR} from '@/scripts/api'
-import {getData} from '@/scripts/api-service'
-import {Avatar, Col, Empty, List, Row} from 'antd'
+import {
+  DELETE_FILE,
+  GET_ALL_TAX_YEAR,
+  GET_USER_FILE_BY_TAX_YEAR,
+} from '@/scripts/api'
+import {deleteData, getData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
+import {Avatar, Col, Empty, List, Modal, Row} from 'antd'
 import {useEffect, useState} from 'react'
-
-const data1 = [
-  {
-    title: 'Ant Design Title 1',
-  },
-  {
-    title: 'Ant Design Title 2',
-  },
-  {
-    title: 'Ant Design Title 3',
-  },
-  {
-    title: 'Ant Design Title 4',
-  },
-]
 
 export default function Doc() {
   const [selected, setSelected] = useState()
@@ -40,9 +30,22 @@ export default function Doc() {
     let res = await getData(GET_USER_FILE_BY_TAX_YEAR + `?tax_year=${selected}`)
 
     if (res) {
-      console.log('res', res)
       setFileList(res?.data)
     }
+  }
+
+  const deleteFile = async (fileId) => {
+    Modal.warning({
+      title: 'Are you sure you want to delete this file?',
+      // content: 'some messages...some messages...',
+      async onOk() {
+        let res = await deleteData(DELETE_FILE + fileId)
+        if (res) {
+          setFileList((l) => l.filter((item) => item.id !== fileId))
+          alertPop('success', res?.data?.message)
+        }
+      },
+    })
   }
 
   const isPDF = (file_path) => {
@@ -115,11 +118,29 @@ export default function Doc() {
                       actions={[
                         <a
                           key='list-loadmore-edit cursor-pointer'
-                          href={`${process.env.NEXT_PUBLIC_PUBLIC_URL}public/${item.file_path}`}
+                          href={`${process.env.NEXT_PUBLIC_PUBLIC_URL}${item.file_path}`}
                           target='_blank'
                         >
-                          <img src='/assets/icons/folder.svg' alt='folder' />
+                          <img
+                            src='/assets/icons/folder.svg'
+                            width={16}
+                            height={16}
+                            alt='folder'
+                          />
                         </a>,
+                        <div
+                          className='cursor-pointer'
+                          onClick={() => {
+                            deleteFile(item.id)
+                          }}
+                        >
+                          <img
+                            src='/assets/icons/delete.svg'
+                            width={16}
+                            height={16}
+                            alt='folder'
+                          />
+                        </div>,
                       ]}
                     >
                       <List.Item.Meta

@@ -1,121 +1,141 @@
-"use client"
+'use client'
 
-import { GET_ORDER_HISTORY } from '@/scripts/api';
-import { getData } from '@/scripts/api-service';
-import { RightOutlined } from '@ant-design/icons';
-import { Button, ConfigProvider, Space } from 'antd';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-
+import {GET_ORDER_HISTORY} from '@/scripts/api'
+import {getData} from '@/scripts/api-service'
+import {RightOutlined} from '@ant-design/icons'
+import {Button, Space} from 'antd'
+import Link from 'next/link'
+import {useEffect, useState} from 'react'
 
 export default function Docs() {
-    const [orderHistory, setOrderHistory] = useState();
+  const [orderHistory, setOrderHistory] = useState()
 
-    const getOrderHistory = async () => {
-        let res = await getData(GET_ORDER_HISTORY);
+  const getOrderHistory = async () => {
+    let res = await getData(GET_ORDER_HISTORY)
 
-        if (res) {
-            let masterData = res?.data;
-            setOrderHistory(masterData);
-        }
+    if (res) {
+      let masterData = res?.data
+      setOrderHistory(masterData)
     }
+  }
 
-    useEffect(() => {
-        getOrderHistory()
-    }, [])
-    return (
-        <div className="container mx-auto px-30 py-10 ">
-            {
-                orderHistory ? <>
-                    <div className='bg-white py-5 px-4 rounded-md'>
-                        <div className='bg-slate-100 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-                            <div>
-                                <h5 className='text-base font-semibold'>Tax Year {orderHistory.tax_year}</h5>
-                                <p>{orderHistory.title} </p>
-                            </div>
-                            <div className='text-right ml-auto'>
-                                <ConfigProvider
-                                    theme={{
-                                        token: {
-                                            colorPrimary: "#4B7F52",
-                                        },
-                                        components: {
-                                            Button: {
-                                                colorPrimary: "#4B7F52",
-                                            },
-                                        },
-                                    }}
-                                >
-                                    <Button type="primary" size='large' className='flex'>
-                                        <Link href={'/'}>
-                                            {orderHistory.button_title} <RightOutlined style={{ fontSize: '12px', marginTop: '7px' }} />
-                                        </Link>
-                                    </Button>
-                                </ConfigProvider>
-                            </div>
-                        </div>
+  useEffect(() => {
+    getOrderHistory()
+  }, [])
+  return (
+    <div className='container mx-auto px-30 py-10 '>
+      {orderHistory ? (
+        <>
+          <div className='bg-white py-5 px-4 rounded-md'>
+            <div className='bg-slate-100 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
+              <div>
+                <h5 className='text-base font-semibold'>
+                  Tax Year {orderHistory.tax_year}
+                </h5>
+                <p>{orderHistory.title} </p>
+              </div>
+              <div className='text-right ml-auto'>
+                <Link href={'/'}>
+                  <Button
+                    type='primary'
+                    size='large'
+                    className='prime-button w-52'
+                  >
+                    {orderHistory.button_title}{' '}
+                    <RightOutlined
+                      style={{fontSize: '12px', marginTop: '7px'}}
+                    />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {orderHistory.order_history?.length ? (
+            <>
+              {orderHistory.order_history.map((order, idx) => (
+                <div className='bg-white mt-5 py-5 px-4 rounded-md' key={idx}>
+                  <div className='bg-slate-100 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
+                    <div>
+                      <h5 className='text-base font-semibold'>
+                        <Space>
+                          <img src='/assets/icons/ok.svg' alt='Premium Plus' />
+                          Tax Year {order.tax_year}
+                        </Space>
+                      </h5>
                     </div>
+                    <div className='text-right ml-auto'>
+                      <h5 className='text-sm font-semibold'>
+                        <Space>
+                          {order.package}
 
-                    {
-                        orderHistory.order_history?.length ? <>
-                            {
-                                orderHistory.order_history.map((order, idx) =>
-                                    <div className='bg-white mt-5 py-5 px-4 rounded-md' key={idx}>
-                                        <div className='bg-slate-100 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-                                            <div>
-                                                <h5 className='text-base font-semibold'>
-                                                    <Space>
-                                                        <img src='/assets/icons/ok.svg' alt="Premium Plus" />
-                                                        Tax Year {order.tax_year}
-                                                    </Space>
-                                                </h5>
-                                            </div>
-                                            <div className='text-right ml-auto'>
-                                                <h5 className='text-sm font-semibold'>
-                                                    <Space>
-                                                        {order.package}
+                          {order.package === 'Premium Plus' ? (
+                            <img
+                              src='/assets/images/Premium-Plus.png'
+                              width={40}
+                              alt='Premium Plus'
+                            />
+                          ) : (
+                            ''
+                          )}
+                          {order.package === 'Standard' ? (
+                            <img
+                              src='/assets/images/Auto Layout Horizontal (2).png'
+                              alt='Standard'
+                            />
+                          ) : (
+                            ''
+                          )}
+                          {order.package === 'Premium ' ? (
+                            <img
+                              src='/assets/images/Auto Layout Horizontal (1).png'
+                              alt='Premium Plus'
+                            />
+                          ) : (
+                            ''
+                          )}
+                        </Space>
+                      </h5>
+                    </div>
+                  </div>
 
-                                                        {order.package === 'Premium Plus' ? <img src='/assets/images/Premium-Plus.png' width={40} alt="Premium Plus" /> : ''}
-                                                        {order.package === "Standard" ? <img src='/assets/images/Auto Layout Horizontal (2).png' alt="Standard" /> : ''}
-                                                        {order.package === "Premium " ? <img src='/assets/images/Auto Layout Horizontal (1).png' alt="Premium Plus" /> : ''}
-                                                    </Space>
-                                                </h5>
-                                            </div>
-                                        </div>
-
-                                        <div className='pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-3 rounded-md'>
-                                            <div>
-                                                <Space>
-                                                    Filling Status:
-                                                    <span className='font-semibold'>{order.status}</span>
-                                                </Space><br />
-                                                <Space>
-                                                    Order Date:
-                                                    <span className='font-semibold'>{order.create_at}</span>
-                                                </Space>
-                                            </div>
-                                            <div className=''>
-                                                <Space>
-                                                    Filling Date:
-                                                    <span className='font-semibold'>{order.update_at}</span>
-                                                </Space><br />
-                                                <Space>
-                                                    Total Tax Paid:
-                                                    <span className='font-semibold'>{order.completed}</span>
-                                                </Space>
-                                            </div>
-                                            <div className='text-[#126A25] underline  decoration-1 mt-auto cursor-pointer'>
-                                                <a target='_blank' href={order.ack_file_path}>View NBR Acknowledge Receipt</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        </> : ''
-                    }
-                </> : null
-            }
-
-        </div>
-    )
+                  <div className='pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-3 rounded-md'>
+                    <div>
+                      <Space>
+                        Filling Status:
+                        <span className='font-semibold'>{order.status}</span>
+                      </Space>
+                      <br />
+                      <Space>
+                        Order Date:
+                        <span className='font-semibold'>{order.create_at}</span>
+                      </Space>
+                    </div>
+                    <div className=''>
+                      <Space>
+                        Filling Date:
+                        <span className='font-semibold'>{order.update_at}</span>
+                      </Space>
+                      <br />
+                      <Space>
+                        Total Tax Paid:
+                        <span className='font-semibold'>{order.completed}</span>
+                      </Space>
+                    </div>
+                    <div className='text-[#126A25] underline  decoration-1 mt-auto cursor-pointer'>
+                      <a target='_blank' href={order.ack_file_path}>
+                        View NBR Acknowledge Receipt
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </>
+          ) : (
+            ''
+          )}
+        </>
+      ) : null}
+    </div>
+  )
 }
