@@ -8,7 +8,7 @@ export default function Submit() {
   const [show, setShow] = useState(1)
 
   return (
-    <div ref={ref} className='mt-12 p-10'>
+    <div ref={ref} className=''>
       {show === 1 ? <ShowDownloadTaxFile setShow={setShow} /> : ''}
       {show === 2 ? (
         <SignatureUpload
@@ -18,7 +18,11 @@ export default function Submit() {
       ) : (
         ''
       )}
-      {show === 3 ? <OrderStatus showNextButton={false} /> : ''}
+      {show === 3 ? (
+        <OrderStatus showNextButton={false} showLastStep={true} />
+      ) : (
+        ''
+      )}
     </div>
   )
 }

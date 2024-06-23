@@ -29,7 +29,7 @@ export default function ShowDownloadTaxFile({setShow}) {
   }, [])
 
   return (
-    <div>
+    <div className='mt-12 p-10'>
       <Title level={4}>Please review your Tax return form</Title>
 
       {fileData?.pdf_file_path ? (

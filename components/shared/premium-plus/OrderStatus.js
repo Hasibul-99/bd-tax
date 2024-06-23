@@ -8,6 +8,7 @@ export default function OrderStatus({
   setCurrent,
   showNextButtons = true,
   showNextButton = true,
+  showLastStep,
 }) {
   const [orderStatus, setOrderStatus] = useState()
 
@@ -51,17 +52,31 @@ export default function OrderStatus({
   return (
     <div className='py-6 px-6'>
       <Card title='Order Info' className='order-info rounded-lg'>
-        <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
-          <p>
-            Thank you for your order{' '}
-            <span className='font-semibold'>#45678624</span>.{' '}
-          </p>
-          <p>Now you can relax as BDTax experts handle your tax return. </p>
-        </div>
+        {showLastStep ? (
+          <>
+            <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
+              <p>
+                Thank you for approving and signing the document. We will now
+                submit it to your tax circle. You will receive your
+                acknowledgment slip via email and courier shortly,
+              </p>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
+              <p>
+                Thank you for your order{' '}
+                <span className='font-semibold'>#45678624</span>.{' '}
+              </p>
+              <p>Now you can relax as BDTax experts handle your tax return. </p>
+            </div>
 
-        <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
-          <p>Your assigned consultant will contact you within 24 hours.</p>
-        </div>
+            <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
+              <p>Your assigned consultant will contact you within 24 hours.</p>
+            </div>
+          </>
+        )}
       </Card>
 
       <div className='bg-white py-5 mt-4 rounded'>
