@@ -11,17 +11,21 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'custom-gradient':
+          'linear-gradient(39.1deg, #126A25 0.46%, #23D049 110.68%)',
+        'custom-gradient-yellow':
+          'linear-gradient(88.76deg, #D4AF37 1.13%, #F7AB3C 97.72%)',
       },
       colors: {
         'custom-green': '#126A25',
         'custom-slate': '#020617',
         'custom-gray': '#404B5A',
       },
-      backgroundImage: {
-        'custom-gradient':
-          'linear-gradient(39.1deg, #126A25 0.46%, #23D049 110.68%)',
-        'custom-gradient-yellow':
-          'linear-gradient(88.76deg, #D4AF37 1.13%, #F7AB3C 97.72%)',
+      backgroundColor: {
+        'gold-20': 'rgba(212, 175, 55, 0.2)',
+      },
+      borderColor: {
+        'gold-40': 'rgba(212, 175, 55, 0.4)',
       },
       boxShadow: {
         custom: '0px 2.7907px 13.9535px rgba(247, 176, 59, 0.5)',

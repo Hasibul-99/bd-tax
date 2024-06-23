@@ -47,7 +47,7 @@ export default function Standard() {
           </div>
         </div>
 
-        <div className='bg-amber-100 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+        <div className='bg-gold-20 border border-gold-40 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
           <div className='text-base pt-2.5'>
             Upgrade to <span className='font-semibold'>Premium Plus</span> for a
             hassle free tax submission.
@@ -60,7 +60,7 @@ export default function Standard() {
             </Button>
           </div>
         </div>
-        {/* bg-amber-100 */}
+        {/* bg-gold-20 border border-gold-40 */}
         <div className=' my-2 py-5 px-4 mx-auto rounded-2xl text-base font-normal text-gray-900 leading-7'>
           <p>Congratulations on selecting the Premium package!</p>
           <p>
