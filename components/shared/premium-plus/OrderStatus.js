@@ -79,42 +79,40 @@ export default function OrderStatus({
         )}
       </Card>
 
-      <div className='bg-white py-5 mt-4 rounded'>
+      <div className='bg-white p-5  mt-4 rounded-[20px]'>
         <h5 className='text-base font-semibold mb-6'>Order Status</h5>
 
         {orderStatus?.length ? (
-          <>
+          <div className='expect'>
             {orderStatus.map((step, idx) => (
               <div
                 key={idx}
-                className={`${
-                  step.status == '1' ? 'bg-[#d9fae0] ' : 'bg-slate-100 '
-                } mb-6 pt-6 pb-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md`}
+                className={`expect-card ${
+                  step.status == '1' ? '!bg-[#EFFEF2] ' : ''
+                }`}
               >
-                <div>
-                  <h5 className='text-sm font-semibold'>
-                    <Space>
-                      <span className='bg-slate-200 px-3 py-2 rounded-full'>
-                        {idx + 1}
-                      </span>
-                      <span
-                        className={`${
-                          step.status == '1' ? 'text-green-700 ' : ''
-                        }`}
-                      >
-                        {step?.title}
-                      </span>
-                    </Space>
-                  </h5>
+                <div className='content-text'>
+                  <span
+                    className={`number-card ${
+                      step.status == '1' ? '!bg-[#DCF1E0] ' : ''
+                    }`}
+                  >
+                    <span className='number'>{idx + 1}</span>
+                  </span>
+                  <span
+                    className={`${step.status == '1' ? 'text-green-700 ' : ''}`}
+                  >
+                    {step?.title}
+                  </span>
                 </div>
 
-                <div className='text-right ml-auto'>
+                <div className='text-right ml-auto pt-1'>
                   <h5 className='text-sm font-semibold'>
                     <Space>
                       <span className='text-green-700'>{step?.date}</span>
                       <img
                         src={showIcons(step.status, idx)}
-                        width={25}
+                        width={20}
                         alt='Premium Plus'
                       />
                     </Space>
@@ -122,7 +120,7 @@ export default function OrderStatus({
                 </div>
               </div>
             ))}
-          </>
+          </div>
         ) : (
           ''
         )}
