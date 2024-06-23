@@ -1,10 +1,25 @@
 'use client'
 
+import {GET_ANNUAL_INCOME} from '@/scripts/api'
+import {postData} from '@/scripts/api-service'
 import {Button, Col, ConfigProvider, Form, Input, Row} from 'antd'
+import Link from 'next/link'
 
 export default function LifeInsurance() {
-  const onFinish = (values) => {
-    console.log('Success:', values)
+  const [form] = Form.useForm()
+
+  const onFinish = async (values) => {
+    let res = await postData(GET_ANNUAL_INCOME, {
+      annualIncome: values.annualIncome || 0,
+    })
+    if (res) {
+      let masterData = res?.data?.data
+
+      form.setFieldsValue({
+        max_investment: masterData?.max_investment,
+        max_rebate: masterData?.max_rebate,
+      })
+    }
   }
 
   return (
@@ -27,20 +42,21 @@ export default function LifeInsurance() {
           onFinish={onFinish}
           autoComplete='off'
           size='large'
+          form={form}
         >
           <Row gutter={16}>
             <Col className='gutter-row' span={20}>
               <Form.Item
                 label='Your projected annual income'
-                name='first_name1'
+                name='annualIncome'
                 rules={[
                   {
                     required: true,
-                    message: 'Please input First Name!',
+                    message: 'Please input amount!',
                   },
                 ]}
               >
-                <Input placeholder='' />
+                <Input placeholder='Annual Income' />
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={4}>
@@ -60,34 +76,18 @@ export default function LifeInsurance() {
             <Col className='gutter-row' span={24}>
               <Form.Item
                 label='Your approximate investment amount'
-                name='first_name2'
-                rules={
-                  [
-                    // {
-                    //     required: true,
-                    //     message: 'Please input First Name!',
-                    // },
-                  ]
-                }
+                name='max_investment'
               >
-                <Input placeholder='' />
+                <Input placeholder='' readOnly />
               </Form.Item>
             </Col>
 
             <Col className='gutter-row' span={24}>
               <Form.Item
                 label='Your approximate tax rebate amount'
-                name='first_name3'
-                rules={
-                  [
-                    // {
-                    //     required: true,
-                    //     message: 'Please input First Name!',
-                    // },
-                  ]
-                }
+                name='max_rebate'
               >
-                <Input placeholder='' />
+                <Input placeholder='' readOnly />
               </Form.Item>
             </Col>
           </Row>
@@ -95,13 +95,11 @@ export default function LifeInsurance() {
 
         <div className='text-center'>
           <p>Unlock Exclusive investment Options with our Partners!</p>
-          <Button
-            className='prime-button w-80 m-auto mt-4'
-            type='primary'
-            htmlType='submit'
-          >
-            Explore Investments
-          </Button>
+          <Link href='/more/tax-planning'>
+            <Button className='prime-button w-80 m-auto mt-4' type='primary'>
+              Explore Investments
+            </Button>
+          </Link>
         </div>
       </ConfigProvider>
     </div>

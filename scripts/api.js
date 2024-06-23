@@ -49,3 +49,7 @@ export const GET_AREAS = 'get-areas'
 export const GET_DIVISIONS = 'get-divisions'
 
 export const GET_incomeAssetLiabilySourceList = 'incomeAssetLiabilySourceList'
+
+// Tax Plan amount
+export const GET_ANNUAL_INCOME = 'annualIncome'
+export const GET_INSURANCE = 'getInsurance'

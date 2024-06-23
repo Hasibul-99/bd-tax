@@ -252,3 +252,12 @@
     color: #94a3b8;
   }
 }
+
+.tax-planning-card {
+  background: #effef2;
+  border: 0.5px solid #126a25;
+  backdrop-filter: blur(8.37209px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 12px;
+  padding: 8px 12px;
+}
