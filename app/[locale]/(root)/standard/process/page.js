@@ -1,24 +1,36 @@
 'use client'
 
+import AssetsForms from '@/components/shared/StandardForm/AssetsForms'
+import ExpenseForms from '@/components/shared/StandardForm/ExpenseForms'
+import IncomeForm from '@/components/shared/StandardForm/IncomeForms'
+import LiabilitieForms from '@/components/shared/StandardForm/LiabilitieForms'
 import PersonalInfo from '@/components/shared/StandardForm/PersonalInfo'
 import Prospects from '@/components/shared/StandardForm/Prospects'
+import ProspectsSummary from '@/components/shared/StandardForm/ProspectsSummary'
 import WelcomeMessage from '@/components/shared/WelcomeMessage'
 import Doc from '@/components/shared/premium-plus/Doc'
-import OrderStatus from '@/components/shared/premium-plus/OrderStatus'
 import Payment from '@/components/shared/premium-plus/Payment'
-import Submit from '@/components/shared/premium-plus/Submit'
-import {PROCESS_SALARY_DOC} from '@/scripts/api'
-import {getData} from '@/scripts/api-service'
+import {
+  GET_incomeAssetLiabilySourceList,
+  PROCESS_SALARY_DOC,
+} from '@/scripts/api'
+import {getData, postData} from '@/scripts/api-service'
 import {Button, ConfigProvider, Space, Steps} from 'antd'
 import {useEffect, useState} from 'react'
 
 export default function PremiumPlusProcess() {
-  const [current, setCurrent] = useState(1)
+  const [current, setCurrent] = useState(4)
+  const [prosCurrent, setProsCurrent] = useState(1)
   const [loadingPSD, setLoadingPSD] = useState(true)
   const [salaryData, setSalaryData] = useState()
+  const [prospectData, setProspectData] = useState()
 
   const onChange = (value) => {
     setCurrent(value)
+  }
+
+  const onProspectChange = (value) => {
+    setProsCurrent(value)
   }
 
   const getPrecessSalaryDoc = async () => {
@@ -31,6 +43,20 @@ export default function PremiumPlusProcess() {
       setSalaryData(masterData)
     }
   }
+
+  const getIncomeAssetLiabilySourceList = async () => {
+    let res = await postData(GET_incomeAssetLiabilySourceList)
+
+    if (res) {
+      console.log(res)
+      let masterData = res?.data?.data
+      setProspectData(masterData)
+    }
+  }
+
+  useEffect(() => {
+    getIncomeAssetLiabilySourceList()
+  }, [])
 
   useEffect(() => {
     if (current === 3) {
@@ -73,71 +99,168 @@ export default function PremiumPlusProcess() {
           </div>
         </div>
 
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: '#126A25',
-            },
-            components: {
-              Button: {
+        <div className={current === 4 ? 'hidden' : ''}>
+          <ConfigProvider
+            theme={{
+              token: {
                 colorPrimary: '#126A25',
               },
-            },
-          }}
-        >
-          <Steps
-            type='navigation'
-            size='small'
-            current={current}
-            onChange={onChange}
-            className='site-navigation-steps'
-            items={[
-              {
-                status: 'home',
-                title: 'Home',
-                icon: '',
+              components: {
+                Button: {
+                  colorPrimary: '#126A25',
+                },
               },
-              {
-                status: 'personal-info',
-                title: 'Personal Info',
+            }}
+          >
+            <Steps
+              type='navigation'
+              size='small'
+              current={current}
+              onChange={onChange}
+              className='site-navigation-steps'
+              items={[
+                {
+                  status: 'home',
+                  title: 'Home',
+                  icon: '',
+                },
+                {
+                  status: 'personal-info',
+                  title: 'Personal Info',
+                },
+                {
+                  status: 'prospects',
+                  title: 'Prospects',
+                },
+                {
+                  status: 'doc',
+                  title: 'Doc',
+                },
+                {
+                  status: 'payment',
+                  title: 'Payment',
+                },
+              ]}
+            />
+          </ConfigProvider>
+        </div>
+
+        <div className={current === 4 ? '' : 'hidden'}>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: '#126A25',
               },
-              {
-                status: 'prospects',
-                title: 'Prospects',
+              components: {
+                Button: {
+                  colorPrimary: '#126A25',
+                },
               },
-              {
-                status: 'doc',
-                title: 'Doc',
-              },
-              {
-                status: 'payment',
-                title: 'Payment',
-              },
-              {
-                status: 'status',
-                title: 'Order Status',
-              },
-              {
-                status: 'submit',
-                title: 'Submit',
-              },
-            ]}
-          />
-        </ConfigProvider>
+            }}
+          >
+            <Steps
+              type='navigation'
+              size='small'
+              current={prosCurrent}
+              onChange={onProspectChange}
+              className='site-navigation-steps'
+              items={[
+                {
+                  status: 'home',
+                  title: 'Home',
+                  icon: '',
+                },
+                {
+                  status: 'income',
+                  title: 'Income',
+                },
+                {
+                  status: 'assets',
+                  title: 'Assets',
+                },
+                {
+                  status: 'liabilities',
+                  title: 'Liabilities',
+                },
+                {
+                  status: 'expenses',
+                  title: 'Expenses',
+                },
+                {
+                  status: 'summary',
+                  title: 'Summary',
+                },
+              ]}
+            />
+          </ConfigProvider>
+        </div>
       </div>
 
       <div className='bg-white mt-6 rounded-[20px]'>
         {current === 1 ? <PersonalInfo setCurrent={setCurrent} /> : ''}
-        {current === 2 ? <Prospects /> : ''}
+        {current === 2 ? (
+          <Prospects setCurrent={setCurrent} prospectData={prospectData} />
+        ) : (
+          ''
+        )}
         {current === 3 ? <Doc setCurrent={setCurrent} nextCurrent={4} /> : ''}
-        {current === 4 ? (
+        {current === 5 ? (
           <Payment salaryData={salaryData} setCurrent={setCurrent} />
         ) : (
           ''
         )}
-        {current === 5 ? <OrderStatus setCurrent={setCurrent} /> : ''}
-        {current === 6 ? <Submit /> : ''}
       </div>
+
+      {prospectData ? (
+        <>
+          <div
+            className={`bg-white mt-6 rounded-[20px] ${
+              current === 4 ? '' : 'hidden'
+            }`}
+          >
+            {prosCurrent === 1 ? (
+              <IncomeForm
+                setProsCurrent={setProsCurrent}
+                incomeList={prospectData?.income}
+              />
+            ) : (
+              ''
+            )}
+            {prosCurrent === 2 ? (
+              <AssetsForms
+                setProsCurrent={setProsCurrent}
+                assetsList={prospectData?.assets}
+              />
+            ) : (
+              ''
+            )}
+            {prosCurrent === 3 ? (
+              <LiabilitieForms
+                setProsCurrent={setProsCurrent}
+                libilityList={prospectData?.libility}
+              />
+            ) : (
+              ''
+            )}
+            {prosCurrent === 4 ? (
+              <ExpenseForms
+                setProsCurrent={setProsCurrent}
+                expenceList={prospectData?.expence}
+              />
+            ) : (
+              ''
+            )}
+            {prosCurrent === 5 ? (
+              <ProspectsSummary
+                setProsCurrent={setProsCurrent}
+                setCurrent={setCurrent}
+              />
+            ) : (
+              ''
+            )}
+          </div>
+        </>
+      ) : null}
     </div>
   )
 }

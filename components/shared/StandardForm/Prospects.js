@@ -1,5 +1,4 @@
-import {GET_incomeAssetLiabilySourceList} from '@/scripts/api'
-import {postData} from '@/scripts/api-service'
+import {standardStore} from '@/store/standard'
 import {RightOutlined} from '@ant-design/icons'
 import {
   Button,
@@ -11,25 +10,23 @@ import {
   Space,
   Typography,
 } from 'antd'
-import {Fragment, useEffect, useState} from 'react'
+import {Fragment} from 'react'
 const {Title, Text} = Typography
 
-export default function Prospects() {
-  const [contentData, setContentData] = useState()
-
-  const getIncomeAssetLiabilySourceList = async () => {
-    let res = await postData(GET_incomeAssetLiabilySourceList)
-
-    if (res) {
-      console.log(res)
-      let masterData = res?.data?.data
-      setContentData(masterData)
-    }
-  }
-
-  useEffect(() => {
-    getIncomeAssetLiabilySourceList()
-  }, [])
+export default function Prospects({setCurrent, prospectData}) {
+  const incomeOptions = standardStore((state) => state.incomeOptions)
+  const updateIncomeOptions = standardStore(
+    (state) => state.updateIncomeOptions
+  )
+  const updateAssetsOptions = standardStore(
+    (state) => state.updateAssetsOptions
+  )
+  const updateExpenceOptions = standardStore(
+    (state) => state.updateExpenceOptions
+  )
+  const updateLibilityOptions = standardStore(
+    (state) => state.updateLibilityOptions
+  )
 
   return (
     <div className='py-10 px-20 md:mt-8 '>
@@ -53,12 +50,12 @@ export default function Prospects() {
             </Text>
             <Checkbox.Group
               className='my-5 w-full'
-              // onChange={onChange}
+              onChange={(val) => updateIncomeOptions(val)}
             >
               <Row>
-                {contentData?.income?.length ? (
+                {prospectData?.income?.length ? (
                   <>
-                    {contentData.income.map((item) => (
+                    {prospectData.income.map((item) => (
                       <Fragment key={item.id}>
                         <Col span={24}>
                           <Checkbox value={item.id}>{item.title}</Checkbox>
@@ -76,12 +73,12 @@ export default function Prospects() {
             <Title level={5}>Your assets</Title>
             <Checkbox.Group
               className='my-5 w-full'
-              // onChange={onChange}
+              onChange={(val) => updateAssetsOptions(val)}
             >
               <Row>
-                {contentData?.assets?.length ? (
+                {prospectData?.assets?.length ? (
                   <>
-                    {contentData.assets.map((item) => (
+                    {prospectData.assets.map((item) => (
                       <Fragment key={item.id}>
                         <Col span={24}>
                           <Checkbox value={item.id}>{item.title}</Checkbox>
@@ -99,12 +96,12 @@ export default function Prospects() {
             <Title level={5}>Your Expence</Title>
             <Checkbox.Group
               className='my-5 w-full'
-              // onChange={onChange}
+              onChange={(val) => updateExpenceOptions(val)}
             >
               <Row>
-                {contentData?.expence?.length ? (
+                {prospectData?.expence?.length ? (
                   <>
-                    {contentData.expence.map((item) => (
+                    {prospectData.expence.map((item) => (
                       <Fragment key={item.id}>
                         <Col span={24}>
                           <Checkbox value={item.id}>{item.title}</Checkbox>
@@ -122,12 +119,12 @@ export default function Prospects() {
             <Title level={5}>Your Libility</Title>
             <Checkbox.Group
               className='my-5 w-full'
-              // onChange={onChange}
+              onChange={(val) => updateLibilityOptions(val)}
             >
               <Row>
-                {contentData?.libility?.length ? (
+                {prospectData?.libility?.length ? (
                   <>
-                    {contentData.libility.map((item) => (
+                    {prospectData.libility.map((item) => (
                       <Fragment key={item.id}>
                         <Col span={24}>
                           <Checkbox value={item.id}>{item.title}</Checkbox>
@@ -142,13 +139,15 @@ export default function Prospects() {
           </div>
         </ConfigProvider>
       </div>
-
       <div className='text-center my-6'>
         <Button
           type='primary'
           htmlType='submit'
           className='prime-button w-52 m-auto '
           size='large'
+          onClick={() => {
+            setCurrent(3)
+          }}
         >
           <Space>
             Next
