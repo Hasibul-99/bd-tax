@@ -20,9 +20,6 @@ export default function AssetsForms({assetsList}) {
   const [tabItems, setTabItems] = useState([])
   const [activeTab, setActiveTab] = useState()
 
-  console.log('====================================')
-  console.log({assetsList, assetsOptions})
-  console.log('====================================')
   const showSelectedForm = () => {
     switch (activeTab) {
       case 17:
@@ -78,6 +75,7 @@ export default function AssetsForms({assetsList}) {
   useEffect(() => {
     accessTabItems()
   }, [])
+
   return (
     <div className='py-8 px-6'>
       <ConfigProvider
