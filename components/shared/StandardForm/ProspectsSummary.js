@@ -51,7 +51,7 @@ export default function ProspectsSummary() {
                   md={3}
                   lg={3}
                   xl={3}
-                  className='font-normal text-[16px] leading-[18px] text-[#0F172A] text-right'
+                  className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
                   Income
                 </Col>
@@ -69,7 +69,7 @@ export default function ProspectsSummary() {
                   md={2}
                   lg={2}
                   xl={2}
-                  className='font-normal text-[16px] leading-[18px] text-[#0F172A] text-right'
+                  className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
                   70%
                 </Col>
@@ -89,7 +89,7 @@ export default function ProspectsSummary() {
                   md={3}
                   lg={3}
                   xl={3}
-                  className='font-normal text-[16px] leading-[18px] text-[#0F172A] text-right'
+                  className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
                   Assets
                 </Col>
@@ -107,7 +107,7 @@ export default function ProspectsSummary() {
                   md={2}
                   lg={2}
                   xl={2}
-                  className='font-normal text-[16px] leading-[18px] text-[#0F172A] text-right'
+                  className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
                   100%
                 </Col>
@@ -128,7 +128,7 @@ export default function ProspectsSummary() {
                   md={3}
                   lg={3}
                   xl={3}
-                  className='font-normal text-[16px] leading-[18px] text-[#0F172A] text-right'
+                  className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
                   Liabilities
                 </Col>
@@ -146,7 +146,7 @@ export default function ProspectsSummary() {
                   md={2}
                   lg={2}
                   xl={2}
-                  className='font-normal text-[16px] leading-[18px] text-[#0F172A] text-right'
+                  className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
                   100%
                 </Col>
