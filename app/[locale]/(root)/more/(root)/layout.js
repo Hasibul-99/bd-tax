@@ -10,10 +10,12 @@ const RootLayout = (props) => {
     params: {locale},
   } = props
 
+  console.log('locale', locale)
+
   return (
     <>
-      <div className='bg-[#F8FAFC] container mx-auto pb-10'>
-        <MoreHeader />
+      <div className='bg-[#F8FAFC] container px-0 mx-auto pb-10'>
+        <MoreHeader locale={locale} />
         <Row
           gutter={{
             xs: 8,

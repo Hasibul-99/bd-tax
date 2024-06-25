@@ -66,7 +66,7 @@ export default function Doc() {
   }, [])
 
   return (
-    <div className='container mx-auto my-6 h-full'>
+    <div className='container px-0 mx-auto my-6 h-full'>
       <Row
         gutter={{
           xs: 8,

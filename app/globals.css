@@ -16,6 +16,16 @@
   }
 }
 
+@layer components {
+  .custom-container {
+    @apply max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .custom-container-under {
+    @apply max-w-[83%] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
 body {
   font-size: 13px;
 }

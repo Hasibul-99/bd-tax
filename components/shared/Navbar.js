@@ -11,7 +11,6 @@ import {usePathname} from 'next/navigation'
 export default function Navbar({locale}) {
   const pathname = usePathname()
   const token = Cookies.get('bdtax_token')
-  console.log('props', locale)
 
   const isActiveUrl = (url) => {
     return pathname.startsWith(url) //pathname;
@@ -19,7 +18,7 @@ export default function Navbar({locale}) {
 
   return (
     <nav className='pt-6'>
-      <div className='container mx-auto'>
+      <div className='custom-container mx-auto'>
         <div className='flex justify-between mx-6 md:mx-0 bg-white rounded-[100px] px-4 py-2.5'>
           <div className='flex space-x-7'>
             <div className=''>

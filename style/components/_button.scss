@@ -194,3 +194,22 @@
     color: #0f172a !important;
   }
 }
+
+.more-breadcome {
+  ol {
+    li {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      color: #475569;
+
+      &:last-child {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 140%;
+        color: #126a25;
+      }
+    }
+  }
+}

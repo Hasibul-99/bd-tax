@@ -23,7 +23,7 @@ export default function Docs() {
     getOrderHistory()
   }, [])
   return (
-    <div className='container mx-auto px-30 py-10 '>
+    <div className='custom-container-under mx-auto px-30 py-10 '>
       {orderHistory ? (
         <>
           <div className='bg-white py-5 px-4 rounded-md'>

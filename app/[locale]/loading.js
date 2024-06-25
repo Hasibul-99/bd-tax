@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className='text-center h-dvh flex justify-items-center items-center relative'>
+    <div className='text-center h-dvh flex justify-items-center items-center relative pt-40'>
       <div>
         <img
           className='image'
