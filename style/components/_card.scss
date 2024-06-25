@@ -140,8 +140,16 @@
 }
 
 .lang-select {
+  height: 40px;
   .ant-select-selector {
     border-radius: 10px;
+  }
+  .ant-select-arrow {
+    .anticon-down {
+      svg {
+        fill: #292d32;
+      }
+    }
   }
 }
 
@@ -261,4 +269,49 @@
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 12px;
   padding: 8px 12px;
+}
+
+.ant-input,
+.ant-input-password {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  &::placeholder {
+    color: #64748b;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 140%;
+  }
+  &:-ms-input-placeholder {
+    color: #64748b;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 140%;
+  }
+
+  .ant-input-password-icon {
+    svg {
+      fill: #0f172a;
+    }
+  }
+}
+
+.ant-select {
+  .ant-select-selector {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+
+    .ant-select-selection-placeholder {
+      color: #0f172a;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 140%;
+    }
+  }
+
+  .anticon-down {
+    svg {
+      fill: #0f172a;
+    }
+  }
 }

@@ -68,7 +68,7 @@ body {
 
 .navbar-content .active {
   background: rgba(18, 106, 37, 0.1);
-  border-bottom: 1.5px solid #126a25;
+  border-bottom: 2px solid #126a25;
   border-radius: 36px;
   padding: 10px 16px 6px 16px;
 }

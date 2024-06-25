@@ -53,7 +53,7 @@ export default function SignIn() {
   if (loading) {
     return (
       <>
-        <div className='text-center h-96 flex justify-items-center items-center relative'>
+        <div className='text-center h-96 flex justify-items-center items-center relative pt-40'>
           <div>
             <img
               className='image'

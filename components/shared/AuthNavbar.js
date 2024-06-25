@@ -22,7 +22,7 @@ export default function AuthNavbar({locale}) {
 
   return (
     <header className='container mx-auto'>
-      <nav className='flex flex-wrap items-center justify-between w-full py-4 md:py-0 text-lg text-gray-700 bg-white'>
+      <nav className='flex flex-wrap items-center justify-between w-full py-4 md:pt-0 md:pb-2.5 text-lg text-gray-700 bg-white'>
         <div>
           <Link href={`/${locale}`}>
             <Image
@@ -122,7 +122,7 @@ export default function AuthNavbar({locale}) {
                 href={`/${locale}/signin`}
                 className={
                   isActiveUrl(`/${locale}/signin`)
-                    ? 'rounded-[12px] py-1.5 md:px-4 bg-custom-gradient text-white'
+                    ? 'rounded-[12px] py-2 md:px-4 bg-custom-gradient text-white'
                     : 'md:px-5 py-4 block hover:text-green-400'
                 }
               >
@@ -134,7 +134,7 @@ export default function AuthNavbar({locale}) {
                 href={`/${locale}/signup`}
                 className={
                   isActiveUrl(`/${locale}/signup`)
-                    ? 'rounded-[12px] py-1.5 md:px-4 bg-custom-gradient text-white'
+                    ? 'rounded-[12px] py-2 md:px-4 bg-custom-gradient text-white'
                     : 'md:px-5 py-4 block hover:text-green-400'
                 }
               >
