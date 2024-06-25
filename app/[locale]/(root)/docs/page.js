@@ -89,8 +89,8 @@ export default function Doc() {
                   onClick={() => setSelected(item)}
                   className={
                     selected === item
-                      ? 'bg-[#E2ECE5] rounded-xl cursor-pointer    font-semibold text-base leading-[22px] text-[#126A25]'
-                      : 'cursor-pointer font-semibold text-base leading-[22px]'
+                      ? 'bg-[#E2ECE5] rounded-xl cursor-pointer font-bold text-base leading-[22px] !text-[#126A25]'
+                      : 'cursor-pointer font-normal text-base leading-[22px]'
                   }
                   style={{'border-block-end': 0}}
                 >
@@ -165,7 +165,7 @@ export default function Doc() {
                         }
                         title={
                           <div>
-                            <div className='font-semibold text-[13px] leading-[18px] text-[#020617]'>
+                            <div className='font-bold text-[13px] leading-[18px] text-[#020617]'>
                               {item.title}
                             </div>
                           </div>
