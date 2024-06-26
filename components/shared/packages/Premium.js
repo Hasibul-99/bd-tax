@@ -29,7 +29,7 @@ export default function Premium(props) {
                   {pack.title} (৳ {pack.price})
                 </span>
               </div>
-              <div className='pack-details flex-1'>
+              <div id='premium-details' className='pack-details '>
                 <p>{pack.description}</p>
               </div>
 

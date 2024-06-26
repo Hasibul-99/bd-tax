@@ -19,17 +19,38 @@ export default function Packages({locale, ssrData}) {
   const [showPackages, setShowPackages] = useState(true)
   const [isShowAllPackages, setIsShowAllPackages] = useState(0)
 
+  const detailsHightHandel = () => {
+    // Get the div elements by their IDs
+    const div1 = document.getElementById('premium-plus-details')
+    const div2 = document.getElementById('premium-details')
+    const div3 = document.getElementById('standard-details')
+
+    // Get the heights of each div
+    const height1 = div1.offsetHeight
+    const height2 = div2.offsetHeight
+    const height3 = div3.offsetHeight
+
+    // Find the maximum height
+    const maxHeight = Math.max(height1, height2, height3)
+
+    // Set the height of all divs to the maximum height
+    div1.style.height = `${maxHeight}px`
+    div2.style.height = `${maxHeight}px`
+    div3.style.height = `${maxHeight}px`
+  }
+
   const getPackagesList = async () => {
     let res = await getData(PACKAGE_LIST)
-
-    console.log('res?.data', res?.data)
 
     if (res) {
       setPackageList(res?.data)
       setShowPackages(!res?.data?.current_package_id)
       setIsShowAllPackages(res?.data?.show_more_package)
+
+      detailsHightHandel()
     } else {
       setPackageList(ssrData)
+      detailsHightHandel()
     }
   }
 
