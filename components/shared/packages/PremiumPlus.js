@@ -41,7 +41,7 @@ export default function PremiumPlus(props) {
 
               <Button
                 type='primary'
-                className='primary-plus-Button'
+                className='primary-plus-Button font-semibold'
                 size='large'
                 onClick={() => tempUserPackages()}
               >

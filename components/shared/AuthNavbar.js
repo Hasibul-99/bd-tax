@@ -28,7 +28,7 @@ export default function AuthNavbar({locale}) {
             <Image
               width={100}
               height={60}
-              src='/assets/images/logo-2.png'
+              src='/assets/images/logo-2.jpg'
               alt='logo'
             />
           </Link>

@@ -33,11 +33,10 @@ export default function Premium(props) {
 
               <Button
                 type='primary'
-                className='primary-Button'
+                className='primary-Button font-semibold'
                 size='large'
                 onClick={() => tempUserPackages()}
               >
-                {/* <Link href={`/${locale}/premium`}>Select</Link> */}
                 Select
               </Button>
             </div>
