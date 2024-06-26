@@ -33,7 +33,7 @@ export default function Standard(props) {
 
               <Button
                 type='primary'
-                className='standard-button'
+                className='standard-button font-semibold'
                 size='large'
                 onClick={() => tempUserPackages()}
               >

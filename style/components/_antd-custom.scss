@@ -1,0 +1,18 @@
+// @import '~antd/dist/antd.css';
+@import '@fontsource/poppins';
+
+// Override Ant Design font variables
+// :global {
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.ant-typography {
+  font-family: 'Poppins', sans-serif;
+}
+
+// Override specific Ant Design component styles if needed
+.ant-btn {
+  font-family: 'Poppins', sans-serif;
+}
+// }

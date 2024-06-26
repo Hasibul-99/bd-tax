@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/poppins": "^5.0.14",
     "antd": "^5.16.4",
     "axios": "^1.7.2",
     "dayjs": "^1.11.11",
