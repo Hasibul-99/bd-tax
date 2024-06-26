@@ -1,58 +1,59 @@
-"use client"
+'use client'
 
-import { SUBMIT_CONTACT } from "@/scripts/api";
-import { postData } from "@/scripts/api-service";
-import { alertPop } from "@/scripts/helper";
-import { Button, Col, ConfigProvider, DatePicker, Form, Input, Row, Select } from "antd";
-const { Option } = Select;
-const { TextArea } = Input;
+import WelcomeMessage from '@/components/shared/WelcomeMessage'
+import {SUBMIT_CONTACT} from '@/scripts/api'
+import {postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
+import {Button, Col, ConfigProvider, Form, Input, Row, Select} from 'antd'
+const {Option} = Select
+const {TextArea} = Input
 
 export default function ContactUs() {
-  const [form] = Form.useForm();
-  
+  const [form] = Form.useForm()
+
   const onFinish = async (values) => {
-    let res = await postData(SUBMIT_CONTACT, values, 'no_token', 'showError');
+    let res = await postData(SUBMIT_CONTACT, values, 'no_token', 'showError')
 
     if (res) {
-      if (res.code === "error") {
+      if (res.code === 'error') {
         form.setFields(res?.errors)
       } else {
-        alertPop("success", res.data?.message);
-        form.resetFields();
+        alertPop('success', res.data?.message)
+        form.resetFields()
       }
     }
-  };
+  }
 
   return (
-    <div className="bg-white py-6 px-6">
-      <h3 className='text-xl font-semibold'>Welcome back, Tareq</h3>
+    <div className='custom-container-under bg-white py-6 px-6 rounded-2xl'>
+      <WelcomeMessage />
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#126A25",
+            colorPrimary: '#126A25',
           },
           components: {
             Button: {
-              colorPrimary: "#126A25",
+              colorPrimary: '#126A25',
             },
           },
         }}
       >
         <Form
           className='mt-6'
-          name="basic"
+          name='basic'
           form={form}
           onFinish={onFinish}
-          autoComplete="off"
+          autoComplete='off'
           size='large'
         >
           <Row gutter={16}>
-            <Col className="gutter-row" xs={24} sm={24} md={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Name *
             </Col>
-            <Col className="gutter-row" xs={24} sm={24} md={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
-                name="name"
+                name='name'
                 rules={[
                   {
                     required: true,
@@ -66,28 +67,28 @@ export default function ContactUs() {
           </Row>
 
           <Row gutter={16}>
-            <Col className="gutter-row" xs={24} sm={24} md={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Email Adderss *
             </Col>
-            <Col className="gutter-row" xs={24} sm={24} md={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
-                name="email"
+                name='email'
                 rules={[
                   {
                     required: true,
                     message: 'Please input email!',
                   },
                   {
-                    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                    message: "Please enter a valid email address",
-                  }
+                    pattern:
+                      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                    message: 'Please enter a valid email address',
+                  },
                 ]}
               >
                 <Input placeholder='Last Name *' />
               </Form.Item>
             </Col>
           </Row>
-
 
           {/* <Row gutter={16}>
             <Col className="gutter-row" xs={24} sm={24} md={4}>
@@ -111,13 +112,13 @@ export default function ContactUs() {
           </Row> */}
 
           <Row gutter={16}>
-            <Col className="gutter-row" xs={24} sm={24} md={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Message *
             </Col>
-            <Col className="gutter-row" xs={24} sm={24} md={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
-                label=""
-                name="body"
+                label=''
+                name='body'
                 rules={[
                   {
                     required: true,
@@ -127,12 +128,15 @@ export default function ContactUs() {
               >
                 <TextArea />
               </Form.Item>
-
             </Col>
           </Row>
 
-          <Form.Item className="text-right">
-            <Button className='btn-hover color-5 !m-0 !h-11 !rounded-xl ml-auto px-10' type="primary" htmlType="submit">
+          <Form.Item className='text-right'>
+            <Button
+              className='prime-button md:w-52 ml-auto px-10'
+              type='primary'
+              htmlType='submit'
+            >
               Save Changes
             </Button>
           </Form.Item>

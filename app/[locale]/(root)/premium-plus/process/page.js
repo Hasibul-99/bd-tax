@@ -49,7 +49,7 @@ export default function PremiumPlusProcess() {
   }, [status])
 
   return (
-    <div className='container mx-auto px-30 mt-5 pb-16'>
+    <div className='custom-container-under mx-auto px-30 mt-5 pb-16'>
       <div className={`bg-white py-5 px-4 rounded-[20px]`}>
         <WelcomeMessage />
         <div className='bg-gold-20 border border-gold-40 my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>

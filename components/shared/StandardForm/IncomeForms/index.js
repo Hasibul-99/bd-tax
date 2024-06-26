@@ -1,5 +1,5 @@
 import {standardStore} from '@/store/standard'
-import {Button, ConfigProvider} from 'antd'
+import {Button, ConfigProvider, Divider} from 'antd'
 import {useEffect, useState} from 'react'
 import AdjustmentOfTaxRefund from './AdjustmentOfTaxRefund'
 import AdvancePaidTax from './AdvancePaidTax'
@@ -108,8 +108,8 @@ export default function IncomeForm({incomeList, setProsCurrent}) {
           </Button>
         ))}
       </ConfigProvider>
-
-      <div className='my-10'>{showSelectedForm()}</div>
+      <Divider className='my-5' />
+      <div className='mt-0 mb-10'>{showSelectedForm()}</div>
     </div>
   )
 }

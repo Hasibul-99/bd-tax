@@ -49,7 +49,7 @@ export default function PremiumPlusProcess() {
   }, [status])
 
   return (
-    <div className='container mx-auto px-30 mt-5 pb-16'>
+    <div className='custom-container-under mx-auto px-30 mt-5 pb-16'>
       {/* {
                 showPayment && paymentLink ? <>
                     <iframe id="myIframe" src={paymentLink} frameborder="0" allowfullscreen
