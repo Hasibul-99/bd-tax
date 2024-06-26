@@ -16,7 +16,7 @@ import {
 
 const {TextArea} = Input
 
-export default function SalaryForm() {
+export default function SalaryForm({setCurrent, setActiveTab}) {
   const [form] = Form.useForm()
 
   const onFinish = async (values) => {
@@ -656,13 +656,13 @@ export default function SalaryForm() {
             </Col>
           </Row>
 
-          <Form.Item className='text-center'>
+          <Form.Item className='text-center mt-6'>
             <Space>
               <Button
                 type='primary'
                 className='refer-friend-button shadow-none md:w-52'
                 onClick={() => {
-                  // setCurrent(5)
+                  setCurrent(3)
                 }}
               >
                 <LeftOutlined style={{fontSize: '12px', marginTop: '2px'}} />
@@ -673,7 +673,7 @@ export default function SalaryForm() {
                 type='primary'
                 className='prime-button md:w-52 m-auto'
                 onClick={() => {
-                  setCurrent(5)
+                  // setCurrent(5)
                 }}
               >
                 Next

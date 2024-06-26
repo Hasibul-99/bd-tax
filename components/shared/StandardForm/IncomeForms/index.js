@@ -16,7 +16,7 @@ import SpouseChild from './Spouse-Child'
 import TaxDeductedAtSource from './TaxDeductedAtSource'
 import TaxRebate from './TaxRebate'
 
-export default function IncomeForm({incomeList, setProsCurrent}) {
+export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
   const incomeOptions = standardStore((state) => state.incomeOptions)
   const [tabItems, setTabItems] = useState([])
   const [activeTab, setActiveTab] = useState()
@@ -47,7 +47,9 @@ export default function IncomeForm({incomeList, setProsCurrent}) {
   const showSelectedForm = () => {
     switch (activeTab) {
       case 1:
-        return <SalaryForm />
+        return (
+          <SalaryForm setCurrent={setCurrent} setActiveTab={setActiveTab} />
+        )
       case 2:
         return <IncomeFromFinancialAssets />
       case 5:

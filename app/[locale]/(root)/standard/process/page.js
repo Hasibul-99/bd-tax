@@ -221,6 +221,7 @@ export default function PremiumPlusProcess() {
             {prosCurrent === 1 ? (
               <IncomeForm
                 setProsCurrent={setProsCurrent}
+                setCurrent={setCurrent}
                 incomeList={prospectData?.income}
               />
             ) : (
