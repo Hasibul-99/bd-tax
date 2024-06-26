@@ -51,7 +51,7 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
           <SalaryForm setCurrent={setCurrent} setActiveTab={setActiveTab} />
         )
       case 2:
-        return <IncomeFromFinancialAssets />
+        return <IncomeFromFinancialAssets setActiveTab={setActiveTab} />
       case 5:
         return <PropertyForm />
       case 6:
