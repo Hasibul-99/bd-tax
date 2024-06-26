@@ -37,7 +37,9 @@ export default function PremiumPlus(props) {
                   {pack.title} (৳ {pack.price})
                 </span>
               </div>
-              <div className='pack-details'>{pack.description}</div>
+              <div className='pack-details'>
+                <p>{pack.description}</p>
+              </div>
 
               <Button
                 type='primary'

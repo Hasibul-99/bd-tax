@@ -29,7 +29,9 @@ export default function Standard(props) {
                   {pack.title} (৳ {pack.price})
                 </span>
               </div>
-              <p className='pack-details'>{pack.description}</p>
+              <div className='pack-details'>
+                <p>{pack.description}</p>
+              </div>
 
               <Button
                 type='primary'
