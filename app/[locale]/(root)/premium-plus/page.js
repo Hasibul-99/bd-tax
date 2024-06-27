@@ -39,7 +39,7 @@ export default function PremiumPlus() {
               </Space>
             </h5>
           </div>
-          <div className='md:text-right md:ml-auto'>
+          <div className='md:text-right md:ml-auto pt-3'>
             <p className='text-sm font-semibold'>Tax Due: 25,000</p>
             <p className='text-xs'>Tax Year 2023 -2024</p>
           </div>

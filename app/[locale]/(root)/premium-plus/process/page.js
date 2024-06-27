@@ -61,7 +61,7 @@ export default function PremiumPlusProcess() {
               </Space>
             </h5>
           </div>
-          <div className='md:text-right md:ml-auto'>
+          <div className='md:text-right md:ml-auto pt-3'>
             <p className='text-sm font-semibold'>
               Tax Due: {salaryData?.tax_amount || 0}
             </p>
