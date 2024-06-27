@@ -16,3 +16,101 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 // }
+
+.ant-input,
+.ant-input-password {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  &::placeholder {
+    color: #64748b;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 140%;
+  }
+  &:-ms-input-placeholder {
+    color: #64748b;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 140%;
+  }
+
+  .ant-input-password-icon {
+    svg {
+      fill: #0f172a;
+    }
+  }
+}
+
+.ant-select {
+  .ant-select-selector {
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+
+    .ant-select-selection-placeholder {
+      color: #0f172a;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 140%;
+    }
+  }
+
+  .anticon-down {
+    svg {
+      fill: #0f172a;
+    }
+  }
+}
+
+.order-info {
+  .ant-card-head {
+    border-bottom: none;
+    .ant-card-head-title {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 140%;
+      color: #1e293b;
+    }
+  }
+  .ant-card-body {
+    padding-top: 0px;
+  }
+}
+
+.site-navigation-steps {
+  display: block;
+
+  .ant-steps-item-icon {
+    display: none;
+  }
+
+  .ant-steps-item-content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .ant-steps-item-title {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 140%;
+  }
+
+  .ant-steps-item-active {
+    &:before {
+      display: none !important;
+    }
+    .ant-steps-item-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #126a25;
+    }
+  }
+
+  .ant-steps-item {
+    &:after {
+      border-top: 2px solid #475569 !important;
+      border-inline-end: 2px solid #475569 !important;
+      width: 7px !important;
+      height: 7px !important;
+    }
+  }
+}
