@@ -62,6 +62,14 @@ body {
   }
 }
 
+.ant-picker {
+  .anticon-calendar {
+    svg {
+      fill: #0f172a;
+    }
+  }
+}
+
 .order-info {
   .ant-card-head {
     border-bottom: none;

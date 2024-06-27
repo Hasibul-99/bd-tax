@@ -42,9 +42,7 @@ export default function Docs() {
                     className='prime-button w-52'
                   >
                     {orderHistory.button_title}{' '}
-                    <RightOutlined
-                      style={{fontSize: '12px', marginTop: '7px'}}
-                    />
+                    <RightOutlined style={{fontSize: '12px'}} />
                   </Button>
                 </Link>
               </div>

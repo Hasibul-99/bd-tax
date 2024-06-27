@@ -143,7 +143,7 @@ export default function Prospects({setCurrent, prospectData}) {
         <Button
           type='primary'
           htmlType='submit'
-          className='prime-button w-52 m-auto '
+          className='prime-button gap-0 w-52 m-auto '
           size='large'
           onClick={() => {
             setCurrent(3)

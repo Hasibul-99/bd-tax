@@ -133,13 +133,13 @@ export default function OrderStatus({
               {showNextButton ? (
                 <Button
                   type='primary'
-                  className='prime-button w-52 m-auto'
+                  className='prime-button gap-0 w-52 m-auto'
                   onClick={() => {
                     setCurrent(5)
                   }}
                 >
                   Next
-                  <RightOutlined style={{fontSize: '12px', marginTop: '7px'}} />
+                  <RightOutlined style={{fontSize: '12px'}} />
                 </Button>
               ) : (
                 ''

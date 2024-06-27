@@ -19,7 +19,7 @@ import {Button, ConfigProvider, Space, Steps} from 'antd'
 import {useEffect, useState} from 'react'
 
 export default function PremiumPlusProcess() {
-  const [current, setCurrent] = useState(4)
+  const [current, setCurrent] = useState(1)
   const [prosCurrent, setProsCurrent] = useState(1)
   const [loadingPSD, setLoadingPSD] = useState(true)
   const [salaryData, setSalaryData] = useState()

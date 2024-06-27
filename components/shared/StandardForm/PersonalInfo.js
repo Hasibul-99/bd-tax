@@ -321,7 +321,10 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <DatePicker className='w-full' />
+                <DatePicker
+                  className='w-full'
+                  suffixIcon={<img src='/assets/icons/datepicker.svg' />}
+                />
               </Form.Item>
             </Col>
           </Row>
@@ -737,10 +740,10 @@ export default function PersonalInfo({setCurrent}) {
             <Button
               type='primary'
               htmlType='submit'
-              className='prime-button w-52 m-auto'
+              className='prime-button gap-0 w-52 m-auto'
             >
               Next
-              <RightOutlined style={{fontSize: '12px', marginTop: '7px'}} />
+              <RightOutlined style={{fontSize: '12px'}} />
             </Button>
           </Form.Item>
         </Form>

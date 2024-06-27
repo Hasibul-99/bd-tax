@@ -671,7 +671,7 @@ export default function SalaryForm({setCurrent, setActiveTab}) {
 
               <Button
                 type='primary'
-                className='prime-button md:w-52 m-auto'
+                className='prime-button gap-0 md:w-52 m-auto'
                 onClick={() => {
                   // setCurrent(5)
                 }}
