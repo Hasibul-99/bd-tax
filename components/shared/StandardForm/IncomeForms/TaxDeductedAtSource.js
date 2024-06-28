@@ -1,68 +1,129 @@
-import {DeleteOutlined, EditOutlined} from '@ant-design/icons'
+import {Delete_Tds, Get_Tds, Get_Tds_Type, Save_Tds} from '@/scripts/api'
+import {getData, postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
+import {
+  DeleteOutlined,
+  EditOutlined,
+  ExclamationCircleFilled,
+} from '@ant-design/icons'
 import {
   Button,
   ConfigProvider,
   Flex,
   Form,
   Input,
+  InputNumber,
+  Modal,
   Select,
   Space,
   Table,
 } from 'antd'
-
-const columns = [
-  {
-    title: 'Tds Type',
-    dataIndex: 'Type',
-    key: 'Type',
-    width: 300,
-  },
-  {
-    title: 'Details',
-    dataIndex: 'Description',
-    key: 'Description',
-    width: 200,
-  },
-  {
-    title: 'TDS (BDT)',
-    dataIndex: 'Cost',
-    key: 'Cost',
-    width: 200,
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size='middle'>
-        <Button type='primary' icon={<EditOutlined />} size={'large'} />
-        <Button
-          type='primary'
-          danger
-          icon={<DeleteOutlined />}
-          size={'large'}
-        />
-      </Space>
-    ),
-  },
-]
-const data = [
-  {
-    TaxDeductId: 13308,
-    IncomeId: 41838,
-    Description: 'TDS',
-    Cost: 5000,
-    LastUpdateAt: null,
-    CerateAt: '2024-04-16 11:49:30',
-    Type: null,
-  },
-]
+import {useEffect, useState} from 'react'
+const {confirm} = Modal
 
 export default function TaxDeductedAtSource({setActiveTab}) {
   const [form] = Form.useForm()
+  const [tdsType, setTdsType] = useState()
+  const [tds, setTds] = useState()
+  const [selectedItem, setSelecetedItem] = useState()
+  const columns = [
+    {
+      title: 'Tds Type',
+      dataIndex: 'Type',
+      key: 'Type',
+      width: 300,
+    },
+    {
+      title: 'Details',
+      dataIndex: 'Description',
+      key: 'Description',
+      width: 200,
+    },
+    {
+      title: 'TDS (BDT)',
+      dataIndex: 'Cost',
+      key: 'Cost',
+      width: 200,
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Space size='middle'>
+          <Button
+            type='primary'
+            icon={<EditOutlined />}
+            size={'large'}
+            onClick={() => updateItem(record)}
+          />
+          <Button
+            type='primary'
+            danger
+            icon={<DeleteOutlined />}
+            onClick={() => deleteItem(record.TaxDeductId)}
+            size={'large'}
+          />
+        </Space>
+      ),
+    },
+  ]
 
-  const onFinish = (values) => {
-    console.log(values)
+  const deleteItem = (TaxDeductId) => {
+    confirm({
+      title: 'Do you want to delete these items?',
+      icon: <ExclamationCircleFilled />,
+      async onOk() {
+        let res = await postData(Delete_Tds + '/' + TaxDeductId)
+        if (res) {
+          getTds()
+          alertPop('error', res?.data?.message)
+        }
+      },
+      onCancel() {
+        console.log('Cancel')
+      },
+    })
   }
+
+  const updateItem = (data) => {
+    form.setFieldsValue(data)
+    setSelecetedItem(data)
+  }
+
+  const onFinish = async (values) => {
+    let data = {...values}
+
+    if (selectedItem?.TaxDeductId) {
+      data.TaxDeductId = selectedItem.TaxDeductId
+    }
+
+    let res = await postData(Save_Tds, data)
+    if (res) {
+      form.resetFields()
+      getTds()
+    }
+  }
+
+  const getTdsType = async () => {
+    let res = await getData(Get_Tds_Type)
+
+    if (res) {
+      setTdsType(res?.data)
+    }
+  }
+
+  const getTds = async () => {
+    let res = await getData(Get_Tds)
+
+    if (res) {
+      setTds(res?.data || [])
+    }
+  }
+
+  useEffect(() => {
+    getTdsType()
+    getTds()
+  }, [])
 
   return (
     <div className='bg-white pb-6 px-6'>
@@ -80,7 +141,7 @@ export default function TaxDeductedAtSource({setActiveTab}) {
         }}
       >
         <div className='mt-5'>
-          <Table columns={columns} dataSource={data} pagination={false} />
+          <Table columns={columns} dataSource={tds} pagination={false} />
 
           <Form
             className='mt-5'
@@ -92,7 +153,7 @@ export default function TaxDeductedAtSource({setActiveTab}) {
           >
             <Flex wrap gap='small'>
               <Form.Item
-                name='gender'
+                name='Type'
                 rules={[
                   {
                     required: true,
@@ -101,8 +162,7 @@ export default function TaxDeductedAtSource({setActiveTab}) {
               >
                 <Select
                   style={{width: '280px'}}
-                  placeholder='Select a option and change input text above'
-                  // onChange={onGenderChange}
+                  placeholder='Select a option'
                   popupMatchSelectWidth={false}
                   allowClear
                   suffixIcon={
@@ -112,32 +172,35 @@ export default function TaxDeductedAtSource({setActiveTab}) {
                     />
                   }
                 >
-                  <Option value='male'>male</Option>
-                  <Option value='female'>female</Option>
-                  <Option value='other'>other</Option>
+                  {tdsType?.length &&
+                    tdsType.map((item) => (
+                      <Option key={item} value={item}>
+                        {item}
+                      </Option>
+                    ))}
                 </Select>
               </Form.Item>
 
               <Form.Item
-                name='gender'
+                name='Description'
                 rules={[
                   {
                     required: true,
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} />
+                <Input style={{width: '200px'}} placeholder='Description' />
               </Form.Item>
 
               <Form.Item
-                name='gender'
+                name='Cost'
                 rules={[
                   {
                     required: true,
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} />
+                <InputNumber style={{width: '200px'}} placeholder='Cost' />
               </Form.Item>
 
               <Form.Item>

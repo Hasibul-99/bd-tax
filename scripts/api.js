@@ -63,3 +63,8 @@ export const GET_Financial_Assets_Type = 'getFinancialAssetsType'
 export const Save_Financial_Assets = 'saveFinancialAssets'
 export const Get_Financial_Assets = 'getFinancialAssets'
 export const Delete_Financial_Assets = 'deleteFinancialAssets'
+
+export const Get_Tds_Type = 'getTdsType'
+export const Save_Tds = 'saveTds'
+export const Get_Tds = 'getTds'
+export const Delete_Tds = 'deleteTds'
