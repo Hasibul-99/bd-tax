@@ -90,14 +90,28 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
           <CapitalGains
             setActiveTab={setActiveTab}
             setProsCurrent={setProsCurrent}
-            nextActiveTab={getNextActiveTab(14)}
-            backActiveTab={getBackActivateTab(14)}
+            nextActiveTab={getNextActiveTab(10)}
+            backActiveTab={getBackActivateTab(10)}
           />
         )
       case 11:
-        return <OtherSources />
+        return (
+          <OtherSources
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(11)}
+            backActiveTab={getBackActivateTab(11)}
+          />
+        )
       case 12:
-        return <ForeignIncome />
+        return (
+          <ForeignIncome
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(12)}
+            backActiveTab={getBackActivateTab(12)}
+          />
+        )
       case 13:
         return <TaxRebate />
       case 14:

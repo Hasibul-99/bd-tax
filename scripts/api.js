@@ -73,3 +73,11 @@ export const Get_capital_Gain_Type = 'capitalGainType'
 export const Save_Capital_Gain = 'saveCapitalGain'
 export const get_Capital_Gain = 'getCapitalGain'
 export const delete_Capital_Gain = 'deleteCapitalGain'
+
+export const Save_Foreign_Income = 'saveForeignIncome'
+export const Get_Foreign_Income = 'getForeignIncome'
+export const Delete_Foreign_Income = 'deleteForeignIncome'
+// export const Save_Foreign_Income = 'saveForeignIncome'
+
+export const Get_Other_Sources = 'get-other-sources'
+export const Save_Other_Sources = 'save-other-sources'

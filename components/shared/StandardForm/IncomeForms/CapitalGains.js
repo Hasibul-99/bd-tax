@@ -25,12 +25,15 @@ import {
   Table,
 } from 'antd'
 import {useEffect, useState} from 'react'
+
+import {LeftOutlined, RightOutlined} from '@ant-design/icons'
 const {confirm} = Modal
 
 export default function CapitalGains({
   setActiveTab,
   nextActiveTab,
   setCurrent,
+  backActiveTab,
 }) {
   const [form] = Form.useForm()
   const [capitalGainType, setCapitalGainType] = useState()
@@ -300,6 +303,33 @@ export default function CapitalGains({
           </Form.Item>
         </Form>
       </ConfigProvider>
+
+      <div className='text-center mt-6'>
+        <Space>
+          <Button
+            type='primary'
+            className='refer-friend-button shadow-none md:w-52'
+            onClick={() => {
+              setActiveTab(backActiveTab)
+            }}
+          >
+            <LeftOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+            Back
+          </Button>
+
+          {console.log('nextActiveTab', nextActiveTab)}
+          <Button
+            type='primary'
+            className='prime-button gap-0 md:w-52 m-auto'
+            onClick={() => {
+              setActiveTab(nextActiveTab)
+            }}
+          >
+            Next
+            <RightOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+          </Button>
+        </Space>
+      </div>
     </div>
   )
 }

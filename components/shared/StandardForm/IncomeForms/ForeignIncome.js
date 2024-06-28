@@ -1,68 +1,120 @@
-import {DeleteOutlined, EditOutlined} from '@ant-design/icons'
+import {
+  Delete_Foreign_Income,
+  Get_Foreign_Income,
+  Save_Foreign_Income,
+} from '@/scripts/api'
+import {getData, postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
+import {
+  DeleteOutlined,
+  EditOutlined,
+  ExclamationCircleFilled,
+  LeftOutlined,
+  RightOutlined,
+} from '@ant-design/icons'
 import {
   Button,
   ConfigProvider,
   Flex,
   Form,
   Input,
+  Modal,
   Select,
   Space,
   Table,
 } from 'antd'
+import {useEffect, useState} from 'react'
+const {confirm} = Modal
 
-const columns = [
-  {
-    title: 'Tds Type',
-    dataIndex: 'Type',
-    key: 'Type',
-    width: 300,
-  },
-  {
-    title: 'Details',
-    dataIndex: 'Description',
-    key: 'Description',
-    width: 200,
-  },
-  {
-    title: 'TDS (BDT)',
-    dataIndex: 'Cost',
-    key: 'Cost',
-    width: 200,
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size='middle'>
-        <Button type='primary' icon={<EditOutlined />} size={'large'} />
-        <Button
-          type='primary'
-          danger
-          icon={<DeleteOutlined />}
-          size={'large'}
-        />
-      </Space>
-    ),
-  },
-]
-const data = [
-  {
-    TaxDeductId: 13308,
-    IncomeId: 41838,
-    Description: 'TDS',
-    Cost: 5000,
-    LastUpdateAt: null,
-    CerateAt: '2024-04-16 11:49:30',
-    Type: null,
-  },
-]
-
-export default function ForeignIncome({setActiveTab}) {
+export default function ForeignIncome({
+  setActiveTab,
+  nextActiveTab,
+  setCurrent,
+  backActiveTab,
+}) {
   const [form] = Form.useForm()
+  const [foreignIncome, setforeignIncome] = useState()
 
-  const onFinish = (values) => {
-    console.log(values)
+  const columns = [
+    {
+      title: 'Source Type',
+      dataIndex: 'Type',
+      key: 'Type',
+      width: 300,
+    },
+    {
+      title: 'Details',
+      dataIndex: 'Description',
+      key: 'Description',
+      width: 200,
+    },
+    {
+      title: 'Net income (BDT)',
+      dataIndex: 'Cost',
+      key: 'Cost',
+      width: 200,
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Space size='middle'>
+          <Button
+            type='primary'
+            icon={<EditOutlined />}
+            size={'large'}
+            onClick={() => updateItem(record)}
+          />
+          <Button
+            type='primary'
+            danger
+            icon={<DeleteOutlined />}
+            size={'large'}
+            onClick={() => deleteItem(record.ForeignIncomeId)}
+          />
+        </Space>
+      ),
+    },
+  ]
+
+  const deleteItem = (TaxDeductId) => {
+    confirm({
+      title: 'Do you want to delete these items?',
+      icon: <ExclamationCircleFilled />,
+      async onOk() {
+        let res = await postData(Delete_Foreign_Income + '/' + TaxDeductId)
+        if (res) {
+          getForeignIncome()
+          alertPop('error', res?.data?.message)
+        }
+      },
+      onCancel() {
+        console.log('Cancel')
+      },
+    })
   }
+
+  const onFinish = async (values) => {
+    let data = {...values}
+    let res = await postData(Save_Foreign_Income, data)
+
+    if (res) {
+      form.resetFields()
+      getForeignIncome()
+    }
+  }
+
+  const getForeignIncome = async () => {
+    let res = await getData(Get_Foreign_Income)
+
+    if (res) {
+      setforeignIncome(res?.data)
+    }
+  }
+
+  useEffect(() => {
+    getForeignIncome()
+  }, [])
 
   return (
     <div className='bg-white pb-6 px-6'>
@@ -80,7 +132,11 @@ export default function ForeignIncome({setActiveTab}) {
         }}
       >
         <div className='mt-5'>
-          <Table columns={columns} dataSource={data} pagination={false} />
+          <Table
+            columns={columns}
+            dataSource={foreignIncome}
+            pagination={false}
+          />
 
           <Form
             className='mt-5'
@@ -92,7 +148,7 @@ export default function ForeignIncome({setActiveTab}) {
           >
             <Flex wrap gap='small'>
               <Form.Item
-                name='gender'
+                name='Type'
                 rules={[
                   {
                     required: true,
@@ -101,7 +157,7 @@ export default function ForeignIncome({setActiveTab}) {
               >
                 <Select
                   style={{width: '280px'}}
-                  placeholder='Select a option and change input text above'
+                  placeholder='Select a option'
                   // onChange={onGenderChange}
                   popupMatchSelectWidth={false}
                   allowClear
@@ -112,32 +168,36 @@ export default function ForeignIncome({setActiveTab}) {
                     />
                   }
                 >
-                  <Option value='male'>male</Option>
-                  <Option value='female'>female</Option>
+                  <Option value='Taxable Income from Abroad'>
+                    Taxable Income from Abroad
+                  </Option>
+                  <Option value='Tax Exempted / Tax Free Income'>
+                    Tax Exempted / Tax Free Income
+                  </Option>
                   <Option value='other'>other</Option>
                 </Select>
               </Form.Item>
 
               <Form.Item
-                name='gender'
+                name='Description'
                 rules={[
                   {
                     required: true,
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} />
+                <Input style={{width: '200px'}} placeholder='Description' />
               </Form.Item>
 
               <Form.Item
-                name='gender'
+                name='Cost'
                 rules={[
                   {
                     required: true,
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} />
+                <Input style={{width: '200px'}} placeholder='Amount' />
               </Form.Item>
 
               <Form.Item>
@@ -149,6 +209,33 @@ export default function ForeignIncome({setActiveTab}) {
           </Form>
         </div>
       </ConfigProvider>
+
+      <div className='text-center mt-6'>
+        <Space>
+          <Button
+            type='primary'
+            className='refer-friend-button shadow-none md:w-52'
+            onClick={() => {
+              setActiveTab(backActiveTab)
+            }}
+          >
+            <LeftOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+            Back
+          </Button>
+
+          {console.log('nextActiveTab', nextActiveTab)}
+          <Button
+            type='primary'
+            className='prime-button gap-0 md:w-52 m-auto'
+            onClick={() => {
+              setActiveTab(nextActiveTab)
+            }}
+          >
+            Next
+            <RightOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+          </Button>
+        </Space>
+      </div>
     </div>
   )
 }
