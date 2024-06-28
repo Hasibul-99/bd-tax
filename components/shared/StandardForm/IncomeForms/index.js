@@ -45,6 +45,11 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
     return incomeOptions[idx + 1] || null
   }
 
+  const getBackActivateTab = (val) => {
+    let idx = incomeOptions.findIndex((i) => i === val)
+    return incomeOptions[idx - 1] || null
+  }
+
   const showSelectedForm = () => {
     switch (activeTab) {
       case 1:
@@ -57,9 +62,21 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
           />
         )
       case 2:
-        return <IncomeFromFinancialAssets setActiveTab={setActiveTab} />
+        return (
+          <IncomeFromFinancialAssets
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(2)}
+          />
+        )
       case 5:
-        return <PropertyForm />
+        return (
+          <PropertyForm
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(5)}
+          />
+        )
       case 6:
         return <AgricultureForm />
       case 7:
@@ -69,7 +86,14 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
       case 9:
         return <SpouseChild />
       case 10:
-        return <CapitalGains />
+        return (
+          <CapitalGains
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(14)}
+            backActiveTab={getBackActivateTab(14)}
+          />
+        )
       case 11:
         return <OtherSources />
       case 12:
@@ -77,7 +101,14 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
       case 13:
         return <TaxRebate />
       case 14:
-        return <TaxDeductedAtSource />
+        return (
+          <TaxDeductedAtSource
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(14)}
+            backActiveTab={getBackActivateTab(14)}
+          />
+        )
       case 15:
         return <AdvancePaidTax />
       case 16:

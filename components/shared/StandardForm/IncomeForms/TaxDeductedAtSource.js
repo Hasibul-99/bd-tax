@@ -5,6 +5,8 @@ import {
   DeleteOutlined,
   EditOutlined,
   ExclamationCircleFilled,
+  LeftOutlined,
+  RightOutlined,
 } from '@ant-design/icons'
 import {
   Button,
@@ -21,7 +23,12 @@ import {
 import {useEffect, useState} from 'react'
 const {confirm} = Modal
 
-export default function TaxDeductedAtSource({setActiveTab}) {
+export default function TaxDeductedAtSource({
+  setActiveTab,
+  nextActiveTab,
+  setCurrent,
+  backActiveTab,
+}) {
   const [form] = Form.useForm()
   const [tdsType, setTdsType] = useState()
   const [tds, setTds] = useState()
@@ -210,6 +217,33 @@ export default function TaxDeductedAtSource({setActiveTab}) {
               </Form.Item>
             </Flex>
           </Form>
+        </div>
+
+        <div className='text-center mt-6'>
+          <Space>
+            <Button
+              type='primary'
+              className='refer-friend-button shadow-none md:w-52'
+              onClick={() => {
+                setActiveTab(backActiveTab)
+              }}
+            >
+              <LeftOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+              Back
+            </Button>
+
+            {console.log('nextActiveTab', nextActiveTab)}
+            <Button
+              type='primary'
+              className='prime-button gap-0 md:w-52 m-auto'
+              onClick={() => {
+                setActiveTab(nextActiveTab)
+              }}
+            >
+              Next
+              <RightOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+            </Button>
+          </Space>
         </div>
       </ConfigProvider>
     </div>

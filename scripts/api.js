@@ -68,3 +68,8 @@ export const Get_Tds_Type = 'getTdsType'
 export const Save_Tds = 'saveTds'
 export const Get_Tds = 'getTds'
 export const Delete_Tds = 'deleteTds'
+
+export const Get_capital_Gain_Type = 'capitalGainType'
+export const Save_Capital_Gain = 'saveCapitalGain'
+export const get_Capital_Gain = 'getCapitalGain'
+export const delete_Capital_Gain = 'deleteCapitalGain'
