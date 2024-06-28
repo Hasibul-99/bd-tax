@@ -53,3 +53,13 @@ export const GET_incomeAssetLiabilySourceList = 'incomeAssetLiabilySourceList'
 // Tax Plan amount
 export const GET_ANNUAL_INCOME = 'annualIncome'
 export const GET_INSURANCE = 'getInsurance'
+
+// Standard Form
+
+export const SAVE_INCOME_SALARIES = 'saveIncomeSalaries'
+export const GET_SALARIES = 'getSalaries'
+
+export const GET_Financial_Assets_Type = 'getFinancialAssetsType'
+export const Save_Financial_Assets = 'saveFinancialAssets'
+export const Get_Financial_Assets = 'getFinancialAssets'
+export const Delete_Financial_Assets = 'deleteFinancialAssets'

@@ -21,10 +21,6 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
   const [tabItems, setTabItems] = useState([])
   const [activeTab, setActiveTab] = useState()
 
-  console.log('====================================')
-  console.log('incomeList', incomeList, incomeOptions)
-  console.log('====================================')
-
   const accessTabItems = () => {
     if (incomeList?.length && incomeOptions?.length) {
       let arr = []
@@ -44,11 +40,21 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
     }
   }
 
+  const getNextActiveTab = (val) => {
+    let idx = incomeOptions.findIndex((i) => i === val)
+    return incomeOptions[idx + 1] || null
+  }
+
   const showSelectedForm = () => {
     switch (activeTab) {
       case 1:
         return (
-          <SalaryForm setCurrent={setCurrent} setActiveTab={setActiveTab} />
+          <SalaryForm
+            setCurrent={setCurrent}
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(1)}
+          />
         )
       case 2:
         return <IncomeFromFinancialAssets setActiveTab={setActiveTab} />
