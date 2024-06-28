@@ -264,7 +264,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select gender' allowClear>
+                <Select
+                  placeholder='Select gender'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   <Option value='male'>Male</Option>
                   <Option value='female'>Female</Option>
                   {/* <Option value="other">other</Option> */}

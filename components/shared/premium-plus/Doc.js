@@ -158,6 +158,12 @@ export default function Doc({setCurrent, nextCurrent}) {
                         placeholder='Select a file type'
                         optionFilterProp='children'
                         className='w-full my-3'
+                        suffixIcon={
+                          <img
+                            src='/assets/icons/select-icon.svg'
+                            alt='select-icon'
+                          />
+                        }
                         options={
                           fileType?.length
                             ? fileType.map((item) => ({

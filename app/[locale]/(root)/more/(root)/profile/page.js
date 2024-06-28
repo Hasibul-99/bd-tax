@@ -158,8 +158,13 @@ export default function Profile() {
               >
                 <Select
                   placeholder='Select a option and change input text above'
-                  // onChange={onGenderChange}
                   allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
                 >
                   <Option value='male'>male</Option>
                   <Option value='female'>female</Option>

@@ -188,7 +188,12 @@ export default function SignUp() {
                 },
               ]}
             >
-              <Select placeholder='How did you hear about us'>
+              <Select
+                placeholder='How did you hear about us'
+                suffixIcon={
+                  <img src='/assets/icons/select-icon.svg' alt='select-icon' />
+                }
+              >
                 {hearAboutUs.length ? (
                   <>
                     {hearAboutUs.map((item, idx) => (

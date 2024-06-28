@@ -46,6 +46,9 @@ export default function LanguageChange() {
         <Select
           defaultValue={selected()}
           className='lang-select'
+          suffixIcon={
+            <img src='/assets/icons/select-icon.svg' alt='select-icon' />
+          }
           style={{
             width: 120,
             borderRadius: 10,

@@ -344,7 +344,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select gender' allowClear>
+                <Select
+                  placeholder='Select gender'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   <Option value='male'>Male</Option>
                   <Option value='female'>Female</Option>
                 </Select>
@@ -367,7 +376,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select Marital Status' allowClear>
+                <Select
+                  placeholder='Select Marital Status'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   <Option value='Single'>Single</Option>
                   <Option value='Married'>Married</Option>
                 </Select>
@@ -390,7 +408,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select Residential Status' allowClear>
+                <Select
+                  placeholder='Select Residential Status'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   <Option value='N'>Non-resident</Option>
                   <Option value='Y'>Resident</Option>
                 </Select>
@@ -413,7 +440,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select Residential Status' allowClear>
+                <Select
+                  placeholder='Select Residential Status'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   <Option value='NO'>NO</Option>
                   <Option value='YES'>YES</Option>
                 </Select>
@@ -512,7 +548,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select Residential Status' allowClear>
+                <Select
+                  placeholder='Select Residential Status'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   <Option value='N'>NO</Option>
                   <Option value='Y'>YES</Option>
                 </Select>
@@ -535,7 +580,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select' allowClear>
+                <Select
+                  placeholder='Select'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   <Option value='N'>NO</Option>
                   <Option value='Y'>YES</Option>
                 </Select>
@@ -558,7 +612,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select Area ' allowClear>
+                <Select
+                  placeholder='Select Area '
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   {areaList?.length ? (
                     <>
                       {areaList.map((item) => (
@@ -633,6 +696,12 @@ export default function PersonalInfo({setCurrent}) {
                 <Select
                   placeholder='Select Division'
                   allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
                   onChange={HandelDivision}
                 >
                   {divisionList?.length ? (
@@ -666,7 +735,16 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Select placeholder='Select District' allowClear>
+                <Select
+                  placeholder='Select District'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
                   {districtList?.length ? (
                     <>
                       {districtList.map((item) => (
