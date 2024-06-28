@@ -81,3 +81,7 @@ export const Delete_Foreign_Income = 'deleteForeignIncome'
 
 export const Get_Other_Sources = 'get-other-sources'
 export const Save_Other_Sources = 'save-other-sources'
+
+export const Save_Adjustmentsof_TaxRefund = 'saveAdjustmentsofTaxRefund'
+export const Get_Adjustmentsof_TaxRefund = 'getAdjustmentsofTaxRefund'
+export const Delete_Adjustment_TaxRefund = 'deleteAdjustmentTaxRefund'

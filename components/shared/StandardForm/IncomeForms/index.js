@@ -124,9 +124,23 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
           />
         )
       case 15:
-        return <AdvancePaidTax />
+        return (
+          <AdvancePaidTax
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(15)}
+            backActiveTab={getBackActivateTab(15)}
+          />
+        )
       case 16:
-        return <AdjustmentOfTaxRefund />
+        return (
+          <AdjustmentOfTaxRefund
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(16)}
+            backActiveTab={getBackActivateTab(16)}
+          />
+        )
       default:
         break
     }
