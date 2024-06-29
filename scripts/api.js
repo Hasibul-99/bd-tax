@@ -211,3 +211,21 @@ export const get_User_OutsideBusiness = 'asset/userOutsideBusinesses'
 export const Create_User_OutsideBusiness = 'asset/userOutsideBusinesses/create'
 export const Update_User_OutsideBusiness = 'asset/userOutsideBusinesses/update/'
 export const Delete_User_OutsideBusiness = 'asset/userOutsideBusinesses/delete/'
+
+export const get_User_AnyOtherAssets = 'asset/userAnyOtherAssets'
+export const Create_User_AnyOtherAssets = 'asset/userAnyOtherAssets/create'
+export const Update_User_AnyOtherAssets = 'asset/userAnyOtherAssets/update/'
+export const Delete_User_AnyOtherAssets = 'asset/userAnyOtherAssets/delete/'
+
+export const get_User_OtherAssetReceipts = 'asset/userOtherAssetReceipts'
+export const Create_User_OtherAssetReceipts =
+  'asset/userOtherAssetReceipts/create'
+export const Update_User_OtherAssetReceipts =
+  'asset/userOtherAssetReceipts/update/'
+export const Delete_User_OtherAssetReceipts =
+  'asset/userOtherAssetReceipts/delete/'
+
+export const get_User_NetWealth = 'asset/userNetWealth'
+export const Create_User_NetWealth = 'asset/userNetWealth/create'
+export const Update_User_NetWealth = 'asset/userNetWealth/update'
+export const Delete_User_NetWealth = 'asset/userNetWealth/delete'

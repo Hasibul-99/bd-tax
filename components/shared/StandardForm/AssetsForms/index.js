@@ -100,8 +100,8 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           <Jewellery
             setActiveTab={setActiveTab}
             setProsCurrent={setProsCurrent}
-            nextActiveTab={getNextActiveTab(23)}
-            backActiveTab={getBackActivateTab(23)}
+            nextActiveTab={getNextActiveTab(24)}
+            backActiveTab={getBackActivateTab(24)}
           />
         )
       case 25:
@@ -109,8 +109,8 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           <ElectronicEquipment
             setActiveTab={setActiveTab}
             setProsCurrent={setProsCurrent}
-            nextActiveTab={getNextActiveTab(23)}
-            backActiveTab={getBackActivateTab(23)}
+            nextActiveTab={getNextActiveTab(25)}
+            backActiveTab={getBackActivateTab(25)}
           />
         )
       case 26:
@@ -118,8 +118,8 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           <CashAssets
             setActiveTab={setActiveTab}
             setProsCurrent={setProsCurrent}
-            nextActiveTab={getNextActiveTab(23)}
-            backActiveTab={getBackActivateTab(23)}
+            nextActiveTab={getNextActiveTab(26)}
+            backActiveTab={getBackActivateTab(26)}
           />
         )
       case 27:
@@ -127,8 +127,8 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           <OtherAssets
             setActiveTab={setActiveTab}
             setProsCurrent={setProsCurrent}
-            nextActiveTab={getNextActiveTab(23)}
-            backActiveTab={getBackActivateTab(23)}
+            nextActiveTab={getNextActiveTab(27)}
+            backActiveTab={getBackActivateTab(27)}
           />
         )
       case 28:
@@ -136,8 +136,8 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           <OtherAssetsReceipt
             setActiveTab={setActiveTab}
             setProsCurrent={setProsCurrent}
-            nextActiveTab={getNextActiveTab(23)}
-            backActiveTab={getBackActivateTab(23)}
+            nextActiveTab={getNextActiveTab(28)}
+            backActiveTab={getBackActivateTab(28)}
           />
         )
       case 29:
@@ -145,8 +145,8 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           <PreviousYearNetWealth
             setActiveTab={setActiveTab}
             setProsCurrent={setProsCurrent}
-            nextActiveTab={getNextActiveTab(23)}
-            backActiveTab={getBackActivateTab(23)}
+            nextActiveTab={getNextActiveTab(29)}
+            backActiveTab={getBackActivateTab(29)}
           />
         )
       default:
