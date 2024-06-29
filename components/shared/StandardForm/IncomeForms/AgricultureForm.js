@@ -183,7 +183,7 @@ export default function AgricultureForm({
 
   return (
     <div className='bg-white pb-6 px-6'>
-      <h3 className='text-xl font-semibold'>SPOUSE/CHILD </h3>
+      <h3 className='text-xl font-semibold'>AGRICULTURE</h3>
       <ConfigProvider
         theme={{
           token: {
