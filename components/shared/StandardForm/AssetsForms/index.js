@@ -96,17 +96,59 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           />
         )
       case 24:
-        return <Jewellery />
+        return (
+          <Jewellery
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(23)}
+            backActiveTab={getBackActivateTab(23)}
+          />
+        )
       case 25:
-        return <ElectronicEquipment />
+        return (
+          <ElectronicEquipment
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(23)}
+            backActiveTab={getBackActivateTab(23)}
+          />
+        )
       case 26:
-        return <CashAssets />
+        return (
+          <CashAssets
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(23)}
+            backActiveTab={getBackActivateTab(23)}
+          />
+        )
       case 27:
-        return <OtherAssets />
+        return (
+          <OtherAssets
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(23)}
+            backActiveTab={getBackActivateTab(23)}
+          />
+        )
       case 28:
-        return <OtherAssetsReceipt />
+        return (
+          <OtherAssetsReceipt
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(23)}
+            backActiveTab={getBackActivateTab(23)}
+          />
+        )
       case 29:
-        return <PreviousYearNetWealth />
+        return (
+          <PreviousYearNetWealth
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(23)}
+            backActiveTab={getBackActivateTab(23)}
+          />
+        )
       default:
         break
     }

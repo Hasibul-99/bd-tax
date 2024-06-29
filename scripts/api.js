@@ -197,3 +197,11 @@ export const Get_User_Jewelries = 'asset/userJewelries'
 export const Create_User_Jewelries = 'asset/userJewelries/create'
 export const Update_User_Jewelries = 'asset/userJewelries/update/'
 export const Delete_User_Jewelries = 'asset/userJewelries/delete/'
+
+export const Get_User_ElectronicEquipments = 'asset/userElectronicEquipments'
+export const Create_User_ElectronicEquipments =
+  'asset/userElectronicEquipments/create'
+export const Update_User_ElectronicEquipments =
+  'asset/userElectronicEquipments/update/'
+export const Delete_User_ElectronicEquipments =
+  'asset/userElectronicEquipments/delete/'
