@@ -89,3 +89,11 @@ export const Get_Adjustmentsof_TaxRefund = 'getAdjustmentsofTaxRefund'
 export const Save_Advance_Paid_Tax = 'saveAdvancePaidTax'
 export const Get_Advance_Paid_Tax = 'getAdvancePaidTax'
 export const Delete_Advance_Paid_Tax = 'deleteAdvancePaidTax'
+
+export const Create_Rental_Properties =
+  'income/userIncomeHouseProperties/create'
+export const Get_Rental_Properties = 'income/userIncomeHouseProperties'
+export const Update_Rental_Properties =
+  'income/userIncomeHouseProperties/update/'
+export const Delete_Rental_Properties =
+  'income/userIncomeHouseProperties/delete/'

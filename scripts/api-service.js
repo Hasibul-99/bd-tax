@@ -118,3 +118,53 @@ export const deleteData = async (query, no_token) => {
     // return false;
   }
 }
+
+export const putData = async (query, data, no_token, showError) => {
+  try {
+    let res = await axios({
+      method: 'put',
+      url: `${base_url}${query}`,
+      headers: no_token
+        ? {}
+        : {
+            Authorization: `Bearer ${token}`,
+            lang: 'en',
+          },
+      data: data,
+    })
+    if (checkRes(res?.data.code || res?.data.status_code)) {
+      return res
+    }
+  } catch (error) {
+    console.log('error?.response?.data', error?.response)
+
+    if (
+      showError &&
+      error?.response?.data?.data &&
+      Object.keys(error?.response?.data?.data).length
+    ) {
+      if (error?.response?.data?.message) {
+        alertPop('error', error?.response?.data?.message)
+      }
+
+      let errors = []
+
+      for (const property in error?.response?.data?.data) {
+        errors.push({
+          name: property, // required
+          errors: error?.response?.data?.data[property],
+        })
+      }
+      return {
+        code: 'error',
+        errors: errors,
+      }
+    }
+    if (error.response.status) checkRes(error.response.status)
+    alertPop(
+      'error',
+      error?.response?.data?.message || error?.response?.data?.data?.message
+    )
+    return false
+  }
+}
