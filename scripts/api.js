@@ -205,3 +205,9 @@ export const Update_User_ElectronicEquipments =
   'asset/userElectronicEquipments/update/'
 export const Delete_User_ElectronicEquipments =
   'asset/userElectronicEquipments/delete/'
+
+export const get_User_OutsideBusiness_type = 'asset/userOutsideBusinessType'
+export const get_User_OutsideBusiness = 'asset/userOutsideBusinesses'
+export const Create_User_OutsideBusiness = 'asset/userOutsideBusinesses/create'
+export const Update_User_OutsideBusiness = 'asset/userOutsideBusinesses/update/'
+export const Delete_User_OutsideBusiness = 'asset/userOutsideBusinesses/delete/'

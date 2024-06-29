@@ -182,7 +182,7 @@ export default function NonAgriculturalProperty({
 
   return (
     <div className='bg-white pb-6 px-6'>
-      <h3 className='text-xl font-semibold'>NonAgricultureProperties</h3>
+      <h3 className='text-xl font-semibold'>NON-AGRICULTURAL PROPERTY</h3>
       <ConfigProvider
         theme={{
           token: {
