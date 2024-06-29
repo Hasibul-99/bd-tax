@@ -216,7 +216,7 @@ export default function BusinessCapital({
               type='primary'
               className='prime-button gap-0 md:w-52 m-auto'
               onClick={() => {
-                nextActiveTab ? setActiveTab(nextActiveTab) : setProsCurrent(2)
+                nextActiveTab ? setActiveTab(nextActiveTab) : setProsCurrent(3)
               }}
             >
               Next
