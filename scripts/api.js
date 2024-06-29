@@ -111,3 +111,13 @@ export const Get_User_Income_TaxRebate = 'income/userIncomeTaxRebate'
 export const Save_User_Income_TaxRebate = 'income/userIncomeTaxRebate/create'
 export const Update_User_Income_TaxRebate = 'income/userIncomeTaxRebate/update/'
 export const Delete_User_Income_TaxRebate = 'income/userIncomeTaxRebate/delete/'
+
+export const Get_User_Income_SpouseChilds_Type =
+  'income/userIncomeSpouseChildType'
+export const Get_User_Income_SpouseChilds = 'income/userIncomeSpouseChilds'
+export const Create_User_Income_SpouseChilds =
+  'income/userIncomeSpouseChilds/create'
+export const Update_User_Income_SpouseChilds =
+  'income/userIncomeSpouseChilds/update/'
+export const Delete_User_Income_SpouseChilds =
+  'income/userIncomeSpouseChilds/delete/'

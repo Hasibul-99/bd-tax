@@ -106,7 +106,14 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
           />
         )
       case 9:
-        return <SpouseChild />
+        return (
+          <SpouseChild
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(9)}
+            backActiveTab={getBackActivateTab(9)}
+          />
+        )
       case 10:
         return (
           <CapitalGains
