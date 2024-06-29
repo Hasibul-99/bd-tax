@@ -83,5 +83,9 @@ export const Get_Other_Sources = 'get-other-sources'
 export const Save_Other_Sources = 'save-other-sources'
 
 export const Save_Adjustmentsof_TaxRefund = 'saveAdjustmentsofTaxRefund'
-export const Get_Adjustmentsof_TaxRefund = 'getAdjustmentsofTaxRefund'
 export const Delete_Adjustment_TaxRefund = 'deleteAdjustmentTaxRefund'
+export const Get_Adjustmentsof_TaxRefund = 'getAdjustmentsofTaxRefund'
+
+export const Save_Advance_Paid_Tax = 'saveAdvancePaidTax'
+export const Get_Advance_Paid_Tax = 'getAdvancePaidTax'
+export const Delete_Advance_Paid_Tax = 'deleteAdvancePaidTax'
