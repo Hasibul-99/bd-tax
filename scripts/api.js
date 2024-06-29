@@ -129,3 +129,13 @@ export const Update_ShareOfProfitInFirms =
   'income/userIncomeShareOfProfitInFirms/update/'
 export const Delete_ShareOfProfitInFirms =
   'income/userIncomeShareOfProfitInFirms/delete/'
+
+export const Get_User_Income_AgricultureCrops_Type =
+  'income/userIncomeAgricultureCropsType'
+export const Get_User_Income_AgricultureCrops = 'income/userIncomeAgricultures'
+export const Create_User_Income_AgricultureCrops =
+  'income/userIncomeAgricultures/create'
+export const Update_User_Income_AgricultureCrops =
+  'income/userIncomeAgricultures/update/'
+export const Delete_User_Income_AgricultureCrops =
+  'income/userIncomeAgricultures/delete/'
