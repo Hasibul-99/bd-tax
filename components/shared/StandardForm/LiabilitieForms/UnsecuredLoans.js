@@ -207,7 +207,7 @@ export default function UnsecuredLoans({
               type='primary'
               className='refer-friend-button shadow-none md:w-52'
               onClick={() => {
-                backActiveTab ? setActiveTab(backActiveTab) : setProsCurrent(1)
+                backActiveTab ? setActiveTab(backActiveTab) : setProsCurrent(2)
               }}
             >
               <LeftOutlined style={{fontSize: '12px', marginTop: '2px'}} />
@@ -218,7 +218,7 @@ export default function UnsecuredLoans({
               type='primary'
               className='prime-button gap-0 md:w-52 m-auto'
               onClick={() => {
-                nextActiveTab ? setActiveTab(nextActiveTab) : setProsCurrent(3)
+                nextActiveTab ? setActiveTab(nextActiveTab) : setProsCurrent(4)
               }}
             >
               Next

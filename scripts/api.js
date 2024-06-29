@@ -250,3 +250,20 @@ export const Create_liability_UnsecuredLoans =
   'liability/userLiabilityUnsecuredLoans/create'
 export const Delete_liability_UnsecuredLoans =
   'liability/userLiabilityUnsecuredLoans/delete/'
+
+export const Get_liability_BankLoans = 'liability/userLiabilityBankLoans'
+export const Create_liability_BankLoans =
+  'liability/userLiabilityBankLoans/create'
+export const Update_liability_BankLoans =
+  'liability/userLiabilityBankLoans/update/'
+export const Delete_liability_BankLoans =
+  'liability/userLiabilityBankLoans/delete/'
+
+export const Get_liability_OtherLiabilities =
+  'liability/userLiabilityOtherLiabilities'
+export const Create_liability_OtherLiabilities =
+  'liability/userLiabilityOtherLiabilities/create'
+export const Update_liability_OtherLiabilities =
+  'liability/userLiabilityOtherLiabilities/update/'
+export const Delete_liability_OtherLiabilities =
+  'liability/userLiabilityOtherLiabilities/delete/'
