@@ -149,3 +149,11 @@ export const Update_User_Business_Capitals =
   'asset/userBusinessCapitals/update/'
 export const Delete_User_Business_Capitals =
   'asset/userBusinessCapitals/delete/'
+
+export const Get_User_Shareholding_Companies = 'asset/userShareholdingCompanies'
+export const Create_User_Shareholding_Companies =
+  'asset/userShareholdingCompanies/create'
+export const Update_User_Shareholding_Companies =
+  'asset/userShareholdingCompanies/update/'
+export const Delete_User_Shareholding_Companies =
+  'asset/userShareholdingCompanies/delete/'
