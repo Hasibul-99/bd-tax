@@ -42,11 +42,32 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           />
         )
       case 18:
-        return <DirectorShareholdingAssets />
+        return (
+          <DirectorShareholdingAssets
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(18)}
+            backActiveTab={getBackActivateTab(18)}
+          />
+        )
       case 19:
-        return <NonAgriculturalProperty />
+        return (
+          <NonAgriculturalProperty
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(19)}
+            backActiveTab={getBackActivateTab(19)}
+          />
+        )
       case 20:
-        return <AgriculturalProperty />
+        return (
+          <AgriculturalProperty
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(20)}
+            backActiveTab={getBackActivateTab(20)}
+          />
+        )
       case 21:
         return <Investments />
       case 22:

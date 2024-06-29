@@ -157,3 +157,22 @@ export const Update_User_Shareholding_Companies =
   'asset/userShareholdingCompanies/update/'
 export const Delete_User_Shareholding_Companies =
   'asset/userShareholdingCompanies/delete/'
+
+export const Get_User_NonAgricultureProperty_Type =
+  'asset/userNonAgriculturePropertyType'
+export const Get_User_NonAgricultureProperty =
+  'asset/userNonAgricultureProperties'
+export const Create_User_NonAgricultureProperty =
+  'asset/userNonAgricultureProperties/create'
+export const Update_User_NonAgricultureProperty =
+  'asset/userNonAgricultureProperties/update/'
+export const Delete_User_NonAgricultureProperty =
+  'asset/userNonAgricultureProperties/delete/'
+
+export const Get_User_Agriculture_Properties = 'asset/userAgricultureProperties'
+export const Create_User_Agriculture_Properties =
+  'asset/userAgricultureProperties/create'
+export const Update_User_Agriculture_Properties =
+  'asset/userAgricultureProperties/update/'
+export const Delete_User_Agriculture_Properties =
+  'asset/userAgricultureProperties/delete/'
