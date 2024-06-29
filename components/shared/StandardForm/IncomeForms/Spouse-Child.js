@@ -109,19 +109,19 @@ export default function SpouseChild({
       title: 'Relation',
       dataIndex: 'Type',
       key: 'Type',
-      width: 200,
+      width: 250,
     },
     {
       title: 'Name',
       dataIndex: 'Name',
       key: 'Name',
-      width: 150,
+      width: 200,
     },
     {
       title: 'Net income (BDT)',
       dataIndex: 'Cost',
       key: 'Cost',
-      width: 150,
+      width: 200,
     },
     {
       title: 'Action',
@@ -191,7 +191,7 @@ export default function SpouseChild({
                 ]}
               >
                 <Select
-                  style={{width: '180px'}}
+                  style={{width: '230px'}}
                   placeholder='Select a option'
                   popupMatchSelectWidth={false}
                   allowClear
@@ -217,7 +217,7 @@ export default function SpouseChild({
                   },
                 ]}
               >
-                <Input style={{width: '150px'}} placeholder='Name' />
+                <Input style={{width: '200px'}} placeholder='Name' />
               </Form.Item>
 
               <Form.Item
@@ -228,7 +228,7 @@ export default function SpouseChild({
                   },
                 ]}
               >
-                <InputNumber style={{width: '150px'}} placeholder='Cost' />
+                <InputNumber style={{width: '200px'}} placeholder='Cost' />
               </Form.Item>
 
               <Form.Item>

@@ -121,3 +121,11 @@ export const Update_User_Income_SpouseChilds =
   'income/userIncomeSpouseChilds/update/'
 export const Delete_User_Income_SpouseChilds =
   'income/userIncomeSpouseChilds/delete/'
+
+export const Get_ShareOfProfitInFirms = 'income/userIncomeShareOfProfitInFirms'
+export const Create_ShareOfProfitInFirms =
+  'income/userIncomeShareOfProfitInFirms/create'
+export const Update_ShareOfProfitInFirms =
+  'income/userIncomeShareOfProfitInFirms/update/'
+export const Delete_ShareOfProfitInFirms =
+  'income/userIncomeShareOfProfitInFirms/delete/'
