@@ -192,3 +192,8 @@ export const Get_User_Furnitures = 'asset/userFurnitures'
 export const Create_User_Furnitures = 'asset/userFurnitures/create'
 export const Update_User_Furnitures = 'asset/userFurnitures/update/'
 export const Delete_User_Furnitures = 'asset/userFurnitures/delete/'
+
+export const Get_User_Jewelries = 'asset/userJewelries'
+export const Create_User_Jewelries = 'asset/userJewelries/create'
+export const Update_User_Jewelries = 'asset/userJewelries/update/'
+export const Delete_User_Jewelries = 'asset/userJewelries/delete/'
