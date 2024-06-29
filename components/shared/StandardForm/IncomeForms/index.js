@@ -135,7 +135,14 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
           />
         )
       case 13:
-        return <TaxRebate />
+        return (
+          <TaxRebate
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(13)}
+            backActiveTab={getBackActivateTab(13)}
+          />
+        )
       case 14:
         return (
           <TaxDeductedAtSource

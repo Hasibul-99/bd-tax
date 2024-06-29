@@ -96,7 +96,7 @@ export default function PropertyForm({
   }
 
   const onFinish = async (value) => {
-    if (selecetdItem.IncomePropertiesId) {
+    if (selecetdItem?.IncomePropertiesId) {
       let res = await putData(
         Update_Rental_Properties + `${selecetdItem.IncomePropertiesId}`,
         value,

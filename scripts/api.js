@@ -106,3 +106,8 @@ export const Save_Income_BsuinessOrProfession =
   'income/userIncomeBsuinessOrProfessions/createOrUpdate'
 export const Delete_Income_BsuinessOrProfession =
   'income/userIncomeBsuinessOrProfessions/delete/'
+
+export const Get_User_Income_TaxRebate = 'income/userIncomeTaxRebate'
+export const Save_User_Income_TaxRebate = 'income/userIncomeTaxRebate/create'
+export const Update_User_Income_TaxRebate = 'income/userIncomeTaxRebate/update/'
+export const Delete_User_Income_TaxRebate = 'income/userIncomeTaxRebate/delete/'
