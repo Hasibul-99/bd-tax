@@ -97,3 +97,12 @@ export const Update_Rental_Properties =
   'income/userIncomeHouseProperties/update/'
 export const Delete_Rental_Properties =
   'income/userIncomeHouseProperties/delete/'
+
+export const Get_Income_BsuinessOrProfession_Types =
+  'income/userIncomeBsuinessOrProfessionType'
+export const Get_Income_BsuinessOrProfession =
+  'income/userIncomeBsuinessOrProfessions'
+export const Save_Income_BsuinessOrProfession =
+  'income/userIncomeBsuinessOrProfessions/createOrUpdate'
+export const Delete_Income_BsuinessOrProfession =
+  'income/userIncomeBsuinessOrProfessions/delete/'

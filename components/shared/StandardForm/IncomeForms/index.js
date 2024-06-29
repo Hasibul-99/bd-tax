@@ -75,14 +75,36 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
             setActiveTab={setActiveTab}
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(5)}
+            backActiveTab={getBackActivateTab(5)}
           />
         )
       case 6:
-        return <AgricultureForm />
+        return (
+          <AgricultureForm
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(6)}
+            backActiveTab={getBackActivateTab(6)}
+          />
+        )
       case 7:
-        return <BusinessForm />
+        return (
+          <BusinessForm
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(7)}
+            backActiveTab={getBackActivateTab(7)}
+          />
+        )
       case 8:
-        return <ShareOfProfitInFirm />
+        return (
+          <ShareOfProfitInFirm
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(8)}
+            backActiveTab={getBackActivateTab(8)}
+          />
+        )
       case 9:
         return <SpouseChild />
       case 10:

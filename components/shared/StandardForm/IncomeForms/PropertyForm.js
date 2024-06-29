@@ -11,6 +11,8 @@ import {
   EditOutlined,
   ExclamationCircleFilled,
   ExclamationCircleOutlined,
+  LeftOutlined,
+  RightOutlined,
 } from '@ant-design/icons'
 import {
   Button,
@@ -36,6 +38,7 @@ export default function PropertyForm({
   setActiveTab,
   setProsCurrent,
   nextActiveTab,
+  backActiveTab,
 }) {
   const [form] = Form.useForm()
   const [rentalProperty, setRentalProperty] = useState()
@@ -584,6 +587,32 @@ export default function PropertyForm({
           </>
         )}
       </ConfigProvider>
+      <Divider />
+      <div className='text-center mt-6'>
+        <Space>
+          <Button
+            type='primary'
+            className='refer-friend-button shadow-none md:w-52'
+            onClick={() => {
+              setActiveTab(backActiveTab)
+            }}
+          >
+            <LeftOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+            Back
+          </Button>
+
+          <Button
+            type='primary'
+            className='prime-button gap-0 md:w-52 m-auto'
+            onClick={() => {
+              nextActiveTab ? setActiveTab(nextActiveTab) : setProsCurrent(2)
+            }}
+          >
+            Next
+            <RightOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+          </Button>
+        </Space>
+      </div>
     </div>
   )
 }
