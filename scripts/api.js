@@ -139,3 +139,13 @@ export const Update_User_Income_AgricultureCrops =
   'income/userIncomeAgricultures/update/'
 export const Delete_User_Income_AgricultureCrops =
   'income/userIncomeAgricultures/delete/'
+
+//User Asset
+export const Get_User_Asset = 'asset/userAsset'
+
+export const Get_User_Business_Capitals = 'asset/userBusinessCapitals'
+export const Create_User_Business_Capitals = 'asset/userBusinessCapitals/create'
+export const Update_User_Business_Capitals =
+  'asset/userBusinessCapitals/update/'
+export const Delete_User_Business_Capitals =
+  'asset/userBusinessCapitals/delete/'

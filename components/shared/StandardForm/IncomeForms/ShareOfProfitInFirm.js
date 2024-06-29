@@ -97,24 +97,24 @@ export default function ShareOfProfitInFirm({
   const columns = [
     {
       title: 'Firm name',
-      dataIndex: 'Type',
-      key: 'Type',
+      dataIndex: 'NameOfFirm',
+      key: 'NameOfFirm',
       width: 200,
     },
     {
       title: 'Income of Firm (BDT)',
-      dataIndex: 'Name',
-      key: 'Name',
+      dataIndex: 'IncomeOfFirm',
+      key: 'IncomeOfFirm',
       width: 150,
     },
     {
       title: '% of ownership of Firm',
-      dataIndex: 'Cost',
-      key: 'Cost',
+      dataIndex: 'ShareOfFirm',
+      key: 'ShareOfFirm',
       width: 150,
     },
     {
-      title: '% of ownership of Firm',
+      title: 'Net Value of Share (BDT)',
       dataIndex: 'Cost',
       key: 'Cost',
       width: 150,

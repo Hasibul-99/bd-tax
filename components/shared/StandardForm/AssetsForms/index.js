@@ -15,15 +15,32 @@ import OtherAssets from './OtherAssets'
 import OtherAssetsReceipt from './OtherAssetsReceipt'
 import PreviousYearNetWealth from './PreviousYearNetWealth'
 
-export default function AssetsForms({assetsList}) {
+export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
   const assetsOptions = standardStore((state) => state.assetsOptions)
   const [tabItems, setTabItems] = useState([])
   const [activeTab, setActiveTab] = useState()
 
+  const getNextActiveTab = (val) => {
+    let idx = assetsOptions.findIndex((i) => i === val)
+    return assetsOptions[idx + 1] || null
+  }
+
+  const getBackActivateTab = (val) => {
+    let idx = assetsOptions.findIndex((i) => i === val)
+    return assetsOptions[idx - 1] || null
+  }
+
   const showSelectedForm = () => {
     switch (activeTab) {
       case 17:
-        return <BusinessCapital />
+        return (
+          <BusinessCapital
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(17)}
+            backActiveTab={getBackActivateTab(17)}
+          />
+        )
       case 18:
         return <DirectorShareholdingAssets />
       case 19:
