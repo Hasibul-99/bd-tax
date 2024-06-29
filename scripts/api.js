@@ -176,3 +176,9 @@ export const Update_User_Agriculture_Properties =
   'asset/userAgricultureProperties/update/'
 export const Delete_User_Agriculture_Properties =
   'asset/userAgricultureProperties/delete/'
+
+export const Get_User_Investment_Type = 'asset/userInvestmentType'
+export const Get_User_Investment = 'asset/userInvestments'
+export const Create_User_Investment = 'asset/userInvestments/create'
+export const Update_User_Investment = 'asset/userInvestments/update/'
+export const Delete_User_Investment = 'asset/userInvestments/delete/'

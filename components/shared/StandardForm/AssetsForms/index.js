@@ -69,11 +69,32 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
           />
         )
       case 21:
-        return <Investments />
+        return (
+          <Investments
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(21)}
+            backActiveTab={getBackActivateTab(21)}
+          />
+        )
       case 22:
-        return <MotorVehicle />
+        return (
+          <MotorVehicle
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(22)}
+            backActiveTab={getBackActivateTab(22)}
+          />
+        )
       case 23:
-        return <Furniture />
+        return (
+          <Furniture
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(23)}
+            backActiveTab={getBackActivateTab(23)}
+          />
+        )
       case 24:
         return <Jewellery />
       case 25:
