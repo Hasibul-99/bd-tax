@@ -229,3 +229,24 @@ export const get_User_NetWealth = 'asset/userNetWealth'
 export const Create_User_NetWealth = 'asset/userNetWealth/create'
 export const Update_User_NetWealth = 'asset/userNetWealth/update'
 export const Delete_User_NetWealth = 'asset/userNetWealth/delete'
+
+// User Liability
+
+export const get_liability_userLiability = 'liability/userLiability'
+
+export const Get_liability_Mortgages = 'liability/userLiabilityMortgages'
+export const Create_liability_Mortgages =
+  'liability/userLiabilityMortgages/create'
+export const Update_liability_Mortgages =
+  'liability/userLiabilityMortgages/update/'
+export const Delete_liability_Mortgages =
+  'liability/userLiabilityMortgages/delete/'
+
+export const Get_liability_UnsecuredLoans =
+  'liability/userLiabilityUnsecuredLoans'
+export const Update_liability_UnsecuredLoans =
+  'liability/userLiabilityUnsecuredLoans/update/'
+export const Create_liability_UnsecuredLoans =
+  'liability/userLiabilityUnsecuredLoans/create'
+export const Delete_liability_UnsecuredLoans =
+  'liability/userLiabilityUnsecuredLoans/delete/'

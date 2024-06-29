@@ -6,7 +6,11 @@ import Mortgages from './Mortgages'
 import OtherLiabilities from './OtherLiabilities'
 import UnsecuredLoans from './UnsecuredLoans'
 
-export default function LiabilitieForms({libilityList}) {
+export default function LiabilitieForms({
+  libilityList,
+  setProsCurrent,
+  setCurrent,
+}) {
   const libilityOptions = standardStore((state) => state.libilityOptions)
   const [tabItems, setTabItems] = useState([])
   const [activeTab, setActiveTab] = useState()
@@ -15,16 +19,54 @@ export default function LiabilitieForms({libilityList}) {
   console.log({libilityList, libilityOptions})
   console.log('====================================')
 
+  const getNextActiveTab = (val) => {
+    let idx = libilityOptions.findIndex((i) => i === val)
+    return libilityOptions[idx + 1] || null
+  }
+
+  const getBackActivateTab = (val) => {
+    let idx = libilityOptions.findIndex((i) => i === val)
+    return libilityOptions[idx - 1] || null
+  }
+
   const showSelectedForm = () => {
     switch (activeTab) {
       case 49:
-        return <Mortgages />
+        return (
+          <Mortgages
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(49)}
+            backActiveTab={getBackActivateTab(49)}
+          />
+        )
       case 50:
-        return <UnsecuredLoans />
+        return (
+          <UnsecuredLoans
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(50)}
+            backActiveTab={getBackActivateTab(50)}
+          />
+        )
       case 51:
-        return <BankLoans />
+        return (
+          <BankLoans
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(51)}
+            backActiveTab={getBackActivateTab(51)}
+          />
+        )
       case 52:
-        return <OtherLiabilities />
+        return (
+          <OtherLiabilities
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(52)}
+            backActiveTab={getBackActivateTab(52)}
+          />
+        )
       default:
         break
     }
