@@ -152,7 +152,7 @@ export default function PremiumPlusProcess() {
               <Step title='Personal Info' />
               <Step title='Prospects' />
               <Step title='Doc' />
-              <Step className='hidden' title='Prospects Steps' />
+              <Step className='!hidden' title='Prospects Steps' />
               <Step title='Payment' />
             </Steps>
           </ConfigProvider>
