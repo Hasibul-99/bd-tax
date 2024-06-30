@@ -36,7 +36,7 @@ export default function Payment({salaryData, setCurrent, context}) {
         <p>Estimated Tax Due</p>
         <p>
           <span className='text-lime-600'>৳ </span>{' '}
-          {salaryData?.tax_amount || 0}
+          {paymentData?.due_amount || 0}
         </p>
       </Card>
       <Space className='text-[#F97316] my-6'>
