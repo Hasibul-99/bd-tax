@@ -408,3 +408,4 @@ export const Delete_Expense_GiftDonationContributions =
 export const Get_Tax_Summary = 'get-tax-summary'
 
 export const Get_User_Referral_Program = 'getUserReferralProgram'
+export const Get_Email_Log = 'getEmailLog'

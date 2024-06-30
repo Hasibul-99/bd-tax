@@ -9,7 +9,7 @@ import {Button, Col, ConfigProvider, Input, Progress, Row, Space} from 'antd'
 import {useEffect, useState} from 'react'
 
 export default function ProspectsSummary({setProsCurrent, setCurrent}) {
-  const [showRes, setShowRes] = useState(false)
+  const [showRes, setShowRes] = useState(true)
   const [report, setReport] = useState()
 
   const getTaxSummary = async () => {
@@ -18,6 +18,10 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
     if (res) {
       console.log('res', res)
       setReport(res?.data)
+
+      setTimeout(() => {
+        setShowRes(false)
+      }, 5000)
     }
   }
 
