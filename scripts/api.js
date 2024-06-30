@@ -286,3 +286,28 @@ export const Update_Expense_Accomodations =
   'expense/userExpenseAccomodations/update/'
 export const Delete_Expense_Accomodations =
   'expense/userExpenseAccomodations/delete/'
+
+export const Get_Expense_Transportations = 'expense/userTransportations'
+export const Create_Expense_Transportations =
+  'expense/userTransportations/create'
+export const Update_Expense_Transportations =
+  'expense/userTransportations/update/'
+export const Delete_Expense_Transportations =
+  'expense/userTransportations/delete/'
+
+export const Get_Expense_OtherTransportations =
+  'expense/userOtherTransportations'
+export const Create_Expense_OtherTransportations =
+  'expense/userOtherTransportations/create'
+export const Update_Expense_OtherTransportations =
+  'expense/userOtherTransportations/update/'
+export const Delete_Expense_OtherTransportations =
+  'expense/userOtherTransportations/delete/'
+
+export const Get_Expense_ElectricityBills = 'expense/userElectricityBills'
+export const Create_Expense_ElectricityBills =
+  'expense/userElectricityBills/create'
+export const Update_Expense_ElectricityBills =
+  'expense/userElectricityBills/update/'
+export const Delete_Expense_ElectricityBills =
+  'expense/userElectricityBills/delete/'
