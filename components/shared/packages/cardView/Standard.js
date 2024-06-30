@@ -1,4 +1,5 @@
-import {Button, Col, ConfigProvider, Row, Space} from 'antd'
+import {Button, ConfigProvider, Space} from 'antd'
+import Link from 'next/link'
 import {useRouter} from 'next/navigation'
 import {useState} from 'react'
 
@@ -9,12 +10,14 @@ export default function CardViewStandard(props) {
 
   return (
     <div>
-      <div className='block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative'>
+      <div className='block rounded-[20px]  border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative'>
         {packageList ? (
           <>
             <div
-              className={`bg-[#f5f5f5] rounded-tl-xl rounded-tr-xl px-6 py-3 ${
-                showDetails ? ' border-b-2 border-[#0F172A]' : ''
+              className={`bg-[#f5f5f5] rounded-t-[25px] px-6 py-3 ${
+                showDetails
+                  ? ' border-b-2 border-[#0F172A]'
+                  : 'rounded-b-[25px]'
               } `}
             >
               <h1 className='font-bold'>
@@ -45,13 +48,15 @@ export default function CardViewStandard(props) {
                   },
                 }}
               >
-                <Button
-                  type='primary'
-                  className='w-full border-[#0F172A] text-[#0F172A]'
-                  size='large'
-                >
-                  <Link href={`/${locale}/standard`}>Let's Continue</Link>
-                </Button>
+                <Link href={`/${locale}/standard`}>
+                  <Button
+                    type='primary'
+                    className='w-full border-[#0F172A] text-[#0F172A] hover:!text-[#0F172A]'
+                    size='large'
+                  >
+                    Let's Continue
+                  </Button>
+                </Link>
               </ConfigProvider>
               <div className='text-center mt-5'>
                 <Button
@@ -75,22 +80,39 @@ export default function CardViewStandard(props) {
                 <div className='p-6'>
                   <ul>
                     {packageList.current_package_more.map((item, idx) => (
-                      <li className='mb-3' key={idx}>
-                        <Row gutter={16}>
-                          <Col className='gutter-row p-0' span={3}>
-                            <img
-                              src='/assets/icons/Check.svg'
-                              alt='Premium Plus'
-                              width={25}
-                              className='mt-1'
-                            />
-                          </Col>
-                          <Col className='gutter-row pt-1' span={21}>
-                            <p className={idx === 0 ? 'font-semibold' : ''}>
-                              {item}
-                            </p>
-                          </Col>
-                        </Row>
+                      // <li className='mb-3' key={idx}>
+                      //   <Row gutter={16}>
+                      //     <Col className='gutter-row p-0' span={3}>
+                      //       <img
+                      //         src='/assets/icons/Check.svg'
+                      //         alt='Premium Plus'
+                      //         width={25}
+                      //         className='mt-1'
+                      //       />
+                      //     </Col>
+                      //     <Col className='gutter-row pt-1' span={21}>
+                      //       <p className={idx === 0 ? 'font-semibold' : ''}>
+                      //         {item}
+                      //       </p>
+                      //     </Col>
+                      //   </Row>
+                      // </li>
+                      <li key={idx} className='package-details'>
+                        <div className='pp-details'>
+                          <img
+                            src='/assets/icons/Check.svg'
+                            alt='Premium Plus'
+                            width={16}
+                            className='mt-1'
+                          />
+                          <div
+                            className={
+                              idx === 0 ? 'font-semibold mt-0.5' : 'mt-0.5'
+                            }
+                          >
+                            {item}
+                          </div>
+                        </div>
                       </li>
                     ))}
                   </ul>
