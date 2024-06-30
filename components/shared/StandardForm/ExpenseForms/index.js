@@ -21,52 +21,200 @@ import Telephone from './Telephone'
 import Transportation from './Transportation'
 import Water from './Water'
 
-export default function ExpenseForms({expenceList}) {
+export default function ExpenseForms({
+  expenceList,
+  setProsCurrent,
+  setCurrent,
+}) {
   const expenceOptions = standardStore((state) => state.expenceOptions)
   const [tabItems, setTabItems] = useState([])
   const [activeTab, setActiveTab] = useState()
 
   console.log({expenceList, expenceOptions})
+
+  const getNextActiveTab = (val) => {
+    let idx = expenceOptions.findIndex((i) => i === val)
+    return expenceOptions[idx + 1] || null
+  }
+
+  const getBackActivateTab = (val) => {
+    let idx = expenceOptions.findIndex((i) => i === val)
+    return expenceOptions[idx - 1] || null
+  }
+
   const showSelectedForm = () => {
     switch (activeTab) {
       case 30:
-        return <PersonalorFood />
+        return (
+          <PersonalorFood
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(30)}
+            backActiveTab={getBackActivateTab(30)}
+          />
+        )
       case 31:
-        return <Accommodation />
+        return (
+          <Accommodation
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(31)}
+            backActiveTab={getBackActivateTab(31)}
+          />
+        )
       case 32:
-        return <Transportation />
+        return (
+          <Transportation
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(32)}
+            backActiveTab={getBackActivateTab(32)}
+          />
+        )
       case 33:
-        return <OtherTransportation />
+        return (
+          <OtherTransportation
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(33)}
+            backActiveTab={getBackActivateTab(33)}
+          />
+        )
       case 34:
-        return <Electricity />
+        return (
+          <Electricity
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(34)}
+            backActiveTab={getBackActivateTab(34)}
+          />
+        )
       case 35:
-        return <Water />
+        return (
+          <Water
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(35)}
+            backActiveTab={getBackActivateTab(35)}
+          />
+        )
       case 36:
-        return <Gas />
+        return (
+          <Gas
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(36)}
+            backActiveTab={getBackActivateTab(36)}
+          />
+        )
       case 37:
-        return <Telephone />
+        return (
+          <Telephone
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(37)}
+            backActiveTab={getBackActivateTab(37)}
+          />
+        )
       case 38:
-        return <OtherHouseHold />
+        return (
+          <OtherHouseHold
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(38)}
+            backActiveTab={getBackActivateTab(38)}
+          />
+        )
       case 39:
-        return <ChildrenEducation />
+        return (
+          <ChildrenEducation
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(39)}
+            backActiveTab={getBackActivateTab(39)}
+          />
+        )
       case 40:
-        return <DomesticForeignTravel />
+        return (
+          <DomesticForeignTravel
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(40)}
+            backActiveTab={getBackActivateTab(40)}
+          />
+        )
       case 41:
-        return <Festival />
+        return (
+          <Festival
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(41)}
+            backActiveTab={getBackActivateTab(41)}
+          />
+        )
       case 42:
-        return <Donation />
+        return (
+          <Donation
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(42)}
+            backActiveTab={getBackActivateTab(42)}
+          />
+        )
       case 43:
-        return <OtherSpecial />
+        return (
+          <OtherSpecial
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(43)}
+            backActiveTab={getBackActivateTab(43)}
+          />
+        )
       case 44:
-        return <Other />
+        return (
+          <Other
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(44)}
+            backActiveTab={getBackActivateTab(44)}
+          />
+        )
       case 45:
-        return <TaxAtSource />
+        return (
+          <TaxAtSource
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(45)}
+            backActiveTab={getBackActivateTab(45)}
+          />
+        )
       case 46:
-        return <TaxPaidSurchargeandOther />
+        return (
+          <TaxPaidSurchargeandOther
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(46)}
+            backActiveTab={getBackActivateTab(46)}
+          />
+        )
       case 47:
-        return <LossDeductionsExpenses />
+        return (
+          <LossDeductionsExpenses
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(47)}
+            backActiveTab={getBackActivateTab(47)}
+          />
+        )
       case 48:
-        return <GiftDonationContribution />
+        return (
+          <GiftDonationContribution
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(48)}
+            backActiveTab={getBackActivateTab(48)}
+          />
+        )
       default:
         break
     }

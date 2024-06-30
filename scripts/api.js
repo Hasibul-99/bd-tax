@@ -267,3 +267,22 @@ export const Update_liability_OtherLiabilities =
   'liability/userLiabilityOtherLiabilities/update/'
 export const Delete_liability_OtherLiabilities =
   'liability/userLiabilityOtherLiabilities/delete/'
+
+// User Expense
+export const User_Expense = 'expense/userExpense'
+
+export const Get_Expense_PersonalOrFoods = 'expense/userExpensePersonalOrFoods'
+export const Create_Expense_PersonalOrFoods =
+  'expense/userExpensePersonalOrFoods/create'
+export const Update_Expense_PersonalOrFoods =
+  'expense/userExpensePersonalOrFoods/update/'
+export const Delete_Expense_PersonalOrFoods =
+  'expense/userExpensePersonalOrFoods/delete/'
+
+export const Get_Expense_Accomodations = 'expense/userExpenseAccomodations'
+export const Create_Expense_Accomodations =
+  'expense/userExpenseAccomodations/create'
+export const Update_Expense_Accomodations =
+  'expense/userExpenseAccomodations/update/'
+export const Delete_Expense_Accomodations =
+  'expense/userExpenseAccomodations/delete/'
