@@ -18,6 +18,8 @@ import {getData, postData} from '@/scripts/api-service'
 import {Button, ConfigProvider, Space, Steps} from 'antd'
 import {useEffect, useState} from 'react'
 
+const {Step} = Steps
+
 export default function PremiumPlusProcess() {
   const [current, setCurrent] = useState(4)
   const [prosCurrent, setProsCurrent] = useState(1)
@@ -118,30 +120,41 @@ export default function PremiumPlusProcess() {
               current={current}
               onChange={onChange}
               className='site-navigation-steps'
-              items={[
-                {
-                  status: 'home',
-                  title: 'Home',
-                  icon: '',
-                },
-                {
-                  status: 'personal-info',
-                  title: 'Personal Info',
-                },
-                {
-                  status: 'prospects',
-                  title: 'Prospects',
-                },
-                {
-                  status: 'doc',
-                  title: 'Doc',
-                },
-                {
-                  status: 'payment',
-                  title: 'Payment',
-                },
-              ]}
-            />
+              // items={[
+              //   {
+              //     status: 'home',
+              //     title: 'Home',
+              //     icon: '',
+              //   },
+              //   {
+              //     status: 'personal-info',
+              //     title: 'Personal Info',
+              //   },
+              //   {
+              //     status: 'prospects',
+              //     title: 'Prospects',
+              //   },
+              //   {
+              //     status: 'doc',
+              //     title: 'Doc',
+              //   },
+              //   {
+              //     status: 'payment',
+              //     title: 'Payment',
+              //   },
+              //   {
+              //     status: 'payment',
+              //     title: 'Payment',
+              //   },
+              // ]}
+            >
+              <Step title='Home' />
+              <Step title='Personal Info' />
+              <Step title='Prospects' />
+              <Step title='Doc' />
+              <Step className='hidden' title='Prospects Steps' />
+              <Step title='Payment' />
+            </Steps>
           </ConfigProvider>
         </div>
 

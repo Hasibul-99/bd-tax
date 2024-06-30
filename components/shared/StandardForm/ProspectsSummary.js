@@ -1,8 +1,29 @@
-import {Col, Progress, Row} from 'antd'
-import {useState} from 'react'
+import {Get_Tax_Summary} from '@/scripts/api'
+import {getData} from '@/scripts/api-service'
+import {
+  ExclamationCircleOutlined,
+  LeftOutlined,
+  RightOutlined,
+} from '@ant-design/icons'
+import {Button, Col, ConfigProvider, Input, Progress, Row, Space} from 'antd'
+import {useEffect, useState} from 'react'
 
-export default function ProspectsSummary() {
+export default function ProspectsSummary({setProsCurrent, setCurrent}) {
   const [showRes, setShowRes] = useState(false)
+  const [report, setReport] = useState()
+
+  const getTaxSummary = async () => {
+    let res = await getData(Get_Tax_Summary)
+
+    if (res) {
+      console.log('res', res)
+      setReport(res?.data)
+    }
+  }
+
+  useEffect(() => {
+    getTaxSummary()
+  }, [])
   return (
     <>
       {showRes ? (
@@ -57,7 +78,7 @@ export default function ProspectsSummary() {
                 </Col>
                 <Col xs={20} sm={20} md={17} lg={17} xl={17}>
                   <Progress
-                    percent={50}
+                    percent={report?.income_status || 0}
                     showInfo={false}
                     strokeColor='linear-gradient(39.1deg, #126A25 0.46%, #23D049 110.68%)'
                   />
@@ -71,7 +92,7 @@ export default function ProspectsSummary() {
                   xl={2}
                   className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
-                  70%
+                  {report?.income_status || 0}%
                 </Col>
                 <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                   <img
@@ -95,7 +116,7 @@ export default function ProspectsSummary() {
                 </Col>
                 <Col xs={20} sm={20} md={17} lg={17} xl={17}>
                   <Progress
-                    percent={100}
+                    percent={report?.asset_status || 0}
                     showInfo={false}
                     strokeColor='linear-gradient(39.1deg, #126A25 0.46%, #23D049 110.68%)'
                   />
@@ -109,7 +130,7 @@ export default function ProspectsSummary() {
                   xl={2}
                   className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
-                  100%
+                  {report?.asset_status || 0}%
                 </Col>
                 <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                   <img
@@ -134,7 +155,7 @@ export default function ProspectsSummary() {
                 </Col>
                 <Col xs={20} sm={20} md={17} lg={17} xl={17}>
                   <Progress
-                    percent={100}
+                    percent={report?.lia_status || 0}
                     showInfo={false}
                     strokeColor='linear-gradient(39.1deg, #126A25 0.46%, #23D049 110.68%)'
                   />
@@ -148,7 +169,7 @@ export default function ProspectsSummary() {
                   xl={2}
                   className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
-                  100%
+                  {report?.lia_status || 0}%
                 </Col>
                 <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                   <img
@@ -173,7 +194,7 @@ export default function ProspectsSummary() {
                 </Col>
                 <Col xs={20} sm={20} md={17} lg={17} xl={17}>
                   <Progress
-                    percent={100}
+                    percent={report?.expense_status || 0}
                     showInfo={false}
                     strokeColor='linear-gradient(39.1deg, #126A25 0.46%, #23D049 110.68%)'
                   />
@@ -187,7 +208,7 @@ export default function ProspectsSummary() {
                   xl={2}
                   className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
-                  100%
+                  {report?.expense_status || 0}%
                 </Col>
                 <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                   <img
@@ -196,7 +217,102 @@ export default function ProspectsSummary() {
                   />
                 </Col>
               </Row>
-              {/* end Expences */}
+              <ConfigProvider
+                theme={{
+                  token: {
+                    colorPrimary: '#126A25',
+                  },
+                  components: {
+                    Button: {
+                      colorPrimary: '#126A25',
+                    },
+                  },
+                }}
+              >
+                <Row className='my-4' gutter={16}>
+                  <Col
+                    xs={24}
+                    sm={24}
+                    md={6}
+                    lg={6}
+                    xl={6}
+                    className='font-normal text-[14px] leading-[18px] text-[#0F172A] pt-3'
+                  >
+                    Total Taxable Income{' '}
+                    <ExclamationCircleOutlined
+                      style={{
+                        marginLeft: '2px',
+                        color: '#64748B',
+                        width: '12px',
+                        height: '12px',
+                      }}
+                    />
+                  </Col>
+                  <Col xs={20} sm={20} md={18} lg={18} xl={18}>
+                    <Input
+                      size='large'
+                      value={report?.tax_able_income || 0}
+                      readOnly
+                    />
+                  </Col>
+                </Row>
+
+                <Row className='my-4' gutter={16}>
+                  <Col
+                    xs={24}
+                    sm={24}
+                    md={6}
+                    lg={6}
+                    xl={6}
+                    className='font-normal text-[14px] leading-[18px] text-[#0F172A] pt-3 text-right'
+                  >
+                    Tax Due
+                    <ExclamationCircleOutlined
+                      style={{
+                        marginLeft: '5px',
+                        color: '#64748B',
+                        width: '12px',
+                        height: '12px',
+                      }}
+                    />
+                  </Col>
+                  <Col xs={20} sm={20} md={18} lg={18} xl={18}>
+                    <Input
+                      size='large'
+                      value={report?.tax_able_income || 0}
+                      readOnly
+                    />
+                  </Col>
+                </Row>
+              </ConfigProvider>
+
+              <div className='text-center mt-6'>
+                <Space>
+                  <Button
+                    type='primary'
+                    className='refer-friend-button gap-0 shadow-none md:w-52'
+                    onClick={() => {
+                      setProsCurrent(4)
+                    }}
+                  >
+                    <LeftOutlined style={{fontSize: '12px'}} />
+                    Back
+                  </Button>
+
+                  <Button
+                    type='primary'
+                    className='prime-button gap-0 md:w-52 m-auto'
+                    onClick={() => {
+                      setCurrent(5)
+                    }}
+                  >
+                    Next
+                    <RightOutlined
+                      style={{fontSize: '12px', marginTop: '2px'}}
+                    />
+                  </Button>
+                </Space>
+              </div>
             </div>
           </div>
         </>

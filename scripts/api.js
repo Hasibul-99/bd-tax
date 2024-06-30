@@ -404,3 +404,5 @@ export const Update_Expense_GiftDonationContributions =
   'expense/userGiftDonationContributions/update/'
 export const Delete_Expense_GiftDonationContributions =
   'expense/userGiftDonationContributions/delete/'
+
+export const Get_Tax_Summary = 'get-tax-summary'
