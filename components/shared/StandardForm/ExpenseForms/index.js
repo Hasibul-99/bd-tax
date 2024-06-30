@@ -1,5 +1,5 @@
 import {standardStore} from '@/store/standard'
-import {Button, ConfigProvider} from 'antd'
+import {Button, ConfigProvider, Divider} from 'antd'
 import {useEffect, useState} from 'react'
 import Accommodation from './Accommodation'
 import ChildrenEducation from './ChildrenEducation'
@@ -268,7 +268,7 @@ export default function ExpenseForms({
           </Button>
         ))}
       </ConfigProvider>
-
+      <Divider />
       <div className='my-10'>{showSelectedForm()}</div>
     </div>
   )

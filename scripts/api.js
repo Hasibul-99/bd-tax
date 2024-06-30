@@ -321,3 +321,86 @@ export const Get_Expense_GasBills = 'expense/userGasBills'
 export const Create_Expense_GasBills = 'expense/userGasBills/create'
 export const Update_Expense_GasBills = 'expense/userGasBills/update/'
 export const Delete_Expense_GasBills = 'expense/userGasBills/delete/'
+
+export const Get_Expense_TelephoneBills = 'expense/userTelephoneBills'
+export const Create_Expense_TelephoneBills = 'expense/userTelephoneBills/create'
+export const Update_Expense_TelephoneBills =
+  'expense/userTelephoneBills/update/'
+export const Delete_Expense_TelephoneBills =
+  'expense/userTelephoneBills/delete/'
+
+export const Get_Expense_OtherHouseHolds = 'expense/userOtherHouseHolds'
+export const Create_Expense_OtherHouseHolds =
+  'expense/userOtherHouseHolds/create'
+export const Update_Expense_OtherHouseHolds =
+  'expense/userOtherHouseHolds/update/'
+export const Delete_Expense_OtherHouseHolds =
+  'expense/userOtherHouseHolds/delete/'
+
+export const Get_Expense_ChildrenEducations = 'expense/userChildrenEducations'
+export const Create_Expense_ChildrenEducations =
+  'expense/userChildrenEducations/create'
+export const Update_Expense_ChildrenEducations =
+  'expense/userChildrenEducations/update/'
+export const Delete_Expense_ChildrenEducations =
+  'expense/userChildrenEducations/delete/'
+
+export const Get_Expense_DomesticOrForeignTravels =
+  'expense/userDomesticOrForeignTravels'
+export const Create_Expense_DomesticOrForeignTravels =
+  'expense/userDomesticOrForeignTravels/create'
+export const Update_Expense_DomesticOrForeignTravels =
+  'expense/userDomesticOrForeignTravels/update/'
+export const Delete_Expense_DomesticOrForeignTravels =
+  'expense/userDomesticOrForeignTravels/delete/'
+
+export const Get_Expense_Festivals = 'expense/userFestivals'
+export const Create_Expense_Festivals = 'expense/userFestivals/create'
+export const Update_Expense_Festivals = 'expense/userFestivals/update/'
+export const Delete_Expense_Festivals = 'expense/userFestivals/delete/'
+
+export const Get_Expense_Donations = 'expense/userDonations'
+export const Create_Expense_Donations = 'expense/userDonations/create'
+export const Update_Expense_Donations = 'expense/userDonations/update/'
+export const Delete_Expense_Donations = 'expense/userDonations/delete/'
+
+export const Get_Expense_OtherSpecials = 'expense/userOtherSpecials'
+export const Create_Expense_OtherSpecials = 'expense/userOtherSpecials/create'
+export const Update_Expense_OtherSpecials = 'expense/userOtherSpecials/update/'
+export const Delete_Expense_OtherSpecials = 'expense/userOtherSpecials/delete/'
+
+export const Get_Expense_Others = 'expense/userOthers'
+export const Create_Expense_Others = 'expense/userOthers/create'
+export const Update_Expense_Others = 'expense/userOthers/update/'
+export const Delete_Expense_Others = 'expense/userOthers/delete/'
+
+export const Get_Expense_TaxAtSources = 'expense/userTaxAtSources'
+export const Create_Expense_TaxAtSources = 'expense/userTaxAtSources/create'
+export const Update_Expense_TaxAtSources = 'expense/userTaxAtSources/update/'
+export const Delete_Expense_TaxAtSources = 'expense/userTaxAtSources/delete/'
+
+export const Get_Expense_TaxSurchargeOthers = 'expense/userTaxSurchargeOthers'
+export const Create_Expense_TaxSurchargeOthers =
+  'expense/userTaxSurchargeOthers/create'
+export const Update_Expense_TaxSurchargeOthers =
+  'expense/userTaxSurchargeOthers/update/'
+export const Delete_Expense_TaxSurchargeOthers =
+  'expense/userTaxSurchargeOthers/delete'
+
+export const Get_Expense_LossDeductionExpenses =
+  'expense/userLossDeductionExpenses'
+export const Create_Expense_LossDeductionExpenses =
+  'expense/userLossDeductionExpenses/create'
+export const Update_Expense_LossDeductionExpenses =
+  'expense/userLossDeductionExpenses/update/'
+export const Delete_Expense_LossDeductionExpenses =
+  'expense/userLossDeductionExpenses/delete/'
+
+export const Get_Expense_GiftDonationContributions =
+  'expense/userGiftDonationContributions'
+export const Create_Expense_GiftDonationContributions =
+  'expense/userGiftDonationContributions/create'
+export const Update_Expense_GiftDonationContributions =
+  'expense/userGiftDonationContributions/update/'
+export const Delete_Expense_GiftDonationContributions =
+  'expense/userGiftDonationContributions/delete/'
