@@ -2,6 +2,7 @@ import {GET_ORDER_STATUS, GET_PAYMENT_STATUS} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
 import {RightOutlined} from '@ant-design/icons'
 import {Button, Card, Space} from 'antd'
+import Link from 'next/link'
 import {useEffect, useState} from 'react'
 
 export default function OrderStatus({
@@ -145,10 +146,12 @@ export default function OrderStatus({
                 ''
               )}
 
-              <Button type='primary' className='refer-friend-button'>
-                <img src='/assets/icons/user-add.svg' alt='useradd' />
-                Refer Friends
-              </Button>
+              <Link href='/more/referral'>
+                <Button type='primary' className='refer-friend-button'>
+                  <img src='/assets/icons/user-add.svg' alt='useradd' />
+                  Refer Friends
+                </Button>
+              </Link>
             </Space>
           </div>
         </>

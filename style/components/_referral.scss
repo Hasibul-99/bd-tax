@@ -1,0 +1,49 @@
+.referral-banner {
+  background: url(/assets/images/referral-banner.jpg);
+  min-height: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h4 {
+    text-transform: uppercase;
+    font-size: 50px;
+    color: #fff !important;
+    padding-top: 12%;
+    text-align: center;
+    padding: 10px 0px;
+  }
+
+  h5 {
+    text-transform: uppercase;
+    font-size: 25px;
+    color: #dcff00 !important;
+    text-align: center;
+  }
+}
+
+.referral-points {
+  background: #f1f1f1;
+  padding: 50px 0 50px 0;
+
+  hr {
+    width: 200px;
+    border-width: 3px 0 0;
+    border-top: 3px solid #5cb85c;
+    margin-bottom: 50px;
+    margin: auto;
+  }
+
+  .kpi {
+    background-color: #5cb85c;
+    padding: 20px 0;
+    margin: 10px auto;
+    text-align: center;
+    width: 90%;
+    border-radius: 50px;
+  }
+}
