@@ -311,3 +311,13 @@ export const Update_Expense_ElectricityBills =
   'expense/userElectricityBills/update/'
 export const Delete_Expense_ElectricityBills =
   'expense/userElectricityBills/delete/'
+
+export const Get_Expense_WaterBills = 'expense/userWaterBills'
+export const Create_Expense_WaterBills = 'expense/userWaterBills/create'
+export const Update_Expense_WaterBills = 'expense/userWaterBills/update/'
+export const Delete_Expense_WaterBills = 'expense/userWaterBills/delete/'
+
+export const Get_Expense_GasBills = 'expense/userGasBills'
+export const Create_Expense_GasBills = 'expense/userGasBills/create'
+export const Update_Expense_GasBills = 'expense/userGasBills/update/'
+export const Delete_Expense_GasBills = 'expense/userGasBills/delete/'
