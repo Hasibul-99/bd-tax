@@ -1,4 +1,4 @@
-import {Button, Col, ConfigProvider, Row, Space} from 'antd'
+import {Button, Space} from 'antd'
 import Link from 'next/link'
 import {useRouter} from 'next/navigation'
 import {useState} from 'react'
@@ -10,15 +10,17 @@ export default function CardViewPremium(props) {
 
   return (
     <div>
-      <div className='block rounded-lg border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative'>
+      <div className='block rounded-[25px] border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative'>
         {packageList ? (
           <>
             <div
-              className={`bg-[#dffdd1] rounded-tl-xl rounded-tr-xl px-6 py-3 ${
-                showDetails ? ' border-b-2 border-[#4B7F52]' : ''
+              className={`bg-[#dffdd1] truncate rounded-t-[25px] ${
+                showDetails
+                  ? ' border-b-2 border-[#4B7F52]'
+                  : 'rounded-b-[25px]'
               }`}
             >
-              <h1 className='font-bold'>
+              {/* <h1 className='font-bold'>
                 <Space>
                   <img
                     src='/assets/images/Premium-Plus.png'
@@ -65,29 +67,71 @@ export default function CardViewPremium(props) {
                     />
                   </Space>
                 </Button>
+              </div> */}
+              <div className='premium-card-landing '>
+                <div className='packages-price'>
+                  <div className='p-image'>
+                    <img src='/assets/images/premium.png' alt='Premium' />
+                  </div>
+                  <span className='price-text'>
+                    {packageList.current_package_id_title} (৳{' '}
+                    {packageList.current_package_id_price})
+                  </span>
+                </div>
+                <div id='premium-details' className='pack-details '>
+                  <p>{packageList.current_package_id_moredescription}</p>
+                </div>
+
+                <Link href={`/${locale}/premium`}>
+                  <Button
+                    type='primary'
+                    className='primary-Button w-full min-w-80 font-semibold'
+                    size='large'
+                    // onClick={() => tempUserPackages()}
+                  >
+                    Let's Continue
+                  </Button>
+                </Link>
+
+                <div className='text-center '>
+                  <Button
+                    type='text'
+                    onClick={() => setShowDetails((thumb) => !thumb)}
+                  >
+                    <Space>
+                      <span>Learn more </span>
+                      <img
+                        className={showDetails ? 'rotate-180' : ''}
+                        src='/assets/icons/arrow-down.svg'
+                        alt='Premium Plus'
+                      />
+                    </Space>
+                  </Button>
+                </div>
               </div>
             </div>
+
             {showDetails ? (
               <>
                 <div className='p-6'>
                   <ul>
                     {packageList.current_package_more.map((item, idx) => (
-                      <li key={idx} className='mb-3'>
-                        <Row gutter={16}>
-                          <Col className='gutter-row p-0' span={3}>
-                            <img
-                              src='/assets/icons/Check.svg'
-                              alt='Premium Plus'
-                              width={25}
-                              className='mt-1'
-                            />
-                          </Col>
-                          <Col className='gutter-row pt-1' span={21}>
-                            <p className={idx === 0 ? 'font-semibold' : ''}>
-                              {item}
-                            </p>
-                          </Col>
-                        </Row>
+                      <li key={idx} className='package-details'>
+                        <div className='pp-details'>
+                          <img
+                            src='/assets/icons/star_2.svg'
+                            alt='Premium Plus'
+                            width={16}
+                            className='mt-1'
+                          />
+                          <div
+                            className={
+                              idx === 0 ? 'font-semibold mt-0.5' : 'mt-0.5'
+                            }
+                          >
+                            {item}
+                          </div>
+                        </div>
                       </li>
                     ))}
                   </ul>
