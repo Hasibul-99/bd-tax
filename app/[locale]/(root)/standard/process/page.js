@@ -21,7 +21,7 @@ import {useEffect, useState} from 'react'
 const {Step} = Steps
 
 export default function PremiumPlusProcess() {
-  const [current, setCurrent] = useState(4)
+  const [current, setCurrent] = useState(1)
   const [prosCurrent, setProsCurrent] = useState(1)
   const [loadingPSD, setLoadingPSD] = useState(true)
   const [salaryData, setSalaryData] = useState()
