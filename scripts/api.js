@@ -409,3 +409,4 @@ export const Get_Tax_Summary = 'get-tax-summary'
 
 export const Get_User_Referral_Program = 'getUserReferralProgram'
 export const Get_Email_Log = 'getEmailLog'
+export const Get_Payments = 'get-payments'

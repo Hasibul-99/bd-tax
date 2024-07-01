@@ -1,105 +1,95 @@
-"use client"
+'use client'
 
-import { Space, Table, Tag } from 'antd';
+import {Get_Payments} from '@/scripts/api'
+import {getData} from '@/scripts/api-service'
+import {Table, Tag} from 'antd'
+import dayjs from 'dayjs'
+import {useEffect, useState} from 'react'
 
 const columns = [
   {
     title: 'Status',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text) => <Tag color={'green'}>
-      Valid
-    </Tag>,
+    dataIndex: 'status',
+    key: 'status',
+    render: (text) => <Tag color={'green'}>{text}</Tag>,
   },
   {
     title: 'Transaction Date',
-    dataIndex: 'age',
-    key: 'age',
-    render: (text) => <>16/08/2022 9.00 AM</>
+    dataIndex: 'payment_date',
+    key: 'payment_date',
+    render: (text) => <>{dayjs(text).format('DD/MM/YYYY h.mm A')}</>,
   },
-  {
-    title: 'Tax Year',
-    dataIndex: 'address',
-    key: 'address',
-    render: (text) => <>2020-2021</>
-  },
+  // {
+  //   title: 'Tax Year',
+  //   dataIndex: 'address',
+  //   key: 'address',
+  //   render: (text) => <>2020-2021</>,
+  // },
   {
     title: 'Tarnsaction ID',
-    dataIndex: 'address',
-    key: 'address',
-    render: (text) => <>BDTAX_100_5369-5f39417420ec4</>
+    dataIndex: 'tran_id',
+    key: 'tran_id',
+    // render: (text) => <>{text}</>,
   },
   {
     title: 'Amount',
-    dataIndex: 'address',
-    key: 'address',
-    render: (text) => <>1700</>
+    dataIndex: 'amount',
+    key: 'amount',
   },
   {
     title: 'Card Type',
-    dataIndex: 'address',
-    key: 'address',
-    render: (text) => <>VISA-City Bank</>
+    dataIndex: 'card_type',
+    key: 'card_type',
   },
-  {
-    title: 'Card Issuer',
-    dataIndex: 'address',
-    key: 'address',
-    render: (text) => <>WELLS FARGO</>
-  },
-  {
-    title: 'Bank Transaction ID',
-    dataIndex: 'address',
-    key: 'address',
-    render: (text) => <>CV668720200816</>
-  },
-  {
-    title: 'Error',
-    dataIndex: 'address',
-    key: 'address',
-    render: (text) => <>CANCELLED</>
-  },
-  {
-    title: 'View Receipt',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <img src='/assets/icons/file-2.svg' alt="Premium Plus" />
-      </Space>
-    ),
-  },
-];
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
+  // {
+  //   title: 'Card Issuer',
+  //   dataIndex: 'address',
+  //   key: 'address',
+  //   render: (text) => <>WELLS FARGO</>,
+  // },
+  // {
+  //   title: 'Bank Transaction ID',
+  //   dataIndex: 'address',
+  //   key: 'address',
+  //   render: (text) => <>CV668720200816</>,
+  // },
+  // {
+  //   title: 'Error',
+  //   dataIndex: 'address',
+  //   key: 'address',
+  //   render: (text) => <>CANCELLED</>,
+  // },
+  // {
+  //   title: 'View Receipt',
+  //   key: 'action',
+  //   render: (_, record) => (
+  //     <Space size='middle'>
+  //       <img src='/assets/icons/file-2.svg' alt='Premium Plus' />
+  //     </Space>
+  //   ),
+  // },
+]
 
 export default function MyPayments() {
+  const [payments, setPayments] = useState()
+
+  const getPayments = async () => {
+    let res = await getData(Get_Payments)
+
+    if (res) {
+      setPayments(res?.data)
+    }
+  }
+
+  useEffect(() => {
+    getPayments()
+  }, [])
   return (
-    <div className="bg-white py-6 px-6">
+    <div className='bg-white py-6 px-6'>
       <h3 className='text-xl font-semibold'>Payment Status</h3>
 
       <div className='overflow-x-scroll mt-6'>
-        <Table columns={columns} dataSource={data} />
+        <Table columns={columns} dataSource={payments} pagination={false} />
       </div>
     </div>
   )
