@@ -115,7 +115,7 @@ export default function PremiumPlusProcess() {
           </div>
         </div>
 
-        <div className={current === 4 ? 'hidden' : ''}>
+        <div className={current === 4 || current === 6 ? 'hidden' : ''}>
           <ConfigProvider
             theme={{
               token: {
@@ -168,7 +168,7 @@ export default function PremiumPlusProcess() {
               <Step title='Doc' />
               <Step className='!hidden' title='Prospects Steps' />
               <Step title='Payment' />
-              <Step className='!hidden' title='Congratulations' />
+              <Step title='Congratulations' />
             </Steps>
           </ConfigProvider>
         </div>
