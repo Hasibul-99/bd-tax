@@ -1,7 +1,23 @@
+import {GET_DOWNLOAD_TAX_FILE} from '@/scripts/api'
+import {getData} from '@/scripts/api-service'
 import {Button} from 'antd'
 import Link from 'next/link'
+import {useEffect, useState} from 'react'
 
 export default function Congratulations() {
+  const [fileData, setFileData] = useState()
+  const getDownloadTaxFile = async () => {
+    let res = await getData(GET_DOWNLOAD_TAX_FILE)
+
+    if (res) {
+      setFileData(res?.data)
+    }
+  }
+  const handelTaxFoem = () => {}
+
+  useEffect(() => {
+    getDownloadTaxFile()
+  }, [])
   return (
     <div className='p-6 '>
       <div className='flex flex-col justify-center items-center py-8 overflow-hidden gap-4'>
@@ -27,7 +43,13 @@ export default function Congratulations() {
         </div>
 
         <div class='flex flex-col md:flex-row justify-center items-center p-0 gap-4 w-[566.56px]'>
-          <Button className='prime-button w-auto md:w-full px-6' type='primary'>
+          <Button
+            className='prime-button w-auto md:w-full px-6'
+            type='primary'
+            onClick={() => {
+              window.open(fileData?.pdf_file_path, '_blank')
+            }}
+          >
             Download My Tax Form
           </Button>
 

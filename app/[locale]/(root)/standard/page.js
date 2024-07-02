@@ -30,7 +30,7 @@ export default function Standard() {
     <div className='container mx-auto px-30 mt-5 pb-16'>
       <div className='bg-white py-5 px-4 rounded-[20px]'>
         <WelcomeMessage />
-        <div className='bg-[#dfdfdf] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+        <div className='standard-bg my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
           <div>
             <h5 className='text-base font-semibold'>
               <Space>

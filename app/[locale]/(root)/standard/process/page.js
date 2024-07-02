@@ -24,7 +24,7 @@ const {Step} = Steps
 
 export default function PremiumPlusProcess() {
   const searchParams = useSearchParams()
-  const [current, setCurrent] = useState(6)
+  const [current, setCurrent] = useState(1)
   const [prosCurrent, setProsCurrent] = useState(1)
   const [loadingPSD, setLoadingPSD] = useState(true)
   const [salaryData, setSalaryData] = useState()
@@ -84,7 +84,7 @@ export default function PremiumPlusProcess() {
     <div className='custom-container-under mx-auto px-30 mt-5 pb-16'>
       <div className='bg-white py-5 px-4 rounded-[20px]'>
         <WelcomeMessage />
-        <div className='bg-[#dfdfdf] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+        <div className='standard-bg my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
           <div>
             <h5 className='text-base font-semibold'>
               <Space>
