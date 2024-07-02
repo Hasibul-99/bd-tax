@@ -1,6 +1,7 @@
 'use client'
 
 import AssetsForms from '@/components/shared/StandardForm/AssetsForms'
+import Congratulations from '@/components/shared/StandardForm/Congratulations'
 import ExpenseForms from '@/components/shared/StandardForm/ExpenseForms'
 import IncomeForm from '@/components/shared/StandardForm/IncomeForms'
 import LiabilitieForms from '@/components/shared/StandardForm/LiabilitieForms'
@@ -23,7 +24,7 @@ const {Step} = Steps
 
 export default function PremiumPlusProcess() {
   const searchParams = useSearchParams()
-  const [current, setCurrent] = useState(1)
+  const [current, setCurrent] = useState(6)
   const [prosCurrent, setProsCurrent] = useState(1)
   const [loadingPSD, setLoadingPSD] = useState(true)
   const [salaryData, setSalaryData] = useState()
@@ -72,7 +73,7 @@ export default function PremiumPlusProcess() {
   useEffect(() => {
     if (status) {
       if (status === 'success') {
-        setCurrent(5)
+        setCurrent(6)
       } else {
         setCurrent(5)
       }
@@ -167,6 +168,7 @@ export default function PremiumPlusProcess() {
               <Step title='Doc' />
               <Step className='!hidden' title='Prospects Steps' />
               <Step title='Payment' />
+              <Step className='!hidden' title='Congratulations' />
             </Steps>
           </ConfigProvider>
         </div>
@@ -239,6 +241,7 @@ export default function PremiumPlusProcess() {
         ) : (
           ''
         )}
+        {current === 6 ? <Congratulations setCurrent={setCurrent} /> : ''}
       </div>
 
       {prospectData ? (
