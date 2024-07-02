@@ -14,7 +14,6 @@ import {Fragment} from 'react'
 const {Title, Text} = Typography
 
 export default function Prospects({setCurrent, prospectData}) {
-  const incomeOptions = standardStore((state) => state.incomeOptions)
   const updateIncomeOptions = standardStore(
     (state) => state.updateIncomeOptions
   )

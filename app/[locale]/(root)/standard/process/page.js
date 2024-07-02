@@ -24,8 +24,8 @@ const {Step} = Steps
 
 export default function PremiumPlusProcess() {
   const searchParams = useSearchParams()
-  const [current, setCurrent] = useState(4)
-  const [prosCurrent, setProsCurrent] = useState(4)
+  const [current, setCurrent] = useState(1)
+  const [prosCurrent, setProsCurrent] = useState(1)
   const [loadingPSD, setLoadingPSD] = useState(true)
   const [salaryData, setSalaryData] = useState()
   const [prospectData, setProspectData] = useState()
