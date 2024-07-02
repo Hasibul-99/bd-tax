@@ -221,11 +221,11 @@ export default function PremiumPlusProcess() {
         {current === 6 ? <Congratulations setCurrent={setCurrent} /> : ''}
       </div>
 
-      {prospectData ? (
+      {prospectData && current === 4 ? (
         <>
           <div
             className={`bg-white mt-6 rounded-[20px] ${
-              current === 4 ? '' : 'hidden'
+              '' // current === 4 ? '' : 'hidden' ''
             }`}
           >
             {prosCurrent === 1 ? (
