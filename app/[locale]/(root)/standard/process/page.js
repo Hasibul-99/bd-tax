@@ -32,7 +32,13 @@ export default function PremiumPlusProcess() {
   const status = searchParams.get('status')
 
   const onChange = (value) => {
-    setCurrent(value)
+    if (value === 4) {
+      setTimeout(() => {
+        setCurrent(value)
+      }, 500)
+    } else {
+      setCurrent(value)
+    }
   }
 
   const onProspectChange = (value) => {
@@ -43,8 +49,6 @@ export default function PremiumPlusProcess() {
     let res = await getData(PROCESS_SALARY_DOC)
 
     if (res) {
-      console.log('da', res)
-
       let masterData = res?.data
       setSalaryData(masterData)
     }
@@ -134,33 +138,6 @@ export default function PremiumPlusProcess() {
               current={current}
               onChange={onChange}
               className='site-navigation-steps'
-              // items={[
-              //   {
-              //     status: 'home',
-              //     title: 'Home',
-              //     icon: '',
-              //   },
-              //   {
-              //     status: 'personal-info',
-              //     title: 'Personal Info',
-              //   },
-              //   {
-              //     status: 'prospects',
-              //     title: 'Prospects',
-              //   },
-              //   {
-              //     status: 'doc',
-              //     title: 'Doc',
-              //   },
-              //   {
-              //     status: 'payment',
-              //     title: 'Payment',
-              //   },
-              //   {
-              //     status: 'payment',
-              //     title: 'Payment',
-              //   },
-              // ]}
             >
               <Step title='Home' />
               <Step title='Personal Info' />

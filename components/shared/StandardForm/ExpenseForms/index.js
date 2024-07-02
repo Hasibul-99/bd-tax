@@ -1,3 +1,5 @@
+import {User_Expense} from '@/scripts/api'
+import {getData} from '@/scripts/api-service'
 import {standardStore} from '@/store/standard'
 import {Button, ConfigProvider, Divider} from 'antd'
 import {useEffect, useState} from 'react'
@@ -29,6 +31,7 @@ export default function ExpenseForms({
   const expenceOptions = standardStore((state) => state.expenceOptions)
   const [tabItems, setTabItems] = useState([])
   const [activeTab, setActiveTab] = useState()
+  const [userExpense, setUserExpense] = useState()
 
   console.log({expenceList, expenceOptions})
 
@@ -41,6 +44,18 @@ export default function ExpenseForms({
     let idx = expenceOptions.findIndex((i) => i === val)
     return expenceOptions[idx - 1] || null
   }
+
+  const getExpenseData = async () => {
+    let res = await getData(User_Expense)
+
+    if (res) {
+      setUserExpense(res.data)
+    }
+  }
+
+  useEffect(() => {
+    getExpenseData()
+  }, [])
 
   const showSelectedForm = () => {
     switch (activeTab) {
