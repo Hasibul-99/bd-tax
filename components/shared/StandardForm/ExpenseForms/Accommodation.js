@@ -35,9 +35,10 @@ export default function Accommodation({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
-  const [AccomodationsType, setAccomodationsType] = useState()
   const [Accomodations, setAccomodations] = useState()
   const [selectedItem, setSelecetedItem] = useState()
 
@@ -55,6 +56,7 @@ export default function Accommodation({
         form.resetFields()
         getAccomodations()
         setSelecetedItem()
+        getExpenseData()
       }
     } else {
       let res = await postData(Create_Expense_Accomodations, data)
@@ -63,6 +65,7 @@ export default function Accommodation({
         form.resetFields()
         getAccomodations()
         setSelecetedItem()
+        getExpenseData()
       }
     }
   }
@@ -137,6 +140,12 @@ export default function Accommodation({
     getAccomodations()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({AccommodationComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>ACCOMMODATION EXPENSES </h3>
@@ -194,14 +203,7 @@ export default function Accommodation({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='AccommodationComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='AccommodationComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

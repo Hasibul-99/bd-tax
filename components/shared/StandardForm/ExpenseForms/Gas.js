@@ -35,6 +35,8 @@ export default function Gas({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [GasBillsType, setGasBillsType] = useState()
@@ -51,6 +53,7 @@ export default function Gas({
       if (res) {
         form.resetFields()
         getGasBills()
+        getExpenseData()
         setSelecetedItem()
       }
     } else {
@@ -59,6 +62,7 @@ export default function Gas({
       if (res) {
         form.resetFields()
         getGasBills()
+        getExpenseData()
         setSelecetedItem()
       }
     }
@@ -134,6 +138,12 @@ export default function Gas({
     getGasBills()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({GasBillComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>GAS EXPENSES</h3>
@@ -187,14 +197,7 @@ export default function Gas({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='GasBillComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

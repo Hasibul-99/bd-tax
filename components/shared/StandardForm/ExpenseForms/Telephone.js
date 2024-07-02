@@ -35,6 +35,8 @@ export default function Telephone({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [TelephoneBillsType, setTelephoneBillsType] = useState()
@@ -55,6 +57,7 @@ export default function Telephone({
         form.resetFields()
         getTelephoneBills()
         setSelecetedItem()
+        getExpenseData()
       }
     } else {
       let res = await postData(Create_Expense_TelephoneBills, data)
@@ -63,6 +66,7 @@ export default function Telephone({
         form.resetFields()
         getTelephoneBills()
         setSelecetedItem()
+        getExpenseData()
       }
     }
   }
@@ -137,6 +141,12 @@ export default function Telephone({
     getTelephoneBills()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({TelephoneBillComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>TELEPHONE BILL</h3>
@@ -194,14 +204,7 @@ export default function Telephone({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='TelephoneBillComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

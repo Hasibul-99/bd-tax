@@ -24,8 +24,8 @@ const {Step} = Steps
 
 export default function PremiumPlusProcess() {
   const searchParams = useSearchParams()
-  const [current, setCurrent] = useState(1)
-  const [prosCurrent, setProsCurrent] = useState(1)
+  const [current, setCurrent] = useState(4)
+  const [prosCurrent, setProsCurrent] = useState(4)
   const [loadingPSD, setLoadingPSD] = useState(true)
   const [salaryData, setSalaryData] = useState()
   const [prospectData, setProspectData] = useState()
@@ -223,11 +223,7 @@ export default function PremiumPlusProcess() {
 
       {prospectData && current === 4 ? (
         <>
-          <div
-            className={`bg-white mt-6 rounded-[20px] ${
-              '' // current === 4 ? '' : 'hidden' ''
-            }`}
-          >
+          <div className={`bg-white mt-6 rounded-[20px]`}>
             {prosCurrent === 1 ? (
               <IncomeForm
                 setProsCurrent={setProsCurrent}

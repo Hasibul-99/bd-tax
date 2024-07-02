@@ -35,9 +35,10 @@ export default function Electricity({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
-  const [ElectricityBillsType, setElectricityBillsType] = useState()
   const [ElectricityBills, setElectricityBills] = useState()
   const [selectedItem, setSelecetedItem] = useState()
 
@@ -54,6 +55,7 @@ export default function Electricity({
       if (res) {
         form.resetFields()
         getElectricityBills()
+        getExpenseData()
         setSelecetedItem()
       }
     } else {
@@ -62,6 +64,7 @@ export default function Electricity({
       if (res) {
         form.resetFields()
         getElectricityBills()
+        getExpenseData()
         setSelecetedItem()
       }
     }
@@ -137,6 +140,12 @@ export default function Electricity({
     getElectricityBills()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({ElectricityBillComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>ELECTRICITY BILL</h3>
@@ -194,14 +203,7 @@ export default function Electricity({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='ElectricityBillComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

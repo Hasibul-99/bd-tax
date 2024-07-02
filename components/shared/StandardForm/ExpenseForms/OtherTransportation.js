@@ -35,6 +35,8 @@ export default function OtherTransportation({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [OtherTransportationsType, setOtherTransportationsType] = useState()
@@ -55,6 +57,7 @@ export default function OtherTransportation({
         form.resetFields()
         getOtherTransportations()
         setSelecetedItem()
+        getExpenseData()
       }
     } else {
       let res = await postData(Create_Expense_OtherTransportations, data)
@@ -63,6 +66,7 @@ export default function OtherTransportation({
         form.resetFields()
         getOtherTransportations()
         setSelecetedItem()
+        getExpenseData()
       }
     }
   }
@@ -137,6 +141,12 @@ export default function OtherTransportation({
     getOtherTransportations()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({OtherTransportComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>OTHER TRANSPORT EXPENSES</h3>
@@ -194,14 +204,7 @@ export default function OtherTransportation({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='OtherTransportComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='OtherTransportComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

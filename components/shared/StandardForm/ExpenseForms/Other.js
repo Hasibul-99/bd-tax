@@ -35,6 +35,8 @@ export default function Other({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [OthersType, setOthersType] = useState()
@@ -52,6 +54,7 @@ export default function Other({
         form.resetFields()
         getOthers()
         setSelecetedItem()
+        getExpenseData()
       }
     } else {
       let res = await postData(Create_Expense_Others, data)
@@ -60,6 +63,7 @@ export default function Other({
         form.resetFields()
         getOthers()
         setSelecetedItem()
+        getExpenseData()
       }
     }
   }
@@ -134,6 +138,12 @@ export default function Other({
     getOthers()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({OtherComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>OTHER EXPENSES </h3>
@@ -187,14 +197,7 @@ export default function Other({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='OtherComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

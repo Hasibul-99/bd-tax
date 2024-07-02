@@ -35,6 +35,8 @@ export default function TaxPaidSurchargeandOther({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [TaxSurchargeOthersType, setTaxSurchargeOthersType] = useState()
@@ -54,6 +56,7 @@ export default function TaxPaidSurchargeandOther({
       if (res) {
         form.resetFields()
         getTaxSurchargeOthers()
+        getExpenseData()
         setSelecetedItem()
       }
     } else {
@@ -62,6 +65,7 @@ export default function TaxPaidSurchargeandOther({
       if (res) {
         form.resetFields()
         getTaxSurchargeOthers()
+        getExpenseData()
         setSelecetedItem()
       }
     }
@@ -137,6 +141,12 @@ export default function TaxPaidSurchargeandOther({
     getTaxSurchargeOthers()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({SurchargeOtherComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>
@@ -196,14 +206,7 @@ export default function TaxPaidSurchargeandOther({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='SurchargeOtherComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

@@ -35,6 +35,8 @@ export default function Donation({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [DonationsType, setDonationsType] = useState()
@@ -51,6 +53,7 @@ export default function Donation({
       if (res) {
         form.resetFields()
         getDonations()
+        getExpenseData()
         setSelecetedItem()
       }
     } else {
@@ -59,6 +62,7 @@ export default function Donation({
       if (res) {
         form.resetFields()
         getDonations()
+        getExpenseData()
         setSelecetedItem()
       }
     }
@@ -134,6 +138,12 @@ export default function Donation({
     getDonations()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({DonationComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>DONATION EXPENSES</h3>
@@ -187,14 +197,7 @@ export default function Donation({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='DonationComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

@@ -35,6 +35,8 @@ export default function GiftDonationContribution({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [GiftDonationContributionsType, setGiftDonationContributionsType] =
@@ -56,6 +58,7 @@ export default function GiftDonationContribution({
         form.resetFields()
         getGiftDonationContributions()
         setSelecetedItem()
+        getExpenseData()
       }
     } else {
       let res = await postData(Create_Expense_GiftDonationContributions, data)
@@ -64,6 +67,7 @@ export default function GiftDonationContribution({
         form.resetFields()
         getGiftDonationContributions()
         setSelecetedItem()
+        getExpenseData()
       }
     }
   }
@@ -140,6 +144,12 @@ export default function GiftDonationContribution({
     getGiftDonationContributions()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({GiftDonationContributionComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>
@@ -199,14 +209,7 @@ export default function GiftDonationContribution({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='GiftDonationContributionComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

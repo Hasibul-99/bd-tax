@@ -35,6 +35,8 @@ export default function DomesticForeignTravel({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [DomesticOrForeignTravelsType, setDomesticOrForeignTravelsType] =
@@ -55,6 +57,7 @@ export default function DomesticForeignTravel({
       if (res) {
         form.resetFields()
         getDomesticOrForeignTravels()
+        getExpenseData()
         setSelecetedItem()
       }
     } else {
@@ -63,6 +66,7 @@ export default function DomesticForeignTravel({
       if (res) {
         form.resetFields()
         getDomesticOrForeignTravels()
+        getExpenseData()
         setSelecetedItem()
       }
     }
@@ -138,6 +142,12 @@ export default function DomesticForeignTravel({
     getDomesticOrForeignTravels()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({PersonalForeignTravelComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>
@@ -197,14 +207,7 @@ export default function DomesticForeignTravel({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='PersonalForeignTravelComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

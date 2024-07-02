@@ -35,6 +35,8 @@ export default function TaxAtSource({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [TaxAtSourcesType, setTaxAtSourcesType] = useState()
@@ -54,6 +56,7 @@ export default function TaxAtSource({
       if (res) {
         form.resetFields()
         getTaxAtSources()
+        getExpenseData()
         setSelecetedItem()
       }
     } else {
@@ -62,6 +65,7 @@ export default function TaxAtSource({
       if (res) {
         form.resetFields()
         getTaxAtSources()
+        getExpenseData()
         setSelecetedItem()
       }
     }
@@ -137,6 +141,12 @@ export default function TaxAtSource({
     getTaxAtSources()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({TaxAtSourceComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>TAX AT SOURCE EXPENSES</h3>
@@ -194,14 +204,7 @@ export default function TaxAtSource({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='TaxAtSourceComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

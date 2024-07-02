@@ -35,6 +35,8 @@ export default function LossDeductionsExpenses({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
   const [LossDeductionExpensesType, setLossDeductionExpensesType] = useState()
@@ -54,6 +56,7 @@ export default function LossDeductionsExpenses({
       if (res) {
         form.resetFields()
         getLossDeductionExpenses()
+        getExpenseData()
         setSelecetedItem()
       }
     } else {
@@ -62,6 +65,7 @@ export default function LossDeductionsExpenses({
       if (res) {
         form.resetFields()
         getLossDeductionExpenses()
+        getExpenseData()
         setSelecetedItem()
       }
     }
@@ -137,6 +141,12 @@ export default function LossDeductionsExpenses({
     getLossDeductionExpenses()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({LossDeductionsComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>
@@ -196,14 +206,7 @@ export default function LossDeductionsExpenses({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='LossDeductionsComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}

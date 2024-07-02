@@ -35,9 +35,10 @@ export default function Water({
   setProsCurrent,
   backActiveTab,
   setCurrent,
+  comment,
+  getExpenseData,
 }) {
   const [form] = Form.useForm()
-  const [WaterBillsType, setWaterBillsType] = useState()
   const [WaterBills, setWaterBills] = useState()
   const [selectedItem, setSelecetedItem] = useState()
 
@@ -54,6 +55,7 @@ export default function Water({
       if (res) {
         form.resetFields()
         getWaterBills()
+        getExpenseData()
         setSelecetedItem()
       }
     } else {
@@ -62,6 +64,7 @@ export default function Water({
       if (res) {
         form.resetFields()
         getWaterBills()
+        getExpenseData()
         setSelecetedItem()
       }
     }
@@ -137,6 +140,12 @@ export default function Water({
     getWaterBills()
   }, [])
 
+  useEffect(() => {
+    if (comment && typeof comment === 'string') {
+      form.setFieldsValue({WasaBillComment: comment})
+    }
+  }, [comment])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>WATER EXPENSES </h3>
@@ -190,14 +199,7 @@ export default function Water({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item
-                name='ElectricityBillComment'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
+              <Form.Item name='WasaBillComment'>
                 <TextArea
                   rows={2}
                   style={{width: '300px'}}
