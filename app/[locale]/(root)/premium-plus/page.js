@@ -1,5 +1,6 @@
 'use client'
 
+import TaxYear from '@/components/shared/Tax-Year'
 import WelcomeMessage from '@/components/shared/WelcomeMessage'
 import GetUserStep from '@/components/shared/get-user-step'
 import {GET_USER_STEP} from '@/scripts/api'
@@ -41,7 +42,9 @@ export default function PremiumPlus() {
           </div>
           <div className='md:text-right md:ml-auto pt-3'>
             <p className='text-sm font-semibold'>Tax Due: 25,000</p>
-            <p className='text-xs'>Tax Year 2023 -2024</p>
+            <p className='text-xs'>
+              Tax Year <TaxYear />
+            </p>
           </div>
         </div>
         <p className='text-sm'>

@@ -1,5 +1,6 @@
 'use client'
 
+import TaxYear from '@/components/shared/Tax-Year'
 import WelcomeMessage from '@/components/shared/WelcomeMessage'
 import Doc from '@/components/shared/premium-plus/Doc'
 import OrderStatus from '@/components/shared/premium-plus/OrderStatus'
@@ -65,7 +66,9 @@ export default function PremiumPlusProcess() {
             <p className='text-sm font-semibold'>
               Tax Due: {salaryData?.tax_amount || 0}
             </p>
-            <p className='text-xs'>Tax Year 2023 -2024</p>
+            <p className='text-xs'>
+              Tax Year <TaxYear />
+            </p>
           </div>
         </div>
 
