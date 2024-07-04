@@ -45,15 +45,15 @@ export default function GetUserStep({
       )}
 
       <div className='text-center mt-8'>
-        <Button
-          type='primary'
-          size='large'
-          className='prime-button w-52 m-auto'
-        >
-          <Link href={`${context}/process`}>
+        <Link href={`${context}/process`}>
+          <Button
+            type='primary'
+            size='large'
+            className='prime-button w-52 m-auto'
+          >
             {addiInfo?.go_button_title || "Let's GO"}
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </div>
     </div>
   )

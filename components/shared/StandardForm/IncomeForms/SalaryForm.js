@@ -64,6 +64,75 @@ export default function SalaryForm({
   const onValuesChange = (changedValues, allValues) => {
     console.log('Changed values:', changedValues)
     console.log('All values:', allValues)
+
+    if (allValues) {
+      let NetSalaryIncome =
+          (allValues.Arear_1 || 0) +
+          (allValues.BasicPay_1 || 0) +
+          (allValues.Bonus_1 || 0) +
+          (allValues.ConveyanceAllowance_1 || 0) +
+          (allValues.DearnessAllowance_1 || 0) +
+          (allValues.EmployeeShareSchemes_1 || 0) +
+          (allValues.EmployersContributionProvidentFund_1 || 0) +
+          (allValues.Gratuity_1 || 0) +
+          (allValues.HonorariumOrReward_1 || 0) +
+          (allValues.HouseRentAllowance_1 || 0) +
+          (allValues.InterestAccruedProvidentFund_1 || 0) +
+          (allValues.LeaveAllowance_1 || 0) +
+          (allValues.LeaveEncashment_1 || 0) +
+          (allValues.MedicalAllowance_1 || 0) +
+          (allValues.MedicalAllowanceForDisability_1 || 0) +
+          (allValues.OtherAllowances_1 || 0) +
+          (allValues.Others_1 || 0) +
+          (allValues.OvertimeAllowance_1 || 0) +
+          (allValues.PaidPartOfRentValue_1 || 0) +
+          (allValues.Pension_1 || 0) +
+          (allValues.RecognizedProvidentFundIncome_1 || 0) +
+          (allValues.RentalValueOfHouse_1 || 0) +
+          (allValues.ServantAllowance_1 || 0) +
+          (allValues.SpecialPay_1 || 0) +
+          (allValues.Surgery_HEKLC_1 || 0) +
+          (allValues.TransportAmount_1 || 0) +
+          (allValues.WorkersProfitParticipationFund_1 || 0),
+        NetTaxWaiver = (NetSalaryIncome || 0) * 0.33,
+        NetTaxableIncome = NetSalaryIncome - NetTaxWaiver
+
+      form.setFieldsValue({
+        NetSalaryIncome: NetSalaryIncome,
+        NetTaxWaiver: NetTaxWaiver,
+        NetTaxableIncome: NetTaxableIncome,
+        BasicPay: allValues.BasicPay_1 || 0,
+        SpecialPay: allValues.SpecialPay_1 || 0,
+        DearnessAllowance: allValues.DearnessAllowance_1 || 0,
+        ConveyanceAllowance: allValues.ConveyanceAllowance_1 || 0,
+        MedicalAllowance: allValues.MedicalAllowance_1 || 0,
+        DearnessAllowance: allValues.DearnessAllowance_1 || 0,
+        EmployeeShareSchemes: allValues.EmployeeShareSchemes_1 || 0,
+        EmployersContributionProvidentFund:
+          allValues.EmployersContributionProvidentFund_1 || 0,
+        Gratuity: allValues.Gratuity_1 || 0,
+        HonorariumOrReward: allValues.HonorariumOrReward_1 || 0,
+        HouseRentAllowance: allValues.HouseRentAllowance_1 || 0,
+        InterestAccruedProvidentFund:
+          allValues.InterestAccruedProvidentFund_1 || 0,
+        LeaveAllowance: allValues.LeaveAllowance_1 || 0,
+        LeaveEncashment: allValues.LeaveEncashment_1 || 0,
+        MedicalAllowance: allValues.MedicalAllowance_1 || 0,
+        MedicalAllowanceForDisability:
+          allValues.MedicalAllowanceForDisability_1 || 0,
+        OvertimeAllowance: allValues.OvertimeAllowance_1 || 0,
+        PaidPartOfRentValue: allValues.PaidPartOfRentValue_1 || 0,
+        Pension: allValues.Pension_1 || 0,
+        RecognizedProvidentFundIncome:
+          allValues.RecognizedProvidentFundIncome_1 || 0,
+        RentalValueOfHouse: allValues.RentalValueOfHouse_1 || 0,
+        ServantAllowance: allValues.ServantAllowance_1 || 0,
+        SpecialPay: allValues.SpecialPay_1 || 0,
+        Surgery_HEKLC: allValues.Surgery_HEKLC_1 || 0,
+        WorkersProfitParticipationFund_1:
+          allValues.WorkersProfitParticipationFund_1 || 0,
+      })
+    }
   }
 
   const getSalariesData = async () => {
@@ -105,6 +174,9 @@ export default function SalaryForm({
           RecognizedProvidentFundIncome_1:
             masterData.RecognizedProvidentFundIncome_1,
           EmployeeShareSchemes_1: masterData.EmployeeShareSchemes_1,
+          NetTaxableIncome: masterData.NetTaxableIncome,
+          NetTaxWaiver: masterData.NetTaxWaiver,
+          NetSalaryIncome: masterData.NetSalaryIncome,
         }
 
         form.setFieldsValue(formData)
@@ -130,7 +202,7 @@ export default function SalaryForm({
 
   return (
     <div className='bg-white pb-6 px-6'>
-      <h3 className='text-xl font-semibold'>Please enter your Salary</h3>
+      <h3 className='text-xl font-semibold'>Salary Income Information</h3>
       <ConfigProvider
         theme={{
           token: {
@@ -143,6 +215,21 @@ export default function SalaryForm({
           },
         }}
       >
+        <Row gutter={16}>
+          <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
+            Pay & Allowance
+          </Col>
+          <Col className='gutter-row' xs={24} sm={24} md={5}>
+            Amount of Yearly Income
+          </Col>
+          <Col className='gutter-row' xs={24} sm={24} md={5}>
+            Amount of Exempted Income
+          </Col>
+          <Col className='gutter-row' xs={24} sm={24} md={5}>
+            Net Taxable Income
+          </Col>
+        </Row>
+        <Divider />
         <Form
           className='mt-6'
           name='basic'
@@ -153,10 +240,10 @@ export default function SalaryForm({
           size='large'
         >
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Basic Pay * <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='BasicPay_1'
                 rules={[
@@ -172,13 +259,23 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='BasicPay_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='BasicPay'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Special Pay <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='SpecialPay_1'
                 rules={[
@@ -194,13 +291,23 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='SpecialPay_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='SpecialPay'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Dearness Allowance <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='DearnessAllowance_1'
                 rules={[
@@ -216,14 +323,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='DearnessAllowance_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='DearnessAllowance'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Conveyance Allowance{' '}
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='ConveyanceAllowance_1'
                 rules={[
@@ -239,14 +356,25 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='ConveyanceAllowance_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='ConveyanceAllowance'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               House Rent Allowance{' '}
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='HouseRentAllowance_1'
                 rules={[
@@ -262,38 +390,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
-          </Row>
-
-          {/* <Row gutter={16}>
-            <Col className='gutter-row' xs={24} sm={24} md={6}>
-              Medical Allowance (without disability allowance){' '}
-              <ExclamationCircleOutlined className='ml-3' />
-            </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
-              <Form.Item
-                name='HouseRentAllowance_1'
-                rules={[
-                  {
-                    required: false,
-                    message:
-                      'Please input Medical Allowance (without disability allowance)!',
-                  },
-                ]}
-              >
-                <InputNumber
-                  className='w-full'
-                  placeholder='Enter House Rent Allowance'
-                />
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='HouseRentAllowance_2'>
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col>
-          </Row> */}
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='HouseRentAllowance'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+          </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' xs={24} sm={24} md={6}>
+            <Col className='gutter-row' xs={24} sm={24} md={9}>
               Medical Allowance (without disability allowance){' '}
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='MedicalAllowance_1'
                 rules={[
@@ -310,14 +424,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='MedicalAllowance_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='MedicalAllowance'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row ' xs={24} sm={24} md={6}>
+            <Col className='gutter-row ' xs={24} sm={24} md={9}>
               Medical Allowance (disabled person)
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='MedicalAllowanceForDisability_1'
                 rules={[
@@ -334,15 +458,25 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='MedicalAllowanceForDisability_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='MedicalAllowanceForDisability'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row ' xs={24} sm={24} md={6}>
+            <Col className='gutter-row ' xs={24} sm={24} md={9}>
               Any amount received for surgery of heart, eye, liver, kidney,
               cancer
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='Surgery_HEKLC_1'
                 rules={[
@@ -359,14 +493,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Surgery_HEKLC_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Surgery_HEKLC'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Allowance for support staff
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='ServantAllowance_1'
                 rules={[
@@ -382,14 +526,25 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='ServantAllowance_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='ServantAllowance'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Leave Fair Assistance (LFA)
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='LeaveAllowance_1'
                 rules={[
@@ -405,14 +560,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='LeaveAllowance_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='LeaveAllowance'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Leave Encashment
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='LeaveEncashment_1'
                 rules={[
@@ -428,14 +593,25 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='LeaveEncashment_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='LeaveEncashment'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Honorarium or Reward
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='HonorariumOrReward_1'
                 rules={[
@@ -451,14 +627,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='HonorariumOrReward_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='HonorariumOrReward'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Overtime Allowance
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='OvertimeAllowance_1'
                 rules={[
@@ -474,14 +660,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='OvertimeAllowance_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='OvertimeAllowance'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Bonus
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='Bonus_1'
                 rules={[
@@ -494,14 +690,24 @@ export default function SalaryForm({
                 <InputNumber className='w-full' placeholder='Enter Bonus' />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Bonus_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Bonus'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Other Allowances
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='OtherAllowances_1'
                 rules={[
@@ -517,14 +723,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='OtherAllowances_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='OtherAllowances'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row ' xs={24} sm={24} md={6}>
+            <Col className='gutter-row ' xs={24} sm={24} md={9}>
               Employers Contribution Provident Fund
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='EmployersContributionProvidentFund_1'
                 rules={[
@@ -541,14 +757,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='EmployersContributionProvidentFund_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='EmployersContributionProvidentFund'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row ' xs={24} sm={24} md={6}>
+            <Col className='gutter-row ' xs={24} sm={24} md={9}>
               Interest Accrued Provident Fund
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='InterestAccruedProvidentFund_1'
                 rules={[
@@ -564,16 +790,26 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='InterestAccruedProvidentFund_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='InterestAccruedProvidentFund'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16} className='mb-5'>
-            <Col className='gutter-row ' xs={24} sm={24} md={6}>
+            <Col className='gutter-row ' xs={24} sm={24} md={9}>
               Have you received any transport from employer?
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={15}>
               <Row gutter={16}>
-                <Col className='gutter-row' xs={8} sm={8} md={8}>
+                <Col className='gutter-row' xs={10} sm={10} md={10}>
                   <Radio.Group
                     onChange={onChangeTransport}
                     value={hasTranspost}
@@ -606,7 +842,7 @@ export default function SalaryForm({
                     ''
                   )}
                 </Col>
-                <Col className='gutter-row' xs={8} sm={8} md={8}>
+                <Col className='gutter-row' xs={6} sm={6} md={6}>
                   <Radio
                     value={0}
                     onChange={onChangeTransport}
@@ -617,7 +853,7 @@ export default function SalaryForm({
                 </Col>
                 <Col className='gutter-row' xs={8} sm={8} md={8}>
                   <Form.Item name='TransportAmount_1'>
-                    <InputNumber readOnly className='w-full' />
+                    <InputNumber disabled className='w-full' />
                   </Form.Item>
                 </Col>
               </Row>
@@ -625,11 +861,11 @@ export default function SalaryForm({
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row ' xs={24} sm={24} md={6}>
+            <Col className='gutter-row ' xs={24} sm={24} md={9}>
               What is the rental value that your employer paid?
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='RentalValueOfHouse_1'
                 rules={[
@@ -646,14 +882,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='RentalValueOfHouse_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='RentalValueOfHouse'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row ' xs={24} sm={24} md={6}>
+            <Col className='gutter-row ' xs={24} sm={24} md={9}>
               Have you paid any part of the rent?
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='PaidPartOfRentValue_1'
                 rules={[
@@ -669,14 +915,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='PaidPartOfRentValue_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='PaidPartOfRentValue'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Others
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='Others_1'
                 rules={[
@@ -689,14 +945,24 @@ export default function SalaryForm({
                 <InputNumber className='w-full' placeholder='Enter Others' />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Others_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Others'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Arrear Pay (if not included in taxable income earlier)
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='Arear_1'
                 rules={[
@@ -713,14 +979,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Arear_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Arear'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Income received from Gratuity Fund
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='Gratuity_1'
                 rules={[
@@ -737,14 +1013,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Gratuity_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Gratuity'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' xs={24} sm={24} md={6}>
+            <Col className='gutter-row' xs={24} sm={24} md={9}>
               Income From Workers Profit Participation Fund
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='WorkersProfitParticipationFund_1'
                 rules={[
@@ -761,14 +1047,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='WorkersProfitParticipationFund_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='WorkersProfitParticipationFund'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row pt-2' xs={24} sm={24} md={6}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
               Pension
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='Pension_1'
                 rules={[
@@ -781,15 +1077,25 @@ export default function SalaryForm({
                 <InputNumber className='w-full' placeholder='Enter Pension' />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Pension_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='Pension'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' xs={24} sm={24} md={6}>
+            <Col className='gutter-row' xs={24} sm={24} md={9}>
               Income Received from Recognized Provident Fund and Recognized
               Super Annuation Fund
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='RecognizedProvidentFundIncome_1'
                 rules={[
@@ -806,14 +1112,24 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='RecognizedProvidentFundIncome_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='RecognizedProvidentFundIncome'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Row gutter={16} className='mt-3'>
-            <Col className='gutter-row' xs={24} sm={24} md={6}>
+            <Col className='gutter-row' xs={24} sm={24} md={9}>
               Income from Employee Share Schemes
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='EmployeeShareSchemes_1'
                 rules={[
@@ -829,54 +1145,73 @@ export default function SalaryForm({
                 />
               </Form.Item>
             </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='EmployeeShareSchemes_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='EmployeeShareSchemes'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
           </Row>
-          <Divider />
+          {/* <Divider />
           <Row gutter={16} className='mt-3'>
-            <Col className='gutter-row' xs={24} sm={24} md={6}>
+            <Col className='gutter-row' xs={24} sm={24} md={9}>
               Gross Taxable Income
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={15}>
               <Row gutter={16} className=''>
-                <Col className='gutter-row'>
+                <Col className='gutter-row' span={8}>
                   <Form.Item name='grossSalaryIncome'>
-                    <Input placeholder='Gross Amount of Yearly Income' />
+                    <Input
+                      placeholder='Gross Amount of Yearly Income'
+                      disabled
+                    />
                   </Form.Item>
                 </Col>
-                <Col className='gutter-row'>
+                <Col className='gutter-row' span={8}>
                   <Form.Item name='grossTaxWaiver'>
-                    <Input placeholder='Gross  Amount of Exempted Income' />
+                    <Input
+                      placeholder='Gross  Amount of Exempted Income'
+                      disabled
+                    />
                   </Form.Item>
                 </Col>
-                <Col className='gutter-row'>
+                <Col className='gutter-row' span={8}>
                   <Form.Item name='grossTaxableIncome'>
-                    <Input placeholder='Gross Taxable Income' />
+                    <Input placeholder='Gross Taxable Income' disabled />
                   </Form.Item>
                 </Col>
               </Row>
             </Col>
-          </Row>
+          </Row> */}
           <Divider className='mt-0 mb-5' />
           <Row gutter={16} className='mt-3'>
-            <Col className='gutter-row' xs={24} sm={24} md={6}>
+            <Col className='gutter-row' xs={24} sm={24} md={9}>
               Net Taxable Income (Including all the exempted income from salary)
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={18}>
+            <Col className='gutter-row' xs={24} sm={24} md={15}>
               <Row gutter={16} className=''>
-                <Col className='gutter-row'>
+                <Col className='gutter-row' span={8}>
                   <Form.Item name='NetSalaryIncome'>
-                    <Input placeholder='Net Amount of Yearly Income' />
+                    <Input placeholder='Net Amount of Yearly Income' disabled />
                   </Form.Item>
                 </Col>
-                <Col className='gutter-row'>
+                <Col className='gutter-row' span={8}>
                   <Form.Item name='NetTaxWaiver'>
-                    <Input placeholder='Net Amount of Exempted Income' />
+                    <Input
+                      placeholder='Net Amount of Exempted Income'
+                      disabled
+                    />
                   </Form.Item>
                 </Col>
-                <Col className='gutter-row'>
+                <Col className='gutter-row' span={8}>
                   <Form.Item name='NetTaxableIncome'>
-                    <Input placeholder='Net Taxable Income' />
+                    <Input placeholder='Net Taxable Income' disabled />
                   </Form.Item>
                 </Col>
               </Row>

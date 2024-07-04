@@ -127,3 +127,13 @@ body {
     }
   }
 }
+
+.ant-input-disabled {
+  color: #555 !important;
+}
+
+.ant-input-number-disabled {
+  .ant-input-number-input {
+    color: #555 !important;
+  }
+}
