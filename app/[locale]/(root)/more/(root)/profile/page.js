@@ -1,6 +1,9 @@
 'use client'
 
 import WelcomeMessage from '@/components/shared/WelcomeMessage'
+import {GET_USER_PROFILE, PACKAGE_WISE_PROFILE} from '@/scripts/api'
+import {getData, postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
 import {
   Button,
   Col,
@@ -11,12 +14,62 @@ import {
   Row,
   Select,
 } from 'antd'
+import dayjs from 'dayjs'
+import {useEffect} from 'react'
 const {Option} = Select
 
 export default function Profile() {
-  const onFinish = (values) => {
-    console.log('Success:', values)
+  const [form] = Form.useForm()
+
+  const onFinish = async (values) => {
+    let profile = {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      ETIN: values.ETIN,
+      Gender: values.Gender,
+      Email: values.Email,
+      Contact: values.Contact,
+      NationalId: values.NationalId,
+      DOB: dayjs(values.dob).format('DD-MM-YYYY'),
+    }
+
+    let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError')
+
+    if (res) {
+      if (res.code === 'error') {
+        form.setFields(res?.errors)
+      } else {
+        let masterData = res.data
+        alertPop('success', masterData?.message)
+        setCurrent(2)
+      }
+    }
   }
+
+  const getUserData = async () => {
+    let res = await getData(GET_USER_PROFILE)
+
+    if (res) {
+      let masterData = res?.data
+
+      if (masterData) {
+        form.setFieldsValue({
+          first_name: masterData.first_name,
+          last_name: masterData.last_name,
+          ETIN: masterData.ETIN,
+          NationalId: masterData.NationalId,
+          Email: masterData.Email,
+          Contact: masterData.Contact,
+          Gender: masterData.Gender,
+          dob: masterData.DOB ? dayjs(masterData.DOB) : undefined,
+        })
+      }
+    }
+  }
+
+  useEffect(() => {
+    getUserData()
+  }, [])
 
   return (
     <div className='bg-white py-6 px-6'>
@@ -36,6 +89,7 @@ export default function Profile() {
         <Form
           className='mt-6'
           name='basic'
+          form={form}
           onFinish={onFinish}
           autoComplete='off'
           size='large'
@@ -85,7 +139,7 @@ export default function Profile() {
             <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 label=''
-                name='etin'
+                name='ETIN'
                 rules={[
                   {
                     required: true,
@@ -105,7 +159,7 @@ export default function Profile() {
             <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 label=''
-                name='nid'
+                name='NationalId'
                 rules={[
                   {
                     required: true,
@@ -114,6 +168,49 @@ export default function Profile() {
                 ]}
               >
                 <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row gutter={16}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
+              Email *
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
+              <Form.Item
+                label=''
+                name='Email'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your Email!',
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row gutter={16}>
+            <Col className='gutter-row' span={4}>
+              Mobile *
+            </Col>
+            <Col className='gutter-row' span={20}>
+              <Form.Item
+                name='Contact'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input mobile!',
+                  },
+                  {
+                    pattern: /^(?:\+?88)?01[15-9]\d{8}$/,
+                    message: 'Please enter a valid mobile no',
+                  },
+                ]}
+              >
+                <Input placeholder='Mobile *' />
               </Form.Item>
             </Col>
           </Row>
@@ -148,7 +245,7 @@ export default function Profile() {
             <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 label=''
-                name='gender'
+                name='Gender'
                 rules={[
                   {
                     required: true,
