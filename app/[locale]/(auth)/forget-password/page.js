@@ -13,7 +13,7 @@ export default function ForgetPassword() {
 
   return (
     <div className='flex items-center w-full'>
-      <div className='w-full p-6 m-4 md:max-w-sm md:mx-auto text-center'>
+      <div className='w-full md:p-6 m-4 md:max-w-sm md:mx-auto text-center'>
         <h1 className='block w-full font-bold mb-2 text-[22px]'>
           Forget Password
         </h1>

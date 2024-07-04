@@ -23,11 +23,11 @@ export default function AuthNavbar({locale}) {
   return (
     <header className='container mx-auto'>
       <nav className='flex flex-wrap items-center justify-between w-full py-4 md:pt-0 md:pb-2.5 text-lg text-gray-700 bg-white'>
-        <div>
+        <div className='pt-3'>
           <Link href={`/${locale}`}>
             <Image
-              width={100}
-              height={60}
+              width={120}
+              height={50}
               src='/assets/images/logo-2.png'
               alt='logo'
             />

@@ -27,8 +27,8 @@ export default function Navbar({locale}) {
                 className='flex items-center bg-[#F8FAFC] rounded-[100px] px-4 py-1'
               >
                 <Image
-                  width={82}
-                  height={44}
+                  width={120}
+                  height={50}
                   src='/assets/images/logo-2.png'
                   alt='logo'
                 />
