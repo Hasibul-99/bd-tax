@@ -1,5 +1,6 @@
 import {
   Delete_User_Income_TaxRebate,
+  Get_User_Income_TaxRebate,
   Save_User_Income_TaxRebate,
   Update_User_Income_TaxRebate,
 } from '@/scripts/api'
@@ -130,6 +131,7 @@ export default function TaxRebate({
       icon: <ExclamationCircleFilled />,
       async onOk() {
         let res = await deleteData(Delete_User_Income_TaxRebate + TaxDeductId)
+        console.log('res ===', res)
         if (res) {
           setShowList(false)
           getTaxRebate()
@@ -146,20 +148,50 @@ export default function TaxRebate({
     let res = await getData(Get_User_Income_TaxRebate)
 
     if (res) {
+      // console.log('res', res)
       setTaxRebate(res.data)
-      if (res?.data?.length) {
+      if (res.data) {
         setShowList(true)
+        form.setFieldsValue(res.data)
       }
     }
   }
 
-  const changeAnnualRentalIncome = (val) => {
-    form.setFieldsValue({Repair: (val || 0) * 0.25})
+  const onValuesChange = (changedValues, allValues) => {
+    console.log('Changed values:', changedValues)
+    console.log('All values:', allValues)
+
+    if (allValues) {
+      let formData = {
+        LifeInsurancePremium: (allValues.PolicyValue || 0) * 0.1,
+        ProvidentFund: allValues.ProvidentFund_1 || 0,
+        SCECProvidentFund: allValues.SCECProvidentFund_1 || 0,
+        SuperAnnuationFund: allValues.SuperAnnuationFund_1 || 0,
+        InvestInStockOrShare: allValues.InvestInStockOrShare_1 || 0,
+        DepositPensionScheme: allValues.DepositPensionScheme_1 || 0,
+        BenevolentFund: allValues.BenevolentFund_1 || 0,
+        ZakatFund: allValues.ZakatFund_1 || 0,
+        SavingsCertificates: allValues.SavingsCertificates_1 || 0,
+        BangladeshGovtTreasuryBond: allValues.BangladeshGovtTreasuryBond_1 || 0,
+        DonationNLInstitutionFON: allValues.DonationNLInstitutionFON_1 || 0,
+        DonationCharityHospitalNBR: allValues.DonationCharityHospitalNBR_1 || 0,
+        DonationOrganizationRetardPeople:
+          allValues.DonationOrganizationRetardPeople_1 || 0,
+        ContributionNLInstituionLW: allValues.ContributionNLInstituionLW_1 || 0,
+        ContributionLiberationWarMuseum:
+          allValues.ContributionLiberationWarMuseum_1 || 0,
+        DonationEduInstitutionGov: allValues.DonationEduInstitutionGov_1 || 0,
+        MutualFund: allValues.MutualFund_1 || 0,
+      }
+
+      form.setFieldsValue(formData)
+    }
   }
 
   useEffect(() => {
     getTaxRebate()
   }, [])
+
   return (
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>
@@ -182,7 +214,7 @@ export default function TaxRebate({
           <>
             <Table
               columns={columns}
-              dataSource={TaxRebate}
+              dataSource={[TaxRebate]}
               pagination={false}
             />
           </>
@@ -193,6 +225,7 @@ export default function TaxRebate({
               name='basic'
               form={form}
               onFinish={onFinish}
+              onValuesChange={onValuesChange}
               autoComplete='off'
               size='large'
             >
@@ -212,7 +245,7 @@ export default function TaxRebate({
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='LifeInsurancePremium'
+                    name='LifeInsurancePremium_1'
                     rules={[
                       {
                         required: false,
@@ -225,7 +258,7 @@ export default function TaxRebate({
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='LifeInsurancePremium_1'
+                    name='LifeInsurancePremium'
                     rules={[
                       {
                         required: false,
@@ -233,7 +266,7 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
                 </Col>
               </Row>
@@ -264,19 +297,6 @@ export default function TaxRebate({
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='ProvidentFund'
-                    rules={[
-                      {
-                        required: false,
-                        message: 'Please input Adress Of Property',
-                      },
-                    ]}
-                  >
-                    <InputNumber className='w-full' />
-                  </Form.Item>
-                </Col>
-                <Col className='gutter-row' xs={24} sm={24} md={9}>
-                  <Form.Item
                     name='ProvidentFund_1'
                     rules={[
                       {
@@ -288,16 +308,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Self Contribution and Employer’s Contribution to Recognized
-                  Fund
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='SCECProvidentFund'
+                    name='ProvidentFund'
                     rules={[
                       {
                         required: false,
@@ -305,8 +318,15 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Self Contribution and Employer’s Contribution to Recognized
+                  Fund
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -321,15 +341,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Contribution to Super Annuation Fund
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='SuperAnnuationFund'
+                    name='SCECProvidentFund'
                     rules={[
                       {
                         required: false,
@@ -337,8 +351,14 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Contribution to Super Annuation Fund
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -353,16 +373,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Investment in Approved Debenture or Debenture Stock, Stock or
-                  Shares
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='InvestInStockOrShare'
+                    name='SuperAnnuationFund'
                     rules={[
                       {
                         required: false,
@@ -370,8 +383,15 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Investment in Approved Debenture or Debenture Stock, Stock or
+                  Shares
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -386,15 +406,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Contribution to Deposit Pension Scheme
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='DepositPensionScheme'
+                    name='InvestInStockOrShare'
                     rules={[
                       {
                         required: false,
@@ -402,8 +416,14 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Contribution to Deposit Pension Scheme
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -418,15 +438,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Contribution to Benevolent Fund and Group Insurance Premium
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='BenevolentFund'
+                    name='DepositPensionScheme'
                     rules={[
                       {
                         required: false,
@@ -434,8 +448,14 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Contribution to Benevolent Fund and Group Insurance Premium
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -450,15 +470,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Contribution to Zakat Fund
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='ZakatFund'
+                    name='BenevolentFund'
                     rules={[
                       {
                         required: false,
@@ -466,8 +480,14 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Contribution to Zakat Fund
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -482,15 +502,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Investment in Savings Certificates / Sanchaypatra
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='SavingsCertificates'
+                    name='ZakatFund'
                     rules={[
                       {
                         required: false,
@@ -498,8 +512,14 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Investment in Savings Certificates / Sanchaypatra
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -514,15 +534,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16} className='mb-6'>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Investment in Bangladesh Govt. Treasury Bond
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='BangladeshGovtTreasuryBond'
+                    name='SavingsCertificates'
                     rules={[
                       {
                         required: false,
@@ -530,8 +544,14 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16} className='mb-6'>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Investment in Bangladesh Govt. Treasury Bond
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -546,16 +566,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16} className='mb-6'>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Donation to National Level Institution set up in the memory of
-                  Father of the Nation
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='DonationNLInstitutionFON'
+                    name='BangladeshGovtTreasuryBond'
                     rules={[
                       {
                         required: false,
@@ -563,8 +576,15 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16} className='mb-6'>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Donation to National Level Institution set up in the memory of
+                  Father of the Nation
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -579,16 +599,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16} className='mb-6'>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  NBR Recognized Charitable Hospital located outside City
-                  Corporation Area which is Established 1 Year Prior to Donation
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='DonationCharityHospitalNBR'
+                    name='DonationNLInstitutionFON'
                     rules={[
                       {
                         required: false,
@@ -596,8 +609,15 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16} className='mb-6'>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  NBR Recognized Charitable Hospital located outside City
+                  Corporation Area which is Established 1 Year Prior to Donation
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -612,17 +632,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16} className='mb-6'>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Donation to Organizations set up for the welfare of retarded
-                  people authorized by NBR & Department of Social Welfare which
-                  is Established 1 Year Prior to the Donation
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='DonationOrganizationRetardPeople'
+                    name='DonationCharityHospitalNBR'
                     rules={[
                       {
                         required: false,
@@ -630,8 +642,16 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16} className='mb-6'>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Donation to Organizations set up for the welfare of retarded
+                  people authorized by NBR & Department of Social Welfare which
+                  is Established 1 Year Prior to the Donation
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -646,16 +666,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16} className='mb-6'>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Contribution to national level institution set up in memory of
-                  Liberation war
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='ContributionNLInstituionLW'
+                    name='DonationOrganizationRetardPeople'
                     rules={[
                       {
                         required: false,
@@ -663,8 +676,15 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16} className='mb-6'>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Contribution to national level institution set up in memory of
+                  Liberation war
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -679,15 +699,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Contribution to Liberation war Museum
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='ContributionLiberationWarMuseum'
+                    name='ContributionNLInstituionLW'
                     rules={[
                       {
                         required: false,
@@ -695,8 +709,14 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Contribution to Liberation war Museum
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -711,15 +731,9 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-              </Row>
-
-              <Row gutter={16}>
-                <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Donation to Educational Institution recognized by Government
-                </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='DonationEduInstitutionGov'
+                    name='ContributionLiberationWarMuseum'
                     rules={[
                       {
                         required: false,
@@ -727,8 +741,14 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={6}>
+                  Donation to Educational Institution recognized by Government
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
@@ -743,6 +763,19 @@ export default function TaxRebate({
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
+                <Col className='gutter-row' xs={24} sm={24} md={9}>
+                  <Form.Item
+                    name='DonationEduInstitutionGov'
+                    rules={[
+                      {
+                        required: false,
+                        message: 'Please input Adress Of Property',
+                      },
+                    ]}
+                  >
+                    <InputNumber className='w-full' disabled />
+                  </Form.Item>
+                </Col>
               </Row>
 
               <Row gutter={16}>
@@ -751,7 +784,7 @@ export default function TaxRebate({
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='MutualFund'
+                    name='MutualFund_1'
                     rules={[
                       {
                         required: false,
@@ -764,7 +797,7 @@ export default function TaxRebate({
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
-                    name='MutualFund_1_1'
+                    name='MutualFund'
                     rules={[
                       {
                         required: false,
@@ -772,7 +805,7 @@ export default function TaxRebate({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
                 </Col>
               </Row>

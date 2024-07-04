@@ -533,7 +533,7 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
           </Row>
 
-          <Row gutter={16}>
+          <Row gutter={16} className='mb-4'>
             <Col className='gutter-row' span={4}>
               Are you a gazetted war wounded freedom fighter? *
             </Col>
@@ -565,7 +565,7 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
           </Row>
 
-          <Row gutter={16}>
+          <Row gutter={16} className='mb-4'>
             <Col className='gutter-row' span={4}>
               Are you a government employee? *
             </Col>
