@@ -94,7 +94,7 @@ export default function SalaryForm({
           (allValues.Surgery_HEKLC_1 || 0) +
           (allValues.TransportAmount_1 || 0) +
           (allValues.WorkersProfitParticipationFund_1 || 0),
-        NetTaxWaiver = (NetSalaryIncome || 0) * 0.33,
+        NetTaxWaiver = parseInt((NetSalaryIncome || 0) * 0.33) || 0,
         NetTaxableIncome = NetSalaryIncome - NetTaxWaiver
 
       form.setFieldsValue({
