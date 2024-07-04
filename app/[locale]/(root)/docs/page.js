@@ -166,6 +166,9 @@ export default function Doc() {
                         title={
                           <div>
                             <div className='font-bold text-[13px] leading-[18px] text-[#020617]'>
+                              {item.file_name}
+                            </div>
+                            <div className='font-normal text-xs leading-[17px] text-custom-gray'>
                               {item.title}
                             </div>
                           </div>

@@ -216,37 +216,47 @@ export default function SignUp() {
           </Form>
         </ConfigProvider>
 
-        <Link href='signin' className='text-emerald-700 hover:text-emerald-700'>
-          Already have account
-        </Link>
-        <br />
+        <div className='mb-2'>
+          <Link
+            href='signin'
+            className=' text-emerald-700 hover:text-emerald-700'
+          >
+            Already have account
+          </Link>
+        </div>
         <Space>
-          <img src='/assets/icons/sms.svg' alt='sms' width={20} />
+          <img src='/assets/icons/sms.svg' alt='sms' width={14} />
           support@bdtax.com.bd
         </Space>
         <br />
         <Space>
-          <img src='/assets/icons/call.svg' alt='sms' width={20} />
+          <img src='/assets/icons/call.svg' alt='sms' width={14} />
           01409-991225
         </Space>
 
         <div className='flex justify-center items-center p-0 gap-8'>
           <img
             className=''
-            src='/assets/icons/bangladesh_copyright_logo-min 2.svg'
+            src='/assets/images/bangladesh_copyright_logo-min 2.png'
             alt='bangladesh'
+            width={94}
+            height={90}
           />
 
           <img
             className=''
             src='/assets/icons/start_award_logo-min-removebg-preview 1.svg'
             alt='start'
+            width={101}
+            height={35}
           />
 
           <img
             className=''
-            src='/assets/icons/Champion_final3-min-removebg-preview 1.svg'
+            src='/assets/images/Champion_final3-min-removebg-preview 1.png'
             alt='Champion'
+            width={94}
+            height={71}
           />
         </div>
       </div>

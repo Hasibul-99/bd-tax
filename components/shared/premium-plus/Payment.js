@@ -52,19 +52,44 @@ export default function Payment({salaryData, setCurrent, context}) {
       <div className='my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
         <div className='flex flex-row items-start p-0 gap-[14.26px]'>
           <a href={paymentData?.sslgatewayLink}>
-            <img src='/assets/images/visa.png' alt='warning' />
+            <img
+              src='/assets/images/visa.png'
+              alt='warning'
+              width={50}
+              height={34}
+            />
           </a>
           <a href={paymentData?.sslgatewayLink}>
-            <img src='/assets/images/master.png' alt='warning' />
+            <img
+              src='/assets/images/master.png'
+              alt='warning'
+              width={50}
+              height={34}
+            />
           </a>
           <a href={paymentData?.sslgatewayLink}>
-            <img src='/assets/images/discover.png' alt='warning' />
+            <img
+              src='/assets/images/discover.png'
+              alt='warning'
+              width={50}
+              height={34}
+            />
           </a>
           <a href={paymentData?.sslgatewayLink}>
-            <img src='/assets/images/amex.png' alt='warning' />
+            <img
+              src='/assets/images/amex.png'
+              alt='warning'
+              width={50}
+              height={34}
+            />
           </a>
           <a href={paymentData?.bkashURL}>
-            <img src='/assets/images/bkash.png' alt='warning' />
+            <img
+              src='/assets/images/bkash.png'
+              alt='warning'
+              width={50}
+              height={34}
+            />
           </a>
         </div>
 

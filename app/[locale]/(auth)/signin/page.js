@@ -170,18 +170,20 @@ export default function SignIn() {
         </Space>
 
         <img
-          className='mt-5 m-auto'
+          className='mt-5 mb-4 m-auto'
           src='/assets/images/Frame.png'
           alt='logo'
+          width={99}
+          height={105}
         />
 
         <Space>
-          <img src='/assets/icons/sms.svg' alt='sms' width={20} />
+          <img src='/assets/icons/sms.svg' alt='sms' width={14} />
           support@bdtax.com.bd
         </Space>
         <br />
         <Space>
-          <img src='/assets/icons/call.svg' alt='sms' width={20} />
+          <img src='/assets/icons/call.svg' alt='sms' width={14} />
           01409-991225
         </Space>
         <br />
