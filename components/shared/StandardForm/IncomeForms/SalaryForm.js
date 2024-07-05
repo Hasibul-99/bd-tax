@@ -35,7 +35,7 @@ export default function SalaryForm({
     let data = {...values}
 
     data.has_transport = hasTranspost === 0 ? 0 : 1
-    data.tranport_month = tranportMonth
+    data.transport_month = tranportMonth
 
     let res = await postData(SAVE_INCOME_SALARIES, data, null, 'showError')
     if (res) {
@@ -92,7 +92,7 @@ export default function SalaryForm({
           (allValues.ServantAllowance_1 || 0) +
           (allValues.SpecialPay_1 || 0) +
           (allValues.Surgery_HEKLC_1 || 0) +
-          (allValues.TransportAmount_1 || 0) +
+          (allValues.DeemedIncomeTransport || 0) +
           (allValues.WorkersProfitParticipationFund_1 || 0),
         NetTaxWaiver = parseInt((NetSalaryIncome || 0) * 0.33) || 0,
         NetTaxableIncome = NetSalaryIncome - NetTaxWaiver
@@ -162,7 +162,7 @@ export default function SalaryForm({
             masterData.EmployersContributionProvidentFund_1,
           InterestAccruedProvidentFund_1:
             masterData.InterestAccruedProvidentFund_1,
-          TransportAmount_1:
+          DeemedIncomeTransport:
             masterData.has_transport * masterData.transport_month,
           RentalValueOfHouse_1: masterData.RentalValueOfHouse_1,
           PaidPartOfRentValue_1: masterData.PaidPartOfRentValue_1,
@@ -190,9 +190,9 @@ export default function SalaryForm({
     if (hasTranspost && tranportMonth) {
       let amount = hasTranspost === 2 ? 25000 : 10000
 
-      form.setFieldsValue({TransportAmount_1: amount * tranportMonth})
+      form.setFieldsValue({DeemedIncomeTransport: amount * tranportMonth})
     } else {
-      form.setFieldsValue({TransportAmount_1: 0})
+      form.setFieldsValue({DeemedIncomeTransport: 0})
     }
   }, [hasTranspost, tranportMonth])
 
@@ -852,7 +852,7 @@ export default function SalaryForm({
                   </Radio>
                 </Col>
                 <Col className='gutter-row' xs={8} sm={8} md={8}>
-                  <Form.Item name='TransportAmount_1'>
+                  <Form.Item name='DeemedIncomeTransport'>
                     <InputNumber disabled className='w-full' />
                   </Form.Item>
                 </Col>

@@ -30,13 +30,19 @@ export default function Payment({salaryData, setCurrent, context}) {
   return (
     <div className='py-10 px-10'>
       <h3 className='text-xl font-semibold'>
-        WE have auto calculated your tax
+        We have auto calculated your tax
       </h3>
-      <Card className='mt-4 border-0 border-l-4 bg-[#EFFEF2] border-emerald-600'>
-        <p>Estimated Tax Due</p>
-        <p>
-          <span className='text-lime-600'>৳ </span>{' '}
-          {paymentData?.due_amount || 0}
+      {/* border-l-4 bg-[#EFFEF2] border-emerald-600 */}
+      <Card className='mt-4 border-0 bg-[#EFFEF2] payment-card'>
+        <span className='left-bar'></span>
+        <p className='font-normal text-sm leading-[18px] text-[#1E293B]'>
+          Estimated Tax Due
+        </p>
+        <p className='flex gap-1'>
+          <img src='/assets/icons/taka.svg' alt='taka' />
+          <span className='font-semibold text-[21px] leading-[30px] text-[#1E293B]'>
+            {paymentData?.due_amount || 0}
+          </span>
         </p>
       </Card>
       <Space className='text-[#F97316] my-6'>

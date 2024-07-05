@@ -221,3 +221,17 @@
   border-radius: 12px;
   padding: 8px 12px;
 }
+
+.payment-card {
+  position: relative;
+  .left-bar {
+    position: absolute;
+    width: 5px;
+    height: 70px;
+    left: 0px;
+    top: 9px;
+
+    background: linear-gradient(47.39deg, #126a25 13.29%, #23d049 93.18%);
+    border-radius: 12px;
+  }
+}
