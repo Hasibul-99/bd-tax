@@ -31,19 +31,15 @@ export default function Premium() {
     <div className='custom-container-under mx-auto px-30 mt-5 pb-16'>
       <div className='bg-white py-5 px-4 rounded-[20px]'>
         <WelcomeMessage />
-        <div className='bg-[#e6f8e9] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
-          <div>
-            <h5 className='text-base font-semibold'>
-              <Space>
-                <img
-                  src='/assets/images/Auto Layout Horizontal (1).png'
-                  alt='Premium Plus'
-                />
-                Premium
-              </Space>
-            </h5>
+        {/* bg-[#e6f8e9] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl */}
+        <div className='premium-pack-card mt-3'>
+          <div className='packages-price'>
+            <div className='p-image'>
+              <img src='/assets/images/premium.png' alt='Premium' />
+            </div>
+            <span className='price-text'>Premium</span>
           </div>
-          <div className='md:text-right md:ml-auto pt-3'>
+          <div className='md:text-right md:ml-auto'>
             <p className='text-sm font-semibold'>Tax Due: 0</p>
             <p className='text-xs'>
               Tax Year <TaxYear />{' '}
@@ -51,7 +47,7 @@ export default function Premium() {
           </div>
         </div>
 
-        <div className='bg-gold-20 border border-gold-40 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+        <div className='bg-gold-20 border border-gold-40 my-2 py-3 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
           <div className='text-base pt-2.5'>
             Upgrade to <span className='font-semibold'>Premium Plus</span> for a
             hassle free tax submission.
@@ -65,7 +61,7 @@ export default function Premium() {
           </div>
         </div>
 
-        <div className='bg-gold-20 border border-gold-40 my-2 py-5 px-4 mx-auto rounded-2xl text-base font-normal text-gray-900 leading-7'>
+        <div className='bg-gold-20 border border-gold-40 my-2 py-3 px-4 mx-auto rounded-2xl text-base font-normal text-gray-900 leading-7'>
           <p>Congratulations on selecting the Premium package!</p>
           <p>
             Trust us for precise tax preparation, ensuring accuracy every step

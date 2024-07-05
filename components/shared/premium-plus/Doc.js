@@ -135,7 +135,7 @@ export default function Doc({setCurrent, nextCurrent}) {
               }}
             >
               <Form
-                className='mt-6 text-left'
+                className='text-left'
                 name='basic'
                 onFinish={onFinish}
                 autoComplete='off'
@@ -143,7 +143,7 @@ export default function Doc({setCurrent, nextCurrent}) {
                 form={form}
               >
                 <Row gutter={16}>
-                  <Col className='gutter-row' span={20}>
+                  <Col className='gutter-row' span={18}>
                     <Form.Item
                       name='file_type'
                       rules={[
@@ -175,12 +175,12 @@ export default function Doc({setCurrent, nextCurrent}) {
                       />
                     </Form.Item>
                   </Col>
-                  <Col className='gutter-row' span={4}>
+                  <Col className='gutter-row' span={6}>
                     <Form.Item>
                       <Button
                         type='primary'
                         htmlType='submit'
-                        className='mt-2 prime-button w-52 m-auto'
+                        className='mt-2 prime-button  m-auto'
                       >
                         Submit
                       </Button>

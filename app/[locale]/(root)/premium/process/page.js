@@ -9,7 +9,7 @@ import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo'
 import Submit from '@/components/shared/premium-plus/Submit'
 import {PROCESS_SALARY_DOC} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
-import {Button, ConfigProvider, Space, Steps} from 'antd'
+import {ConfigProvider, Steps} from 'antd'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useState} from 'react'
 
@@ -60,27 +60,22 @@ export default function PremiumPlusProcess() {
       <div>
         <div className={`bg-white py-5 px-4 rounded-[20px]`}>
           <WelcomeMessage />
-          <div className='bg-[#e6f8e9] my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
-            <div>
-              <h5 className='text-base font-semibold'>
-                <Space>
-                  <img
-                    src='/assets/images/Auto Layout Horizontal (1).png'
-                    alt='Premium Plus'
-                  />
-                  Premium
-                </Space>
-              </h5>
+          <div className='premium-pack-card mt-3'>
+            <div className='packages-price'>
+              <div className='p-image'>
+                <img src='/assets/images/premium.png' alt='Premium' />
+              </div>
+              <span className='price-text'>Premium</span>
             </div>
-            <div className='md:text-right md:ml-auto pt-3'>
+            <div className='md:text-right md:ml-auto'>
               <p className='text-sm font-semibold'>Tax Due: 0</p>
               <p className='text-xs'>
-                Tax Year <TaxYear />
+                Tax Year <TaxYear />{' '}
               </p>
             </div>
           </div>
 
-          <div className='bg-gold-20 border border-gold-40 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+          {/* <div className='bg-gold-20 border border-gold-40 my-2 py-3 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
             <div className='text-base pt-2.5'>
               Upgrade to <span className='font-semibold'>Premium Plus</span> for
               a hassle free tax submission.
@@ -96,9 +91,9 @@ export default function PremiumPlusProcess() {
                 </Space>
               </Button>
             </div>
-          </div>
+          </div> */}
 
-          <div className=' py-5 px-4'>
+          <div className='pt-3 px-4'>
             <ConfigProvider
               theme={{
                 token: {
