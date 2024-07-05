@@ -52,7 +52,7 @@ export default function OrderStatus({
 
   return (
     <div className='py-6 px-6'>
-      <Card title='Order Info' className='order-info rounded-lg'>
+      <Card title='Order Info' className='order-info rounded-lg border-0'>
         {showLastStep ? (
           <>
             <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
@@ -65,7 +65,7 @@ export default function OrderStatus({
           </>
         ) : (
           <>
-            <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
+            <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
               <p>
                 Thank you for your order{' '}
                 <span className='font-semibold'>#45678624</span>.{' '}
@@ -73,8 +73,11 @@ export default function OrderStatus({
               <p>Now you can relax as BDTax experts handle your tax return. </p>
             </div>
 
-            <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
-              <p>Your assigned consultant will contact you within 24 hours.</p>
+            <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
+              <p>
+                Your assigned consultant will contact you within{' '}
+                <span className='font-semibold'>24 hours</span> .
+              </p>
             </div>
           </>
         )}

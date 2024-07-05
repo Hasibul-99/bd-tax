@@ -101,6 +101,18 @@ export default function IncomeFromFinancialAssets({
     setSelecetedItem(data)
   }
 
+  const onValuesChange = (changedValues, allValues) => {
+    console.log('Changed values:', changedValues)
+    console.log('All values:', allValues)
+
+    if (allValues) {
+      let NetAmount =
+        (allValues.Cost || 0) - (allValues.CommissionOrInterest || 0)
+
+      form.setFieldsValue({NetAmount: NetAmount})
+    }
+  }
+
   const columns = [
     {
       title: 'Type',
@@ -186,7 +198,11 @@ export default function IncomeFromFinancialAssets({
             layout={'vertical'}
             name='control-hooks'
             onFinish={onFinish}
+            onValuesChange={onValuesChange}
             size='large'
+            initialValues={{
+              CommissionOrInterest: 0,
+            }}
           >
             <Flex wrap gap='small'>
               <Form.Item
@@ -263,6 +279,7 @@ export default function IncomeFromFinancialAssets({
                 <InputNumber
                   style={{width: '150px'}}
                   placeholder='Net Amount'
+                  disabled
                 />
               </Form.Item>
 

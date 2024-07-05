@@ -14,6 +14,13 @@ import {Fragment} from 'react'
 const {Title, Text} = Typography
 
 export default function Prospects({setCurrent, prospectData}) {
+  const assetsOptions = standardStore((state) => state.assetsOptions)
+  const expenceOptions = standardStore((state) => state.expenceOptions)
+  const incomeOptions = standardStore((state) => state.incomeOptions)
+  const libilityOptions = standardStore((state) => state.libilityOptions)
+
+  console.log('prospectData', prospectData)
+
   const updateIncomeOptions = standardStore(
     (state) => state.updateIncomeOptions
   )
@@ -48,6 +55,7 @@ export default function Prospects({setCurrent, prospectData}) {
               Please select the source of your income from the options below
             </Text>
             <Checkbox.Group
+              defaultValue={incomeOptions}
               className='my-5 w-full'
               onChange={(val) => updateIncomeOptions(val)}
             >
@@ -71,6 +79,7 @@ export default function Prospects({setCurrent, prospectData}) {
           <div>
             <Title level={5}>Your assets</Title>
             <Checkbox.Group
+              defaultValue={assetsOptions}
               className='my-5 w-full'
               onChange={(val) => updateAssetsOptions(val)}
             >
@@ -94,6 +103,7 @@ export default function Prospects({setCurrent, prospectData}) {
           <div>
             <Title level={5}>Your Expence</Title>
             <Checkbox.Group
+              defaultValue={libilityOptions}
               className='my-5 w-full'
               onChange={(val) => updateExpenceOptions(val)}
             >
@@ -117,6 +127,7 @@ export default function Prospects({setCurrent, prospectData}) {
           <div>
             <Title level={5}>Your Libility</Title>
             <Checkbox.Group
+              defaultValue={expenceOptions}
               className='my-5 w-full'
               onChange={(val) => updateLibilityOptions(val)}
             >
