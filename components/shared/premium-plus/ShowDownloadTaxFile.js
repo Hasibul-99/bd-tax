@@ -67,7 +67,9 @@ export default function ShowDownloadTaxFile({setShow}) {
               setIsConfirm(e.target.checked)
             }}
           >
-            I certify all docs provided by me is accurate.
+            <span className='font-medium'>
+              I certify all docs provided by me is accurate.
+            </span>
           </Checkbox>
           <Button
             type='primary'

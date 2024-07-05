@@ -55,7 +55,7 @@ export default function SignatureUpload({offsetWidth = 1000, setShow}) {
 
   return (
     <div className='mt-12 p-10'>
-      <Row gutter={16}>
+      <Row gutter={16} className='mb-3'>
         <Col className='gutter-row' span={16}>
           <Title level={4}>Please sign the box below with your finger</Title>
         </Col>
@@ -122,7 +122,9 @@ export default function SignatureUpload({offsetWidth = 1000, setShow}) {
               setIsConfirm(e.target.checked)
             }}
           >
-            I certify all docs provided by me is accurate.
+            <span className='font-normal'>
+              I autorize BDTax to submit my tax return
+            </span>
           </Checkbox>
           <br />
           <Space>

@@ -52,14 +52,17 @@ export default function OrderStatus({
 
   return (
     <div className='py-6 px-6'>
-      <Card title='Order Info' className='order-info rounded-lg border-0'>
+      <Card
+        title={showLastStep ? '' : 'Order Info'}
+        className='order-info rounded-lg border-0'
+      >
         {showLastStep ? (
           <>
-            <div className='border-l-2 border-[#CBD5E1] rounded-l-md px-3 mb-2'>
+            <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md'>
               <p>
                 Thank you for approving and signing the document. We will now
                 submit it to your tax circle. You will receive your
-                acknowledgment slip via email and courier shortly,
+                acknowledgment <br /> slip via email and courier shortly,
               </p>
             </div>
           </>
@@ -83,7 +86,7 @@ export default function OrderStatus({
         )}
       </Card>
 
-      <div className='bg-white p-5  mt-4 rounded-[20px]'>
+      <div className='bg-white p-5 pt-2 rounded-[20px]'>
         <h5 className='text-base font-semibold mb-6'>Order Status</h5>
 
         {orderStatus?.length ? (
@@ -150,9 +153,9 @@ export default function OrderStatus({
               )}
 
               <Link href='/more/referral'>
-                <Button type='primary' className='refer-friend-button'>
+                <Button type='primary' className='refer-friend-button '>
                   <img src='/assets/icons/user-add.svg' alt='useradd' />
-                  Refer Friends
+                  <span className='font-medium'>Refer Friends</span>
                 </Button>
               </Link>
             </Space>
