@@ -88,7 +88,7 @@ export default function MyPayments() {
     <div className='bg-white py-6 px-6'>
       <h3 className='text-xl font-semibold'>Payment Status</h3>
 
-      <div className='overflow-x-scroll mt-6'>
+      <div className='mt-6'>
         <Table columns={columns} dataSource={payments} pagination={false} />
       </div>
     </div>

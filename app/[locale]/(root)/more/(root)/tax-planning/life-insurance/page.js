@@ -47,6 +47,7 @@ export default function LifeInsurance() {
           <Row gutter={16}>
             <Col className='gutter-row' span={20}>
               <Form.Item
+                className='mb-2'
                 label='Your projected annual income'
                 name='annualIncome'
                 rules={[
@@ -60,7 +61,7 @@ export default function LifeInsurance() {
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={4}>
-              <Form.Item className='text-right'>
+              <Form.Item className='text-right mb-2'>
                 <Button
                   className='prime-button !mt-11'
                   type='primary'
@@ -75,6 +76,7 @@ export default function LifeInsurance() {
           <Row gutter={16}>
             <Col className='gutter-row' span={24}>
               <Form.Item
+                className='mb-2'
                 label='Your approximate investment amount'
                 name='max_investment'
               >
@@ -94,7 +96,9 @@ export default function LifeInsurance() {
         </Form>
 
         <div className='text-center'>
-          <p>Unlock Exclusive investment Options with our Partners!</p>
+          <p className='font-medium'>
+            Unlock Exclusive investment Options with our Partners!
+          </p>
           <Link href='/more/tax-planning'>
             <Button className='prime-button w-80 m-auto mt-4' type='primary'>
               Explore Investments
