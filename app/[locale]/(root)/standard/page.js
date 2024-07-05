@@ -1,6 +1,6 @@
 'use client'
 
-import WelcomeMessage from '@/components/shared/WelcomeMessage'
+import WelcomeMessage from '@/components/common/WelcomeMessage'
 import GetUserStep from '@/components/shared/get-user-step'
 import {GET_USER_STEP} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'

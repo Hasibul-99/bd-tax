@@ -1,6 +1,6 @@
 import {Breadcrumb} from 'antd'
 import {usePathname} from 'next/navigation'
-import WelcomeMessage from './WelcomeMessage'
+import WelcomeMessage from '../common/WelcomeMessage'
 
 export default function MoreHeader({locale}) {
   const pathname = usePathname()

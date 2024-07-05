@@ -1,6 +1,6 @@
 'use client'
 
-import WelcomeMessage from '@/components/shared/WelcomeMessage'
+import WelcomeMessage from '@/components/common/WelcomeMessage'
 import {GET_USER_PROFILE, PACKAGE_WISE_PROFILE} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'

@@ -1,5 +1,8 @@
 'use client'
 
+import WelcomeMessage from '@/components/common/WelcomeMessage'
+import Doc from '@/components/shared/premium-plus/Doc'
+import Payment from '@/components/shared/premium-plus/Payment'
 import AssetsForms from '@/components/shared/StandardForm/AssetsForms'
 import Congratulations from '@/components/shared/StandardForm/Congratulations'
 import ExpenseForms from '@/components/shared/StandardForm/ExpenseForms'
@@ -8,9 +11,6 @@ import LiabilitieForms from '@/components/shared/StandardForm/LiabilitieForms'
 import PersonalInfo from '@/components/shared/StandardForm/PersonalInfo'
 import Prospects from '@/components/shared/StandardForm/Prospects'
 import ProspectsSummary from '@/components/shared/StandardForm/ProspectsSummary'
-import WelcomeMessage from '@/components/shared/WelcomeMessage'
-import Doc from '@/components/shared/premium-plus/Doc'
-import Payment from '@/components/shared/premium-plus/Payment'
 import {
   GET_incomeAssetLiabilySourceList,
   PROCESS_SALARY_DOC,

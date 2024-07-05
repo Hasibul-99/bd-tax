@@ -1,7 +1,7 @@
 'use client'
 
-import TaxYear from '@/components/shared/Tax-Year'
-import WelcomeMessage from '@/components/shared/WelcomeMessage'
+import TaxYear from '@/components/common/Tax-Year'
+import WelcomeMessage from '@/components/common/WelcomeMessage'
 import Doc from '@/components/shared/premium-plus/Doc'
 import OrderStatus from '@/components/shared/premium-plus/OrderStatus'
 import Payment from '@/components/shared/premium-plus/Payment'

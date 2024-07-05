@@ -1,6 +1,6 @@
 'use client'
 
-import WelcomeMessage from '@/components/shared/WelcomeMessage'
+import WelcomeMessage from '@/components/common/WelcomeMessage'
 import Premium from '@/components/shared/packages/Premium'
 import PremiumPlus from '@/components/shared/packages/PremiumPlus'
 import Standard from '@/components/shared/packages/Standard'

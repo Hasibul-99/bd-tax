@@ -1,6 +1,6 @@
 'use client'
 
-import WelcomeMessage from '@/components/shared/WelcomeMessage'
+import WelcomeMessage from '@/components/common/WelcomeMessage'
 import {SUBMIT_CONTACT} from '@/scripts/api'
 import {postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
