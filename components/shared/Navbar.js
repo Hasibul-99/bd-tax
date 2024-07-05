@@ -1,6 +1,13 @@
 'use client'
 
 import {moreNaveData} from '@/scripts/helper'
+import {
+  docsIcone,
+  HomeIcone,
+  MessageQuestionIcon,
+  More,
+  TaxGeniusIcon,
+} from '@/scripts/icons'
 import {Space} from 'antd'
 import Cookies from 'js-cookie'
 import Image from 'next/image'
@@ -43,7 +50,8 @@ export default function Navbar({locale}) {
                 }`}
               >
                 <Space>
-                  <img src='/assets/icons/Home.svg' alt='home' />
+                  {/* <img src='/assets/icons/Home.svg' alt='home' /> */}
+                  {HomeIcone}
                   Home
                 </Space>
               </Link>
@@ -54,7 +62,8 @@ export default function Navbar({locale}) {
                 }`}
               >
                 <Space>
-                  <img src='/assets/icons/docs.svg' />
+                  {/* <img src='/assets/icons/docs.svg' /> */}
+                  {docsIcone}
                   Docs
                 </Space>
               </Link>
@@ -65,7 +74,8 @@ export default function Navbar({locale}) {
                 }`}
               >
                 <Space>
-                  <img src='/assets/icons/tax-genius.svg' />
+                  {/* <img src='/assets/icons/tax-genius.svg' /> */}
+                  {TaxGeniusIcon}
                   Tax Genius
                 </Space>
               </Link>
@@ -76,7 +86,8 @@ export default function Navbar({locale}) {
                 }`}
               >
                 <Space>
-                  <img src='/assets/icons/message-question.svg' />
+                  {/* <img src='/assets/icons/message-question.svg' /> */}
+                  {MessageQuestionIcon}
                   Contact Us
                 </Space>
               </Link>
@@ -87,7 +98,8 @@ export default function Navbar({locale}) {
                 }`}
               >
                 <Space>
-                  <img src='/assets/icons/more.svg' />
+                  {/* <img src='/assets/icons/more.svg' /> */}
+                  {More}
                   More
                 </Space>
               </Link>
