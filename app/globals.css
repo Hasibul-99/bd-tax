@@ -81,6 +81,8 @@ body {
   border-bottom: 2px solid #126a25;
   border-radius: 36px;
   padding: 10px 16px 6px 16px;
+  color: #126a25;
+  fill: #126a25;
 }
 
 @media (max-width: 640px) {

@@ -16,7 +16,7 @@ import {
   PROCESS_SALARY_DOC,
 } from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
-import {Button, ConfigProvider, Space, Steps} from 'antd'
+import {ConfigProvider, Steps} from 'antd'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useState} from 'react'
 
@@ -88,24 +88,19 @@ export default function PremiumPlusProcess() {
     <div className='custom-container-under mx-auto px-30 mt-5 pb-16'>
       <div className='bg-white py-5 px-4 rounded-[20px]'>
         <WelcomeMessage />
-        <div className='standard-bg my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
-          <div>
-            <h5 className='text-base font-semibold'>
-              <Space>
-                <img
-                  src='/assets/images/Auto Layout Horizontal (2).png'
-                  alt='Premium Plus'
-                />
-                Standard
-              </Space>
-            </h5>
+        <div className='standard-pack-card mt-4'>
+          <div className='packages-price'>
+            <div className='s-image'>
+              <img src='/assets/images/standerd.png' alt='standard' />
+            </div>
+            <span className='price-text'>Standard</span>
           </div>
           <div className='md:text-right md:ml-auto'>
-            <p className='text-sm font-semibold pt-6'>Tax Due: 0</p>
+            <p className='text-sm font-semibold'>Tax Due: 0</p>
           </div>
         </div>
 
-        <div className='bg-gold-20 border border-gold-40 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+        {/* <div className='bg-gold-20 border border-gold-40 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
           <div className='text-base pt-2.5'>
             Upgrade to <span className='font-semibold'>Premium Plus</span> for a
             hassle free tax submission.
@@ -117,7 +112,7 @@ export default function PremiumPlusProcess() {
               </Space>
             </Button>
           </div>
-        </div>
+        </div> */}
 
         <div className={current === 4 || current === 6 ? 'hidden' : ''}>
           <ConfigProvider

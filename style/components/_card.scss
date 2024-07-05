@@ -248,3 +248,15 @@
   border: 1px solid rgba(75, 127, 82, 0.4);
   border-radius: 12px;
 }
+
+.standard-pack-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  gap: 8px;
+
+  background: rgba(15, 23, 42, 0.05);
+  border-radius: 12px;
+}

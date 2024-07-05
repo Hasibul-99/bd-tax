@@ -65,7 +65,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
             </span>
 
             <div className='mt-6 m-auto md:w-2/3'>
-              <div className='font-bold text-xs leading-[17px] text-right'>
+              <div className='font-bold text-xs leading-[17px] text-right md:mr-5'>
                 %Complete
               </div>
 
@@ -101,7 +101,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
                 <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                   <img
                     src='/assets/icons/check-circle.svg'
-                    className='float-right'
+                    // className='float-right'
                   />
                 </Col>
               </Row>
@@ -139,7 +139,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
                 <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                   <img
                     src='/assets/icons/check-circle.svg'
-                    className='float-right'
+                    // className='float-right'
                   />
                 </Col>
               </Row>
@@ -178,7 +178,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
                 <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                   <img
                     src='/assets/icons/check-circle.svg'
-                    className='float-right'
+                    // className='float-right'
                   />
                 </Col>
               </Row>
@@ -217,7 +217,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
                 <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                   <img
                     src='/assets/icons/check-circle.svg'
-                    className='float-right'
+                    // className='float-right'
                   />
                 </Col>
               </Row>

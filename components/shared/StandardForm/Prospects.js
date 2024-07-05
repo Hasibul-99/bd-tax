@@ -35,7 +35,7 @@ export default function Prospects({setCurrent, prospectData}) {
   )
 
   return (
-    <div className='py-10 px-20 md:mt-8 '>
+    <div className='p-10 md:mt-8 '>
       <div className='md:h-[80vh] md:overflow-y-scroll scrollbar'>
         <ConfigProvider
           theme={{

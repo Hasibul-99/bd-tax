@@ -150,7 +150,7 @@ export default function PersonalInfo({setCurrent}) {
   }, [])
 
   return (
-    <div className='py-10 px-20'>
+    <div className='p-10'>
       <h3 className='text-xl font-semibold'>Please enter your personal info</h3>
 
       <ConfigProvider
