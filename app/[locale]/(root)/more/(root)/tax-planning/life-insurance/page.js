@@ -23,7 +23,7 @@ export default function LifeInsurance() {
   }
 
   return (
-    <div>
+    <div className='bg-white p-10 rounded-2xl'>
       <ConfigProvider
         theme={{
           token: {
