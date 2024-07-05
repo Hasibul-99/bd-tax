@@ -142,42 +142,44 @@ export default function SalaryForm({
       let masterData = res?.data
 
       if (masterData) {
-        let formData = {
-          BasicPay_1: masterData.BasicPay_1,
-          SpecialPay_1: masterData.SpecialPay_1,
-          DearnessAllowance_1: masterData.DearnessAllowance_1,
-          ConveyanceAllowance_1: masterData.ConveyanceAllowance_1,
-          HouseRentAllowance_1: masterData.HouseRentAllowance_1,
-          MedicalAllowance_1: masterData.MedicalAllowance_1,
-          MedicalAllowanceForDisability_1:
-            masterData.MedicalAllowanceForDisability_1,
-          Surgery_HEKLC_1: masterData.Surgery_HEKLC_1,
-          ServantAllowance_1: masterData.ServantAllowance_1,
-          LeaveAllowance_1: masterData.LeaveAllowance_1,
-          LeaveEncashment_1: masterData.LeaveEncashment_1,
-          HonorariumOrReward_1: masterData.HonorariumOrReward_1,
-          OvertimeAllowance_1: masterData.OvertimeAllowance_1,
-          OtherAllowances_1: masterData.OtherAllowances_1,
-          EmployersContributionProvidentFund_1:
-            masterData.EmployersContributionProvidentFund_1,
-          InterestAccruedProvidentFund_1:
-            masterData.InterestAccruedProvidentFund_1,
-          DeemedIncomeTransport:
-            masterData.has_transport * masterData.transport_month,
-          RentalValueOfHouse_1: masterData.RentalValueOfHouse_1,
-          PaidPartOfRentValue_1: masterData.PaidPartOfRentValue_1,
-          Others_1: masterData.Others_1,
-          Arear_1: masterData.Arear_1,
-          Gratuity_1: masterData.Gratuity_1,
-          WorkersProfitParticipationFund_1:
-            masterData.WorkersProfitParticipationFund_1,
-          RecognizedProvidentFundIncome_1:
-            masterData.RecognizedProvidentFundIncome_1,
-          EmployeeShareSchemes_1: masterData.EmployeeShareSchemes_1,
-          NetTaxableIncome: masterData.NetTaxableIncome,
-          NetTaxWaiver: masterData.NetTaxWaiver,
-          NetSalaryIncome: masterData.NetSalaryIncome,
-        }
+        // let formData = {
+        //   BasicPay_1: masterData.BasicPay_1,
+        //   SpecialPay_1: masterData.SpecialPay_1,
+        //   DearnessAllowance_1: masterData.DearnessAllowance_1,
+        //   ConveyanceAllowance_1: masterData.ConveyanceAllowance_1,
+        //   HouseRentAllowance_1: masterData.HouseRentAllowance_1,
+        //   MedicalAllowance_1: masterData.MedicalAllowance_1,
+        //   MedicalAllowanceForDisability_1:
+        //     masterData.MedicalAllowanceForDisability_1,
+        //   Surgery_HEKLC_1: masterData.Surgery_HEKLC_1,
+        //   ServantAllowance_1: masterData.ServantAllowance_1,
+        //   LeaveAllowance_1: masterData.LeaveAllowance_1,
+        //   LeaveEncashment_1: masterData.LeaveEncashment_1,
+        //   HonorariumOrReward_1: masterData.HonorariumOrReward_1,
+        //   OvertimeAllowance_1: masterData.OvertimeAllowance_1,
+        //   OtherAllowances_1: masterData.OtherAllowances_1,
+        //   EmployersContributionProvidentFund_1:
+        //     masterData.EmployersContributionProvidentFund_1,
+        //   InterestAccruedProvidentFund_1:
+        //     masterData.InterestAccruedProvidentFund_1,
+        //   DeemedIncomeTransport:
+        //     masterData.has_transport * masterData.transport_month,
+        //   RentalValueOfHouse_1: masterData.RentalValueOfHouse_1,
+        //   PaidPartOfRentValue_1: masterData.PaidPartOfRentValue_1,
+        //   Others_1: masterData.Others_1,
+        //   Arear_1: masterData.Arear_1,
+        //   Gratuity_1: masterData.Gratuity_1,
+        //   WorkersProfitParticipationFund_1:
+        //     masterData.WorkersProfitParticipationFund_1,
+        //   RecognizedProvidentFundIncome_1:
+        //     masterData.RecognizedProvidentFundIncome_1,
+        //   EmployeeShareSchemes_1: masterData.EmployeeShareSchemes_1,
+        //   NetTaxableIncome: masterData.NetTaxableIncome,
+        //   NetTaxWaiver: masterData.NetTaxWaiver,
+        //   NetSalaryIncome: masterData.NetSalaryIncome,
+        // }
+
+        let formData = {...masterData}
 
         form.setFieldsValue(formData)
         setHasTransport(masterData.has_transport)
