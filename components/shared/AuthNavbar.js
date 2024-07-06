@@ -26,9 +26,9 @@ export default function AuthNavbar({locale}) {
         <div className='pt-3'>
           <Link href={`/${locale}`}>
             <Image
-              width={120}
+              width={100}
               height={50}
-              src='/assets/images/logo-2.png'
+              src='/assets/images/BDTax-Logo.png'
               alt='logo'
             />
           </Link>

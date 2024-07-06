@@ -15,7 +15,6 @@ const RootLayout = (props) => {
   const token = Cookies.get('bdtax_token')
 
   useEffect(() => {
-    console.log(token)
     if (token) {
       router.push('/')
     }
@@ -25,9 +24,7 @@ const RootLayout = (props) => {
     <>
       <div>
         <AuthNavbar locale={locale} />
-        <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh]'>
-          {children}
-        </div>
+        <div className='bg-[#F8FAFC] mx-auto min-h-[80vh]'>{children}</div>
       </div>
       <Footer />
       {/* <Script src="js/script.js"></Script> */}

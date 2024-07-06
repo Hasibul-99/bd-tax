@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <div className='container mx-auto bg-[#F1F5F9] border border-solid border-[#E2E8F0]'>
-      <div className='py-8 p-6'>
+    <div className=' bg-[#F1F5F9] border border-solid border-[#E2E8F0]'>
+      <div className='container mx-auto py-8'>
         <div className='text-center sm:flex sm:justify-between sm:text-left'>
           <p className='text-sm'>
             <span className='block sm:inline'>
