@@ -45,7 +45,7 @@ export default function Navbar({locale}) {
             <div className='hidden md:flex items-center space-x-1 gap-x-5 navbar-content bg-[#F8FAFC] rounded-[100px] px-4'>
               <Link
                 href={`/${locale}/home`}
-                className={`py-4 px-2 font-semibold ${
+                className={`py-4 px-2 text-base font-semibold ${
                   isActiveUrl(`/${locale}/home`) ? 'active' : ''
                 }`}
               >
@@ -57,7 +57,7 @@ export default function Navbar({locale}) {
               </Link>
               <Link
                 href={`/${locale}/docs`}
-                className={`py-4 px-2 font-semibold ${
+                className={`py-4 px-2 text-base font-semibold ${
                   isActiveUrl(`/${locale}/docs`) ? 'active' : ''
                 }`}
               >
@@ -69,7 +69,7 @@ export default function Navbar({locale}) {
               </Link>
               <Link
                 href={`/${locale}/tax-genius`}
-                className={`py-4 px-2 font-semibold ${
+                className={`py-4 px-2 text-base font-semibold ${
                   isActiveUrl(`/${locale}/tax-genius`) ? 'active' : ''
                 }`}
               >
@@ -81,7 +81,7 @@ export default function Navbar({locale}) {
               </Link>
               <Link
                 href={`/${locale}/contact-us`}
-                className={`py-4 px-2 font-semibold ${
+                className={`py-4 px-2 text-base font-semibold ${
                   isActiveUrl(`/${locale}/contact-us`) ? 'active' : ''
                 }`}
               >
@@ -93,7 +93,7 @@ export default function Navbar({locale}) {
               </Link>
               <Link
                 href={token ? `/${locale}/more/profile` : `/${locale}/signin`}
-                className={`py-4 px-2 font-semibold ${
+                className={`py-4 px-2 text-base font-semibold ${
                   isActiveUrl(`/${locale}/more/`) ? 'active' : ''
                 }`}
               >
