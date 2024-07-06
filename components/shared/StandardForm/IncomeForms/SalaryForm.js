@@ -138,7 +138,6 @@ export default function SalaryForm({
   const getSalariesData = async () => {
     let res = await getData(GET_SALARIES)
     if (res) {
-      console.log('res', res)
       let masterData = res?.data
 
       if (masterData) {

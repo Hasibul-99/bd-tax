@@ -57,6 +57,8 @@ export const GET_INSURANCE = 'getInsurance'
 
 // Standard Form
 
+export const INCOME_USER_INCOME = 'income/userIncome'
+
 export const SAVE_INCOME_SALARIES = 'saveIncomeSalaries'
 export const GET_SALARIES = 'getSalaries'
 

@@ -1,3 +1,5 @@
+import {INCOME_USER_INCOME} from '@/scripts/api'
+import {getData} from '@/scripts/api-service'
 import {standardStore} from '@/store/standard'
 import {Button, ConfigProvider, Divider} from 'antd'
 import {useEffect, useState} from 'react'
@@ -20,6 +22,7 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
   const incomeOptions = standardStore((state) => state.incomeOptions)
   const [tabItems, setTabItems] = useState([])
   const [activeTab, setActiveTab] = useState()
+  const [userIncome, setUserIncome] = useState()
 
   const accessTabItems = () => {
     if (incomeList?.length && incomeOptions?.length) {
@@ -48,6 +51,14 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
   const getBackActivateTab = (val) => {
     let idx = incomeOptions.findIndex((i) => i === val)
     return incomeOptions[idx - 1] || null
+  }
+
+  const getUserIncome = async () => {
+    let res = await getData(INCOME_USER_INCOME)
+
+    if (res) {
+      setUserIncome(res?.data)
+    }
   }
 
   const showSelectedForm = () => {
@@ -148,6 +159,8 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(13)}
             backActiveTab={getBackActivateTab(13)}
+            IncomeTaxRebateTotal={userIncome?.IncomeTaxRebateTotal || 0}
+            getUserIncome={getUserIncome}
           />
         )
       case 14:
@@ -184,6 +197,7 @@ export default function IncomeForm({incomeList, setProsCurrent, setCurrent}) {
 
   useEffect(() => {
     accessTabItems()
+    getUserIncome()
   }, [])
 
   return (

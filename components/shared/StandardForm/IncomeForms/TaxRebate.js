@@ -37,6 +37,8 @@ export default function TaxRebate({
   setProsCurrent,
   nextActiveTab,
   backActiveTab,
+  IncomeTaxRebateTotal,
+  getUserIncome,
 }) {
   const [form] = Form.useForm()
   const [TaxRebate, setTaxRebate] = useState()
@@ -46,9 +48,9 @@ export default function TaxRebate({
   const columns = [
     {
       title: 'Total allowable investment',
-      dataIndex: 'AnnualRentalIncome',
       key: 'AnnualRentalIncome',
       width: 300,
+      render: (_, record) => <span>{IncomeTaxRebateTotal}</span>,
     },
     {
       title: 'Year',
@@ -103,6 +105,7 @@ export default function TaxRebate({
           alertPop('success', res.data?.message)
           form.resetFields()
           getTaxRebate()
+          getUserIncome()
         }
       }
     } else {
@@ -120,6 +123,7 @@ export default function TaxRebate({
           alertPop('success', res.data?.message)
           form.resetFields()
           getTaxRebate()
+          getUserIncome()
         }
       }
     }
@@ -136,6 +140,7 @@ export default function TaxRebate({
           setShowList(false)
           getTaxRebate()
           alertPop('success', res?.data?.message)
+          form.resetFields()
         }
       },
       onCancel() {
