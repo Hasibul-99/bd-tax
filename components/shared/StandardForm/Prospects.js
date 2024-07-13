@@ -134,7 +134,7 @@ export default function Prospects({setCurrent, prospectData}) {
   }, [])
 
   return (
-    <div className='p-10 md:mt-8 '>
+    <div className='p-6 md:mt-8 '>
       <div className='md:h-[80vh] md:overflow-y-scroll scrollbar'>
         <ConfigProvider
           theme={{

@@ -289,7 +289,7 @@ export default function PersonalInfo({setCurrent}) {
               className='prime-button gap-0 w-52 m-auto'
             >
               Next
-              <RightOutlined style={{fontSize: '12px'}} />
+              <RightOutlined style={{fontSize: '14px'}} />
             </Button>
           </Form.Item>
         </Form>

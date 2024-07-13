@@ -28,7 +28,7 @@ export default function Payment({salaryData, setCurrent, context}) {
   }, [])
 
   return (
-    <div className='py-10 px-10'>
+    <div className='p-5'>
       <h3 className='text-xl font-semibold'>
         We have auto calculated your tax
       </h3>
@@ -45,7 +45,7 @@ export default function Payment({salaryData, setCurrent, context}) {
           </span>
         </p>
       </Card>
-      <Space className='text-[#F97316] my-6'>
+      <Space className='text-[#F97316] my-6 payment-warning'>
         <img src='/assets/icons/warning.svg' alt='warning' />
         This amount is not final and only for informational purposes only.
       </Space>
@@ -61,40 +61,40 @@ export default function Payment({salaryData, setCurrent, context}) {
             <img
               src='/assets/images/visa.png'
               alt='warning'
-              width={50}
-              height={34}
+              width={60}
+              height={40}
             />
           </a>
           <a href={paymentData?.sslgatewayLink}>
             <img
               src='/assets/images/master.png'
               alt='warning'
-              width={50}
-              height={34}
+              width={60}
+              height={40}
             />
           </a>
           <a href={paymentData?.sslgatewayLink}>
             <img
               src='/assets/images/discover.png'
               alt='warning'
-              width={50}
-              height={34}
+              width={60}
+              height={40}
             />
           </a>
           <a href={paymentData?.sslgatewayLink}>
             <img
               src='/assets/images/amex.png'
               alt='warning'
-              width={50}
-              height={34}
+              width={60}
+              height={40}
             />
           </a>
           <a href={paymentData?.bkashURL}>
             <img
               src='/assets/images/bkash.png'
               alt='warning'
-              width={50}
-              height={34}
+              width={60}
+              height={40}
             />
           </a>
         </div>
@@ -104,7 +104,6 @@ export default function Payment({salaryData, setCurrent, context}) {
             disabled={!paymentData?.sslgatewayLink}
             type='primary'
             className='prime-button w-52 m-auto'
-            size='large'
             onClick={() => makePayment()}
           >
             <Space>

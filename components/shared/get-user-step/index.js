@@ -43,8 +43,16 @@ export default function GetUserStep({
       ) : (
         ''
       )}
+      {context === 'standard' ? (
+        <div className='mt-4 font-normal text-sm leading-[1.4] text-slate-800'>
+          Our app will guide you through the entire process, which typically
+          takes about 30 minutes to complete.
+        </div>
+      ) : (
+        ''
+      )}
 
-      <div className='text-center mt-8'>
+      <div className='text-center mt-5'>
         <Link href={`${context}/process`}>
           <Button
             type='primary'

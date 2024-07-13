@@ -122,7 +122,7 @@ export default function SignatureUpload({offsetWidth = 1000, setShow}) {
               setIsConfirm(e.target.checked)
             }}
           >
-            <span className='font-normal'>
+            <span className='font-semibold text-sm leading-[1.4] text-gray-900'>
               I autorize BDTax to submit my tax return
             </span>
           </Checkbox>

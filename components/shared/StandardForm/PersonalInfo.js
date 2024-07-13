@@ -150,7 +150,7 @@ export default function PersonalInfo({setCurrent}) {
   }, [])
 
   return (
-    <div className='p-10'>
+    <div className='p-5'>
       <h3 className='text-xl font-semibold'>Please enter your personal info</h3>
 
       <ConfigProvider
@@ -168,7 +168,7 @@ export default function PersonalInfo({setCurrent}) {
         <Form
           name='basic'
           form={form}
-          className='mt-10'
+          className='mt-5'
           onFinish={onFinish}
           autoComplete='off'
           size='large'
@@ -821,7 +821,7 @@ export default function PersonalInfo({setCurrent}) {
               className='prime-button gap-0 w-52 m-auto'
             >
               Next
-              <RightOutlined style={{fontSize: '12px'}} />
+              <RightOutlined style={{fontSize: '13px'}} />
             </Button>
           </Form.Item>
         </Form>

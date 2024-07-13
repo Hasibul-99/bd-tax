@@ -283,7 +283,7 @@ export default function Doc({setCurrent, nextCurrent}) {
               }}
             >
               Next
-              <RightOutlined style={{fontSize: '12px'}} />
+              <RightOutlined style={{fontSize: '14px'}} />
             </Button>
           </div>
         </>

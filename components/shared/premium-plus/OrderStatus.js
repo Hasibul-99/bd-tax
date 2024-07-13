@@ -51,10 +51,10 @@ export default function OrderStatus({
   }, [])
 
   return (
-    <div className='py-6 px-6'>
+    <div className='p-5'>
       <Card
         title={showLastStep ? '' : 'Order Info'}
-        className='order-info rounded-lg border-0'
+        className='order-info rounded-lg border-0 p-0'
       >
         {showLastStep ? (
           <>
@@ -86,7 +86,7 @@ export default function OrderStatus({
         )}
       </Card>
 
-      <div className='bg-white p-5 pt-2 rounded-[20px]'>
+      <div className='bg-white py-5 rounded-[20px]'>
         <h5 className='text-base font-semibold mb-6'>Order Status</h5>
 
         {orderStatus?.length ? (
