@@ -1,6 +1,7 @@
 'use client'
 
 import TaxYear from '@/components/common/Tax-Year'
+import TaxDue from '@/components/common/TaxDue'
 import WelcomeMessage from '@/components/common/WelcomeMessage'
 import Doc from '@/components/shared/premium-plus/Doc'
 import OrderStatus from '@/components/shared/premium-plus/OrderStatus'
@@ -9,6 +10,7 @@ import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo'
 import Submit from '@/components/shared/premium-plus/Submit'
 import {PROCESS_SALARY_DOC} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
+import {defaultStore} from '@/store/default'
 import {ConfigProvider, Steps} from 'antd'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useState} from 'react'
@@ -30,8 +32,11 @@ export default function PremiumPlusProcess() {
     if (res) {
       let masterData = res?.data
       setSalaryData(masterData)
+      updateTaxDue(masterData?.tax_amount || 0)
     }
   }
+
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   useEffect(() => {
     if (current === 3) {
@@ -62,7 +67,8 @@ export default function PremiumPlusProcess() {
           </div>
           <div className='md:text-right md:ml-auto'>
             <p className='text-sm font-semibold'>
-              Tax Due: {salaryData?.tax_amount || 0}
+              Tax Due: <TaxDue />
+              {/* {salaryData?.tax_amount || 0} */}
             </p>
             <p className='text-xs'>
               Tax Year <TaxYear />{' '}

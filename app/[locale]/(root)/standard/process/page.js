@@ -1,5 +1,6 @@
 'use client'
 
+import TaxDue from '@/components/common/TaxDue'
 import WelcomeMessage from '@/components/common/WelcomeMessage'
 import Doc from '@/components/shared/premium-plus/Doc'
 import Payment from '@/components/shared/premium-plus/Payment'
@@ -96,7 +97,9 @@ export default function PremiumPlusProcess() {
             <span className='price-text'>Standard</span>
           </div>
           <div className='md:text-right md:ml-auto'>
-            <p className='text-sm font-semibold'>Tax Due: 0</p>
+            <p className='text-sm font-semibold'>
+              Tax Due: <TaxDue />
+            </p>
           </div>
         </div>
 

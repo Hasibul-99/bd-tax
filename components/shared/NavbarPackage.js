@@ -1,4 +1,5 @@
 import {usePathname} from 'next/navigation'
+import TaxDue from '../common/TaxDue'
 
 export default function NavbarPackage() {
   const pathname = usePathname()
@@ -22,7 +23,9 @@ export default function NavbarPackage() {
             <div className='font-semibold text-sm leading-[1.4] text-gray-900'>
               Standard
             </div>
-            <div className='text-gray-900'>Tax Due: 0</div>
+            <div className='text-gray-900'>
+              Tax Due: <TaxDue />
+            </div>
           </div>
         </div>
       ) : showPackStatus('premium') ? (
@@ -34,7 +37,9 @@ export default function NavbarPackage() {
             <div className='font-semibold text-sm leading-[1.4] text-gray-900'>
               Premium
             </div>
-            <div className='text-gray-900'>Tax Due: 0</div>
+            <div className='text-gray-900'>
+              Tax Due: <TaxDue />
+            </div>
           </div>
         </div>
       ) : showPackStatus('premium-plus') ? (
@@ -46,7 +51,9 @@ export default function NavbarPackage() {
             <div className='font-semibold text-sm leading-[1.4] text-gray-900'>
               Primium Plus
             </div>
-            <div className='text-gray-900'>Tax Due: 0</div>
+            <div className='text-gray-900'>
+              Tax Due: <TaxDue />
+            </div>
           </div>
         </div>
       ) : (

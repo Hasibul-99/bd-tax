@@ -3,6 +3,7 @@
 import {LOGIN} from '@/scripts/api'
 import {postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
+import {defaultStore} from '@/store/default'
 import {
   Button,
   Checkbox,
@@ -35,20 +36,21 @@ export default function SignIn() {
         setLoading(true)
         Cookies.set('bdtax_token', masterData?.token)
         Cookies.set('bdtax_user', JSON.stringify(masterData))
+        updateTaxDue(masterData?.tax_amount || 0)
         alertPop('success', masterData?.message)
 
         setTimeout(() => {
           if (masterData.first_time) {
             window.location = '/'
-            // router.push('/')
           } else {
-            // router.push('home')
             window.location = 'home'
           }
         }, 5000)
       }
     }
   }
+
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   if (loading) {
     return (

@@ -1,6 +1,7 @@
 'use client'
 
 import TaxYear from '@/components/common/Tax-Year'
+import TaxDue from '@/components/common/TaxDue'
 import WelcomeMessage from '@/components/common/WelcomeMessage'
 import Doc from '@/components/shared/premium-plus/Doc'
 import OrderStatus from '@/components/shared/premium-plus/OrderStatus'
@@ -68,7 +69,9 @@ export default function PremiumPlusProcess() {
               <span className='price-text'>Premium</span>
             </div>
             <div className='md:text-right md:ml-auto'>
-              <p className='text-sm font-semibold'>Tax Due: 0</p>
+              <p className='text-sm font-semibold'>
+                Tax Due: <TaxDue />
+              </p>
               <p className='text-xs'>
                 Tax Year <TaxYear />{' '}
               </p>

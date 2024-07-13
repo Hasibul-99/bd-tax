@@ -1,6 +1,7 @@
 'use client'
 
 import TaxYear from '@/components/common/Tax-Year'
+import TaxDue from '@/components/common/TaxDue'
 import WelcomeMessage from '@/components/common/WelcomeMessage'
 import GetUserStep from '@/components/shared/get-user-step'
 import {GET_USER_STEP} from '@/scripts/api'
@@ -38,7 +39,9 @@ export default function PremiumPlus() {
             <span className='price-text'>Premium Plus</span>
           </div>
           <div className='md:text-right md:ml-auto'>
-            <p className='text-sm font-semibold'>Tax Due: 0</p>
+            <p className='text-sm font-semibold'>
+              Tax Due: <TaxDue />
+            </p>
             <p className='text-xs'>
               Tax Year <TaxYear />{' '}
             </p>
