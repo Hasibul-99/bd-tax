@@ -6,6 +6,7 @@ import GetUserStep from '@/components/shared/get-user-step'
 import {GET_USER_STEP} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
 import {Button, Space} from 'antd'
+import Link from 'next/link'
 import {useEffect, useState} from 'react'
 
 export default function Standard() {
@@ -51,11 +52,17 @@ export default function Standard() {
             hassle free tax submission.
           </div>
           <div className='md:text-right md:ml-auto'>
-            <Button type='primary' className='w-full pp-upgrade ' size='large'>
-              <Space>
-                <img src='/assets/icons/pp.svg' alt='Premium-Plus' /> Upgrade
-              </Space>
-            </Button>
+            <Link href='/premium-plus'>
+              <Button
+                type='primary'
+                className='w-full pp-upgrade '
+                size='large'
+              >
+                <Space>
+                  <img src='/assets/icons/pp.svg' alt='Premium-Plus' /> Upgrade
+                </Space>
+              </Button>
+            </Link>
           </div>
         </div>
         {/* bg-gold-20 border border-gold-40 */}

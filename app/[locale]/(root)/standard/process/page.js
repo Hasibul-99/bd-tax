@@ -103,20 +103,6 @@ export default function PremiumPlusProcess() {
           </div>
         </div>
 
-        {/* <div className='bg-gold-20 border border-gold-40 my-2 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
-          <div className='text-base pt-2.5'>
-            Upgrade to <span className='font-semibold'>Premium Plus</span> for a
-            hassle free tax submission.
-          </div>
-          <div className='md:text-right md:ml-auto'>
-            <Button type='primary' className='w-full pp-upgrade ' size='large'>
-              <Space>
-                <img src='/assets/icons/pp.svg' alt='Premium-Plus' /> Upgrade
-              </Space>
-            </Button>
-          </div>
-        </div> */}
-
         <div className={current === 4 || current === 6 ? 'hidden' : ''}>
           <ConfigProvider
             theme={{
