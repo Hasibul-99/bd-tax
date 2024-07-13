@@ -41,6 +41,7 @@ export default function Investments({
   const [InvestmentsType, setInvestmentsType] = useState()
   const [Investments, setInvestments] = useState()
   const [selectedItem, setSelecetedItem] = useState()
+  const [selectedType, setSelectedType] = useState()
 
   const onFinish = async (values) => {
     let data = {...values}
@@ -195,6 +196,7 @@ export default function Investments({
                   placeholder='Select a option'
                   popupMatchSelectWidth={false}
                   allowClear
+                  onChange={(val) => setSelectedType(val)}
                   suffixIcon={
                     <img
                       src='/assets/icons/select-icon.svg'
@@ -219,9 +221,13 @@ export default function Investments({
               >
                 <TextArea
                   maxLength={200}
-                  rows={2}
+                  rows={4}
                   style={{width: '200px'}}
-                  placeholder='Description'
+                  placeholder={
+                    selectedType === 'Loans Given'
+                      ? "Mention the loan receiver's Name & TIN number for 'Loans Given'"
+                      : 'Description'
+                  }
                 />
               </Form.Item>
 

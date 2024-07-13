@@ -216,7 +216,7 @@ export default function MotorVehicle({
                   maxLength={200}
                   rows={2}
                   style={{width: '150px'}}
-                  placeholder='Value Change During Income Year'
+                  placeholder='Description'
                 />
               </Form.Item>
 
