@@ -1,5 +1,6 @@
 import {Get_Tax_Summary} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
+import {defaultStore} from '@/store/default'
 import {
   ExclamationCircleOutlined,
   LeftOutlined,
@@ -18,12 +19,14 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
     if (res) {
       console.log('res', res)
       setReport(res?.data)
-
+      updateTaxDue(res?.data?.tax_able_income || 0)
       setTimeout(() => {
         setShowRes(false)
-      }, 5000)
+      }, 3000)
     }
   }
+
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   useEffect(() => {
     getTaxSummary()

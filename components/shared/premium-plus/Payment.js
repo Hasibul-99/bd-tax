@@ -1,5 +1,6 @@
 import {GET_PAYMENT_METHOD} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
+import {defaultStore} from '@/store/default'
 import {Button, Card, Space} from 'antd'
 import {useEffect, useState} from 'react'
 
@@ -14,9 +15,12 @@ export default function Payment({salaryData, setCurrent, context}) {
 
     if (res) {
       let masterData = res?.data
+      updateTaxDue(masterData?.due_amount || 0)
       setPaymentData(masterData)
     }
   }
+
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   const makePayment = (url) => {
     window.location = paymentData?.sslgatewayLink
