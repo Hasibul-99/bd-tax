@@ -26,17 +26,18 @@ const {TextArea} = Input
 
 export default function PersonalInfo({setCurrent}) {
   const [form] = Form.useForm()
-  const [sameAddres, setSameAddress] = useState()
+  const [sameAddres, setSameAddress] = useState(false)
   const [userData, setUserData] = useState()
   const [areaList, setAreaList] = useState([])
   const [divisionList, setDivisionList] = useState([])
   const [districtList, setDistrictList] = useState([])
+  const [maritalStatus, setMaritalStatus] = useState('Single')
 
   const onFinish = async (values) => {
     let profile = {
       first_name: values.first_name,
       last_name: values.last_name,
-      ETIN: values.etin,
+      ETIN: values.ETIN,
       Gender: values.gender,
       Email: values.email,
       Contact: values.mobile,
@@ -58,6 +59,9 @@ export default function PersonalInfo({setCurrent}) {
       DistrictId: values.DistrictId,
       PresentAddress: values.PresentAddress,
       PermanentAddress: values.PermanentAddress || values.PresentAddress,
+      AvailChildDisabilityExemp: values.AvailChildDisabilityExemp,
+      SpouseName: values.SpouseName,
+      SpouseETIN: values.SpouseETIN,
     }
 
     let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError')
@@ -81,11 +85,11 @@ export default function PersonalInfo({setCurrent}) {
 
       if (masterData) {
         setUserData(masterData)
-
+        setMaritalStatus(masterData.Status)
         form.setFieldsValue({
           first_name: masterData.first_name,
           last_name: masterData.last_name,
-          etin: masterData.ETIN,
+          ETIN: masterData.ETIN,
           NationalId: masterData.NationalId,
           email: masterData.Email,
           mobile: masterData.Contact,
@@ -106,7 +110,10 @@ export default function PersonalInfo({setCurrent}) {
           DivisionId: masterData.DivisionId,
           DistrictId: masterData.DistrictId,
           PresentAddress: masterData.PresentAddress,
-          PermanentAddress: masterData.PresentAddress,
+          PermanentAddress: masterData.PermanentAddress,
+          AvailChildDisabilityExemp: masterData.AvailChildDisabilityExemp,
+          SpouseName: masterData.SpouseName,
+          SpouseETIN: masterData.SpouseETIN,
         })
       }
     }
@@ -218,7 +225,7 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
             <Col className='gutter-row' span={20}>
               <Form.Item
-                name='etin'
+                name='ETIN'
                 rules={[
                   {
                     required: true,
@@ -372,19 +379,19 @@ export default function PersonalInfo({setCurrent}) {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your DOB!',
+                    message: 'Please Select Status!',
                   },
                 ]}
               >
                 <Select
                   placeholder='Select Marital Status'
-                  allowClear
                   suffixIcon={
                     <img
                       src='/assets/icons/select-icon.svg'
                       alt='select-icon'
                     />
                   }
+                  onChange={(val) => setMaritalStatus(val)}
                 >
                   <Option value='Single'>Single</Option>
                   <Option value='Married'>Married</Option>
@@ -392,6 +399,85 @@ export default function PersonalInfo({setCurrent}) {
               </Form.Item>
             </Col>
           </Row>
+
+          {maritalStatus === 'Married' ? (
+            <>
+              <Row gutter={16}>
+                <Col className='gutter-row' span={4}>
+                  Spouse's Name *
+                </Col>
+                <Col className='gutter-row' span={20}>
+                  <Form.Item
+                    name='SpouseName'
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Spouse's name!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row' span={4}>
+                  Spouse's ETIN *
+                </Col>
+                <Col className='gutter-row' span={20}>
+                  <Form.Item
+                    name='SpouseETIN'
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input Spouse's ETIN!",
+                      },
+                      {
+                        required: true,
+                        message: 'A value must be entered',
+                        pattern: new RegExp(/^[0-9]+$/),
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16}>
+                <Col className='gutter-row' span={4}>
+                  Is any of your Children disability?
+                </Col>
+                <Col className='gutter-row' span={20}>
+                  <Form.Item
+                    label=''
+                    name='AvailChildDisabilityExemp'
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please Select!',
+                      },
+                    ]}
+                  >
+                    <Select
+                      placeholder='Select '
+                      allowClear
+                      suffixIcon={
+                        <img
+                          src='/assets/icons/select-icon.svg'
+                          alt='select-icon'
+                        />
+                      }
+                    >
+                      <Option value='N'>NO</Option>
+                      <Option value='Y'>YES</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+              </Row>
+            </>
+          ) : null}
 
           <Row gutter={16}>
             <Col className='gutter-row' span={4}>
@@ -404,7 +490,7 @@ export default function PersonalInfo({setCurrent}) {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your DOB!',
+                    message: 'Please Select!',
                   },
                 ]}
               >
@@ -436,12 +522,12 @@ export default function PersonalInfo({setCurrent}) {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your DOB!',
+                    message: 'Please Select!',
                   },
                 ]}
               >
                 <Select
-                  placeholder='Select Residential Status'
+                  placeholder='Please Select '
                   allowClear
                   suffixIcon={
                     <img
@@ -459,14 +545,14 @@ export default function PersonalInfo({setCurrent}) {
 
           <Row gutter={16}>
             <Col className='gutter-row' span={4}>
-              Father's name *
+              Father's name
             </Col>
             <Col className='gutter-row' span={20}>
               <Form.Item
                 name='FathersName'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: 'Please input your Father name!',
                   },
                 ]}
@@ -478,14 +564,14 @@ export default function PersonalInfo({setCurrent}) {
 
           <Row gutter={16}>
             <Col className='gutter-row' span={4}>
-              Mother's name *
+              Mother's name
             </Col>
             <Col className='gutter-row' span={20}>
               <Form.Item
                 name='MothersName'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: 'Please input your Mother name!',
                   },
                 ]}
@@ -497,14 +583,14 @@ export default function PersonalInfo({setCurrent}) {
 
           <Row gutter={16}>
             <Col className='gutter-row' span={4}>
-              Adult children of the family *
+              Number of Adult in the Family
             </Col>
             <Col className='gutter-row' span={20}>
               <Form.Item
                 name='NoOfAdultInFamily'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: 'Please input!',
                   },
                 ]}
@@ -514,16 +600,16 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
           </Row>
 
-          <Row gutter={16}>
+          <Row gutter={16} className='mb-3'>
             <Col className='gutter-row' span={4}>
-              Dependant children of the family *
+              Number of Dependant children of the family
             </Col>
             <Col className='gutter-row' span={20}>
               <Form.Item
                 name='NoOfChildInFamily'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: 'Please input!',
                   },
                 ]}
@@ -549,7 +635,7 @@ export default function PersonalInfo({setCurrent}) {
                 ]}
               >
                 <Select
-                  placeholder='Select Residential Status'
+                  placeholder='Please Select '
                   allowClear
                   suffixIcon={
                     <img
@@ -784,12 +870,13 @@ export default function PersonalInfo({setCurrent}) {
             onChange={(e) => {
               setSameAddress(e.target.checked)
             }}
+            checked={sameAddres}
             className='mb-5'
           >
             Both are same address.
           </Checkbox>
 
-          {sameAddres ? (
+          {!sameAddres ? (
             <>
               <Row gutter={16}>
                 <Col className='gutter-row' span={4}>
