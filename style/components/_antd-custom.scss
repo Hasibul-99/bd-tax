@@ -109,6 +109,7 @@ body {
     font-weight: 400;
     font-size: 13px;
     line-height: 140%;
+    color: #475569 !important;
   }
 
   .ant-steps-item-active {
@@ -139,5 +140,18 @@ body {
 .ant-input-number-disabled {
   .ant-input-number-input {
     color: #555 !important;
+  }
+}
+
+.ant-checkbox-wrapper {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 140%;
+  color: #0f172a;
+
+  .ant-checkbox {
+    .ant-checkbox-inner {
+      border-color: #64748b;
+    }
   }
 }

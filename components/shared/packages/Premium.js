@@ -26,7 +26,7 @@ export default function Premium(props) {
                   <img src='/assets/images/premium.png' alt='Premium' />
                 </div>
                 <span className='price-text'>
-                  {pack.title} (৳ {pack.price})
+                  {pack.title} (৳{pack.price})
                 </span>
               </div>
               <div id='premium-details' className='pack-details '>

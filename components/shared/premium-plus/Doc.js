@@ -117,7 +117,7 @@ export default function Doc({setCurrent, nextCurrent}) {
         </>
       ) : (
         <>
-          <div className='py-10 px-20'>
+          <div className='py-5 px-5'>
             <h3 className='text-xl font-semibold'>
               Please upload your Tax documents
             </h3>
@@ -145,6 +145,7 @@ export default function Doc({setCurrent, nextCurrent}) {
                 <Row gutter={16}>
                   <Col className='gutter-row' span={18}>
                     <Form.Item
+                      className='mb-1'
                       name='file_type'
                       rules={[
                         {
@@ -176,7 +177,7 @@ export default function Doc({setCurrent, nextCurrent}) {
                     </Form.Item>
                   </Col>
                   <Col className='gutter-row' span={6}>
-                    <Form.Item>
+                    <Form.Item className='mb-1'>
                       <Button
                         type='primary'
                         htmlType='submit'

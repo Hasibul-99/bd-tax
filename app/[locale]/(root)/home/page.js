@@ -39,10 +39,10 @@ export default function Docs() {
                   <Button
                     type='primary'
                     size='large'
-                    className='prime-button w-52'
+                    className='prime-button w-52 gap-0'
                   >
                     {orderHistory.button_title}{' '}
-                    <RightOutlined style={{fontSize: '12px'}} />
+                    <RightOutlined style={{fontSize: '14px'}} />
                   </Button>
                 </Link>
               </div>
@@ -53,14 +53,12 @@ export default function Docs() {
             <>
               {orderHistory.order_history.map((order, idx) => (
                 <div className='bg-white mt-5 py-5 px-4 rounded-md' key={idx}>
-                  <div className='bg-slate-100 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-                    <div>
-                      <h5 className='text-base font-semibold'>
-                        <Space>
-                          <img src='/assets/icons/ok.svg' alt='Premium Plus' />
-                          Tax Year {order.tax_year}
-                        </Space>
-                      </h5>
+                  <div className='flex flex-row justify-between items-center p-4 gap-1 bg-[#F8FAFC] rounded-2xl'>
+                    <div className='flex flex-row items-center p-0 gap-2'>
+                      <img src='/assets/icons/ok.svg' alt='Premium Plus' />
+                      <span className='font-medium text-base leading-[1.4] text-slate-950'>
+                        Tax Year {order.tax_year}
+                      </span>
                     </div>
                     <div className='text-right ml-auto'>
                       <h5 className='text-sm font-semibold'>
@@ -68,27 +66,32 @@ export default function Docs() {
                           {order.package}
 
                           {order.package === 'Premium Plus' ? (
-                            <img
-                              src='/assets/images/Premium-Plus.png'
-                              width={40}
-                              alt='Premium Plus'
-                            />
+                            <div className='premium-plus'>
+                              <img
+                                src='/assets/images/primium-plus.png'
+                                alt='Premium Plus'
+                              />
+                            </div>
                           ) : (
                             ''
                           )}
                           {order.package === 'Standard' ? (
-                            <img
-                              src='/assets/images/Auto Layout Horizontal (2).png'
-                              alt='Standard'
-                            />
+                            <div className='standart-but'>
+                              <img
+                                src='/assets/images/standerd.png'
+                                alt='Standard'
+                              />
+                            </div>
                           ) : (
                             ''
                           )}
                           {order.package === 'Premium ' ? (
-                            <img
-                              src='/assets/images/Auto Layout Horizontal (1).png'
-                              alt='Premium Plus'
-                            />
+                            <div className='premium-but'>
+                              <img
+                                src='/assets/images/premium.png'
+                                alt='Premium Plus'
+                              />
+                            </div>
                           ) : (
                             ''
                           )}
