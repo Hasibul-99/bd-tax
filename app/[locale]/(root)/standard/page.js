@@ -67,7 +67,7 @@ export default function Standard() {
         </div>
         {/* bg-gold-20 border border-gold-40 */}
         <div className='pt-5 px-4 mx-auto rounded-2xl text-base font-normal text-gray-900 leading-7'>
-          <p>Congratulations on selecting the Premium package!</p>
+          <p>Congratulations on selecting the Standard package! </p>
           <p>
             Trust us for precise tax preparation, ensuring accuracy every step
             of the way.
