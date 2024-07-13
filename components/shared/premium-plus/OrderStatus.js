@@ -10,8 +10,10 @@ export default function OrderStatus({
   showNextButtons = true,
   showNextButton = true,
   showLastStep,
+  showOrderInfo = true,
 }) {
   const [orderStatus, setOrderStatus] = useState()
+  const [paymentStatus, setPaymentStatus] = useState()
 
   const getOrdereStatus = async () => {
     const res = await getData(GET_ORDER_STATUS)
@@ -25,7 +27,7 @@ export default function OrderStatus({
     const res = await getData(GET_PAYMENT_STATUS)
 
     if (res) {
-      // setOrderStatus(res?.data)
+      setPaymentStatus(res?.data)
     }
   }
 
@@ -52,39 +54,59 @@ export default function OrderStatus({
 
   return (
     <div className='p-5'>
-      <Card
-        title={showLastStep ? '' : 'Order Info'}
-        className='order-info rounded-lg border-0 p-0'
-      >
-        {showLastStep ? (
-          <>
-            <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md'>
-              <p>
-                Thank you for approving and signing the document. We will now
-                submit it to your tax circle. You will receive your
-                acknowledgment <br /> slip via email and courier shortly,
-              </p>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
-              <p>
-                Thank you for your order{' '}
-                <span className='font-semibold'>#45678624</span>.{' '}
-              </p>
-              <p>Now you can relax as BDTax experts handle your tax return. </p>
-            </div>
+      {showOrderInfo ? (
+        <Card
+          title={showLastStep ? '' : 'Order Info'}
+          className='order-info rounded-lg border-0 p-0'
+        >
+          {showLastStep ? (
+            <>
+              <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md'>
+                <p>
+                  Thank you for approving and signing the document. We will now
+                  submit it to your tax circle. You will receive your
+                  acknowledgment <br /> slip via email and courier shortly,
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              {paymentStatus?.payment_status === 1 ? (
+                <>
+                  <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
+                    {paymentStatus?.order_message ? (
+                      <p>
+                        {paymentStatus?.order_message}
+                        {/* Thank you for your order{' '}
+                  <span className='font-semibold'>#45678624</span>.{' '} */}
+                      </p>
+                    ) : (
+                      ''
+                    )}
 
-            <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
-              <p>
-                Your assigned consultant will contact you within{' '}
-                <span className='font-semibold'>24 hours</span> .
-              </p>
-            </div>
-          </>
-        )}
-      </Card>
+                    <p>
+                      Now you can relax as BDTax experts handle your tax return.{' '}
+                    </p>
+                  </div>
+
+                  <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
+                    <p>
+                      Your assigned consultant will contact you within{' '}
+                      <span className='font-semibold'>24 hours</span> .
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
+                  <p>{paymentStatus?.payment_message}</p>
+                </div>
+              )}
+            </>
+          )}
+        </Card>
+      ) : (
+        ''
+      )}
 
       <div className='bg-white py-5 rounded-[20px]'>
         <h5 className='text-base font-semibold mb-6'>Order Status</h5>

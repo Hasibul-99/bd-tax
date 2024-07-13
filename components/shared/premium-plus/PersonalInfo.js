@@ -23,7 +23,7 @@ export default function PersonalInfo({setCurrent}) {
     let profile = {
       first_name: values.first_name,
       last_name: values.last_name,
-      ETIN: values.etin,
+      ETIN: values.ETIN,
       Gender: values.gender,
       Email: values.email,
       Contact: values.mobile,
@@ -54,7 +54,7 @@ export default function PersonalInfo({setCurrent}) {
         form.setFieldsValue({
           first_name: masterData.first_name,
           last_name: masterData.last_name,
-          etin: masterData.ETIN,
+          ETIN: masterData.ETIN,
           NationalId: masterData.NationalId,
           email: masterData.Email,
           mobile: masterData.Contact,
@@ -138,7 +138,7 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
             <Col className='gutter-row' span={20}>
               <Form.Item
-                name='etin'
+                name='ETIN'
                 rules={[
                   {
                     required: true,
@@ -276,7 +276,6 @@ export default function PersonalInfo({setCurrent}) {
                 >
                   <Option value='male'>Male</Option>
                   <Option value='female'>Female</Option>
-                  {/* <Option value="other">other</Option> */}
                 </Select>
               </Form.Item>
             </Col>

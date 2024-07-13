@@ -263,9 +263,8 @@ export default function Profile() {
                     />
                   }
                 >
-                  <Option value='male'>male</Option>
-                  <Option value='female'>female</Option>
-                  <Option value='other'>other</Option>
+                  <Option value='male'>Male</Option>
+                  <Option value='female'>Female</Option>
                 </Select>
               </Form.Item>
             </Col>
