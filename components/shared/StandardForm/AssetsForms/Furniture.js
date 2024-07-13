@@ -168,6 +168,7 @@ export default function Furniture({
                 ]}
               >
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'

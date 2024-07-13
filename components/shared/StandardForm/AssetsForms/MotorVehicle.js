@@ -213,6 +213,7 @@ export default function MotorVehicle({
                 ]}
               >
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '150px'}}
                   placeholder='Value Change During Income Year'

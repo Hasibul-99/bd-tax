@@ -126,7 +126,7 @@ export default function ContactUs() {
                   },
                 ]}
               >
-                <TextArea />
+                <TextArea maxLength={200} />
               </Form.Item>
             </Col>
           </Row>

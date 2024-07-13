@@ -861,7 +861,11 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <TextArea rows={4} placeholder=' Present address' />
+                <TextArea
+                  maxLength={200}
+                  rows={4}
+                  placeholder=' Present address'
+                />
               </Form.Item>
             </Col>
           </Row>
@@ -892,7 +896,11 @@ export default function PersonalInfo({setCurrent}) {
                       },
                     ]}
                   >
-                    <TextArea rows={4} placeholder='Permanent address' />
+                    <TextArea
+                      maxLength={200}
+                      rows={4}
+                      placeholder='Permanent address'
+                    />
                   </Form.Item>
                 </Col>
               </Row>

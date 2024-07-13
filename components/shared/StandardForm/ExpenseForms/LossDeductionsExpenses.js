@@ -189,6 +189,7 @@ export default function LossDeductionsExpenses({
                 ]}
               >
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -208,6 +209,7 @@ export default function LossDeductionsExpenses({
 
               <Form.Item name='LossDeductionsComment'>
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

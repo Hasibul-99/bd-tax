@@ -231,7 +231,7 @@ export default function PropertyForm({
                       },
                     ]}
                   >
-                    <TextArea rows={2} />
+                    <TextArea maxLength={200} rows={2} />
                   </Form.Item>
                 </Col>
               </Row>

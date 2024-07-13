@@ -187,6 +187,7 @@ export default function OtherHouseHold({
                 ]}
               >
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -206,6 +207,7 @@ export default function OtherHouseHold({
 
               <Form.Item name='OtherHouseholdComment'>
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

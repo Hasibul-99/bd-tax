@@ -180,6 +180,7 @@ export default function Other({
                 ]}
               >
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -199,6 +200,7 @@ export default function Other({
 
               <Form.Item name='OtherComment'>
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

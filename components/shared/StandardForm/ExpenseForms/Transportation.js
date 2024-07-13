@@ -186,6 +186,7 @@ export default function Transportation({
                 ]}
               >
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -205,6 +206,7 @@ export default function Transportation({
 
               <Form.Item name='TransportComment'>
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

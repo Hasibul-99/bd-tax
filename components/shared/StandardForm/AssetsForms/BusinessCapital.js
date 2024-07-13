@@ -173,6 +173,7 @@ export default function BusinessCapital({
                 ]}
               >
                 <TextArea
+                  maxLength={200}
                   rows={2}
                   style={{width: '250px'}}
                   placeholder='Description'
