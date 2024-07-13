@@ -23,9 +23,13 @@ module.exports = {
       },
       backgroundColor: {
         'gold-20': 'rgba(212, 175, 55, 0.2)',
+        'custom-green-15': 'rgba(75, 127, 82, 0.15)',
+        'custom-yellow-20': 'rgba(212, 175, 55, 0.2)',
       },
       borderColor: {
         'gold-40': 'rgba(212, 175, 55, 0.4)',
+        'custom-green': 'rgba(75, 127, 82, 0.4)',
+        'custom-yellow-40': 'rgba(212, 175, 55, 0.4)',
       },
       boxShadow: {
         custom: '0px 2.7907px 13.9535px rgba(247, 176, 59, 0.5)',

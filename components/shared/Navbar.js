@@ -13,6 +13,7 @@ import Cookies from 'js-cookie'
 import Image from 'next/image'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
+import NavbarPackage from './NavbarPackage'
 
 // https://codepen.io/its7rishi/pen/qBPmENP
 export default function Navbar({locale}) {
@@ -119,6 +120,8 @@ export default function Navbar({locale}) {
             >
               <img src='/assets/icons/Frame.svg' />
             </a>
+
+            <NavbarPackage />
           </div>
           {/* Mobile menu button */}
           <div className='md:hidden flex items-center'>
