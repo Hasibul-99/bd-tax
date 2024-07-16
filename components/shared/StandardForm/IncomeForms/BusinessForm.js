@@ -98,9 +98,9 @@ export default function BusinessForm({
           (allValues.FixedAssets || 0) +
           (allValues.OtherAssets || 0),
         ClosingCapital =
-          (allValues.OpeningCapital || 0) -
-          (allValues.ClosingCapital || 0) -
-          (NetProfit || 0),
+          (allValues.OpeningCapital || 0) +
+          (NetProfit || 0) -
+          (allValues.WithdrawlsInIncomeYear || 0),
         TotalCapitalLiabilities = ClosingCapital + (allValues.Liabilities || 0)
 
       form.setFieldsValue({
@@ -193,14 +193,14 @@ export default function BusinessForm({
                   <Input
                     size='large'
                     value={showValue(item, 'Amount')}
-                    readOnly
+                    Disabled
                   />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={6}>
                   <Input
                     size='large'
                     value={showValue(item, 'NetTaxable')}
-                    readOnly
+                    Disabled
                   />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={6}>
@@ -439,7 +439,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber readOnly className='w-full' />
+                  <InputNumber Disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -543,7 +543,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber readOnly className='w-full' />
+                  <InputNumber Disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -579,7 +579,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber readOnly className='w-full' />
+                  <InputNumber Disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -615,7 +615,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber readOnly className='w-full' />
+                  <InputNumber Disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -652,7 +652,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber readOnly className='w-full' />
+                  <InputNumber Disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -669,7 +669,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber readOnly className='w-full' />
+                  <InputNumber Disabled className='w-full' />
                 </Form.Item>
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
@@ -682,7 +682,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber readOnly className='w-full' />
+                  <InputNumber Disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
