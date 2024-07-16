@@ -188,12 +188,15 @@ export default function PropertyForm({
           (allValues.InsurancePremium || 0) -
           (allValues.VacancyAllowence || 0) -
           (allValues.Others || 0) -
-          (allValues.ClaimedExpensesTotal || 0)
+          (allValues.ClaimedExpensesTotal || 0),
+        ShareOfIncome =
+          ((NetIncome || 0) * (allValues.ShareOfProperty || 0)) / 100
 
       form.setFieldsValue({
         Repair: Repair,
         NetIncome: NetIncome,
         ClaimedExpensesTotal: Repair,
+        ShareOfIncome: ShareOfIncome,
       })
     }
   }
@@ -221,6 +224,16 @@ export default function PropertyForm({
       >
         {showList ? (
           <>
+            <div className='text-right mb-5'>
+              <Button
+                type='primary'
+                onClick={() => {
+                  setShowList(false)
+                }}
+              >
+                Add More
+              </Button>
+            </div>
             <Table
               columns={columns}
               dataSource={rentalProperty}
