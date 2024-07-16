@@ -166,6 +166,38 @@ export default function PropertyForm({
     form.setFieldsValue({Repair: (val || 0) * 0.25})
   }
 
+  const onValuesChange = (changedValues, allValues) => {
+    console.log('Changed values:', changedValues)
+    console.log('All values:', allValues)
+    if (allValues) {
+      let RepairTotal =
+          (allValues.AnnualRentalIncome || 0) +
+          (allValues.AdvanceRentReceived || 0) +
+          (allValues.ValueofnyBenefit || 0),
+        Repair =
+          allValues.ResidentOrCommercial === 2
+            ? (RepairTotal || 0) * 0.3
+            : (RepairTotal || 0) * 0.25,
+        NetIncome =
+          RepairTotal -
+          (allValues.AdjustedAdvanceRent || 0) -
+          (Repair || 0) -
+          (allValues.MunicipalOrLocalTax || 0) -
+          (allValues.LandRevenue || 0) -
+          (allValues.LoanInterestOrMorgageOrCapitalCrg || 0) -
+          (allValues.InsurancePremium || 0) -
+          (allValues.VacancyAllowence || 0) -
+          (allValues.Others || 0) -
+          (allValues.ClaimedExpensesTotal || 0)
+
+      form.setFieldsValue({
+        Repair: Repair,
+        NetIncome: NetIncome,
+        ClaimedExpensesTotal: Repair,
+      })
+    }
+  }
+
   useEffect(() => {
     getRentalProperty()
   }, [])
@@ -202,8 +234,12 @@ export default function PropertyForm({
               name='basic'
               form={form}
               onFinish={onFinish}
+              onValuesChange={onValuesChange}
               autoComplete='off'
               size='large'
+              initialValues={{
+                ResidentOrCommercial: 1,
+              }}
             >
               <Row gutter={16} className='mb-5'>
                 <Col className='gutter-row ' xs={24} sm={24} md={24}>
@@ -246,11 +282,11 @@ export default function PropertyForm({
                     rules={[
                       {
                         required: true,
-                        message: 'Please input Adress Of Property',
+                        message: 'Please input Total Area',
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <Input className='w-full' />
                   </Form.Item>
                 </Col>
               </Row>
@@ -366,7 +402,7 @@ export default function PropertyForm({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' readOnly />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
                 </Col>
               </Row>
@@ -499,7 +535,7 @@ export default function PropertyForm({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
                 </Col>
               </Row>
@@ -518,7 +554,7 @@ export default function PropertyForm({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <InputNumber className='w-full' disabled />
                   </Form.Item>
                 </Col>
               </Row>
