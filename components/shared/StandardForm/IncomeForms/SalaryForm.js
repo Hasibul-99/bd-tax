@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons'
 import {
   Button,
+  Checkbox,
   Col,
   ConfigProvider,
   Divider,
@@ -18,8 +19,10 @@ import {
   Row,
   Select,
   Space,
+  Typography,
 } from 'antd'
 import {useEffect, useState} from 'react'
+const {Text, Link} = Typography
 
 export default function SalaryForm({
   setCurrent,
@@ -30,12 +33,15 @@ export default function SalaryForm({
   const [form] = Form.useForm()
   const [hasTranspost, setHasTransport] = useState(0)
   const [tranportMonth, setTranportMonth] = useState(1)
+  const [ReceivedAnyHouse, setReceivedAnyHouse] = useState()
+  const [PaidAnyPartOfRent, setPaidAnyPartOfRent] = useState()
 
   const onFinish = async (values) => {
     let data = {...values}
 
     data.has_transport = hasTranspost === 0 ? 0 : 1
     data.transport_month = tranportMonth
+    data.HEKLCNetTaxable = data.HEKLCNetTaxable ? 'Y' : 'N'
 
     let res = await postData(SAVE_INCOME_SALARIES, data, null, 'showError')
     if (res) {
@@ -107,7 +113,9 @@ export default function SalaryForm({
         ConveyanceAllowance: allValues.ConveyanceAllowance_1 || 0,
         MedicalAllowance: allValues.MedicalAllowance_1 || 0,
         DearnessAllowance: allValues.DearnessAllowance_1 || 0,
-        EmployeeShareSchemes: allValues.EmployeeShareSchemes_1 || 0,
+        EmployeeShareSchemes:
+          (allValues.EmployeeShareSchemes_1 || 0) -
+          (allValues.EmployeeShareSchemes_2 || 0),
         EmployersContributionProvidentFund:
           allValues.EmployersContributionProvidentFund_1 || 0,
         Gratuity: allValues.Gratuity_1 || 0,
@@ -122,15 +130,31 @@ export default function SalaryForm({
           allValues.MedicalAllowanceForDisability_1 || 0,
         OvertimeAllowance: allValues.OvertimeAllowance_1 || 0,
         PaidPartOfRentValue: allValues.PaidPartOfRentValue_1 || 0,
-        Pension: allValues.Pension_1 || 0,
+        Pension_2: allValues.Pension_1 || 0,
+        Pension: 0,
         RecognizedProvidentFundIncome:
           allValues.RecognizedProvidentFundIncome_1 || 0,
         RentalValueOfHouse: allValues.RentalValueOfHouse_1 || 0,
         ServantAllowance: allValues.ServantAllowance_1 || 0,
         SpecialPay: allValues.SpecialPay_1 || 0,
-        Surgery_HEKLC: allValues.Surgery_HEKLC_1 || 0,
-        WorkersProfitParticipationFund_1:
+        Surgery_HEKLC: allValues.HEKLCNetTaxable
+          ? allValues.Surgery_HEKLC_1
+          : 0,
+        Surgery_HEKLC_2: !allValues.HEKLCNetTaxable
+          ? allValues.Surgery_HEKLC_1
+          : 0,
+        WorkersProfitParticipationFund:
           allValues.WorkersProfitParticipationFund_1 || 0,
+        Bonus: allValues.Bonus_1 || 0,
+        OtherAllowances: allValues.OtherAllowances_1 || 0,
+        Others: allValues.Others_1 || 0,
+        Arear: allValues.Arear_1 || 0,
+        Gratuity_2:
+          allValues.Gratuity_1 <= 25000000 ? allValues.Gratuity_1 : 25000000,
+        Gratuity:
+          allValues.Gratuity_1 <= 25000000
+            ? 0
+            : allValues.Gratuity_1 - 25000000,
       })
     }
   }
@@ -178,11 +202,14 @@ export default function SalaryForm({
         //   NetSalaryIncome: masterData.NetSalaryIncome,
         // }
 
+        setHasTransport(masterData.has_transport)
+        setTranportMonth(masterData.transport_month)
+        setReceivedAnyHouse(masterData.ReceivedAnyHouse)
+        setPaidAnyPartOfRent(masterData.PaidAnyPartOfRent)
+
         let formData = {...masterData}
 
         form.setFieldsValue(formData)
-        setHasTransport(masterData.has_transport)
-        setTranportMonth(masterData.transport_month)
       }
     }
   }
@@ -502,6 +529,16 @@ export default function SalaryForm({
             <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item name='Surgery_HEKLC'>
                 <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+
+            <Col className='gutter-row' xs={24} sm={24} md={24}>
+              <Form.Item
+                label='Are you share holder or Director of the company?'
+                name='HEKLCNetTaxable'
+                valuePropName='checked'
+              >
+                <Checkbox name='HEKLCNetTaxable' />
               </Form.Item>
             </Col>
           </Row>
@@ -861,72 +898,119 @@ export default function SalaryForm({
             </Col>
           </Row>
 
-          <Row gutter={16}>
+          <Row gutter={16} className='mb-4'>
             <Col className='gutter-row ' xs={24} sm={24} md={9}>
-              What is the rental value that your employer paid?
+              Have you received any furnished or unfurnished house from
+              employer?
               <ExclamationCircleOutlined className='ml-3' />
             </Col>
+
             <Col className='gutter-row' xs={24} sm={24} md={5}>
-              <Form.Item
-                name='RentalValueOfHouse_1'
-                rules={[
-                  {
-                    required: false,
-                    message:
-                      'Please input rental value that your employer paid',
-                  },
-                ]}
-              >
-                <InputNumber
-                  className='w-full'
-                  placeholder='Enter rental value that your employer paid'
-                />
-              </Form.Item>
-            </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={5}>
-              <Form.Item name='RentalValueOfHouse_2'>
-                <InputNumber className='w-full' disabled />
-              </Form.Item>
-            </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={5}>
-              <Form.Item name='RentalValueOfHouse'>
-                <InputNumber className='w-full' disabled />
+              <Form.Item name='ReceivedAnyHouse'>
+                <Radio.Group
+                  onChange={(e) => {
+                    setReceivedAnyHouse(e.target.value)
+                  }}
+                >
+                  <Radio value={'Y'}>Yes</Radio>
+                  <Radio value={'N'}>No</Radio>
+                </Radio.Group>
               </Form.Item>
             </Col>
           </Row>
 
-          <Row gutter={16}>
-            <Col className='gutter-row ' xs={24} sm={24} md={9}>
-              Have you paid any part of the rent?
-              <ExclamationCircleOutlined className='ml-3' />
-            </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={5}>
-              <Form.Item
-                name='PaidPartOfRentValue_1'
-                rules={[
-                  {
-                    required: false,
-                    message: 'Please input paid any part of the rent',
-                  },
-                ]}
-              >
-                <InputNumber
-                  className='w-full'
-                  placeholder='Enter paid any part of the rent'
-                />
-              </Form.Item>
-            </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={5}>
-              <Form.Item name='PaidPartOfRentValue_2'>
-                <InputNumber className='w-full' disabled />
-              </Form.Item>
-            </Col>
-            <Col className='gutter-row' xs={24} sm={24} md={5}>
-              <Form.Item name='PaidPartOfRentValue'>
-                <InputNumber className='w-full' disabled />
-              </Form.Item>
-            </Col>
-          </Row>
+          {ReceivedAnyHouse === 'Y' ? (
+            <>
+              <Row gutter={16}>
+                <Col className='gutter-row ' xs={24} sm={24} md={9}>
+                  What is the rental value that your employer paid?
+                  <ExclamationCircleOutlined className='ml-3' />
+                </Col>
+                <Col className='gutter-row' xs={24} sm={24} md={5}>
+                  <Form.Item
+                    name='RentalValueOfHouse_1'
+                    rules={[
+                      {
+                        required: false,
+                        message:
+                          'Please input rental value that your employer paid',
+                      },
+                    ]}
+                  >
+                    <InputNumber
+                      className='w-full'
+                      placeholder='Enter rental value that your employer paid'
+                    />
+                  </Form.Item>
+                </Col>
+                <Col className='gutter-row' xs={24} sm={24} md={5}>
+                  <Form.Item name='RentalValueOfHouse_2'>
+                    <InputNumber className='w-full' disabled />
+                  </Form.Item>
+                </Col>
+                <Col className='gutter-row' xs={24} sm={24} md={5}>
+                  <Form.Item name='RentalValueOfHouse'>
+                    <InputNumber className='w-full' disabled />
+                  </Form.Item>
+                </Col>
+              </Row>
+
+              <Row gutter={16} className='mb-4'>
+                <Col className='gutter-row ' xs={24} sm={24} md={9}>
+                  Have you paid any part of the rent?
+                  <ExclamationCircleOutlined className='ml-3' />
+                </Col>
+
+                <Col className='gutter-row' xs={24} sm={24} md={5}>
+                  <Form.Item name='PaidAnyPartOfRent'>
+                    <Radio.Group
+                      onChange={(e) => {
+                        setPaidAnyPartOfRent(e.target.value)
+                      }}
+                    >
+                      <Radio value={'Y'}>Yes</Radio>
+                      <Radio value={'N'}>No</Radio>
+                    </Radio.Group>
+                  </Form.Item>
+                </Col>
+              </Row>
+
+              {PaidAnyPartOfRent === 'Y' ? (
+                <Row gutter={16}>
+                  <Col className='gutter-row ' xs={24} sm={24} md={9}>
+                    How much you have paid for rent?
+                    <ExclamationCircleOutlined className='ml-3' />
+                  </Col>
+                  <Col className='gutter-row' xs={24} sm={24} md={5}>
+                    <Form.Item
+                      name='PaidPartOfRentValue_1'
+                      rules={[
+                        {
+                          required: false,
+                          message: 'Please input paid any part of the rent',
+                        },
+                      ]}
+                    >
+                      <InputNumber
+                        className='w-full'
+                        placeholder='Enter paid any part of the rent'
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col className='gutter-row' xs={24} sm={24} md={5}>
+                    <Form.Item name='PaidPartOfRentValue_2'>
+                      <InputNumber className='w-full' disabled />
+                    </Form.Item>
+                  </Col>
+                  <Col className='gutter-row' xs={24} sm={24} md={5}>
+                    <Form.Item name='PaidPartOfRentValue'>
+                      <InputNumber className='w-full' disabled />
+                    </Form.Item>
+                  </Col>
+                </Row>
+              ) : null}
+            </>
+          ) : null}
 
           <Row gutter={16}>
             <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
@@ -1144,11 +1228,21 @@ export default function SalaryForm({
                   className='w-full'
                   placeholder='Enter Income from Employee Share Schemes'
                 />
+                <Text type='secondary' className='text-xs'>
+                  Fair market value of shares on the date of receipt.
+                </Text>
               </Form.Item>
             </Col>
             <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item name='EmployeeShareSchemes_2'>
-                <InputNumber className='w-full' disabled />
+                <InputNumber
+                  className='w-full'
+                  defaultValue={0}
+                  placeholder="It's a cost not an exempted income."
+                />
+                <Text type='secondary' className='text-xs'>
+                  Cost of acquiring shares. It's a cost not an exempted income.
+                </Text>
               </Form.Item>
             </Col>
             <Col className='gutter-row' xs={24} sm={24} md={5}>

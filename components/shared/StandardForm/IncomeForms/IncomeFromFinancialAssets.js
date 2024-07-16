@@ -37,9 +37,13 @@ export default function IncomeFromFinancialAssets({
   const [financialAssetsType, setFinancialAssetsType] = useState()
   const [financialAssets, setFinancialAssets] = useState()
   const [selectedItem, setSelecetedItem] = useState()
+  const [selectedType, setSelectedType] = useState()
 
   const onFinish = async (values) => {
     let data = {...values}
+
+    data.CommissionOrInterest = data.CommissionOrInterest || 0
+
     if (selectedItem?.InterestOnSecuritiesId) {
       data.InterestOnSecuritiesId = selectedItem.InterestOnSecuritiesId
 
@@ -49,6 +53,7 @@ export default function IncomeFromFinancialAssets({
         form.resetFields()
         getFinancialAssets()
         setSelecetedItem()
+        setSelectedType()
       }
     } else {
       let res = await postData(Save_Financial_Assets, data)
@@ -57,6 +62,7 @@ export default function IncomeFromFinancialAssets({
         form.resetFields()
         getFinancialAssets()
         setSelecetedItem()
+        setSelectedType()
       }
     }
   }
@@ -109,7 +115,9 @@ export default function IncomeFromFinancialAssets({
       let NetAmount =
         (allValues.Cost || 0) - (allValues.CommissionOrInterest || 0)
 
-      form.setFieldsValue({NetAmount: NetAmount})
+      form.setFieldsValue({
+        NetAmount: selectedType === 'Zero Coupon Bond' ? 0 : NetAmount,
+      })
     }
   }
 
@@ -214,6 +222,9 @@ export default function IncomeFromFinancialAssets({
                 ]}
               >
                 <Select
+                  onChange={(val) => {
+                    setSelectedType(val)
+                  }}
                   style={{width: '180px'}}
                   placeholder='Select a option'
                   popupMatchSelectWidth={false}
@@ -254,19 +265,31 @@ export default function IncomeFromFinancialAssets({
                 <InputNumber style={{width: '150px'}} placeholder='Cost' />
               </Form.Item>
 
-              <Form.Item
-                name='CommissionOrInterest'
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <InputNumber
-                  style={{width: '150px'}}
-                  placeholder='Commission Or Interest'
-                />
-              </Form.Item>
+              {[
+                'Interest from mutual Fund/Unit Fund',
+                'Cash Dividend from Company Listed in Stock Exchange',
+                'Interest on FDR DPS',
+                'Life Insurance Bonus _Others',
+                'Interest Post Office FDR_Savings Account',
+              ].findIndex((e) => e === selectedType) === -1 ? (
+                <>
+                  <Form.Item
+                    name='CommissionOrInterest'
+                    rules={[
+                      {
+                        required: false,
+                      },
+                    ]}
+                  >
+                    <InputNumber
+                      style={{width: '150px'}}
+                      placeholder='Commission Or Interest'
+                    />
+                  </Form.Item>
+                </>
+              ) : (
+                <div className='w-[150px]'></div>
+              )}
 
               <Form.Item
                 name='NetAmount'
