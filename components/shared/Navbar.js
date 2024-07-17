@@ -18,7 +18,8 @@ import NavbarPackage from './NavbarPackage'
 // https://codepen.io/its7rishi/pen/qBPmENP
 export default function Navbar({locale}) {
   const pathname = usePathname()
-  const token = Cookies.get('bdtax_token')
+  const token =
+    Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
 
   const isActiveUrl = (url) => {
     return pathname.startsWith(url) //pathname;

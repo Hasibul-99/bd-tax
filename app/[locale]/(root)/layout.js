@@ -12,7 +12,8 @@ const RootLayout = (props) => {
     params: {locale},
   } = props
   const router = useRouter()
-  const token = Cookies.get('bdtax_token')
+  const token =
+    Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
 
   useEffect(() => {
     if (!token) {

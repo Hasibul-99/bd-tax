@@ -70,10 +70,14 @@ export const checkRes = (param) => {
   } else if (param === 401) {
     Cookies.remove('bdtax_token')
     Cookies.remove('bdtax_user')
+    localStorage.removeItem('bdtax_token')
+    localStorage.removeItem('bdtax_user')
     window.location = '/en/signin'
   } else if (param === 403) {
     Cookies.remove('bdtax_token')
     Cookies.remove('bdtax_user')
+    localStorage.removeItem('bdtax_token')
+    localStorage.removeItem('bdtax_user')
     window.location = '/en/signin'
   } else {
     return false

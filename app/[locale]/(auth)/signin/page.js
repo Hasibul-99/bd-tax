@@ -36,6 +36,12 @@ export default function SignIn() {
         setLoading(true)
         Cookies.set('bdtax_token', masterData?.token)
         Cookies.set('bdtax_user', JSON.stringify(masterData))
+
+        if (values?.remember) {
+          localStorage.setItem('bdtax_token', masterData?.token)
+          localStorage.setItem('bdtax_user', JSON.stringify(masterData))
+        }
+
         updateTaxDue(masterData?.tax_amount || 0)
         alertPop('success', masterData?.message)
 

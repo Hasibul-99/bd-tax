@@ -14,7 +14,8 @@ import CardViewPremiumPlus from './cardView/PremiumPlus'
 import CardViewStandard from './cardView/Standard'
 
 export default function Packages({locale, ssrData}) {
-  const token = Cookies.get('bdtax_token')
+  const token =
+    Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
   const [packageList, setPackageList] = useState()
   const [showPackages, setShowPackages] = useState(true)
   const [isShowAllPackages, setIsShowAllPackages] = useState(0)
