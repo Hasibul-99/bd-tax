@@ -7,11 +7,7 @@ const base_url =
   process.env.NEXT_PUBLIC_BASE_URL ||
   'https://newdevapi.bdtax.com.bd/public/api/'
 
-const token = Cookies.get('bdtax_token')
-  ? Cookies.get('bdtax_token')
-  : localStorage.getItem('bdtax_token')
-  ? localStorage.getItem('bdtax_token')
-  : ''
+const token = Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
 
 /* query ---> api url to query with
    no_token ---> acts as a flag for no need to use token */
