@@ -13,17 +13,28 @@ import Cookies from 'js-cookie'
 import Image from 'next/image'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
+import {useEffect, useState} from 'react'
 import NavbarPackage from './NavbarPackage'
 
 // https://codepen.io/its7rishi/pen/qBPmENP
 export default function Navbar({locale}) {
   const pathname = usePathname()
-  const token =
-    Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
+  const [token, setToken] = useState()
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
+  // const token =
+  //   Cookies.get('bdtax_token') || window?.localStorage?.getItem('bdtax_token')
 
   const isActiveUrl = (url) => {
     return pathname.startsWith(url) //pathname;
   }
+
+  const handelMobileMenu = () => {
+    setShowMobileMenu((thumb) => !thumb)
+  }
+
+  useEffect(() => {
+    setToken(Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token'))
+  }, [])
 
   return (
     <nav className='pt-6'>
@@ -126,7 +137,10 @@ export default function Navbar({locale}) {
           </div>
           {/* Mobile menu button */}
           <div className='md:hidden flex items-center'>
-            <button className='outline-none mobile-menu-button'>
+            <button
+              onClick={() => handelMobileMenu()}
+              className='outline-none mobile-menu-button'
+            >
               <svg
                 className=' w-6 h-6 text-gray-500 hover:text-green-500 '
                 x-show='!showMenu'
@@ -144,7 +158,7 @@ export default function Navbar({locale}) {
         </div>
       </div>
       {/* mobile menu */}
-      <div className='hidden mobile-menu'>
+      <div className={`${showMobileMenu ? '' : 'hidden'} mobile-menu`}>
         <ul className>
           <li className='active'>
             <Link

@@ -27,17 +27,17 @@ export default function Packages({locale, ssrData}) {
     const div3 = document.getElementById('standard-details')
 
     // Get the heights of each div
-    const height1 = div1.offsetHeight
-    const height2 = div2.offsetHeight
-    const height3 = div3.offsetHeight
+    const height1 = div1?.offsetHeight
+    const height2 = div2?.offsetHeight
+    const height3 = div3?.offsetHeight
 
     // Find the maximum height
     const maxHeight = Math.max(height1, height2, height3)
 
     // Set the height of all divs to the maximum height
-    div1.style.height = `${maxHeight}px`
-    div2.style.height = `${maxHeight}px`
-    div3.style.height = `${maxHeight}px`
+    if (div1) div1.style.height = `${maxHeight}px`
+    if (div2) div2.style.height = `${maxHeight}px`
+    if (div3) div3.style.height = `${maxHeight}px`
   }
 
   const getPackagesList = async () => {
@@ -98,17 +98,17 @@ export default function Packages({locale, ssrData}) {
                       ''
                     )}
 
-                    {packageList.current_package_id_title === 'Premium Plus' ? (
+                    {packageList.current_package_type === 'premiumPlus' ? (
                       <CardViewPremiumPlus
                         locale={locale}
                         packageList={packageList}
                       />
-                    ) : packageList.current_package_id_title === 'Premium ' ? (
+                    ) : packageList.current_package_type === 'premium' ? (
                       <CardViewPremium
                         locale={locale}
                         packageList={packageList}
                       />
-                    ) : packageList.current_package_id_title === 'Standard' ? (
+                    ) : packageList.current_package_type === 'standard' ? (
                       <CardViewStandard
                         locale={locale}
                         packageList={packageList}
@@ -136,17 +136,16 @@ export default function Packages({locale, ssrData}) {
             >
               {packageList.packages?.length ? (
                 <>
-                  {packageList.packages.map((item) => {
-                    return item.title === 'Premium Plus' &&
-                      packageList.current_package_id_title !==
-                        'Premium Plus' ? (
-                      <PremiumPlus locale={locale} pack={item} />
-                    ) : item.title === 'Premium ' &&
-                      packageList.current_package_id_title !== 'Premium ' ? (
-                      <Premium locale={locale} pack={item} />
-                    ) : item.title === 'Standard' &&
-                      packageList.current_package_id_title !== 'Standard' ? (
-                      <Standard locale={locale} pack={item} />
+                  {packageList.packages.map((item, idx) => {
+                    return item.package_type === 'premiumPlus' &&
+                      packageList.current_package_type !== 'premiumPlus' ? (
+                      <PremiumPlus key={idx} locale={locale} pack={item} />
+                    ) : item.package_type === 'premium' &&
+                      packageList.current_package_type !== 'premium' ? (
+                      <Premium key={idx} locale={locale} pack={item} />
+                    ) : item.package_type === 'standard' &&
+                      packageList.current_package_type !== 'standard' ? (
+                      <Standard key={idx} locale={locale} pack={item} />
                     ) : (
                       ''
                     )

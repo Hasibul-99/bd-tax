@@ -2,7 +2,6 @@ import {NextIntlClientProvider} from 'next-intl'
 import {getMessages} from 'next-intl/server'
 import {Poppins} from 'next/font/google'
 
-import Script from 'next/script'
 import '../../style/style.scss'
 import '../globals.css'
 const poppins = Poppins({
@@ -25,7 +24,7 @@ export default async function LocaleLayout(props) {
 
   return (
     <html lang={params?.locale || 'en'}>
-      <Script src='js/script.js'></Script>
+      {/* <Script src='js/script.js'></Script> */}
       <body className={poppins.className}>
         <NextIntlClientProvider messages={messages}>
           {children}
