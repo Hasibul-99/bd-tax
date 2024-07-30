@@ -62,6 +62,7 @@ export default function PersonalInfo({setCurrent}) {
       AvailChildDisabilityExemp: values.AvailChildDisabilityExemp,
       SpouseName: values.SpouseName,
       SpouseETIN: values.SpouseETIN,
+      EmployerName: values.EmployerName,
     }
 
     let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError')
@@ -114,6 +115,7 @@ export default function PersonalInfo({setCurrent}) {
           AvailChildDisabilityExemp: masterData.AvailChildDisabilityExemp,
           SpouseName: masterData.SpouseName,
           SpouseETIN: masterData.SpouseETIN,
+          EmployerName: masterData.EmployerName,
         })
       }
     }
@@ -843,6 +845,32 @@ export default function PersonalInfo({setCurrent}) {
                     ''
                   )}
                 </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row gutter={16}>
+            <Col className='gutter-row' span={4}>
+              Employer Name
+            </Col>
+            <Col className='gutter-row' span={20}>
+              <Form.Item name='EmployerName'>
+                <Input placeholder='Employer Name' />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row gutter={16}>
+            <Col className='gutter-row' span={4}>
+              Employer Address
+            </Col>
+            <Col className='gutter-row' span={20}>
+              <Form.Item name='EmployerAddress'>
+                <TextArea
+                  maxLength={200}
+                  rows={4}
+                  placeholder='Employer Address'
+                />
               </Form.Item>
             </Col>
           </Row>

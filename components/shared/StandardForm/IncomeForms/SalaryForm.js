@@ -22,6 +22,7 @@ import {
   Typography,
 } from 'antd'
 import {useEffect, useState} from 'react'
+import {DeemedFreeAccommodationCal} from './helper'
 const {Text, Link} = Typography
 
 export default function SalaryForm({
@@ -33,8 +34,9 @@ export default function SalaryForm({
   const [form] = Form.useForm()
   const [hasTranspost, setHasTransport] = useState(0)
   const [tranportMonth, setTranportMonth] = useState(1)
-  const [ReceivedAnyHouse, setReceivedAnyHouse] = useState()
+  const [ReceivedAnyHouse, setReceivedAnyHouse] = useState('N')
   const [PaidAnyPartOfRent, setPaidAnyPartOfRent] = useState()
+  const [employerName, setEmployerName] = useState()
 
   const onFinish = async (values) => {
     let data = {...values}
@@ -129,12 +131,13 @@ export default function SalaryForm({
         MedicalAllowanceForDisability:
           allValues.MedicalAllowanceForDisability_1 || 0,
         OvertimeAllowance: allValues.OvertimeAllowance_1 || 0,
-        PaidPartOfRentValue: allValues.PaidPartOfRentValue_1 || 0,
+        // PaidPartOfRentValue: allValues.PaidPartOfRentValue_1 || 0,
         Pension_2: allValues.Pension_1 || 0,
         Pension: 0,
         RecognizedProvidentFundIncome:
           allValues.RecognizedProvidentFundIncome_1 || 0,
-        RentalValueOfHouse: allValues.RentalValueOfHouse_1 || 0,
+        // RentalValueOfHouse: allValues.RentalValueOfHouse_1 || 0,
+        DeemedFreeAccommodation: DeemedFreeAccommodationCal(allValues),
         ServantAllowance: allValues.ServantAllowance_1 || 0,
         SpecialPay: allValues.SpecialPay_1 || 0,
         Surgery_HEKLC: allValues.HEKLCNetTaxable
@@ -204,7 +207,7 @@ export default function SalaryForm({
 
         setHasTransport(masterData.has_transport)
         setTranportMonth(masterData.transport_month)
-        setReceivedAnyHouse(masterData.ReceivedAnyHouse)
+        setReceivedAnyHouse(masterData?.ReceivedAnyHouse || 'N')
         setPaidAnyPartOfRent(masterData.PaidAnyPartOfRent)
 
         let formData = {...masterData}
@@ -230,7 +233,37 @@ export default function SalaryForm({
 
   return (
     <div className='bg-white pb-6 px-6'>
-      <h3 className='text-xl font-semibold'>Salary Income Information</h3>
+      <Row gutter={16} className='mb-5'>
+        <Col className='gutter-row pt-2' xs={24} sm={24} md={12}>
+          <h3 className='text-xl font-semibold'>Salary Income Information</h3>
+        </Col>
+        <Col className='gutter-row pt-2' xs={24} sm={24} md={12}>
+          <div className='flex gap-6'>
+            <span className='w-48'>Employer Name *</span>
+            <span className='w-full'>
+              <ConfigProvider
+                theme={{
+                  token: {
+                    colorPrimary: '#126A25',
+                  },
+                  components: {
+                    Button: {
+                      colorPrimary: '#126A25',
+                    },
+                  },
+                }}
+              >
+                <Input
+                  value={employerName}
+                  onChange={(e) => setEmployerName(e.target.value)}
+                />
+              </ConfigProvider>
+            </span>
+          </div>
+        </Col>
+      </Row>
+
+      <Divider />
       <ConfigProvider
         theme={{
           token: {
@@ -266,6 +299,7 @@ export default function SalaryForm({
           onValuesChange={onValuesChange}
           autoComplete='off'
           size='large'
+          initialValues={{ReceivedAnyHouse: 'N'}}
         >
           <Row gutter={16}>
             <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
@@ -906,18 +940,32 @@ export default function SalaryForm({
             </Col>
 
             <Col className='gutter-row' xs={24} sm={24} md={5}>
+              {/* <Form.Item name='ReceivedAnyHouse'>
+                <Radio.Group
+                value={'N'}
+                onChange={(e) => {
+                  setReceivedAnyHouse(e.target.value)
+                }}
+                >
+                  <Radio value='Y'>Yes</Radio>
+                  <Radio value='N'>No</Radio>
+                </Radio.Group>
+              </Form.Item> */}
+
               <Form.Item name='ReceivedAnyHouse'>
                 <Radio.Group
                   onChange={(e) => {
                     setReceivedAnyHouse(e.target.value)
                   }}
                 >
-                  <Radio value={'Y'}>Yes</Radio>
-                  <Radio value={'N'}>No</Radio>
+                  <Radio value='Y'>Yes</Radio>
+                  <Radio value='N'>No</Radio>
                 </Radio.Group>
               </Form.Item>
             </Col>
           </Row>
+
+          {console.log('ReceivedAnyHouse', ReceivedAnyHouse)}
 
           {ReceivedAnyHouse === 'Y' ? (
             <>
@@ -1011,6 +1059,28 @@ export default function SalaryForm({
               ) : null}
             </>
           ) : null}
+
+          <Row gutter={16}>
+            <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
+              Concessional Accommodation
+              <ExclamationCircleOutlined className='ml-3' />
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='DeemedFreeAccommodation_1'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='DeemedFreeAccommodation_2'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+            <Col className='gutter-row' xs={24} sm={24} md={5}>
+              <Form.Item name='DeemedFreeAccommodation'>
+                <InputNumber className='w-full' disabled />
+              </Form.Item>
+            </Col>
+          </Row>
 
           <Row gutter={16}>
             <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
