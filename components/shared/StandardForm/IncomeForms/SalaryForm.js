@@ -2,6 +2,7 @@ import {GET_SALARIES, SAVE_INCOME_SALARIES} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {
+  ExclamationCircleFilled,
   ExclamationCircleOutlined,
   LeftOutlined,
   RightOutlined,
@@ -15,6 +16,7 @@ import {
   Form,
   Input,
   InputNumber,
+  Modal,
   Radio,
   Row,
   Select,
@@ -22,8 +24,15 @@ import {
   Typography,
 } from 'antd'
 import {useEffect, useState} from 'react'
-import {DeemedFreeAccommodationCal} from './helper'
+import {
+  addNonNegative,
+  DeemedFreeAccommodationCal,
+  getEmployeeShareSchemes,
+  getTotalGrossTaxableIncome1,
+  getTotalGrossTaxableIncome2,
+} from './helper'
 const {Text, Link} = Typography
+const {confirm} = Modal
 
 export default function SalaryForm({
   setCurrent,
@@ -74,36 +83,17 @@ export default function SalaryForm({
     console.log('All values:', allValues)
 
     if (allValues) {
-      let NetSalaryIncome =
-          (allValues.Arear_1 || 0) +
-          (allValues.BasicPay_1 || 0) +
-          (allValues.Bonus_1 || 0) +
-          (allValues.ConveyanceAllowance_1 || 0) +
-          (allValues.DearnessAllowance_1 || 0) +
-          (allValues.EmployeeShareSchemes_1 || 0) +
-          (allValues.EmployersContributionProvidentFund_1 || 0) +
-          (allValues.Gratuity_1 || 0) +
-          (allValues.HonorariumOrReward_1 || 0) +
-          (allValues.HouseRentAllowance_1 || 0) +
-          (allValues.InterestAccruedProvidentFund_1 || 0) +
-          (allValues.LeaveAllowance_1 || 0) +
-          (allValues.LeaveEncashment_1 || 0) +
-          (allValues.MedicalAllowance_1 || 0) +
-          (allValues.MedicalAllowanceForDisability_1 || 0) +
-          (allValues.OtherAllowances_1 || 0) +
-          (allValues.Others_1 || 0) +
-          (allValues.OvertimeAllowance_1 || 0) +
-          (allValues.PaidPartOfRentValue_1 || 0) +
-          (allValues.Pension_1 || 0) +
-          (allValues.RecognizedProvidentFundIncome_1 || 0) +
-          (allValues.RentalValueOfHouse_1 || 0) +
-          (allValues.ServantAllowance_1 || 0) +
-          (allValues.SpecialPay_1 || 0) +
+      let grossTaxableIncome_1 = getTotalGrossTaxableIncome1(allValues),
+        grossTaxableIncome_2 = getTotalGrossTaxableIncome2(allValues),
+        grossTaxableIncome = grossTaxableIncome_1 - grossTaxableIncome_2,
+        NetSalaryIncome = grossTaxableIncome_1,
+        NetTaxWaiver =
+          grossTaxableIncome_2 +
           (allValues.Surgery_HEKLC_1 || 0) +
-          (allValues.DeemedIncomeTransport || 0) +
-          (allValues.WorkersProfitParticipationFund_1 || 0),
-        NetTaxWaiver = parseInt((NetSalaryIncome || 0) * 0.33) || 0,
-        NetTaxableIncome = NetSalaryIncome - NetTaxWaiver
+          (allValues.InterestAccruedProvidentFund_1 || 0) +
+          (allValues.Gratuity_2 || 0) +
+          (allValues.Pension_1 || 0),
+        NetTaxableIncome = addNonNegative(NetSalaryIncome - NetTaxWaiver) //grossTaxableIncome - (allValues.Surgery_HEKLC_1 || 0)
 
       form.setFieldsValue({
         NetSalaryIncome: NetSalaryIncome,
@@ -115,9 +105,7 @@ export default function SalaryForm({
         ConveyanceAllowance: allValues.ConveyanceAllowance_1 || 0,
         MedicalAllowance: allValues.MedicalAllowance_1 || 0,
         DearnessAllowance: allValues.DearnessAllowance_1 || 0,
-        EmployeeShareSchemes:
-          (allValues.EmployeeShareSchemes_1 || 0) -
-          (allValues.EmployeeShareSchemes_2 || 0),
+        EmployeeShareSchemes: getEmployeeShareSchemes(allValues),
         EmployersContributionProvidentFund:
           allValues.EmployersContributionProvidentFund_1 || 0,
         Gratuity: allValues.Gratuity_1 || 0,
@@ -168,43 +156,6 @@ export default function SalaryForm({
       let masterData = res?.data
 
       if (masterData) {
-        // let formData = {
-        //   BasicPay_1: masterData.BasicPay_1,
-        //   SpecialPay_1: masterData.SpecialPay_1,
-        //   DearnessAllowance_1: masterData.DearnessAllowance_1,
-        //   ConveyanceAllowance_1: masterData.ConveyanceAllowance_1,
-        //   HouseRentAllowance_1: masterData.HouseRentAllowance_1,
-        //   MedicalAllowance_1: masterData.MedicalAllowance_1,
-        //   MedicalAllowanceForDisability_1:
-        //     masterData.MedicalAllowanceForDisability_1,
-        //   Surgery_HEKLC_1: masterData.Surgery_HEKLC_1,
-        //   ServantAllowance_1: masterData.ServantAllowance_1,
-        //   LeaveAllowance_1: masterData.LeaveAllowance_1,
-        //   LeaveEncashment_1: masterData.LeaveEncashment_1,
-        //   HonorariumOrReward_1: masterData.HonorariumOrReward_1,
-        //   OvertimeAllowance_1: masterData.OvertimeAllowance_1,
-        //   OtherAllowances_1: masterData.OtherAllowances_1,
-        //   EmployersContributionProvidentFund_1:
-        //     masterData.EmployersContributionProvidentFund_1,
-        //   InterestAccruedProvidentFund_1:
-        //     masterData.InterestAccruedProvidentFund_1,
-        //   DeemedIncomeTransport:
-        //     masterData.has_transport * masterData.transport_month,
-        //   RentalValueOfHouse_1: masterData.RentalValueOfHouse_1,
-        //   PaidPartOfRentValue_1: masterData.PaidPartOfRentValue_1,
-        //   Others_1: masterData.Others_1,
-        //   Arear_1: masterData.Arear_1,
-        //   Gratuity_1: masterData.Gratuity_1,
-        //   WorkersProfitParticipationFund_1:
-        //     masterData.WorkersProfitParticipationFund_1,
-        //   RecognizedProvidentFundIncome_1:
-        //     masterData.RecognizedProvidentFundIncome_1,
-        //   EmployeeShareSchemes_1: masterData.EmployeeShareSchemes_1,
-        //   NetTaxableIncome: masterData.NetTaxableIncome,
-        //   NetTaxWaiver: masterData.NetTaxWaiver,
-        //   NetSalaryIncome: masterData.NetSalaryIncome,
-        // }
-
         setHasTransport(masterData.has_transport)
         setTranportMonth(masterData.transport_month)
         setReceivedAnyHouse(masterData?.ReceivedAnyHouse || 'N')
@@ -217,13 +168,37 @@ export default function SalaryForm({
     }
   }
 
+  const DeleteSalaryForm = () => {
+    confirm({
+      title: 'Do you want to delete these items?',
+      icon: <ExclamationCircleFilled />,
+      async onOk() {
+        // let res = await deleteData(Delete_Income_BsuinessOrProfession + id)
+        // if (res) {
+        //   getBPList()
+        //   alertPop('error', res?.data?.message)
+        // }
+        form.resetFields()
+      },
+      onCancel() {
+        console.log('Cancel')
+      },
+    })
+  }
+
   useEffect(() => {
     if (hasTranspost && tranportMonth) {
       let amount = hasTranspost === 2 ? 25000 : 10000
 
       form.setFieldsValue({DeemedIncomeTransport: amount * tranportMonth})
+      setTimeout(() => {
+        onValuesChange(null, form.getFieldsValue())
+      }, 1000)
     } else {
       form.setFieldsValue({DeemedIncomeTransport: 0})
+      setTimeout(() => {
+        onValuesChange(null, form.getFieldsValue())
+      }, 1000)
     }
   }, [hasTranspost, tranportMonth])
 
@@ -1287,6 +1262,7 @@ export default function SalaryForm({
             <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item
                 name='EmployeeShareSchemes_1'
+                extra='Fair market value of shares on the date of receipt.'
                 rules={[
                   {
                     required: false,
@@ -1298,21 +1274,17 @@ export default function SalaryForm({
                   className='w-full'
                   placeholder='Enter Income from Employee Share Schemes'
                 />
-                <Text type='secondary' className='text-xs'>
-                  Fair market value of shares on the date of receipt.
-                </Text>
               </Form.Item>
             </Col>
             <Col className='gutter-row' xs={24} sm={24} md={5}>
-              <Form.Item name='EmployeeShareSchemes_2'>
+              <Form.Item
+                name='EmployeeShareSchemes_2'
+                extra="Cost of acquiring shares. It's a cost not an exempted income."
+              >
                 <InputNumber
                   className='w-full'
-                  defaultValue={0}
                   placeholder="It's a cost not an exempted income."
                 />
-                <Text type='secondary' className='text-xs'>
-                  Cost of acquiring shares. It's a cost not an exempted income.
-                </Text>
               </Form.Item>
             </Col>
             <Col className='gutter-row' xs={24} sm={24} md={5}>
@@ -1383,30 +1355,50 @@ export default function SalaryForm({
             </Col>
           </Row>
 
-          <Form.Item className='text-center mt-6'>
+          <Form.Item>
             <Space>
+              <Button type='primary' htmlType='submit' className='w-28'>
+                Save
+              </Button>
               <Button
                 type='primary'
-                className='refer-friend-button shadow-none md:w-52'
+                danger
+                className='w-28'
                 onClick={() => {
-                  setCurrent(3)
+                  DeleteSalaryForm()
                 }}
               >
-                <LeftOutlined style={{fontSize: '12px', marginTop: '2px'}} />
-                Back
-              </Button>
-
-              <Button
-                htmlType='submit'
-                type='primary'
-                className='prime-button gap-0 md:w-52 m-auto'
-              >
-                Next
-                <RightOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+                Delete
               </Button>
             </Space>
           </Form.Item>
         </Form>
+        <Divider />
+        <div className='text-center mt-6'>
+          <Space>
+            <Button
+              type='primary'
+              className='refer-friend-button shadow-none md:w-52'
+              onClick={() => {
+                setCurrent(3)
+              }}
+            >
+              <LeftOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+              Back
+            </Button>
+
+            <Button
+              type='primary'
+              className='prime-button gap-0 md:w-52 m-auto'
+              onClick={() => {
+                setActiveTab(nextActiveTab)
+              }}
+            >
+              Next
+              <RightOutlined style={{fontSize: '12px', marginTop: '2px'}} />
+            </Button>
+          </Space>
+        </div>
       </ConfigProvider>
     </div>
   )
