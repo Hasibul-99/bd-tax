@@ -206,23 +206,23 @@ export default function ChildrenEducation({
               >
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
+              <div className='text-center'>
+                <Form.Item>
+                  <Button type='primary' htmlType='submit' className='w-28'>
+                    Save
+                  </Button>
+                </Form.Item>
+              </div>
             </Flex>
 
-            <Form.Item name='ChildrenEducationComment'>
+            {/* <Form.Item name='ChildrenEducationComment'>
               <TextArea
                 maxLength={200}
                 rows={2}
                 style={{width: '300px'}}
                 placeholder='Comment'
               />
-            </Form.Item>
-            <div className='text-center'>
-              <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
-                  Save
-                </Button>
-              </Form.Item>
-            </div>
+            </Form.Item> */}
           </Form>
         </div>
         <Divider />

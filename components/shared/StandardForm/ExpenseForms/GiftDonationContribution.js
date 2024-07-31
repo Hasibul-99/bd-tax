@@ -210,23 +210,22 @@ export default function GiftDonationContribution({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item name='GiftDonationContributionComment'>
+              {/* <Form.Item name='GiftDonationContributionComment'>
                 <TextArea
                   maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'
                 />
-              </Form.Item>
+              </Form.Item> */}
+              <div className='text-center'>
+                <Form.Item>
+                  <Button type='primary' htmlType='submit' className='w-28'>
+                    Save
+                  </Button>
+                </Form.Item>
+              </div>
             </Flex>
-
-            <div className='text-center'>
-              <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
-                  Save
-                </Button>
-              </Form.Item>
-            </div>
           </Form>
         </div>
         <Divider />

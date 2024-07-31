@@ -207,23 +207,23 @@ export default function TaxPaidSurchargeandOther({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item name='SurchargeOtherComment'>
+              {/* <Form.Item name='SurchargeOtherComment'>
                 <TextArea
                   maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'
                 />
-              </Form.Item>
-            </Flex>
+              </Form.Item> */}
 
-            <div className='text-center'>
-              <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
-                  Save
-                </Button>
-              </Form.Item>
-            </div>
+              <div className='text-center'>
+                <Form.Item>
+                  <Button type='primary' htmlType='submit' className='w-28'>
+                    Save
+                  </Button>
+                </Form.Item>
+              </div>
+            </Flex>
           </Form>
         </div>
         <Divider />

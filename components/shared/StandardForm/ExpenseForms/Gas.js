@@ -198,23 +198,23 @@ export default function Gas({
                 <InputNumber style={{width: '300px'}} placeholder='Value ' />
               </Form.Item>
 
-              <Form.Item name='GasBillComment'>
+              {/* <Form.Item name='GasBillComment'>
                 <TextArea
                   maxLength={200}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'
                 />
-              </Form.Item>
-            </Flex>
+              </Form.Item> */}
 
-            <div className='text-center'>
-              <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
-                  Save
-                </Button>
-              </Form.Item>
-            </div>
+              <div className='text-center'>
+                <Form.Item>
+                  <Button type='primary' htmlType='submit' className='w-28'>
+                    Save
+                  </Button>
+                </Form.Item>
+              </div>
+            </Flex>
           </Form>
         </div>
         <Divider />
