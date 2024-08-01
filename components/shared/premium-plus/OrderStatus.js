@@ -71,42 +71,36 @@ export default function OrderStatus({
             </>
           ) : (
             <>
-              {paymentStatus?.payment_status === 1 ? (
-                <>
-                  <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
-                    {paymentStatus?.order_message ? (
-                      <p>
-                        {paymentStatus?.order_message}
-                        {/* Thank you for your order{' '}
-                  <span className='font-semibold'>#45678624</span>.{' '} */}
-                      </p>
-                    ) : (
-                      ''
-                    )}
-
-                    <p>
-                      Now you can relax as BDTax experts handle your tax return.{' '}
-                    </p>
-                  </div>
-
-                  <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
-                    <p>
-                      Your assigned consultant will contact you within{' '}
-                      <span className='font-semibold'>24 hours</span> .
-                    </p>
-                  </div>
-                </>
-              ) : (
+              {paymentStatus?.order_message_1 ? (
                 <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
-                  <p>{paymentStatus?.payment_message}</p>
+                  <p>
+                    {paymentStatus?.order_message_1}{' '}
+                    <span className='font-semibold'>
+                      {paymentStatus?.order_message_2}
+                    </span>
+                    .{' '}
+                  </p>
+                  {paymentStatus?.order_message_3 ? (
+                    <p>{paymentStatus?.order_message_3}</p>
+                  ) : null}
                 </div>
-              )}
+              ) : null}
+
+              {paymentStatus?.order_message_4 ? (
+                <div className='p-2 bg-[#F8FAFC] border-l-2 border-l-[#CBD5E1] rounded-md mb-2'>
+                  <p>
+                    {paymentStatus?.order_message_4}
+                    <span className='font-semibold'>
+                      {paymentStatus?.order_message_5}
+                    </span>{' '}
+                    .
+                  </p>
+                </div>
+              ) : null}
             </>
           )}
         </Card>
-      ) : (
-        ''
-      )}
+      ) : null}
 
       <div className='bg-white py-5 rounded-[20px]'>
         <h5 className='text-base font-semibold mb-6'>Order Status</h5>
