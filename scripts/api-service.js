@@ -7,11 +7,12 @@ const base_url =
   process.env.NEXT_PUBLIC_BASE_URL ||
   'https://newdevapi.bdtax.com.bd/public/api/'
 
-const token = Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
-
 /* query ---> api url to query with
    no_token ---> acts as a flag for no need to use token */
 export const getData = async (query, no_token) => {
+  const token =
+    Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
+
   try {
     let data = await axios.get(`${base_url}${query}`, {
       headers: no_token
@@ -43,6 +44,9 @@ export const getData = async (query, no_token) => {
      no_token ---> acts as a flag for no need to use token */
 
 export const postData = async (query, data, no_token, showError) => {
+  const token =
+    Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
+
   try {
     let res = await axios({
       method: 'post',
@@ -93,6 +97,9 @@ export const postData = async (query, data, no_token, showError) => {
 }
 
 export const deleteData = async (query, no_token) => {
+  const token =
+    Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
+
   try {
     let data = await axios.delete(`${base_url}${query}`, {
       headers: no_token
@@ -121,6 +128,9 @@ export const deleteData = async (query, no_token) => {
 }
 
 export const putData = async (query, data, no_token, showError) => {
+  const token =
+    Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
+
   try {
     let res = await axios({
       method: 'put',

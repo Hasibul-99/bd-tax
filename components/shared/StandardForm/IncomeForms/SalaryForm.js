@@ -1,4 +1,8 @@
-import {GET_SALARIES, SAVE_INCOME_SALARIES} from '@/scripts/api'
+import {
+  DELETE_SALARIES,
+  GET_SALARIES,
+  SAVE_INCOME_SALARIES,
+} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {
@@ -173,11 +177,11 @@ export default function SalaryForm({
       title: 'Do you want to delete these items?',
       icon: <ExclamationCircleFilled />,
       async onOk() {
-        // let res = await deleteData(Delete_Income_BsuinessOrProfession + id)
-        // if (res) {
-        //   getBPList()
-        //   alertPop('error', res?.data?.message)
-        // }
+        let res = await postData(DELETE_SALARIES)
+        if (res) {
+          form.resetFields()
+          alertPop('success', res?.data?.message)
+        }
         form.resetFields()
       },
       onCancel() {

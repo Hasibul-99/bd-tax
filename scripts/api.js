@@ -61,6 +61,7 @@ export const INCOME_USER_INCOME = 'income/userIncome'
 
 export const SAVE_INCOME_SALARIES = 'saveIncomeSalaries'
 export const GET_SALARIES = 'getSalaries'
+export const DELETE_SALARIES = 'deleteIncomeSalaries'
 
 export const GET_Financial_Assets_Type = 'getFinancialAssetsType'
 export const Save_Financial_Assets = 'saveFinancialAssets'
