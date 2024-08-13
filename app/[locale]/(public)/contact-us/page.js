@@ -85,7 +85,7 @@ export default function ContactUs() {
                   },
                 ]}
               >
-                <Input placeholder='Last Name *' />
+                <Input placeholder='Email Adderss *' />
               </Form.Item>
             </Col>
           </Row>

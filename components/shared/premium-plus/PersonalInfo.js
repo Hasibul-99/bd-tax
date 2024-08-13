@@ -217,7 +217,7 @@ export default function PersonalInfo({setCurrent}) {
                     message: 'Please input mobile!',
                   },
                   {
-                    pattern: /^(?:\+?88)?01[15-9]\d{8}$/,
+                    pattern: /(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/,
                     message: 'Please enter a valid mobile no',
                   },
                 ]}
