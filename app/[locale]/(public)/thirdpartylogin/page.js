@@ -22,10 +22,10 @@ export default function page() {
       Cookies.set('bdtax_user', JSON.stringify(masterData))
 
       setTimeout(() => {
-        window.location = '/'
+        window.location = '/signin'
       }, 1000)
     } else {
-      window.location = '/'
+      window.location = '/signin'
     }
   }
 
