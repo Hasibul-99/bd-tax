@@ -42,7 +42,7 @@ export default function PersonalInfo({setCurrent}) {
       Email: values.email,
       Contact: values.mobile,
       NationalId: values.NationalId,
-      DOB: dayjs(values.dob).format('DD-MM-YYYY'),
+      DOB: dayjs(values.DOB).format('DD-MM-YYYY'),
       Status: values.Status,
       ResidentialStatus: values.ResidentialStatus,
       Disability: values.Disability,
@@ -95,7 +95,7 @@ export default function PersonalInfo({setCurrent}) {
           email: masterData.Email,
           mobile: masterData.Contact,
           gender: masterData.Gender,
-          dob: masterData.DOB ? dayjs(masterData.DOB) : undefined,
+          DOB: masterData.DOB ? dayjs(masterData.DOB) : undefined,
           Status: masterData.Status,
           ResidentialStatus: masterData.ResidentialStatus,
           Disability: masterData.Disability,
@@ -322,7 +322,7 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
             <Col className='gutter-row' span={20}>
               <Form.Item
-                name='dob'
+                name='DOB'
                 rules={[
                   {
                     required: true,
