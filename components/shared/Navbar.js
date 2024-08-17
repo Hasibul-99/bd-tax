@@ -32,6 +32,17 @@ export default function Navbar({locale}) {
     setShowMobileMenu((thumb) => !thumb)
   }
 
+  const handelChange = (name) => {
+    if (name === 'Logout') {
+      Cookies.remove('bdtax_token')
+      Cookies.remove('bdtax_user')
+
+      localStorage.removeItem('bdtax_token')
+      localStorage.removeItem('bdtax_user')
+      window.location = '/en/signin'
+    }
+  }
+
   useEffect(() => {
     setToken(Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token'))
   }, [])
@@ -207,8 +218,11 @@ export default function Navbar({locale}) {
           {moreNaveData.map((item) => (
             <li key={item.id}>
               <Link
-                href={`/${locale}+ ${item.url}`}
+                href={`${item.url}`}
                 className='block text-sm px-2 py-4 hover:bg-green-500 transition duration-300'
+                onClick={() => {
+                  handelChange(item.name)
+                }}
               >
                 <Space>
                   <img src={item.icon} alt={item.name} />

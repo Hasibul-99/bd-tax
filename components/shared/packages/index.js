@@ -79,9 +79,30 @@ export default function Packages({locale, ssrData}) {
 
           {packageList.current_package_id ? (
             <>
-              <div className='mb-10 bg-white pb-10 rounded-b-2xl'>
+              <div className='mb-10 bg-white pb-10 rounded-b-2xl md:px-4'>
                 <Row>
-                  <Col span={10} offset={8}>
+                  <Col
+                    xs={{
+                      span: 24,
+                      offset: 1,
+                    }}
+                    sm={{
+                      span: 24,
+                      offset: 1,
+                    }}
+                    md={{
+                      span: 24,
+                      offset: 1,
+                    }}
+                    lg={{
+                      span: 10,
+                      offset: 8,
+                    }}
+                    xl={{
+                      span: 10,
+                      offset: 8,
+                    }}
+                  >
                     {isShowAllPackages ? (
                       <>
                         <Button

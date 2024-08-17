@@ -14,7 +14,7 @@ export default function CardViewStandard(props) {
         {packageList ? (
           <>
             <div
-              className={`bg-[#f5f5f5] truncate rounded-t-[25px] ${
+              className={`bg-[#f5f5f5]  rounded-t-[25px] ${
                 showDetails
                   ? ' border-b-2 border-[#0F172A]'
                   : 'rounded-b-[25px]'
