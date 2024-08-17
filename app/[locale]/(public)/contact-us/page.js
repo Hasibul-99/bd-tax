@@ -90,27 +90,6 @@ export default function ContactUs() {
             </Col>
           </Row>
 
-          {/* <Row gutter={16}>
-            <Col className="gutter-row" xs={24} sm={24} md={4}>
-              Subject *
-            </Col>
-            <Col className="gutter-row" xs={24} sm={24} md={20}>
-              <Form.Item
-                label=""
-                name="subject"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your ETIN!',
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-
-            </Col>
-          </Row> */}
-
           <Row gutter={16}>
             <Col className='gutter-row' xs={24} sm={24} md={4}>
               Message *
@@ -126,7 +105,7 @@ export default function ContactUs() {
                   },
                 ]}
               >
-                <TextArea maxLength={200} />
+                <TextArea />
               </Form.Item>
             </Col>
           </Row>
