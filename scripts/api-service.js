@@ -43,7 +43,13 @@ export const getData = async (query, no_token) => {
      data ---> data to be posted
      no_token ---> acts as a flag for no need to use token */
 
-export const postData = async (query, data, no_token, showError) => {
+export const postData = async (
+  query,
+  data,
+  no_token,
+  showError,
+  notShowAlert
+) => {
   const token =
     Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')
 
@@ -88,10 +94,14 @@ export const postData = async (query, data, no_token, showError) => {
       }
     }
     if (error.response.status) checkRes(error.response.status)
-    alertPop(
-      'error',
-      error?.response?.data?.message || error?.response?.data?.data?.message
-    )
+    if (notShowAlert) {
+    } else {
+      alertPop(
+        'error',
+        error?.response?.data?.message || error?.response?.data?.data?.message
+      )
+    }
+
     return false
   }
 }

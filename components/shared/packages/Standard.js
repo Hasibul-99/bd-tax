@@ -8,10 +8,16 @@ export default function Standard(props) {
   const router = useRouter()
 
   const tempUserPackages = async () => {
-    let res = await postData(TEMP_PACKAGES, {package_id: pack.id})
+    let res = await postData(
+      TEMP_PACKAGES,
+      {package_id: pack.id},
+      null,
+      null,
+      true
+    )
 
     if (res) {
-      router.push(`/${locale}/standard`)
+      // router.push(`/${locale}/standard`)
     }
   }
 

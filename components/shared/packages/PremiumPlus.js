@@ -10,10 +10,16 @@ export default function PremiumPlus(props) {
   const router = useRouter()
 
   const tempUserPackages = async () => {
-    let res = await postData(TEMP_PACKAGES, {package_id: pack.id})
+    let res = await postData(
+      TEMP_PACKAGES,
+      {package_id: pack.id},
+      null,
+      null,
+      true
+    )
 
     if (res) {
-      router.push(`/${locale}/premium-plus`)
+      // router.push(`/${locale}/premium-plus`)
     }
   }
 
