@@ -1,4 +1,4 @@
-import {GET_USER_PROFILE, PACKAGE_WISE_PROFILE} from '@/scripts/api'
+import {GET_AREAS, GET_USER_PROFILE, PACKAGE_WISE_PROFILE} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {RightOutlined} from '@ant-design/icons'
@@ -13,11 +13,12 @@ import {
   Select,
 } from 'antd'
 import dayjs from 'dayjs'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 const {Option} = Select
 
 export default function PersonalInfo({setCurrent}) {
   const [form] = Form.useForm()
+  const [areaList, setAreaList] = useState([])
 
   const onFinish = async (values) => {
     let profile = {
@@ -28,7 +29,10 @@ export default function PersonalInfo({setCurrent}) {
       Email: values.email,
       Contact: values.mobile,
       NationalId: values.NationalId,
-      DOB: dayjs(values.dob).format('DD-MM-YYYY'),
+      DOB: dayjs(values.DOB).format('DD-MM-YYYY'),
+      AreaOfResidence: values.AreaOfResidence,
+      TaxesZone: values.TaxesZone,
+      TaxesCircle: values.TaxesCircle,
     }
 
     let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError')
@@ -59,14 +63,25 @@ export default function PersonalInfo({setCurrent}) {
           email: masterData.Email,
           mobile: masterData.Contact,
           gender: masterData.Gender,
-          dob: masterData.DOB ? dayjs(masterData.DOB) : undefined,
+          DOB: masterData.DOB ? dayjs(masterData.DOB) : undefined,
+          AreaOfResidence: parseInt(masterData.AreaOfResidence),
+          TaxesZone: masterData.TaxesZone,
+          TaxesCircle: masterData.TaxesCircle,
         })
       }
     }
   }
 
+  const getAreaData = async () => {
+    let res = await getData(GET_AREAS)
+    if (res) {
+      setAreaList(res?.data)
+    }
+  }
+
   useEffect(() => {
     getUserData()
+    getAreaData()
   }, [])
 
   return (
@@ -233,7 +248,7 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
             <Col className='gutter-row' span={20}>
               <Form.Item
-                name='dob'
+                name='DOB'
                 rules={[
                   {
                     required: true,
@@ -276,6 +291,86 @@ export default function PersonalInfo({setCurrent}) {
                 >
                   <Option value='male'>Male</Option>
                   <Option value='female'>Female</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row gutter={16}>
+            <Col className='gutter-row' span={4}>
+              Taxes Circle *
+            </Col>
+            <Col className='gutter-row' span={20}>
+              <Form.Item
+                label=''
+                name='TaxesCircle'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input!',
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row gutter={16}>
+            <Col className='gutter-row' span={4}>
+              Taxes Zone *
+            </Col>
+            <Col className='gutter-row' span={20}>
+              <Form.Item
+                label=''
+                name='TaxesZone'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input!',
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col className='gutter-row' span={4}>
+              Area of residence *
+            </Col>
+            <Col className='gutter-row' span={20}>
+              <Form.Item
+                label=''
+                name='AreaOfResidence'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input!',
+                  },
+                ]}
+              >
+                <Select
+                  placeholder='Select Area '
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
+                  {areaList?.length ? (
+                    <>
+                      {areaList.map((item) => (
+                        <Option value={item.id} key={item.id}>
+                          {item.name}
+                        </Option>
+                      ))}
+                    </>
+                  ) : (
+                    ''
+                  )}
                 </Select>
               </Form.Item>
             </Col>
