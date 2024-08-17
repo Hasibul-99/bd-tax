@@ -117,12 +117,12 @@ export default function AuthNavbar({locale}) {
             <li>
               <LanguageChange />
             </li>
-            <li className='font-normal text-base leading-5 text-[#020617] md:px-2.5'>
+            <li className='font-normal text-base leading-5 text-[#020617] md:px-2.5 my-6 md:my-0'>
               <Link
                 href={`/${locale}/signin`}
                 className={
                   isActiveUrl(`/${locale}/signin`)
-                    ? 'rounded-[12px] py-2 md:px-4 bg-custom-gradient text-white'
+                    ? 'rounded-[12px] py-2 px-10 md:px-4 bg-custom-gradient text-white '
                     : 'md:px-5 py-4 block hover:text-green-400'
                 }
               >
@@ -134,7 +134,7 @@ export default function AuthNavbar({locale}) {
                 href={`/${locale}/signup`}
                 className={
                   isActiveUrl(`/${locale}/signup`)
-                    ? 'rounded-[12px] py-2 md:px-4 bg-custom-gradient text-white'
+                    ? 'rounded-[12px] py-2 px-10 md:px-4 bg-custom-gradient text-white'
                     : 'md:px-5 py-4 block hover:text-green-400'
                 }
               >
