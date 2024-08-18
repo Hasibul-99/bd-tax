@@ -10,7 +10,7 @@ export default function CardViewPremium(props) {
 
   return (
     <div>
-      <div className='block rounded-[25px] border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative'>
+      <div className='block rounded-[25px] border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative overflow-hidden'>
         {packageList ? (
           <>
             <div

@@ -126,7 +126,11 @@ export default function PremiumPlusProcess() {
       </div>
 
       <div className='bg-white mt-6 rounded-[20px]'>
-        {current === 1 ? <PersonalInfo setCurrent={setCurrent} /> : ''}
+        {current === 1 ? (
+          <PersonalInfo setCurrent={setCurrent} context='premium_plus' />
+        ) : (
+          ''
+        )}
         {current === 2 ? <Doc setCurrent={setCurrent} /> : ''}
         {current === 3 ? (
           <Payment

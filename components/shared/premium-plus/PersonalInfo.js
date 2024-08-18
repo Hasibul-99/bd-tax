@@ -16,8 +16,11 @@ import dayjs from 'dayjs'
 import {useEffect, useState} from 'react'
 const {Option} = Select
 
-export default function PersonalInfo({setCurrent}) {
+import {useRouter} from 'next/navigation'
+
+export default function PersonalInfo({setCurrent, context}) {
   const [form] = Form.useForm()
+  const router = useRouter()
   const [areaList, setAreaList] = useState([])
 
   const onFinish = async (values) => {
@@ -43,7 +46,15 @@ export default function PersonalInfo({setCurrent}) {
       } else {
         let masterData = res.data
         alertPop('success', masterData?.message)
-        setCurrent(2)
+
+        if (
+          context === 'premium_plus' &&
+          masterData.data?.profile_changable === 1
+        ) {
+          router.push('/premium/process?step=2')
+        } else {
+          setCurrent(2)
+        }
       }
     }
   }

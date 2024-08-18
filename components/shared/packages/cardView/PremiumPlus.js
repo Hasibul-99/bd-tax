@@ -14,7 +14,7 @@ export default function CardViewPremiumPlus(props) {
     <>
       {packageList ? (
         <div>
-          <div className='block rounded-[20px] border text-surface shadow-secondary-1 border-[#D4AF37] relative'>
+          <div className='block rounded-[20px] border text-surface shadow-secondary-1 border-[#D4AF37] relative overflow-hidden'>
             <div
               className={`bg-[#FFFDCC] px-6 py-3 rounded-t-[25px]  ${
                 showDetails

@@ -20,6 +20,7 @@ export default function PremiumPlusProcess() {
   const [loadingPSD, setLoadingPSD] = useState(true)
   const [salaryData, setSalaryData] = useState()
   const status = searchParams.get('status')
+  const step = searchParams.get('step')
 
   const onChange = (value) => {
     setCurrent(value)
@@ -49,6 +50,12 @@ export default function PremiumPlusProcess() {
       }
     }
   }, [status])
+
+  useEffect(() => {
+    if (step) {
+      setCurrent(parseInt(step))
+    }
+  }, [step])
 
   return (
     <div className='custom-container-under mx-auto px-30 mt-5 pb-16'>
