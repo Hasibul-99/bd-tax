@@ -349,7 +349,7 @@ export default function PersonalInfo({setCurrent}) {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your gender!',
+                    message: 'Please select your gender!',
                   },
                 ]}
               >

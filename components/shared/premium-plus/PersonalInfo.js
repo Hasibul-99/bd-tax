@@ -286,7 +286,7 @@ export default function PersonalInfo({setCurrent, context}) {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your DOB!',
+                    message: 'Please select your gender!',
                   },
                 ]}
               >

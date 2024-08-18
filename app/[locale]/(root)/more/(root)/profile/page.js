@@ -265,7 +265,7 @@ export default function Profile() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your DOB!',
+                    message: 'Please select your gender!',
                   },
                 ]}
               >

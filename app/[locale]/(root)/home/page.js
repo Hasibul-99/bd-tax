@@ -3,7 +3,7 @@
 import {GET_ORDER_HISTORY} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
 import {RightOutlined} from '@ant-design/icons'
-import {Button, Space} from 'antd'
+import {Button, Result, Space} from 'antd'
 import Link from 'next/link'
 import {useEffect, useState} from 'react'
 
@@ -133,7 +133,10 @@ export default function Docs() {
               ))}
             </>
           ) : (
-            ''
+            <Result
+              status='warning'
+              title="It looks like you haven't made any purchases."
+            />
           )}
         </>
       ) : null}
