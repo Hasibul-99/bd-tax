@@ -1,5 +1,6 @@
 import {SAVE_USER_SIGNATURE, UPLOAD_FILES} from '@/scripts/api'
 import {postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
 import {CloseCircleOutlined} from '@ant-design/icons'
 import {
   Button,
@@ -39,6 +40,8 @@ export default function SignatureUpload({offsetWidth = 1000, setShow}) {
       let res = await postData(UPLOAD_FILES, formData)
 
       if (res) {
+        let masterData = res?.data
+        alertPop('success', masterData.message)
         setShow(3)
       }
     } else {
@@ -48,6 +51,8 @@ export default function SignatureUpload({offsetWidth = 1000, setShow}) {
       let res = await postData(SAVE_USER_SIGNATURE, formData)
 
       if (res) {
+        let masterData = res?.data
+        alertPop('success', masterData.message)
         setShow(3)
       }
     }

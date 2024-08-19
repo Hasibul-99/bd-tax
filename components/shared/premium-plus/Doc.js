@@ -23,10 +23,12 @@ export default function Doc({setCurrent, nextCurrent}) {
   const [loading, setLoading] = useState(false)
   const [fileType, setFileType] = useState()
   const [uploadedFile, setUploadedFile] = useState()
+  const [floading, setfLoading] = useState(false)
 
   const props = {
     name: 'file',
     multiple: false,
+    accept: '.jpg,.png,.pdf',
     action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
     beforeUpload() {
       return false
@@ -58,10 +60,11 @@ export default function Doc({setCurrent, nextCurrent}) {
   }
 
   const onFinish = async (values) => {
+    setfLoading(true)
     let formData = new FormData()
 
     formData.append('file_type', values?.file_type) //append the values with key, value pair
-    formData.append('img', values?.Img?.file)
+    formData.append('img', values?.img?.file)
 
     let res = await postData(UPLOAD_FILES, formData, null, true)
 
@@ -74,6 +77,8 @@ export default function Doc({setCurrent, nextCurrent}) {
 
         setUploadedFile((oldArray) => [...oldArray, masterData])
       }
+
+      setfLoading(false)
     }
   }
 
@@ -179,6 +184,7 @@ export default function Doc({setCurrent, nextCurrent}) {
                   <Col className='gutter-row' span={6}>
                     <Form.Item className='mb-1'>
                       <Button
+                        loading={floading}
                         type='primary'
                         htmlType='submit'
                         className='mt-2 prime-button  m-auto'
@@ -190,7 +196,7 @@ export default function Doc({setCurrent, nextCurrent}) {
                 </Row>
 
                 <Form.Item
-                  name='Img'
+                  name='img'
                   rules={[
                     {
                       required: true,

@@ -249,15 +249,7 @@ export default function TaxRebate({
                   Life Insurance Premium
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
-                  <Form.Item
-                    name='LifeInsurancePremium_1'
-                    rules={[
-                      {
-                        required: false,
-                        message: 'Please input Adress Of Property',
-                      },
-                    ]}
-                  >
+                  <Form.Item name='LifeInsurancePremium_1'>
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
@@ -267,7 +259,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -286,7 +277,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -306,7 +296,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -319,7 +308,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -339,7 +327,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -352,7 +339,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -371,7 +357,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -384,7 +369,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -404,7 +388,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -417,7 +400,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -436,7 +418,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -449,7 +430,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -468,7 +448,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -481,7 +460,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -500,7 +478,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -513,7 +490,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -532,7 +508,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -545,7 +520,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -564,7 +538,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -577,7 +550,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -597,7 +569,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -610,7 +581,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -630,7 +600,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -643,7 +612,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -664,7 +632,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -677,7 +644,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -697,7 +663,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -710,7 +675,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -729,7 +693,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -742,7 +705,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -761,7 +723,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -774,7 +735,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -793,7 +753,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >
@@ -806,7 +765,6 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
-                        message: 'Please input Adress Of Property',
                       },
                     ]}
                   >

@@ -314,7 +314,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Business Or Profession Name',
                     },
                   ]}
                 >
@@ -333,7 +333,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Adress',
                     },
                   ]}
                 >
@@ -362,7 +362,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Sales',
                     },
                   ]}
                 >
@@ -380,7 +380,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Gross Profit',
                     },
                   ]}
                 >
@@ -398,7 +398,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Other Expense',
                     },
                   ]}
                 >
@@ -417,7 +417,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Bad Debt Expense',
                     },
                   ]}
                 >
@@ -435,7 +435,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Net Profit',
                     },
                   ]}
                 >
@@ -465,7 +465,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Cash In Hand Or Bank',
                     },
                   ]}
                 >
@@ -484,7 +484,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Inventories',
                     },
                   ]}
                 >
@@ -503,7 +503,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Fixed Assets',
                     },
                   ]}
                 >
@@ -521,7 +521,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Other Assets',
                     },
                   ]}
                 >
@@ -539,7 +539,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Total Assets',
                     },
                   ]}
                 >
@@ -557,7 +557,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Opening Capital',
                     },
                   ]}
                 >
@@ -575,7 +575,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: false,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Net Profit',
                     },
                   ]}
                 >
@@ -593,7 +593,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Withdrawals In Income Year',
                     },
                   ]}
                 >
@@ -611,7 +611,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Closing Capital',
                     },
                   ]}
                 >
@@ -629,7 +629,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Liabilities',
                     },
                   ]}
                 >
@@ -648,7 +648,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress Of Property',
+                      message: 'Please input Total Capital Liabilities',
                     },
                   ]}
                 >
