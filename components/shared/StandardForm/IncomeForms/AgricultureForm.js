@@ -222,6 +222,7 @@ export default function AgricultureForm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please select an option',
                   },
                 ]}
               >
@@ -249,6 +250,7 @@ export default function AgricultureForm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please input land size in bigha ',
                   },
                 ]}
               >
@@ -265,6 +267,7 @@ export default function AgricultureForm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please select  ',
                   },
                 ]}
               >
@@ -279,6 +282,7 @@ export default function AgricultureForm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please input Revenue ',
                   },
                 ]}
               >
@@ -293,6 +297,7 @@ export default function AgricultureForm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please input Production Cost ',
                   },
                 ]}
               >
@@ -307,6 +312,7 @@ export default function AgricultureForm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please input Cost ',
                   },
                 ]}
               >

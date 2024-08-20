@@ -105,6 +105,8 @@ export default function PropertyForm({
       )
 
       if (res) {
+        console.log('res', res)
+
         if (res.code === 'error') {
           form.setFields(res?.errors)
         } else {
@@ -299,7 +301,7 @@ export default function PropertyForm({
                       },
                     ]}
                   >
-                    <Input className='w-full' />
+                    <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
               </Row>

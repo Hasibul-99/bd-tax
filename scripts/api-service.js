@@ -181,6 +181,30 @@ export const putData = async (query, data, no_token, showError) => {
         errors: errors,
       }
     }
+
+    if (
+      showError &&
+      error?.response?.data?.errors &&
+      Object.keys(error?.response?.data?.errors).length
+    ) {
+      if (error?.response?.data?.message) {
+        alertPop('error', error?.response?.data?.message)
+      }
+
+      let errors = []
+
+      for (const property in error?.response?.data?.errors) {
+        errors.push({
+          name: property, // required
+          errors: error?.response?.data?.errors[property],
+        })
+      }
+      return {
+        code: 'error',
+        errors: errors,
+      }
+    }
+
     if (error.response.status) checkRes(error.response.status)
     alertPop(
       'error',

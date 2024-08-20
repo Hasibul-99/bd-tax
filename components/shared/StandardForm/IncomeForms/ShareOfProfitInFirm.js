@@ -186,6 +186,7 @@ export default function ShareOfProfitInFirm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please enter Name Of Firm',
                   },
                 ]}
               >
@@ -197,6 +198,7 @@ export default function ShareOfProfitInFirm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please enter Income Of Firm',
                   },
                 ]}
               >
@@ -211,6 +213,7 @@ export default function ShareOfProfitInFirm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please enter Share Of Firm',
                   },
                 ]}
               >
@@ -228,6 +231,7 @@ export default function ShareOfProfitInFirm({
                 rules={[
                   {
                     required: true,
+                    message: 'Please enter Cost',
                   },
                 ]}
               >

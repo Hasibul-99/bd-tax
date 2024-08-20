@@ -256,7 +256,15 @@ export default function CapitalGains({
             </Form.Item>
 
             {selectedType?.Details ? (
-              <Form.Item name='Description'>
+              <Form.Item
+                name='Description'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input Description!',
+                  },
+                ]}
+              >
                 <Input placeholder='Description' />
               </Form.Item>
             ) : (
@@ -268,7 +276,7 @@ export default function CapitalGains({
                   name='Cost'
                   rules={[
                     {
-                      required: false,
+                      required: true,
                       message: 'Please input Cost!',
                     },
                   ]}
