@@ -57,20 +57,27 @@ export default function CapitalGains({
     },
     {
       title: 'Amount (BDT)',
-      dataIndex: 'Cost',
-      key: 'Cost',
+      dataIndex: 'Cost_',
+      key: 'Cost_',
       width: 200,
     },
     {
       title: 'Method',
-      dataIndex: 'Cost',
+      dataIndex: 'MoreThanTenPercentHolder',
       key: 'Cost',
       width: 200,
+      render: (_, record) => (
+        <>
+          {record?.MoreThanTenPercentHolder
+            ? 'Shareholder of more than 10% -'
+            : 'N/A'}
+        </>
+      ),
     },
     {
       title: 'Taxable Income (BDT)',
-      dataIndex: 'tds_amount',
-      key: 'tds_amount',
+      dataIndex: 'Cost',
+      key: 'Cost',
       width: 200,
     },
     {

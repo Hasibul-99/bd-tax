@@ -4,6 +4,7 @@ import {alertPop} from '@/scripts/helper'
 import {LeftOutlined, RightOutlined} from '@ant-design/icons'
 import {Button, Col, ConfigProvider, Form, Input, Row, Space} from 'antd'
 import {useEffect} from 'react'
+import {getDataOtherSourse} from './helper'
 
 export default function OtherSources({
   setActiveTab,
@@ -32,7 +33,10 @@ export default function OtherSources({
     let res = await getData(Get_Other_Sources)
 
     if (res) {
-      console.log(res)
+      console.log('====================================')
+      console.log('getDataOtherSourse', getDataOtherSourse(res?.data))
+      console.log('====================================')
+      form.setFieldsValue(getDataOtherSourse(res?.data))
     }
   }
 
@@ -85,7 +89,7 @@ export default function OtherSources({
                 name='InterestIncomeFromWEDB_1'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message: 'Required *',
                   },
                 ]}
@@ -117,7 +121,8 @@ export default function OtherSources({
                 name='USDollarPremium_1'
                 rules={[
                   {
-                    required: true,
+                    required: false,
+
                     message: 'Required *',
                   },
                 ]}
@@ -148,7 +153,8 @@ export default function OtherSources({
                 name='PoundSterlingPremium_1'
                 rules={[
                   {
-                    required: true,
+                    required: false,
+
                     message: 'Required *',
                   },
                 ]}
@@ -179,7 +185,8 @@ export default function OtherSources({
                 name='EuroPremium_1'
                 rules={[
                   {
-                    required: true,
+                    required: false,
+
                     message: 'Required *',
                   },
                 ]}
@@ -211,7 +218,8 @@ export default function OtherSources({
                 name='InvestmentInInstrument_1'
                 rules={[
                   {
-                    required: true,
+                    required: false,
+
                     message: 'Required *',
                   },
                 ]}
@@ -242,7 +250,8 @@ export default function OtherSources({
                 name='InterestFromInstrument_1'
                 rules={[
                   {
-                    required: true,
+                    required: false,
+
                     message: 'Required *',
                   },
                 ]}
@@ -273,7 +282,8 @@ export default function OtherSources({
                 name='SanchaypatraIncome'
                 rules={[
                   {
-                    required: true,
+                    required: false,
+
                     message: 'Required *',
                   },
                 ]}
@@ -303,7 +313,8 @@ export default function OtherSources({
                 name='TDSFromSanchaypatra'
                 rules={[
                   {
-                    required: true,
+                    required: false,
+
                     message: 'Required *',
                   },
                 ]}
@@ -322,6 +333,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+
                     message: 'Required *',
                   },
                 ]}

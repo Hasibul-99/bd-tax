@@ -98,6 +98,16 @@ export default function ShareOfProfitInFirm({
     setSelecetedItem(data)
   }
 
+  const onValuesChange = (changedValues, allValues) => {
+    console.log('Changed values:', changedValues)
+    console.log('All values:', allValues)
+
+    let cost =
+      ((allValues.IncomeOfFirm || 0) * (allValues.ShareOfFirm || 0)) / 100
+
+    form.setFieldsValue({Cost: cost || 0})
+  }
+
   const columns = [
     {
       title: 'Firm name',
@@ -178,6 +188,7 @@ export default function ShareOfProfitInFirm({
             layout={'vertical'}
             name='control-hooks'
             onFinish={onFinish}
+            onValuesChange={onValuesChange}
             size='large'
           >
             <Flex wrap gap='small'>
@@ -220,9 +231,6 @@ export default function ShareOfProfitInFirm({
                 <InputNumber
                   style={{width: '150px'}}
                   placeholder='Share Of Firm'
-                  onChange={(val) => {
-                    form.setFieldsValue({Cost: val})
-                  }}
                 />
               </Form.Item>
 
