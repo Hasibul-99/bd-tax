@@ -416,3 +416,6 @@ export const Get_Email_Log = 'getEmailLog'
 export const Get_Payments = 'get-payments'
 
 export const THIRDPARTY_AUTH = 'thirparty-auth/'
+
+// Get FAQ
+export const GET_FAQ = 'get-faq'
