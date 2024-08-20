@@ -61,7 +61,10 @@ export default function Payment({salaryData, setCurrent, context}) {
 
       <div className='my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
         <div className='flex flex-row items-start p-0 gap-[14.26px]'>
-          <a href={paymentData?.sslgatewayLink}>
+          <a
+            href={paymentData?.sslgatewayLink}
+            className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+          >
             <img
               src='/assets/images/visa.png'
               alt='warning'
@@ -69,7 +72,10 @@ export default function Payment({salaryData, setCurrent, context}) {
               height={40}
             />
           </a>
-          <a href={paymentData?.sslgatewayLink}>
+          <a
+            href={paymentData?.sslgatewayLink}
+            className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+          >
             <img
               src='/assets/images/master.png'
               alt='warning'
@@ -77,7 +83,10 @@ export default function Payment({salaryData, setCurrent, context}) {
               height={40}
             />
           </a>
-          <a href={paymentData?.sslgatewayLink}>
+          <a
+            href={paymentData?.sslgatewayLink}
+            className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+          >
             <img
               src='/assets/images/discover.png'
               alt='warning'
@@ -85,7 +94,10 @@ export default function Payment({salaryData, setCurrent, context}) {
               height={40}
             />
           </a>
-          <a href={paymentData?.sslgatewayLink}>
+          <a
+            href={paymentData?.sslgatewayLink}
+            className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+          >
             <img
               src='/assets/images/amex.png'
               alt='warning'
@@ -93,7 +105,10 @@ export default function Payment({salaryData, setCurrent, context}) {
               height={40}
             />
           </a>
-          <a href={paymentData?.bkashURL}>
+          <a
+            href={paymentData?.bkashURL}
+            className={!paymentData?.bkashURL ? 'disabled' : ''}
+          >
             <img
               src='/assets/images/bkash.png'
               alt='warning'

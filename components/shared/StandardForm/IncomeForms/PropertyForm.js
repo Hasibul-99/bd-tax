@@ -371,7 +371,7 @@ export default function PropertyForm({
                     rules={[
                       {
                         required: true,
-                        message: 'Please input Advance Rent Received',
+                        message: 'Please input',
                       },
                     ]}
                   >
@@ -391,7 +391,7 @@ export default function PropertyForm({
                     rules={[
                       {
                         required: true,
-                        message: 'Please input Advance Rent Received',
+                        message: 'Please input Adjusted Advance Rent ',
                       },
                     ]}
                   >

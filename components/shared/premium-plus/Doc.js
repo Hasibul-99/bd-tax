@@ -1,7 +1,7 @@
 import {DELETE_FILE, GET_FILES, UPLOAD_FILES} from '@/scripts/api'
 import {deleteData, getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
-import {RightOutlined} from '@ant-design/icons'
+import {ExclamationCircleFilled, RightOutlined} from '@ant-design/icons'
 import {
   Avatar,
   Button,
@@ -17,6 +17,7 @@ import {
 } from 'antd'
 import {useEffect, useState} from 'react'
 const {Dragger} = Upload
+const {confirm} = Modal
 
 export default function Doc({setCurrent, nextCurrent}) {
   const [form] = Form.useForm()
@@ -83,8 +84,9 @@ export default function Doc({setCurrent, nextCurrent}) {
   }
 
   const deleteFile = (fileId) => {
-    Modal.warning({
+    confirm({
       title: 'Are you sure you want to delete this file?',
+      icon: <ExclamationCircleFilled />,
       // content: 'some messages...some messages...',
       async onOk() {
         let res = await deleteData(DELETE_FILE + fileId)
@@ -92,6 +94,9 @@ export default function Doc({setCurrent, nextCurrent}) {
           setUploadedFile((l) => l.filter((item) => item.id !== fileId))
           alertPop('success', res?.data?.message)
         }
+      },
+      onCancel() {
+        console.log('Cancel')
       },
     })
   }

@@ -57,6 +57,7 @@ export default function SalaryForm({
     data.has_transport = hasTranspost === 0 ? 0 : 1
     data.transport_month = tranportMonth
     data.HEKLCNetTaxable = data.HEKLCNetTaxable ? 'Y' : 'N'
+    data.EmployerName = employerName || ''
 
     let res = await postData(SAVE_INCOME_SALARIES, data, null, 'showError')
     if (res) {
@@ -144,12 +145,16 @@ export default function SalaryForm({
         OtherAllowances: allValues.OtherAllowances_1 || 0,
         Others: allValues.Others_1 || 0,
         Arear: allValues.Arear_1 || 0,
-        Gratuity_2:
-          allValues.Gratuity_1 <= 25000000 ? allValues.Gratuity_1 : 25000000,
-        Gratuity:
-          allValues.Gratuity_1 <= 25000000
+        Gratuity_2: allValues.Gratuity_1
+          ? allValues.Gratuity_1 <= 25000000
+            ? allValues.Gratuity_1
+            : 25000000
+          : 0,
+        Gratuity: allValues.Gratuity_1
+          ? allValues.Gratuity_1 <= 25000000
             ? 0
-            : allValues.Gratuity_1 - 25000000,
+            : allValues.Gratuity_1 - 25000000
+          : 0,
       })
     }
   }
@@ -164,6 +169,7 @@ export default function SalaryForm({
         setTranportMonth(masterData.transport_month)
         setReceivedAnyHouse(masterData?.ReceivedAnyHouse || 'N')
         setPaidAnyPartOfRent(masterData.PaidAnyPartOfRent)
+        setEmployerName(masterData.EmployerName)
 
         let formData = {...masterData}
 

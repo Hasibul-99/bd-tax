@@ -71,7 +71,7 @@ export default function referral() {
                 <EmailShareButton
                   url={refData.url}
                   subject={'Next Share'}
-                  body='body'
+                  body=''
                 >
                   <EmailIcon size={32} round />
                 </EmailShareButton>

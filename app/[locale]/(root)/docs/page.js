@@ -9,7 +9,7 @@ import {
 } from '@/scripts/api'
 import {deleteData, getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
-import {CaretRightOutlined} from '@ant-design/icons'
+import {CaretRightOutlined, ExclamationCircleFilled} from '@ant-design/icons'
 import {
   Avatar,
   Button,
@@ -29,6 +29,7 @@ import {
 } from 'antd'
 import {useEffect, useState} from 'react'
 const {Dragger} = Upload
+const {confirm} = Modal
 
 export default function Doc() {
   const [selected, setSelected] = useState()
@@ -100,8 +101,9 @@ export default function Doc() {
   }
 
   const deleteFile = async (fileId) => {
-    Modal.warning({
+    confirm({
       title: 'Are you sure you want to delete this file?',
+      icon: <ExclamationCircleFilled />,
       // content: 'some messages...some messages...',
       async onOk() {
         let res = await deleteData(DELETE_FILE + fileId)
@@ -109,6 +111,9 @@ export default function Doc() {
           setFileList((l) => l.filter((item) => item.id !== fileId))
           alertPop('success', res?.data?.message)
         }
+      },
+      onCancel() {
+        console.log('Cancel')
       },
     })
   }
