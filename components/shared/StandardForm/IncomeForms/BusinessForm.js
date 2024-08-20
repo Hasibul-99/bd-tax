@@ -193,14 +193,14 @@ export default function BusinessForm({
                   <Input
                     size='large'
                     value={showValue(item, 'Amount')}
-                    Disabled
+                    disabled
                   />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={6}>
                   <Input
                     size='large'
                     value={showValue(item, 'NetTaxable')}
-                    Disabled
+                    disabled
                   />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={6}>
@@ -306,7 +306,7 @@ export default function BusinessForm({
 
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Business Or Profession Name
+                Business Or Profession Name *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -325,7 +325,7 @@ export default function BusinessForm({
 
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Address
+                Address *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -333,7 +333,7 @@ export default function BusinessForm({
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Adress',
+                      message: 'Please input Address',
                     },
                   ]}
                 >
@@ -354,7 +354,7 @@ export default function BusinessForm({
 
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Sales
+                Sales *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -372,7 +372,7 @@ export default function BusinessForm({
             </Row>
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Gross Profit
+                Gross Profit *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -397,7 +397,7 @@ export default function BusinessForm({
                   name='OtherExpense'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Other Expense',
                     },
                   ]}
@@ -416,7 +416,7 @@ export default function BusinessForm({
                   name='BadDebtExpense'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Bad Debt Expense',
                     },
                   ]}
@@ -427,7 +427,7 @@ export default function BusinessForm({
             </Row>
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Net Profit
+                Net Profit *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -439,7 +439,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber Disabled className='w-full' />
+                  <InputNumber disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -464,7 +464,7 @@ export default function BusinessForm({
                   name='CashInHandOrBank'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Cash In Hand Or Bank',
                     },
                   ]}
@@ -483,7 +483,7 @@ export default function BusinessForm({
                   name='Inventories'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Inventories',
                     },
                   ]}
@@ -502,7 +502,7 @@ export default function BusinessForm({
                   name='FixedAssets'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Fixed Assets',
                     },
                   ]}
@@ -520,7 +520,7 @@ export default function BusinessForm({
                   name='OtherAssets'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Other Assets',
                     },
                   ]}
@@ -531,7 +531,7 @@ export default function BusinessForm({
             </Row>
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Total Assets
+                Total Assets *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -543,7 +543,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber Disabled className='w-full' />
+                  <InputNumber disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -556,7 +556,7 @@ export default function BusinessForm({
                   name='OpeningCapital'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Opening Capital',
                     },
                   ]}
@@ -567,7 +567,7 @@ export default function BusinessForm({
             </Row>
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Net Profit
+                Net Profit *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -579,7 +579,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber Disabled className='w-full' />
+                  <InputNumber disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -592,7 +592,7 @@ export default function BusinessForm({
                   name='WithdrawlsInIncomeYear'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Withdrawals In Income Year',
                     },
                   ]}
@@ -603,7 +603,7 @@ export default function BusinessForm({
             </Row>
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Closing Capital
+                Closing Capital *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -615,7 +615,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber Disabled className='w-full' />
+                  <InputNumber disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -628,7 +628,7 @@ export default function BusinessForm({
                   name='Liabilities'
                   rules={[
                     {
-                      required: true,
+                      required: false,
                       message: 'Please input Liabilities',
                     },
                   ]}
@@ -640,7 +640,7 @@ export default function BusinessForm({
 
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
-                Total Capital Liabilities
+                Total Capital Liabilities *
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
                 <Form.Item
@@ -652,7 +652,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber Disabled className='w-full' />
+                  <InputNumber disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>
@@ -669,7 +669,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber Disabled className='w-full' />
+                  <InputNumber disabled className='w-full' />
                 </Form.Item>
               </Col>
               <Col className='gutter-row' xs={24} sm={24} md={14}>
@@ -682,7 +682,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <InputNumber Disabled className='w-full' />
+                  <InputNumber disabled className='w-full' />
                 </Form.Item>
               </Col>
             </Row>

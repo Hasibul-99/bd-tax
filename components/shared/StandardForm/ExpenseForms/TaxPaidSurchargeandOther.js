@@ -90,8 +90,8 @@ export default function TaxPaidSurchargeandOther({
       async onOk() {
         let res = await deleteData(Delete_Expense_TaxSurchargeOthers + Id)
         if (res) {
+          alertPop('success', 'Successfully deleted!')
           getTaxSurchargeOthers()
-          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

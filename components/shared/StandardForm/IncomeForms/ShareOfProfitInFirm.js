@@ -110,7 +110,7 @@ export default function ShareOfProfitInFirm({
 
   const columns = [
     {
-      title: 'Firm name',
+      title: 'Firm Name',
       dataIndex: 'NameOfFirm',
       key: 'NameOfFirm',
       width: 200,
@@ -122,7 +122,7 @@ export default function ShareOfProfitInFirm({
       width: 150,
     },
     {
-      title: '% of ownership of Firm',
+      title: '% of Ownership of Firm',
       dataIndex: 'ShareOfFirm',
       key: 'ShareOfFirm',
       width: 150,

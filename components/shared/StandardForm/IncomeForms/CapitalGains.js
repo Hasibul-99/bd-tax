@@ -272,7 +272,7 @@ export default function CapitalGains({
                   },
                 ]}
               >
-                <Input placeholder='Description' />
+                <Input placeholder='Description' maxLength={300} />
               </Form.Item>
             ) : (
               ''

@@ -80,6 +80,7 @@ export default function AdjustmentOfTaxRefund({
                 rules={[
                   {
                     required: true,
+                    message: 'Please enter Adjustment Tax Refund',
                   },
                 ]}
               >
@@ -92,6 +93,7 @@ export default function AdjustmentOfTaxRefund({
                 rules={[
                   {
                     required: true,
+                    message: 'Please enter Adjustment Tax Refund Year',
                   },
                 ]}
               >

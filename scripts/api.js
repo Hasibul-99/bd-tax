@@ -389,7 +389,7 @@ export const Create_Expense_TaxSurchargeOthers =
 export const Update_Expense_TaxSurchargeOthers =
   'expense/userTaxSurchargeOthers/update/'
 export const Delete_Expense_TaxSurchargeOthers =
-  'expense/userTaxSurchargeOthers/delete'
+  'expense/userTaxSurchargeOthers/delete/'
 
 export const Get_Expense_LossDeductionExpenses =
   'expense/userLossDeductionExpenses'

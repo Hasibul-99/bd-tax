@@ -221,7 +221,11 @@ export default function SpouseChild({
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} placeholder='Name' />
+                <Input
+                  style={{width: '200px'}}
+                  placeholder='Name'
+                  maxLength={80}
+                />
               </Form.Item>
 
               <Form.Item

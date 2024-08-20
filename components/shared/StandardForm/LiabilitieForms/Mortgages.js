@@ -190,7 +190,11 @@ export default function Mortgages({
                   },
                 ]}
               >
-                <InputNumber style={{width: '300px'}} placeholder='Value ' />
+                <InputNumber
+                  style={{width: '300px'}}
+                  placeholder='Value '
+                  min={0}
+                />
               </Form.Item>
 
               <Form.Item>
