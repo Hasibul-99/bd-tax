@@ -35,7 +35,11 @@ export default function Congratulations() {
           <span className='text-center'>
             You can make unlimited edits to your tax return. You can always
             acess your tax return form in the{' '}
-            <Link href={'/docs'} className='underline text-[revert]'>
+            <Link
+              href={fileData?.pdf_file_path || '#'}
+              target='_blank'
+              className='underline text-[revert]'
+            >
               Docs section
             </Link>
             .

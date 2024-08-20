@@ -36,10 +36,12 @@ export default function AdjustmentOfTaxRefund({
 
   const getAdjustmentsofTaxRefund = async () => {
     let res = await getData(Get_Adjustmentsof_TaxRefund)
+
+    console.log('res', res)
   }
 
   useEffect(() => {
-    // getAdjustmentsofTaxRefund()
+    getAdjustmentsofTaxRefund()
   }, [])
 
   return (
