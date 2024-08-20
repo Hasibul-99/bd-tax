@@ -138,7 +138,7 @@ export default function TaxDeductedAtSource({
 
   return (
     <div className='bg-white pb-6 px-6'>
-      <h3 className='text-xl font-semibold'>INCOME FROM FINANCIAL ASSETS </h3>
+      <h3 className='text-xl font-semibold'>Tax Debucted at Source</h3>
       <ConfigProvider
         theme={{
           token: {

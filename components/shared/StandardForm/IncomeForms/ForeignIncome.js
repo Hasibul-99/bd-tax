@@ -132,7 +132,7 @@ export default function ForeignIncome({
 
   return (
     <div className='bg-white pb-6 px-6'>
-      <h3 className='text-xl font-semibold'>INCOME FROM FINANCIAL ASSETS </h3>
+      <h3 className='text-xl font-semibold'>Foreign Income</h3>
       <ConfigProvider
         theme={{
           token: {

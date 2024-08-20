@@ -1,5 +1,6 @@
 import {Get_Other_Sources, Save_Other_Sources} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
 import {LeftOutlined, RightOutlined} from '@ant-design/icons'
 import {Button, Col, ConfigProvider, Form, Input, Row, Space} from 'antd'
 import {useEffect} from 'react'
@@ -15,10 +16,15 @@ export default function OtherSources({
   const onFinish = async (values) => {
     let data = {...values}
 
-    let res = await postData(Save_Other_Sources, data)
+    let res = await postData(Save_Other_Sources, data, null, 'showError')
 
     if (res) {
-      getOtherSources()
+      if (res.code === 'error') {
+        form.setFields(res?.errors)
+      } else {
+        getOtherSources()
+        alertPop('success', res.data?.message)
+      }
     }
   }
 
@@ -80,6 +86,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -92,10 +99,11 @@ export default function OtherSources({
                 rules={[
                   {
                     required: false,
+                    message: 'Required',
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} readOnly />
+                <Input style={{width: '200px'}} disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -110,6 +118,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -125,7 +134,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} readOnly />
+                <Input style={{width: '200px'}} disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -140,6 +149,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -155,7 +165,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} readOnly />
+                <Input style={{width: '200px'}} disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -170,6 +180,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -185,7 +196,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} readOnly />
+                <Input style={{width: '200px'}} disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -201,6 +212,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -216,7 +228,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} readOnly />
+                <Input style={{width: '200px'}} disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -231,6 +243,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -246,7 +259,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} readOnly />
+                <Input style={{width: '200px'}} disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -261,6 +274,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -276,7 +290,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} readOnly />
+                <Input style={{width: '200px'}} disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -290,6 +304,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -307,6 +322,7 @@ export default function OtherSources({
                 rules={[
                   {
                     required: true,
+                    message: 'Required *',
                   },
                 ]}
               >
@@ -322,12 +338,12 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <Input style={{width: '200px'}} readOnly />
+                <Input style={{width: '200px'}} disabled />
               </Form.Item>
             </Col>
           </Row>
 
-          <div className='text-center'>
+          <div className='text-center mt-10'>
             <Form.Item>
               <Button type='primary' htmlType='submit' className='w-28'>
                 Save

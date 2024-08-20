@@ -224,7 +224,7 @@ export default function Prospects({setCurrent, prospectData}) {
           </div>
 
           <div>
-            <Title level={5}>Your Libility</Title>
+            <Title level={5}>Your Liabilities</Title>
             <Checkbox.Group
               defaultValue={showLibilityDefault()}
               className='my-5 w-full'

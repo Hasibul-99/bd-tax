@@ -444,7 +444,7 @@ export default function BusinessForm({
               </Col>
             </Row>
 
-            <Divider>Summary Of Income</Divider>
+            <Divider>Summary Of Balance Sheet</Divider>
 
             <Row gutter={16} className='my-5'>
               <Col className='gutter-row ' xs={24} sm={24} md={10}>
