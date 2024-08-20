@@ -191,7 +191,7 @@ export default function Telephone({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -211,7 +211,7 @@ export default function Telephone({
 
               {/* <Form.Item name='TelephoneBillComment'>
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

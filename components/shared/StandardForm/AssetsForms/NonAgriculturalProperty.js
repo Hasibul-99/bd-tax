@@ -248,7 +248,7 @@ export default function NonAgriculturalProperty({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '150px'}}
                   placeholder='Description'

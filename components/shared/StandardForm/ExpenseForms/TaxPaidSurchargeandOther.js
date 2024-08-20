@@ -193,7 +193,7 @@ export default function TaxPaidSurchargeandOther({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -213,7 +213,7 @@ export default function TaxPaidSurchargeandOther({
 
               {/* <Form.Item name='SurchargeOtherComment'>
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

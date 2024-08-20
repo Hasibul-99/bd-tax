@@ -255,7 +255,7 @@ export default function AgricultureForm({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '150px'}}
                   placeholder='Short Description'

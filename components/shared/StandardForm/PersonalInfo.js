@@ -867,7 +867,7 @@ export default function PersonalInfo({setCurrent}) {
             <Col className='gutter-row' span={20}>
               <Form.Item name='EmployerAddress'>
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={4}
                   placeholder='Employer Address'
                 />
@@ -890,7 +890,7 @@ export default function PersonalInfo({setCurrent}) {
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={4}
                   placeholder=' Present address'
                 />
@@ -925,7 +925,7 @@ export default function PersonalInfo({setCurrent}) {
                     ]}
                   >
                     <TextArea
-                      maxLength={200}
+                      maxLength={600}
                       rows={4}
                       placeholder='Permanent address'
                     />

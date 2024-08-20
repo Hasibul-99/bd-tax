@@ -190,7 +190,7 @@ export default function Accommodation({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -210,7 +210,7 @@ export default function Accommodation({
 
               {/* <Form.Item name='AccommodationComment'>
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

@@ -195,7 +195,7 @@ export default function DomesticForeignTravel({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -215,7 +215,7 @@ export default function DomesticForeignTravel({
 
               {/* <Form.Item name='PersonalForeignTravelComment'>
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

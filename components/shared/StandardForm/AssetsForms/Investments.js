@@ -220,7 +220,7 @@ export default function Investments({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={4}
                   style={{width: '200px'}}
                   placeholder={

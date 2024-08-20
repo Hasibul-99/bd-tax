@@ -233,7 +233,7 @@ export default function CashAssets({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '200px'}}
                   placeholder='Description'

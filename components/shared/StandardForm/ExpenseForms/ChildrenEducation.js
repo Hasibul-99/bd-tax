@@ -193,7 +193,7 @@ export default function ChildrenEducation({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -226,7 +226,7 @@ export default function ChildrenEducation({
 
             {/* <Form.Item name='ChildrenEducationComment'>
               <TextArea
-                maxLength={200}
+                maxLength={600}
                 rows={2}
                 style={{width: '300px'}}
                 placeholder='Comment'

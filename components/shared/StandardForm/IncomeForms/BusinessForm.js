@@ -318,7 +318,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <TextArea maxLength={200} rows={2} />
+                  <TextArea maxLength={600} rows={2} />
                 </Form.Item>
               </Col>
             </Row>
@@ -337,7 +337,7 @@ export default function BusinessForm({
                     },
                   ]}
                 >
-                  <TextArea maxLength={200} rows={2} />
+                  <TextArea maxLength={600} rows={2} />
                 </Form.Item>
               </Col>
             </Row>

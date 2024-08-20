@@ -187,7 +187,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
               </Row>
               {/* end Liabilities */}
 
-              {/* start Expences */}
+              {/* start Expense */}
               <Row className='my-4' gutter={16}>
                 <Col
                   xs={24}
@@ -197,7 +197,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
                   xl={3}
                   className='font-normal text-[14px] leading-[18px] text-[#0F172A] text-right'
                 >
-                  Expences
+                  Expense
                 </Col>
                 <Col xs={20} sm={20} md={17} lg={17} xl={17}>
                   <Progress

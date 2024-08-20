@@ -213,7 +213,7 @@ export default function MotorVehicle({
                 ]}
               >
                 <TextArea
-                  maxLength={200}
+                  maxLength={600}
                   rows={2}
                   style={{width: '150px'}}
                   placeholder='CC'
