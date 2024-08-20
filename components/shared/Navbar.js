@@ -132,13 +132,13 @@ export default function Navbar({locale}) {
           {/* Secondary Navbar items */}
           <div className='hidden md:flex items-center space-x-3 '>
             <a
-              href='#'
+              href='/notifications'
               className='py-2 px-2 font-medium bg-[#F8FAFC] rounded-[145px]'
             >
               <img src='/assets/icons/Group.svg' />
             </a>
             <a
-              href='#'
+              href='/chat'
               className='py-2 px-2 font-medium bg-[#F8FAFC] rounded-[145px]'
             >
               <img src='/assets/icons/Frame.svg' />
