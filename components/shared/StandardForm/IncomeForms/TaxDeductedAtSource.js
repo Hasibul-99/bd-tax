@@ -33,6 +33,7 @@ export default function TaxDeductedAtSource({
   const [tdsType, setTdsType] = useState()
   const [tds, setTds] = useState()
   const [selectedItem, setSelecetedItem] = useState()
+  const [loading, setLoading] = useState(false)
   const columns = [
     {
       title: 'Tds Type',
@@ -83,7 +84,7 @@ export default function TaxDeductedAtSource({
         let res = await postData(Delete_Tds + '/' + TaxDeductId)
         if (res) {
           getTds()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {
@@ -99,6 +100,7 @@ export default function TaxDeductedAtSource({
 
   const onFinish = async (values) => {
     let data = {...values}
+    setLoading(true)
 
     if (selectedItem?.TaxDeductId) {
       data.TaxDeductId = selectedItem.TaxDeductId
@@ -108,6 +110,8 @@ export default function TaxDeductedAtSource({
     if (res) {
       form.resetFields()
       getTds()
+      setLoading(false)
+      setSelecetedItem(null)
     }
   }
 
@@ -211,7 +215,12 @@ export default function TaxDeductedAtSource({
               </Form.Item>
 
               <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='w-28'
+                  loading={loading}
+                >
                   Save
                 </Button>
               </Form.Item>

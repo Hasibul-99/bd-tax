@@ -41,9 +41,11 @@ export default function OtherTransportation({
   const [form] = Form.useForm()
   const [OtherTransportationsType, setOtherTransportationsType] = useState()
   const [OtherTransportations, setOtherTransportations] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -57,6 +59,7 @@ export default function OtherTransportation({
         form.resetFields()
         getOtherTransportations()
         setSelecetedItem()
+        setLoading(false)
         getExpenseData()
       }
     } else {
@@ -66,6 +69,7 @@ export default function OtherTransportation({
         form.resetFields()
         getOtherTransportations()
         setSelecetedItem()
+        setLoading(false)
         getExpenseData()
       }
     }
@@ -215,7 +219,12 @@ export default function OtherTransportation({
               </Form.Item> */}
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

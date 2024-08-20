@@ -91,7 +91,7 @@ export default function AgriculturalProperty({
         let res = await deleteData(Delete_User_Agriculture_Properties + Id)
         if (res) {
           getAgricultureProperties()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

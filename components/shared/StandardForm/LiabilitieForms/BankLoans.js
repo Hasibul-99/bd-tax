@@ -81,7 +81,7 @@ export default function BankLoans({
         let res = await deleteData(Delete_liability_BankLoans + Id)
         if (res) {
           getBankLoans()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

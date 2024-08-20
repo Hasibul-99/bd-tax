@@ -38,9 +38,11 @@ export default function IncomeFromFinancialAssets({
   const [financialAssets, setFinancialAssets] = useState()
   const [selectedItem, setSelecetedItem] = useState()
   const [selectedType, setSelectedType] = useState()
+  const [loading, setLoading] = useState(false)
 
   const onFinish = async (values) => {
     let data = {...values}
+    setLoading(true)
 
     data.CommissionOrInterest = data.CommissionOrInterest || 0
 
@@ -54,6 +56,7 @@ export default function IncomeFromFinancialAssets({
         getFinancialAssets()
         setSelecetedItem()
         setSelectedType()
+        setLoading(false)
       }
     } else {
       let res = await postData(Save_Financial_Assets, data)
@@ -63,6 +66,7 @@ export default function IncomeFromFinancialAssets({
         getFinancialAssets()
         setSelecetedItem()
         setSelectedType()
+        setLoading(false)
       }
     }
   }
@@ -93,7 +97,7 @@ export default function IncomeFromFinancialAssets({
         )
         if (res) {
           getFinancialAssets()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {
@@ -307,7 +311,12 @@ export default function IncomeFromFinancialAssets({
               </Form.Item>
 
               <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='w-28'
+                  loading={loading}
+                >
                   Save
                 </Button>
               </Form.Item>

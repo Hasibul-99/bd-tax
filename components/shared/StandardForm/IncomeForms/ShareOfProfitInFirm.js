@@ -37,8 +37,10 @@ export default function ShareOfProfitInFirm({
   const [ProfitInFirmsType, setProfitInFirmsType] = useState()
   const [ProfitInFirms, setProfitInFirms] = useState()
   const [selectedItem, setSelecetedItem] = useState()
+  const [loading, setLoading] = useState(false)
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     if (selectedItem?.IncomeShareProfitId) {
       let res = await putData(
@@ -50,6 +52,7 @@ export default function ShareOfProfitInFirm({
         form.resetFields()
         getProfitInFirms()
         setSelecetedItem()
+        setLoading(false)
       }
     } else {
       let res = await postData(Create_ShareOfProfitInFirms, data)
@@ -58,6 +61,7 @@ export default function ShareOfProfitInFirm({
         form.resetFields()
         getProfitInFirms()
         setSelecetedItem()
+        setLoading(false)
       }
     }
   }
@@ -80,7 +84,7 @@ export default function ShareOfProfitInFirm({
         )
         if (res) {
           getProfitInFirms()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {
@@ -235,7 +239,12 @@ export default function ShareOfProfitInFirm({
               </Form.Item>
 
               <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='w-28'
+                  loading={loading}
+                >
                   Save
                 </Button>
               </Form.Item>

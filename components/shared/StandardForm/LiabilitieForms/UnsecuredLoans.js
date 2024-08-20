@@ -81,7 +81,7 @@ export default function UnsecuredLoans({
         let res = await deleteData(Delete_liability_UnsecuredLoans + Id)
         if (res) {
           getUnsecuredLoans()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

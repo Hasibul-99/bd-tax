@@ -79,7 +79,7 @@ export default function BusinessCapital({
         let res = await deleteData(Delete_User_Business_Capitals + Id)
         if (res) {
           getBusinessCapitals()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

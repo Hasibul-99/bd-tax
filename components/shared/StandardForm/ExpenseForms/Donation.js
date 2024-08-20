@@ -41,9 +41,11 @@ export default function Donation({
   const [form] = Form.useForm()
   const [DonationsType, setDonationsType] = useState()
   const [Donations, setDonations] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -55,6 +57,7 @@ export default function Donation({
         getDonations()
         getExpenseData()
         setSelecetedItem()
+        setLoading(false)
       }
     } else {
       let res = await postData(Create_Expense_Donations, data)
@@ -63,6 +66,7 @@ export default function Donation({
         form.resetFields()
         getDonations()
         getExpenseData()
+        setLoading(false)
         setSelecetedItem()
       }
     }
@@ -208,7 +212,12 @@ export default function Donation({
               </Form.Item> */}
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

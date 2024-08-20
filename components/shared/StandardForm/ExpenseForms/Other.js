@@ -41,9 +41,11 @@ export default function Other({
   const [form] = Form.useForm()
   const [OthersType, setOthersType] = useState()
   const [Others, setOthers] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -54,6 +56,7 @@ export default function Other({
         form.resetFields()
         getOthers()
         setSelecetedItem()
+        setLoading(false)
         getExpenseData()
       }
     } else {
@@ -63,6 +66,7 @@ export default function Other({
         form.resetFields()
         getOthers()
         setSelecetedItem()
+        setLoading(false)
         getExpenseData()
       }
     }
@@ -208,7 +212,12 @@ export default function Other({
               </Form.Item> */}
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

@@ -39,9 +39,11 @@ export default function PersonalorFood({
   const [form] = Form.useForm()
   const [PersonalOrFoodsType, setPersonalOrFoodsType] = useState()
   const [PersonalOrFoods, setPersonalOrFoods] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -54,6 +56,7 @@ export default function PersonalorFood({
       if (res) {
         form.resetFields()
         getPersonalOrFoods()
+        setLoading(false)
         setSelecetedItem()
       }
     } else {
@@ -62,6 +65,7 @@ export default function PersonalorFood({
       if (res) {
         form.resetFields()
         getPersonalOrFoods()
+        setLoading(false)
         setSelecetedItem()
       }
     }
@@ -196,7 +200,12 @@ export default function PersonalorFood({
               </Form.Item>
 
               <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='w-28'
+                  loading={loading}
+                >
                   Save
                 </Button>
               </Form.Item>

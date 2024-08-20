@@ -81,7 +81,7 @@ export default function OtherAssetsReceipt({
         let res = await deleteData(Delete_User_OtherAssetReceipts + Id)
         if (res) {
           getOtherAssetReceipts()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

@@ -40,6 +40,7 @@ export default function CapitalGains({
   const [capitalGain, setCapitalGain] = useState()
   const [selectedType, setSelectedType] = useState()
   const [selectedItem, setSelecetedItem] = useState()
+  const [loading, setLoading] = useState(false)
 
   const columns = [
     {
@@ -111,7 +112,7 @@ export default function CapitalGains({
         )
         if (res) {
           getCapitalGain()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {
@@ -121,9 +122,6 @@ export default function CapitalGains({
   }
 
   const updateItem = (data) => {
-    console.log('====================================')
-    console.log('data', data)
-    console.log('====================================')
     onTypeChange(data.Type)
     setSelecetedItem(data)
 
@@ -133,14 +131,29 @@ export default function CapitalGains({
   }
 
   const onFinish = async (values) => {
+    setLoading(true)
     console.log(values)
     let data = {...values}
 
-    let res = await postData(Save_Capital_Gain, data)
+    if (selectedItem?.IncomeCapitalGainsId) {
+      data.IncomeCapitalGainsId = selectedItem.IncomeCapitalGainsId
+      let res = await postData(Save_Capital_Gain, data)
 
-    if (res) {
-      getCapitalGain()
-      form.resetFields()
+      if (res) {
+        getCapitalGain()
+        form.resetFields()
+        setLoading(false)
+        setSelecetedItem(null)
+      }
+    } else {
+      let res = await postData(Save_Capital_Gain, data)
+
+      if (res) {
+        getCapitalGain()
+        form.resetFields()
+        setLoading(false)
+        setSelecetedItem(null)
+      }
     }
   }
 
@@ -293,11 +306,16 @@ export default function CapitalGains({
             ) : null}
 
             <Form.Item name='readonly'>
-              <Input readOnly />
+              <Input readOnly value={0} />
             </Form.Item>
           </Flex>
           <Form.Item className='m-auto text-center'>
-            <Button type='primary' htmlType='submit' className='w-28'>
+            <Button
+              type='primary'
+              htmlType='submit'
+              className='w-28'
+              loading={loading}
+            >
               Save
             </Button>
           </Form.Item>

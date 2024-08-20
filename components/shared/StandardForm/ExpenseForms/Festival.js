@@ -41,9 +41,11 @@ export default function Festival({
   const [form] = Form.useForm()
   const [FestivalsType, setFestivalsType] = useState()
   const [Festivals, setFestivals] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -54,6 +56,7 @@ export default function Festival({
         form.resetFields()
         getFestivals()
         getExpenseData()
+        setLoading(false)
         setSelecetedItem()
       }
     } else {
@@ -62,6 +65,7 @@ export default function Festival({
       if (res) {
         form.resetFields()
         getFestivals()
+        setLoading(false)
         getExpenseData()
         setSelecetedItem()
       }
@@ -208,7 +212,12 @@ export default function Festival({
               </Form.Item> */}
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

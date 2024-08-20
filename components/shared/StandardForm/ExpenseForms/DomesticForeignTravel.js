@@ -43,8 +43,11 @@ export default function DomesticForeignTravel({
     useState()
   const [DomesticOrForeignTravels, setDomesticOrForeignTravels] = useState()
   const [selectedItem, setSelecetedItem] = useState()
+  const [loading, setLoading] = useState(false)
 
   const onFinish = async (values) => {
+    setLoading(true)
+
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -58,6 +61,7 @@ export default function DomesticForeignTravel({
         form.resetFields()
         getDomesticOrForeignTravels()
         getExpenseData()
+        setLoading(false)
         setSelecetedItem()
       }
     } else {
@@ -67,6 +71,7 @@ export default function DomesticForeignTravel({
         form.resetFields()
         getDomesticOrForeignTravels()
         getExpenseData()
+        setLoading(false)
         setSelecetedItem()
       }
     }
@@ -218,7 +223,12 @@ export default function DomesticForeignTravel({
               </Form.Item> */}
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

@@ -33,6 +33,8 @@ export default function ForeignIncome({
   backActiveTab,
 }) {
   const [form] = Form.useForm()
+  const [selectedItem, setSelecetedItem] = useState()
+  const [loading, setLoading] = useState(false)
   const [foreignIncome, setforeignIncome] = useState()
 
   const columns = [
@@ -77,6 +79,11 @@ export default function ForeignIncome({
     },
   ]
 
+  const updateItem = (data) => {
+    form.setFieldsValue(data)
+    setSelecetedItem(data)
+  }
+
   const deleteItem = (TaxDeductId) => {
     confirm({
       title: 'Do you want to delete these items?',
@@ -85,7 +92,7 @@ export default function ForeignIncome({
         let res = await postData(Delete_Foreign_Income + '/' + TaxDeductId)
         if (res) {
           getForeignIncome()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {
@@ -95,12 +102,19 @@ export default function ForeignIncome({
   }
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
+    if (selectedItem?.ForeignIncomeId) {
+      data.ForeignIncomeId = selectedItem?.ForeignIncomeId
+    }
+
     let res = await postData(Save_Foreign_Income, data)
 
     if (res) {
       form.resetFields()
       getForeignIncome()
+      setLoading(false)
+      setSelecetedItem(null)
     }
   }
 
@@ -201,7 +215,12 @@ export default function ForeignIncome({
               </Form.Item>
 
               <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='w-28'
+                  loading={loading}
+                >
                   Save
                 </Button>
               </Form.Item>

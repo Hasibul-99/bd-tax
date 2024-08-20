@@ -41,9 +41,11 @@ export default function OtherSpecial({
   const [form] = Form.useForm()
   const [OtherSpecialsType, setOtherSpecialsType] = useState()
   const [OtherSpecials, setOtherSpecials] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -57,6 +59,7 @@ export default function OtherSpecial({
         form.resetFields()
         getOtherSpecials()
         getExpenseData()
+        setLoading(false)
         setSelecetedItem()
       }
     } else {
@@ -66,6 +69,7 @@ export default function OtherSpecial({
         form.resetFields()
         getOtherSpecials()
         getExpenseData()
+        setLoading(false)
         setSelecetedItem()
       }
     }
@@ -216,7 +220,12 @@ export default function OtherSpecial({
 
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

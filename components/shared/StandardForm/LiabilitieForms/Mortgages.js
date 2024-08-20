@@ -81,7 +81,7 @@ export default function Mortgages({
         let res = await deleteData(Delete_liability_Mortgages + Id)
         if (res) {
           getLiabilityMortgages()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

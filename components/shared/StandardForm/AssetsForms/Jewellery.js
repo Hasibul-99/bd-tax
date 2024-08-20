@@ -78,7 +78,7 @@ export default function Jewellery({
         let res = await deleteData(Delete_User_Jewelries + Id)
         if (res) {
           getJewelries()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

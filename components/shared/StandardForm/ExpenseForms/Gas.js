@@ -41,9 +41,11 @@ export default function Gas({
   const [form] = Form.useForm()
   const [GasBillsType, setGasBillsType] = useState()
   const [GasBills, setGasBills] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -54,6 +56,7 @@ export default function Gas({
         form.resetFields()
         getGasBills()
         getExpenseData()
+        setLoading(true)
         setSelecetedItem()
       }
     } else {
@@ -63,6 +66,7 @@ export default function Gas({
         form.resetFields()
         getGasBills()
         getExpenseData()
+        setLoading(true)
         setSelecetedItem()
       }
     }
@@ -209,7 +213,12 @@ export default function Gas({
 
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

@@ -81,7 +81,7 @@ export default function OtherLiabilities({
         let res = await deleteData(Delete_liability_OtherLiabilities + Id)
         if (res) {
           getOtherLiabilities()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

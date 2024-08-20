@@ -81,7 +81,7 @@ export default function OtherAssets({
         let res = await deleteData(Delete_User_AnyOtherAssets + Id)
         if (res) {
           getAnyOtherAssets()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

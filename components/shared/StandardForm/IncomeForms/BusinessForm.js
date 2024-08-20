@@ -134,7 +134,7 @@ export default function BusinessForm({
         let res = await deleteData(Delete_Income_BsuinessOrProfession + id)
         if (res) {
           getBPList()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

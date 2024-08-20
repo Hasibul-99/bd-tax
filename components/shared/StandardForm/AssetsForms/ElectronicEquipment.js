@@ -81,7 +81,7 @@ export default function ElectronicEquipment({
         let res = await deleteData(Delete_User_ElectronicEquipments + Id)
         if (res) {
           getElectronicEquipments()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

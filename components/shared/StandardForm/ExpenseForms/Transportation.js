@@ -40,9 +40,11 @@ export default function Transportation({
 }) {
   const [form] = Form.useForm()
   const [Transportations, setTransportations] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -56,6 +58,7 @@ export default function Transportation({
         form.resetFields()
         getTransportations()
         setSelecetedItem()
+        setLoading(false)
         getExpenseData()
       }
     } else {
@@ -65,6 +68,7 @@ export default function Transportation({
         form.resetFields()
         getTransportations()
         setSelecetedItem()
+        setLoading(false)
         getExpenseData()
       }
     }
@@ -214,7 +218,12 @@ export default function Transportation({
               </Form.Item> */}
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

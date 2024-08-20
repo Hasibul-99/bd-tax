@@ -78,7 +78,7 @@ export default function Furniture({
         let res = await deleteData(Delete_User_Furnitures + Id)
         if (res) {
           getFurnitures()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {

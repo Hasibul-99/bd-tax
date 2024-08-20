@@ -34,7 +34,9 @@ export default function AdvancePaidTax({
 }) {
   const [form] = Form.useForm()
   const [selectedType, setSelectedType] = useState()
+  const [loading, setLoading] = useState(false)
   const [advancePaidTax, setAdvancePaidTax] = useState()
+  const [selectedItem, setSelecetedItem] = useState()
 
   const columns = [
     {
@@ -80,7 +82,7 @@ export default function AdvancePaidTax({
         let res = await postData(Delete_Advance_Paid_Tax + '/' + TaxDeductId)
         if (res) {
           getAdvancePaidTax()
-          alertPop('error', res?.data?.message)
+          alertPop('success', res?.data?.message)
         }
       },
       onCancel() {
@@ -95,22 +97,29 @@ export default function AdvancePaidTax({
       Description: data.Description,
       Cost: data.Cost,
     }
-
+    setSelecetedItem(data)
     form.setFieldsValue(fdata)
   }
 
   const onFinish = async (values) => {
     console.log(values)
-
+    setLoading(true)
     let data = {
       Description: values.Description || values.Type,
       Cost: values.Cost,
+    }
+
+    if (selectedItem?.TaxAdvanceId) {
+      data.TaxAdvanceId = selectedItem.TaxAdvanceId
     }
 
     let res = await postData(Save_Advance_Paid_Tax, data)
 
     if (res) {
       getAdvancePaidTax()
+      setLoading(false)
+      form.resetFields()
+      setSelecetedItem(null)
     }
   }
 
@@ -211,7 +220,12 @@ export default function AdvancePaidTax({
             </Form.Item>
 
             <Form.Item>
-              <Button type='primary' htmlType='submit' className='w-28'>
+              <Button
+                type='primary'
+                htmlType='submit'
+                className='w-28'
+                loading={loading}
+              >
                 Save
               </Button>
             </Form.Item>

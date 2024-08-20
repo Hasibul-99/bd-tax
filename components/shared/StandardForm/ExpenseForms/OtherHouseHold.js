@@ -41,9 +41,11 @@ export default function OtherHouseHold({
   const [form] = Form.useForm()
   const [OtherHouseHoldsType, setOtherHouseHoldsType] = useState()
   const [OtherHouseHolds, setOtherHouseHolds] = useState()
+  const [loading, setLoading] = useState(false)
   const [selectedItem, setSelecetedItem] = useState()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     data.MultipleCar = data.MultipleCar ? 1 : 0
 
@@ -57,6 +59,7 @@ export default function OtherHouseHold({
         form.resetFields()
         getOtherHouseHolds()
         getExpenseData()
+        setLoading(false)
         setSelecetedItem()
       }
     } else {
@@ -66,6 +69,7 @@ export default function OtherHouseHold({
         form.resetFields()
         getOtherHouseHolds()
         getExpenseData()
+        setLoading(false)
         setSelecetedItem()
       }
     }
@@ -215,7 +219,12 @@ export default function OtherHouseHold({
               </Form.Item> */}
               <div className='text-center'>
                 <Form.Item>
-                  <Button type='primary' htmlType='submit' className='w-28'>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    className='w-28'
+                    loading={loading}
+                  >
                     Save
                   </Button>
                 </Form.Item>

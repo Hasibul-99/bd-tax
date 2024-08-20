@@ -41,8 +41,10 @@ export default function AgricultureForm({
   const [AgricultureType, setAgricultureType] = useState()
   const [Agriculture, setAgriculture] = useState()
   const [selectedItem, setSelecetedItem] = useState()
+  const [loading, setLoading] = useState(false)
 
   const onFinish = async (values) => {
+    setLoading(true)
     let data = {...values}
     if (selectedItem?.IncomeAgricultureId) {
       let res = await putData(
@@ -54,6 +56,7 @@ export default function AgricultureForm({
         form.resetFields()
         getAgriculture()
         setSelecetedItem()
+        setLoading(false)
       }
     } else {
       let res = await postData(Create_User_Income_AgricultureCrops, data)
@@ -62,6 +65,7 @@ export default function AgricultureForm({
         form.resetFields()
         getAgriculture()
         setSelecetedItem()
+        setLoading(false)
       }
     }
   }
@@ -315,7 +319,12 @@ export default function AgricultureForm({
             </Flex>
             <div className='text-center'>
               <Form.Item>
-                <Button type='primary' htmlType='submit' className='w-28'>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  className='w-28'
+                  loading={loading}
+                >
                   Save
                 </Button>
               </Form.Item>
