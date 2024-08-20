@@ -75,7 +75,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(31)}
             backActiveTab={getBackActivateTab(31)}
-            comment={userExpense.AccommodationComment}
+            comment={userExpense?.AccommodationComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -86,7 +86,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(32)}
             backActiveTab={getBackActivateTab(32)}
-            comment={userExpense.TransportComment}
+            comment={userExpense?.TransportComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -97,7 +97,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(33)}
             backActiveTab={getBackActivateTab(33)}
-            comment={userExpense.OtherTransportComment}
+            comment={userExpense?.OtherTransportComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -108,7 +108,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(34)}
             backActiveTab={getBackActivateTab(34)}
-            comment={userExpense.ElectricityBillComment}
+            comment={userExpense?.ElectricityBillComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -119,7 +119,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(35)}
             backActiveTab={getBackActivateTab(35)}
-            comment={userExpense.WasaBillComment}
+            comment={userExpense?.WasaBillComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -130,7 +130,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(36)}
             backActiveTab={getBackActivateTab(36)}
-            comment={userExpense.GasBillComment}
+            comment={userExpense?.GasBillComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -141,7 +141,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(37)}
             backActiveTab={getBackActivateTab(37)}
-            comment={userExpense.TelephoneBillComment}
+            comment={userExpense?.TelephoneBillComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -152,7 +152,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(38)}
             backActiveTab={getBackActivateTab(38)}
-            comment={userExpense.OtherHouseholdComment}
+            comment={userExpense?.OtherHouseholdComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -163,7 +163,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(39)}
             backActiveTab={getBackActivateTab(39)}
-            comment={userExpense.ChildrenEducationComment}
+            comment={userExpense?.ChildrenEducationComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -174,7 +174,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(40)}
             backActiveTab={getBackActivateTab(40)}
-            comment={userExpense.PersonalForeignTravelComment}
+            comment={userExpense?.PersonalForeignTravelComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -185,7 +185,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(41)}
             backActiveTab={getBackActivateTab(41)}
-            comment={userExpense.FestivalOtherSpecialComment}
+            comment={userExpense?.FestivalOtherSpecialComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -196,7 +196,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(42)}
             backActiveTab={getBackActivateTab(42)}
-            comment={userExpense.DonationComment}
+            comment={userExpense?.DonationComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -207,7 +207,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(43)}
             backActiveTab={getBackActivateTab(43)}
-            comment={userExpense.OtherSpecialComment}
+            comment={userExpense?.OtherSpecialComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -218,7 +218,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(44)}
             backActiveTab={getBackActivateTab(44)}
-            comment={userExpense.OtherComment}
+            comment={userExpense?.OtherComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -229,7 +229,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(45)}
             backActiveTab={getBackActivateTab(45)}
-            comment={userExpense.TaxAtSourceComment}
+            comment={userExpense?.TaxAtSourceComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -240,7 +240,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(46)}
             backActiveTab={getBackActivateTab(46)}
-            comment={userExpense.SurchargeOtherComment}
+            comment={userExpense?.SurchargeOtherComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -251,7 +251,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(47)}
             backActiveTab={getBackActivateTab(47)}
-            comment={userExpense.LossDeductionsComment}
+            comment={userExpense?.LossDeductionsComment}
             getExpenseData={getExpenseData}
           />
         )
@@ -262,7 +262,7 @@ export default function ExpenseForms({
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(48)}
             backActiveTab={getBackActivateTab(48)}
-            comment={userExpense.GiftDonationContributionComment}
+            comment={userExpense?.GiftDonationContributionComment}
             getExpenseData={getExpenseData}
           />
         )

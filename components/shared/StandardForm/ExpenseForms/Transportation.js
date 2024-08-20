@@ -152,7 +152,7 @@ export default function Transportation({
 
   return (
     <div className='bg-white pb-6 px-6'>
-      <h3 className='text-xl font-semibold'>OTHER TRANSPORT EXPENSES </h3>
+      <h3 className='text-xl font-semibold'>Transport Expenses </h3>
       <ConfigProvider
         theme={{
           token: {

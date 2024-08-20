@@ -200,7 +200,7 @@ export default function Prospects({setCurrent, prospectData}) {
           </div>
 
           <div>
-            <Title level={5}>Your Expence</Title>
+            <Title level={5}>Your Expense</Title>
             <Checkbox.Group
               defaultValue={showExpenceDefault()}
               className='my-5 w-full'
