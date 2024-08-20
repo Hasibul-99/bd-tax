@@ -309,22 +309,22 @@ export default function IncomeFromFinancialAssets({
                   disabled
                 />
               </Form.Item>
-
-              <Form.Item>
-                <Button
-                  type='primary'
-                  htmlType='submit'
-                  className='w-28'
-                  loading={loading}
-                >
-                  Save
-                </Button>
-              </Form.Item>
             </Flex>
+
+            <Form.Item className='text-center mx-auto'>
+              <Button
+                type='primary'
+                htmlType='submit'
+                className='w-28'
+                loading={loading}
+              >
+                Save
+              </Button>
+            </Form.Item>
           </Form>
         </div>
 
-        <div className='text-center mt-6'>
+        <div className='text-center mt-10'>
           <Space>
             <Button
               type='primary'

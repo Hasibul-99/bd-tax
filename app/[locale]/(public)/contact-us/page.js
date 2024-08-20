@@ -105,7 +105,7 @@ export default function ContactUs() {
                   },
                 ]}
               >
-                <TextArea />
+                <TextArea rows={8} />
               </Form.Item>
             </Col>
           </Row>

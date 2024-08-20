@@ -168,7 +168,7 @@ export default function TaxRebate({
 
     if (allValues) {
       let formData = {
-        LifeInsurancePremium: (allValues.PolicyValue || 0) * 0.1,
+        LifeInsurancePremium: Math.round((allValues.PolicyValue || 0) * 0.1),
         ProvidentFund: allValues.ProvidentFund_1 || 0,
         SCECProvidentFund: allValues.SCECProvidentFund_1 || 0,
         SuperAnnuationFund: allValues.SuperAnnuationFund_1 || 0,
