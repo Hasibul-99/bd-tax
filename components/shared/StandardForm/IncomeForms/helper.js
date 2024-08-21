@@ -118,3 +118,69 @@ export const getDataOtherSourse = (data) => {
   //   "trash": 0
   // }
 }
+
+export const govNetSalaryIncome = (allValues) => {
+  let res =
+    (allValues.BasicPay_1 || 0) +
+    (allValues.SpecialPay_1 || 0) +
+    (allValues.DearnessAllowance_1 || 0) +
+    (allValues.ConveyanceAllowance_1 || 0) +
+    (allValues.HouseRentAllowance_1 || 0) +
+    (allValues.MedicalAllowance_1 || 0) +
+    (allValues.ServantAllowance_1 || 0) +
+    (allValues.LeaveAllowance_1 || 0) +
+    (allValues.LeaveEncashment_1 || 0) +
+    (allValues.HonorariumOrReward_1 || 0) +
+    (allValues.OvertimeAllowance_1 || 0) +
+    (allValues.Bonus_1 || 0) +
+    (allValues.OtherAllowances_1 || 0) +
+    (allValues.EmployersContributionProvidentFund_1 || 0) +
+    (allValues.InterestAccruedProvidentFund_1 || 0) +
+    (allValues.DeemedIncomeTransport_1 || 0) +
+    (allValues.DeemedFreeAccommodation_1 || 0) +
+    (allValues.FestivalBonus_1 || 0) +
+    (allValues.BengaliNewYearBonus_1 || 0) +
+    (allValues.EntertainmentAllowance_1 || 0) +
+    (allValues.Pension_1 || 0) +
+    (allValues.RecognizedProvidentFundIncome_1 || 0) +
+    (allValues.Others_1 || 0) +
+    (allValues.Arear_1 || 0)
+
+  return res || 0
+}
+
+export const govNetTaxWaiver = (allValues) => {
+  let res =
+    (allValues.SpecialPay_1 || 0) +
+    (allValues.DearnessAllowance_1 || 0) +
+    (allValues.ConveyanceAllowance_1 || 0) +
+    (allValues.HouseRentAllowance_1 || 0) +
+    (allValues.MedicalAllowance_1 || 0) +
+    (allValues.ServantAllowance_1 || 0) +
+    (allValues.LeaveAllowance_1 || 0) +
+    (allValues.LeaveEncashment_1 || 0) +
+    (allValues.OvertimeAllowance_1 || 0) +
+    (allValues.OtherAllowances_1 || 0) +
+    (allValues.EmployersContributionProvidentFund_1 || 0) +
+    (allValues.InterestAccruedProvidentFund_1 || 0) +
+    (allValues.DeemedIncomeTransport_1 || 0) +
+    (allValues.DeemedFreeAccommodation_1 || 0) +
+    (allValues.BengaliNewYearBonus_1 || 0) +
+    (allValues.Pension_1 || 0) +
+    (allValues.RecognizedProvidentFundIncome_1 || 0) +
+    (allValues.Others_1 || 0)
+
+  return res || 0
+}
+
+export const govNetTaxableIncome = (allValues) => {
+  let res =
+    (allValues.BasicPay_1 || 0) +
+    (allValues.HonorariumOrReward_1 || 0) +
+    (allValues.Bonus_1 || 0) +
+    (allValues.FestivalBonus_1 || 0) +
+    (allValues.EntertainmentAllowance_1 || 0) +
+    (allValues.Arear_1 || 0)
+
+  return res || 0
+}

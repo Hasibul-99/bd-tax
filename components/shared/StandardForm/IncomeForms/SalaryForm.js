@@ -28,6 +28,7 @@ import {
   Typography,
 } from 'antd'
 import {useEffect, useState} from 'react'
+import GovSalaryForm from './GovSalaryForm'
 import {
   addNonNegative,
   DeemedFreeAccommodationCal,
@@ -110,7 +111,6 @@ export default function SalaryForm({
         DearnessAllowance: allValues.DearnessAllowance_1 || 0,
         ConveyanceAllowance: allValues.ConveyanceAllowance_1 || 0,
         MedicalAllowance: allValues.MedicalAllowance_1 || 0,
-        DearnessAllowance: allValues.DearnessAllowance_1 || 0,
         EmployeeShareSchemes: getEmployeeShareSchemes(allValues),
         EmployersContributionProvidentFund:
           allValues.EmployersContributionProvidentFund_1 || 0,
@@ -281,7 +281,14 @@ export default function SalaryForm({
         </Row>
         <Divider />
         {salariesData?.govt_emp_status === 1 ? (
-          <></>
+          <>
+            <GovSalaryForm
+              onFinish={onFinish}
+              DeleteSalaryForm={DeleteSalaryForm}
+              Form={Form}
+              form={form}
+            />
+          </>
         ) : (
           <>
             <Form
