@@ -147,7 +147,7 @@ export default function SignUp() {
                   message: 'Please input mobile!',
                 },
                 {
-                  pattern: /(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/,
+                  pattern: /^\+?\d+$/,
                   message: 'Please enter a valid mobile no',
                 },
               ]}
