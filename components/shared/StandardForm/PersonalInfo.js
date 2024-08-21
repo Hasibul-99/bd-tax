@@ -238,9 +238,14 @@ export default function PersonalInfo({setCurrent}) {
                     message: 'A value must be entered',
                     pattern: new RegExp(/^[0-9]+$/),
                   },
+                  {
+                    required: true,
+                    message: 'The ETIN field must be 12 digits.',
+                    pattern: new RegExp(/^\d{12}$/),
+                  },
                 ]}
               >
-                <Input />
+                <Input disabled={userData?.etin_locked} />
               </Form.Item>
             </Col>
           </Row>

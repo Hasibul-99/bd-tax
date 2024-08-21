@@ -1,14 +1,17 @@
-import {GET_PAYMENT_METHOD} from '@/scripts/api'
-import {getData} from '@/scripts/api-service'
+import {CANCEL_COUPON, GET_PAYMENT_METHOD, SAVE_COUPON} from '@/scripts/api'
+import {getData, postData} from '@/scripts/api-service'
+import {alertPop} from '@/scripts/helper'
 import {defaultStore} from '@/store/default'
-import {Button, Card, Space} from 'antd'
+import {Button, Card, ConfigProvider, Input, Space, Typography} from 'antd'
 import {useEffect, useState} from 'react'
-
+const {Text, Link} = Typography
 // https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca
 const sslgatewayLink = ''
 
 export default function Payment({salaryData, setCurrent, context}) {
   const [paymentData, setPaymentData] = useState()
+  const [couponCode, setCouponCode] = useState()
+  const [canCancelCoupon, setCancelCoupon] = useState(false)
 
   const getPaymentData = async () => {
     let res = await getData(GET_PAYMENT_METHOD + '?request_from=web')
@@ -17,6 +20,8 @@ export default function Payment({salaryData, setCurrent, context}) {
       let masterData = res?.data
       updateTaxDue(masterData?.due_amount || 0)
       setPaymentData(masterData)
+      setCouponCode(masterData?.coupon_code)
+      setCancelCoupon(masterData?.coupon_code ? true : false)
     }
   }
 
@@ -24,6 +29,27 @@ export default function Payment({salaryData, setCurrent, context}) {
 
   const makePayment = (url) => {
     window.location = paymentData?.sslgatewayLink
+  }
+
+  const handelCouponSave = async () => {
+    if (couponCode) {
+      let res = await postData(SAVE_COUPON, {code: couponCode})
+
+      if (res) {
+        alertPop('success', res?.data?.message)
+        getPaymentData()
+      }
+    } else {
+      alertPop('warning', 'No coupon code')
+    }
+  }
+
+  const handelCouponCancel = async () => {
+    let res = await postData(CANCEL_COUPON, {})
+    if (res) {
+      alertPop('success', res?.data?.message)
+      getPaymentData()
+    }
   }
 
   useEffect(() => {
@@ -58,6 +84,54 @@ export default function Payment({salaryData, setCurrent, context}) {
         Please make payment to submit your order and our expert tax consultants
         will prepare and submit your return with 100% guaranteed accuracy.
       </p>
+
+      <div className='premium-pack-card mt-3  bg-transparent'>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#126A25',
+            },
+            components: {
+              Button: {
+                colorPrimary: '#126A25',
+              },
+            },
+          }}
+        >
+          <div className='packages-price'>
+            <Input
+              placeholder='Coupon Code'
+              size='large'
+              onChange={(e) => setCouponCode(e.target.value)}
+              value={couponCode}
+            />
+            {/* <br /> */}
+            <Text type='success'>{paymentData?.discount_text || null}</Text>
+          </div>
+          <div className='ml-auto'>
+            {canCancelCoupon ? (
+              <Button
+                disabled={!couponCode}
+                danger
+                type='primary'
+                size='large'
+                onClick={() => handelCouponCancel()}
+              >
+                Cancel Coupon
+              </Button>
+            ) : (
+              <Button
+                disabled={!couponCode}
+                type='primary'
+                size='large'
+                onClick={() => handelCouponSave()}
+              >
+                Save Coupon
+              </Button>
+            )}
+          </div>
+        </ConfigProvider>
+      </div>
 
       <div className='my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
         <div className='flex flex-row items-start p-0 gap-[14.26px]'>

@@ -19,6 +19,17 @@ export default function Notification() {
   }, [])
 
   return (
-    <div>page https://newdevapi.bdtax.com.bd/public/api/getNotification</div>
+    <div>
+      page https://newdevapi.bdtax.com.bd/public/api/getNotification
+      <div className='text-center h-[400px] flex justify-items-center items-center relative'>
+        <div>
+          <img
+            className='image'
+            src='/assets/icons/loading.svg'
+            alt='Premium Plus'
+          />
+        </div>
+      </div>
+    </div>
   )
 }

@@ -21,6 +21,7 @@ const {Option} = Select
 export default function Profile() {
   const [form] = Form.useForm()
   const [areaList, setAreaList] = useState([])
+  const [userData, setUserData] = useState()
 
   const onFinish = async (values) => {
     let profile = {
@@ -71,6 +72,7 @@ export default function Profile() {
           TaxesZone: masterData.TaxesZone,
           TaxesCircle: masterData.TaxesCircle,
         })
+        setUserData(masterData)
       }
     }
   }
@@ -161,9 +163,19 @@ export default function Profile() {
                     required: true,
                     message: 'Please input your ETIN!',
                   },
+                  {
+                    required: true,
+                    message: 'A value must be entered',
+                    pattern: new RegExp(/^[0-9]+$/),
+                  },
+                  {
+                    required: true,
+                    message: 'The ETIN field must be 12 digits.',
+                    pattern: new RegExp(/^\d{12}$/),
+                  },
                 ]}
               >
-                <Input />
+                <Input disabled={userData?.etin_locked} />
               </Form.Item>
             </Col>
           </Row>
