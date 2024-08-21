@@ -105,7 +105,6 @@ export default function Payment({salaryData, setCurrent, context}) {
               onChange={(e) => setCouponCode(e.target.value)}
               value={couponCode}
             />
-            {/* <br /> */}
             <Text type='success'>{paymentData?.discount_text || null}</Text>
           </div>
           <div className='ml-auto'>
