@@ -50,6 +50,7 @@ export default function SalaryForm({
   const [ReceivedAnyHouse, setReceivedAnyHouse] = useState('N')
   const [PaidAnyPartOfRent, setPaidAnyPartOfRent] = useState()
   const [employerName, setEmployerName] = useState()
+  const [salariesData, setSalariesData] = useState()
 
   const onFinish = async (values) => {
     let data = {...values}
@@ -170,6 +171,7 @@ export default function SalaryForm({
         setReceivedAnyHouse(masterData?.ReceivedAnyHouse || 'N')
         setPaidAnyPartOfRent(masterData.PaidAnyPartOfRent)
         setEmployerName(masterData.EmployerName)
+        setSalariesData(masterData)
 
         let formData = {...masterData}
 
@@ -222,30 +224,32 @@ export default function SalaryForm({
         <Col className='gutter-row pt-2' xs={24} sm={24} md={12}>
           <h3 className='text-xl font-semibold'>Salary Income Information</h3>
         </Col>
-        <Col className='gutter-row pt-2' xs={24} sm={24} md={12}>
-          <div className='flex gap-6'>
-            <span className='w-48'>Employer Name *</span>
-            <span className='w-full'>
-              <ConfigProvider
-                theme={{
-                  token: {
-                    colorPrimary: '#126A25',
-                  },
-                  components: {
-                    Button: {
+        {!salariesData?.EmployerName ? (
+          <Col className='gutter-row pt-2' xs={24} sm={24} md={12}>
+            <div className='flex gap-6'>
+              <span className='w-48'>Employer Name *</span>
+              <span className='w-full'>
+                <ConfigProvider
+                  theme={{
+                    token: {
                       colorPrimary: '#126A25',
                     },
-                  },
-                }}
-              >
-                <Input
-                  value={employerName}
-                  onChange={(e) => setEmployerName(e.target.value)}
-                />
-              </ConfigProvider>
-            </span>
-          </div>
-        </Col>
+                    components: {
+                      Button: {
+                        colorPrimary: '#126A25',
+                      },
+                    },
+                  }}
+                >
+                  <Input
+                    value={employerName}
+                    onChange={(e) => setEmployerName(e.target.value)}
+                  />
+                </ConfigProvider>
+              </span>
+            </div>
+          </Col>
+        ) : null}
       </Row>
 
       <Divider />
