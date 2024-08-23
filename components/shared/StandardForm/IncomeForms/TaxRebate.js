@@ -28,6 +28,7 @@ import {
   Table,
 } from 'antd'
 import {useEffect, useState} from 'react'
+import {lifeInsurancePremiumCal} from './helper'
 const {TextArea} = Input
 const {confirm} = Modal
 
@@ -168,7 +169,7 @@ export default function TaxRebate({
 
     if (allValues) {
       let formData = {
-        LifeInsurancePremium: Math.round((allValues.PolicyValue || 0) * 0.1),
+        LifeInsurancePremium: lifeInsurancePremiumCal(allValues),
         ProvidentFund: allValues.ProvidentFund_1 || 0,
         SCECProvidentFund: allValues.SCECProvidentFund_1 || 0,
         SuperAnnuationFund: allValues.SuperAnnuationFund_1 || 0,

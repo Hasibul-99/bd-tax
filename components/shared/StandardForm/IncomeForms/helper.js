@@ -184,3 +184,13 @@ export const govNetTaxableIncome = (allValues) => {
 
   return res || 0
 }
+
+export const lifeInsurancePremiumCal = (allValues) => {
+  if (allValues) {
+    let amount = Math.round((allValues.PolicyValue || 0) * 0.1)
+
+    return allValues?.LifeInsurancePremium_1 > amount
+      ? amount
+      : allValues?.LifeInsurancePremium_1
+  }
+}

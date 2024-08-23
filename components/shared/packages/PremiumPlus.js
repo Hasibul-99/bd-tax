@@ -3,11 +3,13 @@
 import {TEMP_PACKAGES} from '@/scripts/api'
 import {postData} from '@/scripts/api-service'
 import {Button} from 'antd'
+import Link from 'next/link'
 import {useRouter} from 'next/navigation'
 
 export default function PremiumPlus(props) {
   const {locale, pack} = props
   const router = useRouter()
+  console.log(pack)
 
   const tempUserPackages = async () => {
     let res = await postData(
@@ -53,8 +55,11 @@ export default function PremiumPlus(props) {
                 size='large'
                 onClick={() => tempUserPackages()}
               >
-                {/* <Link href={`/${locale}/premium-plus`}>Select</Link> */}
-                Select
+                {pack?.show_selection === 1 ? (
+                  <Link href={`/${locale}/premium-plus`}>Select</Link>
+                ) : (
+                  'Select'
+                )}
               </Button>
             </div>
             <div className='p-4'>

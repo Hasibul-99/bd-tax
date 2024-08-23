@@ -301,7 +301,7 @@ export default function PropertyForm({
                       },
                     ]}
                   >
-                    <InputNumber className='w-full' />
+                    <Input className='w-full' />
                   </Form.Item>
                 </Col>
               </Row>
