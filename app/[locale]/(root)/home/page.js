@@ -19,6 +19,18 @@ export default function Docs() {
     }
   }
 
+  const getRouteHandel = (order) => {
+    if (order) {
+      if (order.package === 'Premium Plus') {
+        return '/premium-plus'
+      } else if (order.package === 'Premium ') {
+        return '/premium'
+      } else {
+        return '/standard'
+      }
+    } else return '/'
+  }
+
   useEffect(() => {
     getOrderHistory()
   }, [])
@@ -127,12 +139,15 @@ export default function Docs() {
                         <span className='font-semibold'>{order.completed}</span>
                       </Space>
                     </div>
-                    <div className='text-[#126A25] underline  decoration-1 mt-auto cursor-pointer'>
+                    <div className='text-[#126A25] underline flex gap-8 decoration-1 mt-auto cursor-pointer'>
                       {/* {order.ack_file_id && order.show_ack_link ? ( */}
                       <a target='_blank' href={order.ack_file_id}>
                         View NBR Acknowledge Receipt
                       </a>
                       {/* ) : null} */}
+                      {idx === 0 && orderHistory?.show_header === 0 ? (
+                        <Link href={getRouteHandel(order)}>Let's Continue</Link>
+                      ) : null}
                     </div>
                   </div>
                 </div>
