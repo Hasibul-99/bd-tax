@@ -14,9 +14,11 @@ import Prospects from '@/components/shared/StandardForm/Prospects'
 import ProspectsSummary from '@/components/shared/StandardForm/ProspectsSummary'
 import {
   GET_incomeAssetLiabilySourceList,
+  GET_USER_TAX,
   PROCESS_SALARY_DOC,
 } from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
+import {defaultStore} from '@/store/default'
 import {ConfigProvider, Steps} from 'antd'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useState} from 'react'
@@ -31,6 +33,7 @@ export default function PremiumPlusProcess() {
   const [salaryData, setSalaryData] = useState()
   const [prospectData, setProspectData] = useState()
   const status = searchParams.get('status')
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   const onChange = (value) => {
     if (value === 4) {
@@ -65,6 +68,14 @@ export default function PremiumPlusProcess() {
     }
   }
 
+  const getUserTax = async () => {
+    let res = await getData(GET_USER_TAX)
+
+    if (res) {
+      updateTaxDue(res?.data?.tax_amount || 0)
+    }
+  }
+
   useEffect(() => {
     getIncomeAssetLiabilySourceList()
   }, [])
@@ -74,6 +85,10 @@ export default function PremiumPlusProcess() {
       getPrecessSalaryDoc()
     }
   }, [current])
+
+  useEffect(() => {
+    getUserTax()
+  }, [prosCurrent, current])
 
   useEffect(() => {
     if (status) {

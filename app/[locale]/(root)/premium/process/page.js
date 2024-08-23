@@ -8,8 +8,9 @@ import OrderStatus from '@/components/shared/premium-plus/OrderStatus'
 import Payment from '@/components/shared/premium-plus/Payment'
 import PersonalInfo from '@/components/shared/premium-plus/PersonalInfo'
 import Submit from '@/components/shared/premium-plus/Submit'
-import {PROCESS_SALARY_DOC} from '@/scripts/api'
+import {GET_USER_TAX, PROCESS_SALARY_DOC} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
+import {defaultStore} from '@/store/default'
 import {ConfigProvider, Steps} from 'antd'
 import {useSearchParams} from 'next/navigation'
 import {useEffect, useState} from 'react'
@@ -21,6 +22,7 @@ export default function PremiumPlusProcess() {
   const [salaryData, setSalaryData] = useState()
   const status = searchParams.get('status')
   const step = searchParams.get('step')
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   const onChange = (value) => {
     setCurrent(value)
@@ -35,10 +37,19 @@ export default function PremiumPlusProcess() {
     }
   }
 
+  const getUserTax = async () => {
+    let res = await getData(GET_USER_TAX)
+
+    if (res) {
+      updateTaxDue(res?.data?.tax_amount || 0)
+    }
+  }
+
   useEffect(() => {
     if (current === 3) {
       getPrecessSalaryDoc()
     }
+    getUserTax()
   }, [current])
 
   useEffect(() => {
