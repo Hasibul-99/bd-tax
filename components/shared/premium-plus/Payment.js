@@ -4,6 +4,7 @@ import {alertPop} from '@/scripts/helper'
 import {defaultStore} from '@/store/default'
 import {Button, Card, ConfigProvider, Input, Space, Typography} from 'antd'
 import {useEffect, useState} from 'react'
+
 const {Text, Link} = Typography
 // https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca
 const sslgatewayLink = ''
@@ -12,6 +13,8 @@ export default function Payment({salaryData, setCurrent, context}) {
   const [paymentData, setPaymentData] = useState()
   const [couponCode, setCouponCode] = useState()
   const [canCancelCoupon, setCancelCoupon] = useState(false)
+
+  console.log('salaryData', salaryData)
 
   const getPaymentData = async () => {
     let res = await getData(GET_PAYMENT_METHOD + '?request_from=web')
@@ -65,16 +68,32 @@ export default function Payment({salaryData, setCurrent, context}) {
       {/* border-l-4 bg-[#EFFEF2] border-emerald-600 */}
       <Card className='mt-4 border-0 bg-[#EFFEF2] payment-card'>
         <span className='left-bar'></span>
-        <p className='font-normal text-sm leading-[18px] text-[#1E293B]'>
-          Estimated Tax Due
-        </p>
-        <p className='flex gap-1'>
-          <img src='/assets/icons/taka.svg' alt='taka' />
-          <span className='font-semibold text-[21px] leading-[30px] text-[#1E293B]'>
-            {paymentData?.due_amount || 0}
-          </span>
-        </p>
+
+        {salaryData?.salaray_doc_found === 0 &&
+        salaryData?.salaray_doc_message ? (
+          <Text strong>{salaryData?.salaray_doc_message}</Text>
+        ) : (
+          <>
+            <p className='font-normal text-sm leading-[18px] text-[#1E293B]'>
+              Estimated Tax Due
+            </p>
+            <p className='flex gap-1'>
+              {salaryData?.tax_amount ? (
+                <>
+                  <img src='/assets/icons/taka.svg' alt='taka' />
+                  <span className='font-semibold text-[21px] leading-[30px] text-[#1E293B]'>
+                    {salaryData?.tax_amount || 0}
+                  </span>
+                </>
+              ) : salaryData?.tax_amount === 0 &&
+                salaryData?.Zero_tax_message ? (
+                <>{salaryData?.Zero_tax_message}</>
+              ) : null}
+            </p>
+          </>
+        )}
       </Card>
+
       <Space className='text-[#F97316] my-6 payment-warning'>
         <img src='/assets/icons/warning.svg' alt='warning' />
         This amount is not final and only for informational purposes only.
@@ -85,126 +104,146 @@ export default function Payment({salaryData, setCurrent, context}) {
         will prepare and submit your return with 100% guaranteed accuracy.
       </p>
 
-      <div className='premium-pack-card mt-3  bg-transparent'>
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: '#126A25',
-            },
-            components: {
-              Button: {
-                colorPrimary: '#126A25',
-              },
-            },
-          }}
-        >
-          <div className='packages-price'>
-            <Input
-              placeholder='Coupon Code'
-              size='large'
-              onChange={(e) => setCouponCode(e.target.value)}
-              value={couponCode}
-            />
-            <Text type='success'>{paymentData?.discount_text || null}</Text>
+      {paymentData?.due_amount == 0 ? (
+        <>
+          <Card className='mt-4 border-0 bg-[#EFFEF2] payment-card'>
+            <span className='left-bar'></span>
+            <p className='font-normal text-sm leading-[18px] text-[#1E293B]'>
+              {paymentData?.payment_amount}
+            </p>
+            <p>{paymentData?.payment_amount_message}</p>
+          </Card>
+        </>
+      ) : (
+        <>
+          <div className='premium-pack-card mt-3  bg-transparent'>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: '#126A25',
+                },
+                components: {
+                  Button: {
+                    colorPrimary: '#126A25',
+                  },
+                },
+              }}
+            >
+              <div className='packages-price'>
+                <Input
+                  placeholder='Coupon Code'
+                  size='large'
+                  onChange={(e) => setCouponCode(e.target.value)}
+                  value={couponCode}
+                />
+                <Text type='success'>{paymentData?.discount_text || null}</Text>
+              </div>
+              <div className='ml-auto'>
+                {canCancelCoupon ? (
+                  <Button
+                    disabled={!couponCode}
+                    danger
+                    type='primary'
+                    size='large'
+                    onClick={() => handelCouponCancel()}
+                  >
+                    Cancel Coupon
+                  </Button>
+                ) : (
+                  <Button
+                    disabled={!couponCode}
+                    type='primary'
+                    size='large'
+                    onClick={() => handelCouponSave()}
+                  >
+                    Save Coupon
+                  </Button>
+                )}
+              </div>
+            </ConfigProvider>
           </div>
-          <div className='ml-auto'>
-            {canCancelCoupon ? (
-              <Button
-                disabled={!couponCode}
-                danger
-                type='primary'
-                size='large'
-                onClick={() => handelCouponCancel()}
+
+          <div className='my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
+            <div>
+              <p className='font-normal text-sm leading-[18px] text-[#1E293B]'>
+                <Text strong>{paymentData?.payment_amount}</Text>
+              </p>
+              <p>{paymentData?.payment_amount_message}</p>
+            </div>
+            <div className='flex flex-row items-start p-0 gap-[14.26px] md:ml-auto'>
+              <a
+                href={paymentData?.sslgatewayLink}
+                className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
               >
-                Cancel Coupon
-              </Button>
-            ) : (
-              <Button
-                disabled={!couponCode}
-                type='primary'
-                size='large'
-                onClick={() => handelCouponSave()}
+                <img
+                  src='/assets/images/visa.png'
+                  alt='warning'
+                  width={60}
+                  height={40}
+                />
+              </a>
+              <a
+                href={paymentData?.sslgatewayLink}
+                className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
               >
-                Save Coupon
+                <img
+                  src='/assets/images/master.png'
+                  alt='warning'
+                  width={60}
+                  height={40}
+                />
+              </a>
+              <a
+                href={paymentData?.sslgatewayLink}
+                className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+              >
+                <img
+                  src='/assets/images/discover.png'
+                  alt='warning'
+                  width={60}
+                  height={40}
+                />
+              </a>
+              <a
+                href={paymentData?.sslgatewayLink}
+                className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+              >
+                <img
+                  src='/assets/images/amex.png'
+                  alt='warning'
+                  width={60}
+                  height={40}
+                />
+              </a>
+              <a
+                href={paymentData?.bkashURL}
+                className={!paymentData?.bkashURL ? 'disabled' : ''}
+              >
+                <img
+                  src='/assets/images/bkash.png'
+                  alt='warning'
+                  width={60}
+                  height={40}
+                />
+              </a>
+            </div>
+
+            {/* <div className='md:text-right md:ml-auto'>
+              <Button
+                disabled={!paymentData?.sslgatewayLink}
+                type='primary'
+                className='prime-button w-52 m-auto'
+                onClick={() => makePayment()}
+              >
+                <Space>
+                  <img src='/assets/icons/lock.svg' alt='Premium-Plus' /> Make
+                  Payment
+                </Space>
               </Button>
-            )}
+            </div> */}
           </div>
-        </ConfigProvider>
-      </div>
-
-      <div className='my-2 pt-3 pb-1 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-2xl'>
-        <div className='flex flex-row items-start p-0 gap-[14.26px]'>
-          <a
-            href={paymentData?.sslgatewayLink}
-            className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
-          >
-            <img
-              src='/assets/images/visa.png'
-              alt='warning'
-              width={60}
-              height={40}
-            />
-          </a>
-          <a
-            href={paymentData?.sslgatewayLink}
-            className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
-          >
-            <img
-              src='/assets/images/master.png'
-              alt='warning'
-              width={60}
-              height={40}
-            />
-          </a>
-          <a
-            href={paymentData?.sslgatewayLink}
-            className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
-          >
-            <img
-              src='/assets/images/discover.png'
-              alt='warning'
-              width={60}
-              height={40}
-            />
-          </a>
-          <a
-            href={paymentData?.sslgatewayLink}
-            className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
-          >
-            <img
-              src='/assets/images/amex.png'
-              alt='warning'
-              width={60}
-              height={40}
-            />
-          </a>
-          <a
-            href={paymentData?.bkashURL}
-            className={!paymentData?.bkashURL ? 'disabled' : ''}
-          >
-            <img
-              src='/assets/images/bkash.png'
-              alt='warning'
-              width={60}
-              height={40}
-            />
-          </a>
-        </div>
-
-        <div className='md:text-right md:ml-auto'>
-          <Button
-            disabled={!paymentData?.sslgatewayLink}
-            type='primary'
-            className='prime-button w-52 m-auto'
-            onClick={() => makePayment()}
-          >
-            <Space>
-              <img src='/assets/icons/lock.svg' alt='Premium-Plus' /> Make
-              Payment
-            </Space>
-          </Button>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   )
 }
