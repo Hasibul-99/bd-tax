@@ -22,6 +22,7 @@ export default function AdjustmentOfTaxRefund({
 
     if (res) {
       alertPop('success', res.data.message)
+      getAdjustmentsofTaxRefund()
     }
   }
 
@@ -38,6 +39,10 @@ export default function AdjustmentOfTaxRefund({
     let res = await getData(Get_Adjustmentsof_TaxRefund)
 
     console.log('res', res)
+    if (res) {
+      let masterData = res?.data
+      form.setFieldsValue(masterData)
+    }
   }
 
   useEffect(() => {
