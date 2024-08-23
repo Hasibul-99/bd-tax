@@ -8,8 +8,6 @@ export default function Premium(props) {
   const {locale, pack} = props
   const router = useRouter()
 
-  console.log(pack)
-
   const tempUserPackages = async () => {
     let res = await postData(
       TEMP_PACKAGES,
@@ -46,6 +44,7 @@ export default function Premium(props) {
                 type='primary'
                 className='primary-Button font-semibold'
                 size='large'
+                disabled={!pack?.show_selection}
                 onClick={() => tempUserPackages()}
               >
                 {pack?.show_selection === 1 ? (

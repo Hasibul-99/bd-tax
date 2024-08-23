@@ -7,12 +7,17 @@ const {Title} = Typography
 export default function ShowDownloadTaxFile({setShow}) {
   const [fileData, setFileData] = useState()
   const [isConfirm, setIsConfirm] = useState()
+  const [loading, setLoading] = useState(true)
 
   const getDownloadTaxFile = async () => {
     let res = await getData(GET_DOWNLOAD_TAX_FILE)
 
     if (res) {
       setFileData(res?.data)
+
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000)
     }
   }
 
@@ -32,21 +37,35 @@ export default function ShowDownloadTaxFile({setShow}) {
     <div className='mt-12 p-10'>
       <Title level={4}>Please review your Tax return form</Title>
 
-      {fileData?.pdf_file_path ? (
-        <>
-          <object
-            data={fileData?.pdf_file_path}
-            type='application/pdf'
-            width='100%'
-            height='500vh'
-          >
-            <p>
-              <a href={fileData?.pdf_file_path}></a>
-            </p>
-          </object>
-        </>
+      {loading ? (
+        <div className='text-center h-[400px] flex justify-items-center items-center relative'>
+          <div>
+            <img
+              className='image'
+              src='/assets/icons/loading.svg'
+              alt='Premium Plus'
+            />
+          </div>
+        </div>
       ) : (
-        ''
+        <>
+          {fileData?.pdf_file_path ? (
+            <>
+              <object
+                data={fileData?.pdf_file_path}
+                type='application/pdf'
+                width='100%'
+                height='500vh'
+              >
+                <p>
+                  <a href={fileData?.pdf_file_path}></a>
+                </p>
+              </object>
+            </>
+          ) : (
+            ''
+          )}
+        </>
       )}
 
       <div className='text-center mt-8'>

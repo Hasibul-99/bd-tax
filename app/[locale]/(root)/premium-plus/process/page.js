@@ -92,7 +92,7 @@ export default function PremiumPlusProcess() {
             type='navigation'
             size='small'
             current={current}
-            // onChange={onChange}
+            onChange={onChange}
             className='site-navigation-steps'
             items={[
               {

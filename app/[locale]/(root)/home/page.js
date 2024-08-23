@@ -26,28 +26,32 @@ export default function Docs() {
     <div className='custom-container-under mx-auto px-30 py-10 '>
       {orderHistory ? (
         <>
-          <div className='bg-white py-5 px-4 rounded-md'>
-            <div className='bg-slate-100 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
-              <div>
-                <h5 className='text-base font-semibold'>
-                  Tax Year {orderHistory.tax_year}
-                </h5>
-                <p>{orderHistory.title} </p>
+          {orderHistory?.show_header === 1 ? (
+            <>
+              <div className='bg-white py-5 px-4 rounded-md'>
+                <div className='bg-slate-100 py-5 px-4 mx-auto grid grid-cols-1 md:grid-cols-2 rounded-md'>
+                  <div>
+                    <h5 className='text-base font-semibold'>
+                      Tax Year {orderHistory.tax_year}
+                    </h5>
+                    <p>{orderHistory.title} </p>
+                  </div>
+                  <div className='text-right ml-auto'>
+                    <Link href={'/'}>
+                      <Button
+                        type='primary'
+                        size='large'
+                        className='prime-button w-52 gap-0'
+                      >
+                        {orderHistory.button_title}{' '}
+                        <RightOutlined style={{fontSize: '14px'}} />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className='text-right ml-auto'>
-                <Link href={'/'}>
-                  <Button
-                    type='primary'
-                    size='large'
-                    className='prime-button w-52 gap-0'
-                  >
-                    {orderHistory.button_title}{' '}
-                    <RightOutlined style={{fontSize: '14px'}} />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
+            </>
+          ) : null}
 
           {orderHistory.order_history?.length ? (
             <>
@@ -124,9 +128,11 @@ export default function Docs() {
                       </Space>
                     </div>
                     <div className='text-[#126A25] underline  decoration-1 mt-auto cursor-pointer'>
-                      <a target='_blank' href={order.ack_file_path}>
+                      {/* {order.ack_file_id && order.show_ack_link ? ( */}
+                      <a target='_blank' href={order.ack_file_id}>
                         View NBR Acknowledge Receipt
                       </a>
+                      {/* ) : null} */}
                     </div>
                   </div>
                 </div>

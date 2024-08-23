@@ -31,9 +31,6 @@ export default function Packages({locale, ssrData}) {
     const height2 = div2?.offsetHeight
     const height3 = div3?.offsetHeight
 
-    console.log('====================================')
-    console.log({div1, div2, div3})
-    console.log('====================================')
     // Find the maximum height
     const maxHeight = Math.max(height1, height2, height3)
 

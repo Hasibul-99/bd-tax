@@ -1,6 +1,5 @@
 import {GET_ORDER_STATUS, GET_PAYMENT_STATUS} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
-import {RightOutlined} from '@ant-design/icons'
 import {Button, Card, Space} from 'antd'
 import Link from 'next/link'
 import {useEffect, useState} from 'react'
@@ -45,6 +44,14 @@ export default function OrderStatus({
     }
 
     return ''
+  }
+
+  const handelReviewSign = (step) => {
+    console.log()
+
+    if (step.title === 'Review & Sign' && setCurrent) {
+      setCurrent(5)
+    }
   }
 
   useEffect(() => {
@@ -109,21 +116,32 @@ export default function OrderStatus({
           <div className='expect'>
             {orderStatus.map((step, idx) => (
               <div
+                onClick={() => {
+                  handelReviewSign(step)
+                }}
                 key={idx}
                 className={`expect-card ${
-                  step.status == '1' ? '!bg-[#EFFEF2] ' : ''
+                  step.status == '1' || step?.click_able == '1'
+                    ? '!bg-[#EFFEF2] cursor-pointer'
+                    : ''
                 }`}
               >
                 <div className='content-text'>
                   <span
                     className={`number-card ${
-                      step.status == '1' ? '!bg-[#DCF1E0] ' : ''
+                      step.status == '1' || step?.click_able == '1'
+                        ? '!bg-[#DCF1E0] '
+                        : ''
                     }`}
                   >
                     <span className='number'>{idx + 1}</span>
                   </span>
                   <span
-                    className={`${step.status == '1' ? 'text-green-700 ' : ''}`}
+                    className={`${
+                      step.status == '1' || step?.click_able == '1'
+                        ? 'text-green-700 '
+                        : ''
+                    }`}
                   >
                     {step?.title}
                   </span>
@@ -153,7 +171,7 @@ export default function OrderStatus({
         <>
           <div className='text-center'>
             <Space>
-              {showNextButton ? (
+              {/* {showNextButton ? (
                 <Button
                   type='primary'
                   className='prime-button gap-0 w-52 m-auto'
@@ -166,14 +184,16 @@ export default function OrderStatus({
                 </Button>
               ) : (
                 ''
-              )}
+              )} */}
 
-              <Link href='/more/referral'>
-                <Button type='primary' className='refer-friend-button '>
-                  <img src='/assets/icons/user-add.svg' alt='useradd' />
-                  <span className='font-medium'>Refer Friends</span>
-                </Button>
-              </Link>
+              {orderStatus?.show_reffer_friend === 1 ? (
+                <Link href='/more/referral'>
+                  <Button type='primary' className='refer-friend-button '>
+                    <img src='/assets/icons/user-add.svg' alt='useradd' />
+                    <span className='font-medium'>Refer Friends</span>
+                  </Button>
+                </Link>
+              ) : null}
             </Space>
           </div>
         </>
