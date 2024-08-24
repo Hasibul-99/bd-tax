@@ -217,10 +217,15 @@ export default function Investments({
                   {
                     required: true,
                   },
+                  {
+                    max: 600,
+                    message:
+                      'The message cannot be longer than 500 characters!',
+                  },
                 ]}
               >
                 <TextArea
-                  maxLength={600}
+                  maxLength={700}
                   rows={4}
                   style={{width: '200px'}}
                   placeholder={

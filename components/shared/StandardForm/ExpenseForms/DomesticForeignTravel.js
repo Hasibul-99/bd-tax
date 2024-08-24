@@ -192,10 +192,15 @@ export default function DomesticForeignTravel({
                   {
                     required: true,
                   },
+                  {
+                    max: 600,
+                    message:
+                      'The message cannot be longer than 500 characters!',
+                  },
                 ]}
               >
                 <TextArea
-                  maxLength={600}
+                  maxLength={700}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Description'
@@ -215,7 +220,7 @@ export default function DomesticForeignTravel({
 
               {/* <Form.Item name='PersonalForeignTravelComment'>
                 <TextArea
-                  maxLength={600}
+                  maxLength={700}
                   rows={2}
                   style={{width: '300px'}}
                   placeholder='Comment'

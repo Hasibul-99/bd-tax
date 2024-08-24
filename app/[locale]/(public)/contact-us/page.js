@@ -103,6 +103,11 @@ export default function ContactUs() {
                     required: true,
                     message: 'Please input Message!',
                   },
+                  {
+                    max: 500,
+                    message:
+                      'The message cannot be longer than 500 characters!',
+                  },
                 ]}
               >
                 <TextArea rows={8} />

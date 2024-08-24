@@ -9,7 +9,6 @@ import {alertPop} from '@/scripts/helper'
 import {RightOutlined} from '@ant-design/icons'
 import {
   Button,
-  Checkbox,
   Col,
   ConfigProvider,
   DatePicker,
@@ -910,9 +909,18 @@ export default function PersonalInfo({setCurrent}) {
               Employer Address
             </Col>
             <Col className='gutter-row' span={20}>
-              <Form.Item name='EmployerAddress'>
+              <Form.Item
+                name='EmployerAddress'
+                rules={[
+                  {
+                    max: 600,
+                    message:
+                      'The message cannot be longer than 500 characters!',
+                  },
+                ]}
+              >
                 <TextArea
-                  maxLength={600}
+                  maxLength={700}
                   rows={4}
                   placeholder='Employer Address'
                 />
@@ -932,10 +940,15 @@ export default function PersonalInfo({setCurrent}) {
                     required: true,
                     message: 'Please input your  Present address!',
                   },
+                  {
+                    max: 600,
+                    message:
+                      'The message cannot be longer than 500 characters!',
+                  },
                 ]}
               >
                 <TextArea
-                  maxLength={600}
+                  maxLength={700}
                   rows={4}
                   placeholder=' Present address'
                 />
@@ -943,7 +956,7 @@ export default function PersonalInfo({setCurrent}) {
             </Col>
           </Row>
 
-          <Checkbox
+          {/* <Checkbox
             onChange={(e) => {
               setSameAddress(e.target.checked)
             }}
@@ -967,10 +980,15 @@ export default function PersonalInfo({setCurrent}) {
                         required: true,
                         message: 'Please input your Permanent address!',
                       },
+                      {
+                    max: 600,
+                    message:
+                      'The message cannot be longer than 500 characters!',
+                  },
                     ]}
                   >
                     <TextArea
-                      maxLength={600}
+                      maxLength={700}
                       rows={4}
                       placeholder='Permanent address'
                     />
@@ -980,7 +998,7 @@ export default function PersonalInfo({setCurrent}) {
             </>
           ) : (
             ''
-          )}
+          )} */}
 
           <Form.Item className='text-center '>
             <Button

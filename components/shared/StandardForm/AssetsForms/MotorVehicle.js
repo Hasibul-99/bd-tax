@@ -210,10 +210,15 @@ export default function MotorVehicle({
                   {
                     required: true,
                   },
+                  {
+                    max: 600,
+                    message:
+                      'The message cannot be longer than 500 characters!',
+                  },
                 ]}
               >
                 <TextArea
-                  maxLength={600}
+                  maxLength={700}
                   rows={2}
                   style={{width: '150px'}}
                   placeholder='CC'

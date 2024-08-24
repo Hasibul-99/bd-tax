@@ -316,9 +316,14 @@ export default function BusinessForm({
                       required: true,
                       message: 'Please input Business Or Profession Name',
                     },
+                    {
+                      max: 600,
+                      message:
+                        'The message cannot be longer than 500 characters!',
+                    },
                   ]}
                 >
-                  <TextArea maxLength={600} rows={2} />
+                  <TextArea maxLength={700} rows={2} />
                 </Form.Item>
               </Col>
             </Row>
@@ -335,9 +340,14 @@ export default function BusinessForm({
                       required: true,
                       message: 'Please input Address',
                     },
+                    {
+                      max: 600,
+                      message:
+                        'The message cannot be longer than 500 characters!',
+                    },
                   ]}
                 >
-                  <TextArea maxLength={600} rows={2} />
+                  <TextArea maxLength={700} rows={2} />
                 </Form.Item>
               </Col>
             </Row>

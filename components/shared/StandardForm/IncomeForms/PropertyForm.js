@@ -280,9 +280,14 @@ export default function PropertyForm({
                         required: true,
                         message: 'Please input Adress Of Property',
                       },
+                      {
+                        max: 600,
+                        message:
+                          'The message cannot be longer than 500 characters!',
+                      },
                     ]}
                   >
-                    <TextArea maxLength={600} rows={2} />
+                    <TextArea maxLength={700} rows={2} />
                   </Form.Item>
                 </Col>
               </Row>
