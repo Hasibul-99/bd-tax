@@ -57,8 +57,8 @@ export default function CapitalGains({
     },
     {
       title: 'Amount (BDT)',
-      dataIndex: 'Cost_',
-      key: 'Cost_',
+      dataIndex: 'SaleOfShare',
+      key: 'SaleOfShare',
       width: 200,
     },
     {
@@ -141,9 +141,11 @@ export default function CapitalGains({
     setLoading(true)
     console.log(values)
     let data = {...values}
+    data.SaleOfShare = values.SaleOfShare.toString()
 
     if (selectedItem?.IncomeCapitalGainsId) {
       data.IncomeCapitalGainsId = selectedItem.IncomeCapitalGainsId
+
       let res = await postData(Save_Capital_Gain, data)
 
       if (res) {
@@ -169,6 +171,7 @@ export default function CapitalGains({
 
     if (res) {
       setCapitalGainType(res?.data)
+      setSelectedType()
     }
   }
 
@@ -192,6 +195,20 @@ export default function CapitalGains({
       'Cost',
       'tds_amount',
     ])
+  }
+
+  const onValuesChange = (changedValues, allValues) => {
+    if (allValues) {
+      if (allValues.Type === 'Sale of Share') {
+        if (allValues.MoreThanTenPercentHolder === 'Yes') {
+          form.setFieldsValue({Cost: allValues.SaleOfShare})
+        } else {
+          form.setFieldsValue({Cost: 0})
+        }
+      } else {
+        form.setFieldsValue({Cost: allValues.SaleOfShare})
+      }
+    }
   }
 
   useEffect(() => {
@@ -227,6 +244,7 @@ export default function CapitalGains({
           layout={'vertical'}
           name='control-hooks'
           onFinish={onFinish}
+          onValuesChange={onValuesChange}
           size='large'
         >
           <Flex wrap gap='small'>
@@ -280,11 +298,11 @@ export default function CapitalGains({
             <div>
               {selectedType?.Amount ? (
                 <Form.Item
-                  name='Cost'
+                  name='SaleOfShare'
                   rules={[
                     {
                       required: true,
-                      message: 'Please input Cost!',
+                      message: 'Please input Amount!',
                     },
                   ]}
                 >
@@ -320,8 +338,8 @@ export default function CapitalGains({
               </Form.Item>
             ) : null}
 
-            <Form.Item name='readonly'>
-              <Input readOnly value={0} />
+            <Form.Item name='Cost'>
+              <Input disabled value={0} />
             </Form.Item>
           </Flex>
           <Form.Item className='m-auto text-center'>

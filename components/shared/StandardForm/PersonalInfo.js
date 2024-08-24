@@ -32,6 +32,7 @@ export default function PersonalInfo({setCurrent}) {
   const [divisionList, setDivisionList] = useState([])
   const [districtList, setDistrictList] = useState([])
   const [maritalStatus, setMaritalStatus] = useState('Single')
+  const [AnyDisabledChild, setAnyDisabledChild] = useState('N')
 
   const onFinish = async (values) => {
     let profile = {
@@ -59,6 +60,7 @@ export default function PersonalInfo({setCurrent}) {
       DistrictId: values.DistrictId,
       PresentAddress: values.PresentAddress,
       PermanentAddress: values.PermanentAddress || values.PresentAddress,
+      AnyDisabledChild: values.AnyDisabledChild,
       AvailChildDisabilityExemp: values.AvailChildDisabilityExemp,
       SpouseName: values.SpouseName,
       SpouseETIN: values.SpouseETIN,
@@ -113,6 +115,7 @@ export default function PersonalInfo({setCurrent}) {
           PresentAddress: masterData.PresentAddress,
           PermanentAddress: masterData.PermanentAddress,
           AvailChildDisabilityExemp: masterData.AvailChildDisabilityExemp,
+          AnyDisabledChild: masterData.AnyDisabledChild,
           SpouseName: masterData.SpouseName,
           SpouseETIN: masterData.SpouseETIN,
           EmployerName: masterData.EmployerName,
@@ -454,12 +457,12 @@ export default function PersonalInfo({setCurrent}) {
 
               <Row gutter={16}>
                 <Col className='gutter-row' span={4}>
-                  Is any of your Children disability?
+                  Is any of your children disabled?
                 </Col>
                 <Col className='gutter-row' span={20}>
                   <Form.Item
                     label=''
-                    name='AvailChildDisabilityExemp'
+                    name='AnyDisabledChild'
                     rules={[
                       {
                         required: true,
@@ -470,6 +473,7 @@ export default function PersonalInfo({setCurrent}) {
                     <Select
                       placeholder='Select '
                       allowClear
+                      onChange={(val) => setAnyDisabledChild(val)}
                       suffixIcon={
                         <img
                           src='/assets/icons/select-icon.svg'
@@ -483,10 +487,44 @@ export default function PersonalInfo({setCurrent}) {
                   </Form.Item>
                 </Col>
               </Row>
+
+              {AnyDisabledChild === 'Y' ? (
+                <Row gutter={16}>
+                  <Col className='gutter-row' span={4}>
+                    Has your spouse availed the exemption for disable child?
+                  </Col>
+                  <Col className='gutter-row' span={20}>
+                    <Form.Item
+                      label=''
+                      name='AvailChildDisabilityExemp'
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please Select!',
+                        },
+                      ]}
+                    >
+                      <Select
+                        placeholder='Select '
+                        allowClear
+                        suffixIcon={
+                          <img
+                            src='/assets/icons/select-icon.svg'
+                            alt='select-icon'
+                          />
+                        }
+                      >
+                        <Option value='N'>NO</Option>
+                        <Option value='Y'>YES</Option>
+                      </Select>
+                    </Form.Item>
+                  </Col>
+                </Row>
+              ) : null}
             </>
           ) : null}
 
-          <Row gutter={16}>
+          <Row gutter={16} className='mt-6'>
             <Col className='gutter-row' span={4}>
               Residential Status *
             </Col>
