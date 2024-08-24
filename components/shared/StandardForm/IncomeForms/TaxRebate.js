@@ -409,7 +409,7 @@ export default function TaxRebate({
                 </Col>
               </Row>
 
-              <Row gutter={16}>
+              <Row gutter={16} className='mt-6'>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
                   Contribution to Deposit Pension Scheme
                 </Col>
@@ -419,6 +419,11 @@ export default function TaxRebate({
                     rules={[
                       {
                         required: false,
+                      },
+                      {
+                        type: 'number',
+                        max: 120000,
+                        message: 'The value cannot be greater than 1,20,000',
                       },
                     ]}
                   >
@@ -744,7 +749,7 @@ export default function TaxRebate({
                 </Col>
               </Row>
 
-              <Row gutter={16}>
+              <Row gutter={16} className='mt-6'>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
                   Mutual Fund
                 </Col>
@@ -755,12 +760,17 @@ export default function TaxRebate({
                       {
                         required: false,
                       },
+                      {
+                        type: 'number',
+                        max: 500000,
+                        message: 'The value cannot be greater than 5,00,000 ',
+                      },
                     ]}
                   >
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
-                <Col className='gutter-row' xs={24} sm={24} md={9}>
+                <Col className='gutter-row ' xs={24} sm={24} md={9}>
                   <Form.Item
                     name='MutualFund'
                     rules={[
