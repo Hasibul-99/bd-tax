@@ -44,7 +44,7 @@ export default function Premium(props) {
                 type='primary'
                 className='primary-Button font-semibold'
                 size='large'
-                disabled={!pack?.show_selection}
+                disabled={pack?.show_selection === 0}
                 onClick={() => tempUserPackages()}
               >
                 {pack?.show_selection === 1 ? (
