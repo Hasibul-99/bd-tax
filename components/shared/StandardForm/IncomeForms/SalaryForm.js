@@ -280,7 +280,7 @@ export default function SalaryForm({
           </Col>
         </Row>
         <Divider />
-        {salariesData?.govt_emp_status === 1 ? (
+        {salariesData?.govt_emp_status !== 1 ? (
           <>
             <GovSalaryForm
               onFinish={onFinish}

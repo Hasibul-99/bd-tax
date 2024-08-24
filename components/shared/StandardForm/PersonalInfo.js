@@ -89,6 +89,8 @@ export default function PersonalInfo({setCurrent}) {
       if (masterData) {
         setUserData(masterData)
         setMaritalStatus(masterData.Status)
+        setAnyDisabledChild(masterData.AnyDisabledChild)
+
         form.setFieldsValue({
           first_name: masterData.first_name,
           last_name: masterData.last_name,
@@ -414,14 +416,14 @@ export default function PersonalInfo({setCurrent}) {
             <>
               <Row gutter={16}>
                 <Col className='gutter-row' span={4}>
-                  Spouse's Name *
+                  Spouse's Name
                 </Col>
                 <Col className='gutter-row' span={20}>
                   <Form.Item
                     name='SpouseName'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: "Please input your Spouse's name!",
                       },
                     ]}
@@ -433,18 +435,18 @@ export default function PersonalInfo({setCurrent}) {
 
               <Row gutter={16}>
                 <Col className='gutter-row' span={4}>
-                  Spouse's ETIN *
+                  Spouse's ETIN
                 </Col>
                 <Col className='gutter-row' span={20}>
                   <Form.Item
                     name='SpouseETIN'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: "Please input Spouse's ETIN!",
                       },
                       {
-                        required: true,
+                        required: false,
                         message: 'A value must be entered',
                         pattern: new RegExp(/^[0-9]+$/),
                       },
@@ -675,7 +677,7 @@ export default function PersonalInfo({setCurrent}) {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input!',
+                    message: 'Please Select!',
                   },
                 ]}
               >

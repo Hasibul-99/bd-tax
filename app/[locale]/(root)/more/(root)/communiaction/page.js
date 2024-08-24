@@ -55,7 +55,7 @@ export default function Communications() {
 
   return (
     <div className='bg-white py-6 px-6'>
-      <h3 className='text-xl font-semibold'>Communiaction</h3>
+      <h3 className='text-xl font-semibold'>Communiactions</h3>
 
       <div className='overflow-x-scroll mt-6'>
         <Table columns={columns} dataSource={emailLog} pagination={false} />
