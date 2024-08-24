@@ -7,7 +7,7 @@ import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {LeftOutlined, RightOutlined} from '@ant-design/icons'
 import {Button, Col, ConfigProvider, Form, Input, Row, Space} from 'antd'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 
 export default function AdjustmentOfTaxRefund({
   setActiveTab,
@@ -16,6 +16,7 @@ export default function AdjustmentOfTaxRefund({
   backActiveTab,
 }) {
   const [form] = Form.useForm()
+  const [ajValue, setAjValue] = useState()
 
   const onFinish = async (values) => {
     let res = await postData(Save_Adjustmentsof_TaxRefund, values)
@@ -41,6 +42,7 @@ export default function AdjustmentOfTaxRefund({
     console.log('res', res)
     if (res) {
       let masterData = res?.data
+      setAjValue(masterData)
       form.setFieldsValue(masterData)
     }
   }
@@ -53,9 +55,11 @@ export default function AdjustmentOfTaxRefund({
     <div className='bg-white pb-6 px-6'>
       <h3 className='text-xl font-semibold'>ADJUSTMENT OF TAX REFUND</h3>
       <p>
-        Did you have any adjustments to your tax refund? Current value is 24.00.
+        {ajValue?.AdjustmentTaxRefund
+          ? `Did you have any adjustments to your tax refund? Current value is ${ajValue?.AdjustmentTaxRefund}.
         You can change the value below and press store Adjustment of tax refund
-        Did you have any adjustments to your tax refund?
+        Did you have any adjustments to your tax refund?`
+          : 'Did you have any adjustments to your tax refund? Adjustment of tax refund'}
       </p>
 
       <ConfigProvider

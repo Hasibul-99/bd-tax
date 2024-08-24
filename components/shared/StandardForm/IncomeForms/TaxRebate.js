@@ -26,11 +26,13 @@ import {
   Row,
   Space,
   Table,
+  Typography,
 } from 'antd'
 import {useEffect, useState} from 'react'
 import {lifeInsurancePremiumCal} from './helper'
 const {TextArea} = Input
 const {confirm} = Modal
+const {Text, Link} = Typography
 
 export default function TaxRebate({
   setCurrent,
@@ -250,7 +252,10 @@ export default function TaxRebate({
                   Life Insurance Premium
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
-                  <Form.Item name='LifeInsurancePremium_1'>
+                  <Form.Item
+                    name='LifeInsurancePremium_1'
+                    extra='Please enter the market value amount as of 30th June in the Share/Debenture filed (Assets> investments> Insurance Premium).'
+                  >
                     <InputNumber className='w-full' />
                   </Form.Item>
                 </Col>
@@ -348,7 +353,7 @@ export default function TaxRebate({
                 </Col>
               </Row>
 
-              <Row gutter={16}>
+              <Row gutter={16} className='mt-6'>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
                   Contribution to Super Annuation Fund
                 </Col>
@@ -386,6 +391,7 @@ export default function TaxRebate({
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
                     name='InvestInStockOrShare_1'
+                    extra='Please enter the market value amount as of 30th June in the Share/Debenture filed (Assets> investments> share/debenture).'
                     rules={[
                       {
                         required: false,
@@ -416,6 +422,7 @@ export default function TaxRebate({
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
                     name='DepositPensionScheme_1'
+                    extra='Please enter the total amount as of 30th June in the Prize Bond/Saving Scheme/FDR/DPS field (Assets> investments> Bond/Saving Scheme/FDR/DPS).'
                     rules={[
                       {
                         required: false,
@@ -511,6 +518,7 @@ export default function TaxRebate({
                 <Col className='gutter-row' xs={24} sm={24} md={9}>
                   <Form.Item
                     name='SavingsCertificates_1'
+                    extra='Please enter the total amount as of 30th June in the Saving Certificate/Unit Certificate/Bond filed (Assets> investments>Saving Certificate/Unit Certificate/Bond).'
                     rules={[
                       {
                         required: false,

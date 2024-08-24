@@ -33,10 +33,37 @@ export default function OtherSources({
     let res = await getData(Get_Other_Sources)
 
     if (res) {
-      console.log('====================================')
-      console.log('getDataOtherSourse', getDataOtherSourse(res?.data))
-      console.log('====================================')
       form.setFieldsValue(getDataOtherSourse(res?.data))
+    }
+  }
+
+  const onValuesChange = (changedValues, allValues) => {
+    console.log('Changed values:', changedValues)
+    console.log('All values:', allValues)
+
+    if (allValues) {
+      form.setFieldsValue({
+        InterestIncomeFromWEDBA: allValues.InterestFromMutualFund_1
+          ? 0
+          : undefined,
+        CashDividend: allValues.CashDividend_1 ? 0 : undefined,
+        InterestIncomeFromWEDB: allValues.InterestIncomeFromWEDB_1
+          ? 0
+          : undefined,
+        USDollarPremium: allValues.USDollarPremium_1 ? 0 : undefined,
+        PoundSterlingPremium: allValues.PoundSterlingPremium_1 ? 0 : undefined,
+        EuroPremium: allValues.EuroPremium_1 ? 0 : undefined,
+        InterestFromInstrument: allValues.InterestFromInstrument_1
+          ? 0
+          : undefined,
+        SanchaypatraIncome: allValues.SanchaypatraIncome_1
+          ? allValues.SanchaypatraIncome_1
+          : undefined,
+        Others: allValues.Others_1 ? allValues.Others_1 : undefined,
+        SanchaypatraIncome: allValues.SanchaypatraIncome_1
+          ? allValues.SanchaypatraIncome_1
+          : undefined,
+      })
     }
   }
 
@@ -66,6 +93,7 @@ export default function OtherSources({
           layout={'vertical'}
           name='control-hooks'
           onFinish={onFinish}
+          onValuesChange={onValuesChange}
           size='large'
         >
           <Row gutter={16}>
@@ -215,7 +243,7 @@ export default function OtherSources({
             </Col>
             <Col className='gutter-row' span={6}>
               <Form.Item
-                name='InvestmentInInstrument_1'
+                name='InvestmentInInstrument'
                 rules={[
                   {
                     required: false,
@@ -227,7 +255,7 @@ export default function OtherSources({
                 <InputNumber style={{width: '200px'}} />
               </Form.Item>
             </Col>
-            <Col className='gutter-row' span={6}>
+            {/* <Col className='gutter-row' span={6}>
               <Form.Item
                 name='InvestmentInInstrument'
                 rules={[
@@ -238,7 +266,7 @@ export default function OtherSources({
               >
                 <InputNumber style={{width: '200px'}} disabled />
               </Form.Item>
-            </Col>
+            </Col> */}
           </Row>
           <Row gutter={16} className='mt-5'>
             <Col className='gutter-row' span={12}>
@@ -279,11 +307,10 @@ export default function OtherSources({
             </Col>
             <Col className='gutter-row' span={6}>
               <Form.Item
-                name='SanchaypatraIncome'
+                name='SanchaypatraIncome_1'
                 rules={[
                   {
                     required: false,
-
                     message: 'Required *',
                   },
                 ]}
@@ -293,7 +320,7 @@ export default function OtherSources({
             </Col>
             <Col className='gutter-row' span={6}>
               <Form.Item
-                name='SanchaypatraIncome_1'
+                name='SanchaypatraIncome'
                 rules={[
                   {
                     required: false,
@@ -325,7 +352,7 @@ export default function OtherSources({
           </Row>
           <Row gutter={16} className='mt-5'>
             <Col className='gutter-row' span={12}>
-              Others
+              Others (Royalty, License Fees, Honorarium, Govt. Incentive etc.)
             </Col>
             <Col className='gutter-row' span={6}>
               <Form.Item
