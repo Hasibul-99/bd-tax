@@ -13,13 +13,16 @@ import {
   Typography,
 } from 'antd'
 import Link from 'next/link'
-import {useRouter} from 'next/navigation'
+import {useRouter, useSearchParams} from 'next/navigation'
+
 import {useEffect, useState} from 'react'
 const {Option} = Select
 const {Title, Text} = Typography
 
 export default function SignUp() {
   const [form] = Form.useForm()
+  const searchParams = useSearchParams()
+  const mobile = searchParams.get('mobile')
   const [hearAboutUs, setHearAboutUs] = useState([])
   const router = useRouter()
 
@@ -47,6 +50,12 @@ export default function SignUp() {
   useEffect(() => {
     getHearAboutUs()
   }, [])
+
+  useEffect(() => {
+    if (mobile) {
+      form.setFieldsValue({mobile: mobile})
+    }
+  }, [mobile])
 
   return (
     <div className='flex items-center w-full'>
@@ -152,7 +161,7 @@ export default function SignUp() {
                 },
               ]}
             >
-              <Input placeholder='Phone *' />
+              <Input placeholder='Phone *' disabled={!!mobile} />
             </Form.Item>
 
             <Form.Item

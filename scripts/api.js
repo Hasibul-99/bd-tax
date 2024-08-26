@@ -420,7 +420,7 @@ export const THIRDPARTY_AUTH = 'thirparty-auth/'
 // Get FAQ
 export const GET_FAQ = 'get-faq'
 export const GET_WEB_URL = 'get-web-url'
-export const GET_NOTIFICATION = 'getNotification'
+export const GET_NOTIFICATION = 'get-notification'
 export const SAVE_COUPON = 'save-coupon'
 export const CANCEL_COUPON = 'cancel-coupon'
 export const GET_USER_TAX = 'get-user-tax'

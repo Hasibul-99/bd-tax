@@ -18,6 +18,10 @@ export default function page() {
     if (res) {
       let masterData = res?.data?.data
 
+      if (masterData?.need_reg === 1) {
+        window.location = `/signup?mobile=${masterData.mobile}`
+        return false
+      }
       Cookies.set('bdtax_token', masterData?.token)
       Cookies.set('bdtax_user', JSON.stringify(masterData))
 
