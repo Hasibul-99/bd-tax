@@ -151,10 +151,15 @@ export default function BankLoans({
         }}
       >
         <div className='mt-5'>
-          <Table columns={columns} dataSource={BankLoans} pagination={false} />
+          <Table
+            className='overflow-x-scroll'
+            columns={columns}
+            dataSource={BankLoans}
+            pagination={false}
+          />
 
           <Form
-            className='mt-5'
+            className='mt-5 overflow-x-scroll'
             form={form}
             layout={'vertical'}
             name='control-hooks'

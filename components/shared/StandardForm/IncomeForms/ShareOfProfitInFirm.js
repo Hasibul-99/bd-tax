@@ -177,13 +177,14 @@ export default function ShareOfProfitInFirm({
       >
         <div className='mt-5'>
           <Table
+            className='overflow-x-scroll'
             columns={columns}
             dataSource={ProfitInFirms}
             pagination={false}
           />
 
           <Form
-            className='mt-5'
+            className='mt-5 overflow-x-scroll'
             form={form}
             layout={'vertical'}
             name='control-hooks'

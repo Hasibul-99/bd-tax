@@ -164,10 +164,15 @@ export default function Donation({
         }}
       >
         <div className='mt-5'>
-          <Table columns={columns} dataSource={Donations} pagination={false} />
+          <Table
+            className='overflow-x-scroll'
+            columns={columns}
+            dataSource={Donations}
+            pagination={false}
+          />
 
           <Form
-            className='mt-5'
+            className='mt-5 overflow-x-scroll'
             form={form}
             layout={'vertical'}
             name='control-hooks'

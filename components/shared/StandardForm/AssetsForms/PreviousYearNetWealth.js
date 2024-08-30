@@ -124,7 +124,7 @@ export default function PreviousYearNetWealth({
                   },
                 ]}
               >
-                <InputNumber style={{width: '400px'}} placeholder='Value ' />
+                <InputNumber className='md:w-[400px]' placeholder='Value ' />
               </Form.Item>
 
               <Form.Item>
