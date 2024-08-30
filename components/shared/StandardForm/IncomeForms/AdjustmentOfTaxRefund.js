@@ -121,7 +121,7 @@ export default function AdjustmentOfTaxRefund({
                 <Button
                   type='primary'
                   danger
-                  className=' ml-5'
+                  className='mt-3 md:mt-0 md:ml-5'
                   onClick={() => {
                     deleteAdjustmentTaxRefund()
                   }}

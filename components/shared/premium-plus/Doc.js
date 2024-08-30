@@ -264,7 +264,7 @@ export default function Doc({setCurrent, nextCurrent}) {
                         }
                         title={
                           <div>
-                            <h5 className='font-semibold text-[13px] leading-[18px] text-custom-slate'>
+                            <h5 className='font-semibold text-[13px] leading-[18px] text-custom-slate break-words'>
                               {item.file_name}
                             </h5>
                             <span className='font-normal text-[12px] leading-[17px] text-custom-gray'>

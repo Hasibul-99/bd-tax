@@ -122,7 +122,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={6}>
@@ -135,7 +135,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} disabled />
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -155,7 +155,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={6}>
@@ -167,7 +167,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} disabled />
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -187,7 +187,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={6}>
@@ -199,7 +199,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} disabled />
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -219,7 +219,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={6}>
@@ -231,7 +231,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} disabled />
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -252,7 +252,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
             {/* <Col className='gutter-row' span={6}>
@@ -264,7 +264,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} disabled />
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col> */}
           </Row>
@@ -284,7 +284,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={6}>
@@ -296,7 +296,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} disabled />
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -315,7 +315,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={6}>
@@ -327,7 +327,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} disabled />
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col>
           </Row>
@@ -346,7 +346,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-6/12' />
               </Form.Item>
             </Col>
           </Row>
@@ -365,7 +365,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
             <Col className='gutter-row' span={6}>
@@ -377,7 +377,7 @@ export default function OtherSources({
                   },
                 ]}
               >
-                <InputNumber style={{width: '200px'}} disabled />
+                <InputNumber className='w-full' disabled />
               </Form.Item>
             </Col>
           </Row>

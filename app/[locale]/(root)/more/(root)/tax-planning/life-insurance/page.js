@@ -45,7 +45,7 @@ export default function LifeInsurance() {
           form={form}
         >
           <Row gutter={16}>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 className='mb-2'
                 label='Your projected annual income'
@@ -60,7 +60,7 @@ export default function LifeInsurance() {
                 <Input placeholder='Annual Income' />
               </Form.Item>
             </Col>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               <Form.Item className='text-right mb-2'>
                 <Button
                   className='prime-button !mt-11'

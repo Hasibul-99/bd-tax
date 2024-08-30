@@ -17,7 +17,7 @@ const RootLayout = (props) => {
 
   useEffect(() => {
     if (!token) {
-      router.push('signin')
+      router.push('/signin')
     }
   }, [token])
 

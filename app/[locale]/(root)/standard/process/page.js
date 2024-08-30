@@ -41,11 +41,16 @@ export default function PremiumPlusProcess() {
         setCurrent(value)
       }, 500)
     } else {
-      setCurrent(value)
+      setCurrent(value || 1)
     }
   }
 
   const onProspectChange = (value) => {
+    if (value === 0) {
+      setCurrent(1)
+      setProsCurrent(1)
+      return false
+    }
     setProsCurrent(value)
   }
 

@@ -87,11 +87,11 @@ export default function Packages({locale, ssrData}) {
                   <Col
                     xs={{
                       span: 24,
-                      offset: 1,
+                      offset: 0,
                     }}
                     sm={{
                       span: 24,
-                      offset: 1,
+                      offset: 0,
                     }}
                     md={{
                       span: 24,

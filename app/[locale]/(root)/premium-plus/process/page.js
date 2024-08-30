@@ -23,7 +23,7 @@ export default function PremiumPlusProcess() {
   const status = searchParams.get('status')
 
   const onChange = (value) => {
-    setCurrent(value)
+    setCurrent(value || 1)
   }
 
   const getPrecessSalaryDoc = async () => {

@@ -25,7 +25,7 @@ export default function PremiumPlusProcess() {
   const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   const onChange = (value) => {
-    setCurrent(value)
+    setCurrent(value || 1)
   }
 
   const getPrecessSalaryDoc = async () => {

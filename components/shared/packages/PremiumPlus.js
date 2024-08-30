@@ -27,7 +27,7 @@ export default function PremiumPlus(props) {
   return (
     <>
       {pack ? (
-        <div>
+        <div className='mb-5'>
           <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative'>
             <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] font-semibold start-1/3'>
               Most Popular

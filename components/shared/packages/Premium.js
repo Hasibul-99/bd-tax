@@ -23,7 +23,7 @@ export default function Premium(props) {
   }
 
   return (
-    <div>
+    <div className='mb-5'>
       <div className='block rounded-[20px]  border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative'>
         {pack ? (
           <>

@@ -271,7 +271,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
                     md={6}
                     lg={6}
                     xl={6}
-                    className='font-normal text-[14px] leading-[18px] text-[#0F172A] pt-3 text-right'
+                    className='font-normal text-[14px] leading-[18px] text-[#0F172A] pt-3 md:text-right'
                   >
                     Tax Due
                     <ExclamationCircleOutlined

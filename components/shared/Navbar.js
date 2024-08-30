@@ -39,7 +39,7 @@ export default function Navbar({locale}) {
 
       localStorage.removeItem('bdtax_token')
       localStorage.removeItem('bdtax_user')
-      window.location = '/en/signin'
+      window.location = '/signin'
     }
   }
 
@@ -207,7 +207,7 @@ export default function Navbar({locale}) {
           <li>
             <Link
               href={`/${locale}/contact-us`}
-              className='block text-sm px-2 py-4 hover:bg-green-500 transition duration-300'
+              className='hidden md:block text-sm px-2 py-4 hover:bg-green-500 transition duration-300'
             >
               <Space>
                 <img src='/assets/icons/message-question.svg' />
