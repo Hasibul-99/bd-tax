@@ -1,10 +1,15 @@
 import {DELETE_FILE, GET_FILES, UPLOAD_FILES} from '@/scripts/api'
 import {deleteData, getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
-import {ExclamationCircleFilled, RightOutlined} from '@ant-design/icons'
+import {
+  CheckCircleOutlined,
+  ExclamationCircleFilled,
+  RightOutlined,
+} from '@ant-design/icons'
 import {
   Avatar,
   Button,
+  Card,
   Col,
   ConfigProvider,
   Form,
@@ -13,11 +18,13 @@ import {
   Row,
   Select,
   Space,
+  Typography,
   Upload,
 } from 'antd'
 import {useEffect, useState} from 'react'
 const {Dragger} = Upload
 const {confirm} = Modal
+const {Title, Text} = Typography
 
 export default function Doc({setCurrent, nextCurrent}) {
   const [form] = Form.useForm()
@@ -25,6 +32,9 @@ export default function Doc({setCurrent, nextCurrent}) {
   const [fileType, setFileType] = useState()
   const [uploadedFile, setUploadedFile] = useState()
   const [floading, setfLoading] = useState(false)
+  const [storeFile, setStoreFile] = useState(true)
+  const [fileName, setFileName] = useState()
+  const [fileLoading, setFileLoading] = useState(true)
 
   const props = {
     name: 'file',
@@ -37,7 +47,13 @@ export default function Doc({setCurrent, nextCurrent}) {
     onChange(info) {
       const {status} = info.file
       if (status !== 'uploading') {
+        setFileLoading(true)
         console.log(info.file, info.fileList)
+        setStoreFile(false)
+        setFileName(info.file.name)
+        setTimeout(() => {
+          setFileLoading(false)
+        }, 1000)
       }
       if (status === 'done') {
         message.success(`${info.file.name} file uploaded successfully.`)
@@ -77,6 +93,9 @@ export default function Doc({setCurrent, nextCurrent}) {
         let masterData = res?.data?.data
 
         setUploadedFile((oldArray) => [...oldArray, masterData])
+        setStoreFile(true)
+        setFileName(null)
+        setFileLoading(true)
       }
 
       setfLoading(false)
@@ -210,23 +229,56 @@ export default function Doc({setCurrent, nextCurrent}) {
                   ]}
                 >
                   <Dragger {...props}>
-                    <p className='ant-upload-drag-icon'>
-                      <img
-                        className='m-auto'
-                        src='/assets/images/download.png'
-                        alt='download'
-                      />
-                    </p>
-                    <p className='ant-upload-text'>File size limit 20 mb</p>
-                    <div className='ant-upload-hint mt-3'>
-                      <div className='refer-friend-button w-72 m-auto py-2.5'>
-                        <Space>
-                          <img src='/assets/icons/file.svg' alt='Select File' />
-                          Select File
-                        </Space>
-                      </div>
-                      <p className='mt-3 font-semibold'>or drop a file</p>
-                    </div>
+                    {storeFile ? (
+                      <>
+                        <p className='ant-upload-drag-icon'>
+                          <img
+                            className='m-auto'
+                            src='/assets/images/download.png'
+                            alt='download'
+                          />
+                        </p>
+                        <p className='ant-upload-text'>File size limit 20 mb</p>
+                        <div className='ant-upload-hint mt-3'>
+                          <div className='refer-friend-button w-72 m-auto py-2.5'>
+                            <Space>
+                              <img
+                                src='/assets/icons/file.svg'
+                                alt='Select File'
+                              />
+                              Select File
+                            </Space>
+                          </div>
+                          <p className='mt-3 font-semibold'>or drop a file</p>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <Card className='w-8/12 mx-auto'>
+                          <Space className='gap-6'>
+                            {fileLoading ? (
+                              <img
+                                src='/assets/icons/Spin.gif'
+                                className='w-20'
+                              />
+                            ) : (
+                              <CheckCircleOutlined
+                                style={{fontSize: '30px', color: '#23d049'}}
+                              />
+                            )}
+
+                            <div className='text-left'>
+                              <Title level={5}>{fileName}</Title>
+                              <Text>
+                                To change the file, you can either upload a new
+                                one or simply drag and drop the replacement file
+                                into the upload area.
+                              </Text>
+                            </div>
+                          </Space>
+                        </Card>
+                      </>
+                    )}
                   </Dragger>
                 </Form.Item>
               </Form>
