@@ -27,7 +27,7 @@ export default function Notification() {
       key: 'title',
     },
     {
-      title: 'Email Content',
+      title: 'Message',
       dataIndex: 'message',
       key: 'message',
       width: 400,
