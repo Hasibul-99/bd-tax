@@ -91,8 +91,14 @@ export default function AgricultureForm({
     console.log('All values:', allValues)
 
     if (allValues) {
-      let cost = (allValues.TotalRevenue || 0) - (allValues.ProductionCost || 0)
-      form.setFieldsValue({Cost: cost})
+      let grossProfit =
+        (allValues.TotalRevenue || 0) - (allValues.ProductionCost || 0)
+      let cost =
+        (allValues.TotalRevenue || 0) -
+        (allValues.ProductionCost || 0) -
+        (allValues.Expenses || 0)
+
+      form.setFieldsValue({Cost: cost, GrossProfit: grossProfit})
     }
   }
 
@@ -149,6 +155,18 @@ export default function AgricultureForm({
       title: 'Production Cost (BDT)',
       dataIndex: 'ProductionCost',
       key: 'ProductionCost',
+      width: 200,
+    },
+    {
+      title: 'Gross Profit',
+      dataIndex: 'GrossProfit',
+      key: 'GrossProfit',
+      width: 200,
+    },
+    {
+      title: 'Expenses',
+      dataIndex: 'Expenses',
+      key: 'Expenses',
       width: 200,
     },
     {
@@ -228,7 +246,7 @@ export default function AgricultureForm({
                 ]}
               >
                 <Select
-                  style={{width: '180px'}}
+                  style={{width: '150px'}}
                   placeholder='Select a option'
                   popupMatchSelectWidth={false}
                   allowClear
@@ -293,7 +311,7 @@ export default function AgricultureForm({
                 ]}
               >
                 <InputNumber
-                  style={{width: '150px'}}
+                  style={{width: '100px'}}
                   placeholder='Total Revenue'
                 />
               </Form.Item>
@@ -308,9 +326,37 @@ export default function AgricultureForm({
                 ]}
               >
                 <InputNumber
-                  style={{width: '150px'}}
+                  style={{width: '100px'}}
                   placeholder='Production Cost'
                 />
+              </Form.Item>
+
+              <Form.Item
+                name='GrossProfit'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input Gross profit',
+                  },
+                ]}
+              >
+                <InputNumber
+                  style={{width: '100px'}}
+                  placeholder='Gross profit'
+                  disabled
+                />
+              </Form.Item>
+
+              <Form.Item
+                name='Expenses'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input Expenses',
+                  },
+                ]}
+              >
+                <InputNumber style={{width: '100px'}} placeholder='Expenses' />
               </Form.Item>
 
               <Form.Item
@@ -323,9 +369,9 @@ export default function AgricultureForm({
                 ]}
               >
                 <InputNumber
-                  style={{width: '150px'}}
+                  style={{width: '100px'}}
                   placeholder='Cost'
-                  readOnly
+                  disabled
                 />
               </Form.Item>
             </Flex>

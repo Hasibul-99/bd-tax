@@ -54,6 +54,7 @@ export const UPDATE_UserSourcePreferenceSave = 'UserSourcePreferenceSave'
 // Tax Plan amount
 export const GET_ANNUAL_INCOME = 'annualIncome'
 export const GET_INSURANCE = 'getInsurance'
+export const SUBMIT_NEWLEAD = 'submit-newlead'
 
 // Standard Form
 
