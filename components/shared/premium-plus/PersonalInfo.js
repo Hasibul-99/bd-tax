@@ -9,6 +9,7 @@ import {
   DatePicker,
   Form,
   Input,
+  InputNumber,
   Row,
   Select,
 } from 'antd'
@@ -330,7 +331,7 @@ export default function PersonalInfo({setCurrent, context}) {
                   },
                 ]}
               >
-                <Input />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
           </Row>

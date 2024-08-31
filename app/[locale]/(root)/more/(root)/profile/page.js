@@ -11,6 +11,7 @@ import {
   DatePicker,
   Form,
   Input,
+  InputNumber,
   Row,
   Select,
 } from 'antd'
@@ -36,6 +37,7 @@ export default function Profile() {
       AreaOfResidence: values.AreaOfResidence,
       TaxesZone: values.TaxesZone,
       TaxesCircle: values.TaxesCircle,
+      GovernmentEmployee: values.GovernmentEmployee,
       module: 'profile',
     }
 
@@ -71,6 +73,7 @@ export default function Profile() {
           AreaOfResidence: parseInt(masterData.AreaOfResidence),
           TaxesZone: masterData.TaxesZone,
           TaxesCircle: masterData.TaxesCircle,
+          GovernmentEmployee: masterData.GovernmentEmployee,
         })
         setUserData(masterData)
       }
@@ -313,7 +316,7 @@ export default function Profile() {
                   },
                 ]}
               >
-                <Input />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
           </Row>
@@ -373,6 +376,37 @@ export default function Profile() {
                   ) : (
                     ''
                   )}
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16} className='mb-4'>
+            <Col className='gutter-row' span={4}>
+              Are you a government employee? *
+            </Col>
+            <Col className='gutter-row' span={20}>
+              <Form.Item
+                label=''
+                name='GovernmentEmployee'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please Select!',
+                  },
+                ]}
+              >
+                <Select
+                  placeholder='Select'
+                  allowClear
+                  suffixIcon={
+                    <img
+                      src='/assets/icons/select-icon.svg'
+                      alt='select-icon'
+                    />
+                  }
+                >
+                  <Option value='N'>NO</Option>
+                  <Option value='Y'>YES</Option>
                 </Select>
               </Form.Item>
             </Col>

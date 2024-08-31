@@ -2,9 +2,9 @@ import {CANCEL_COUPON, GET_PAYMENT_METHOD, SAVE_COUPON} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {defaultStore} from '@/store/default'
+import {RightOutlined} from '@ant-design/icons'
 import {Button, Card, ConfigProvider, Input, Space, Typography} from 'antd'
 import {useEffect, useState} from 'react'
-
 const {Text, Link} = Typography
 // https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca
 const sslgatewayLink = ''
@@ -113,6 +113,17 @@ export default function Payment({salaryData, setCurrent, context}) {
             </p>
             <p>{paymentData?.payment_amount_message}</p>
           </Card>
+
+          <Button
+            type='primary'
+            className='prime-button gap-0 w-52 ml-auto mt-6'
+            onClick={() => {
+              setCurrent(context === 'standard' ? 6 : 4)
+            }}
+          >
+            Next
+            <RightOutlined style={{fontSize: '12px'}} />
+          </Button>
         </>
       ) : (
         <>

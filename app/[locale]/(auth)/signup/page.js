@@ -217,6 +217,10 @@ export default function SignUp() {
               </Select>
             </Form.Item>
 
+            <Form.Item name='ref_code'>
+              <Input placeholder='Referral Code' />
+            </Form.Item>
+
             <Form.Item>
               <Button className='prime-button' type='primary' htmlType='submit'>
                 Register
@@ -226,11 +230,12 @@ export default function SignUp() {
         </ConfigProvider>
 
         <div className='mb-2'>
+          Already have account?{' '}
           <Link
             href='signin'
             className=' text-emerald-700 hover:text-emerald-700'
           >
-            Already have account
+            Log in here
           </Link>
         </div>
         <Space>

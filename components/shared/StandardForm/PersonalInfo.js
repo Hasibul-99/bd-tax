@@ -805,7 +805,7 @@ export default function PersonalInfo({setCurrent}) {
                   },
                 ]}
               >
-                <Input />
+                <InputNumber className='w-full' />
               </Form.Item>
             </Col>
           </Row>

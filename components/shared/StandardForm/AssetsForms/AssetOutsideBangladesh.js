@@ -140,7 +140,7 @@ export default function AssetOutsideBangladesh({
 
   return (
     <div className='bg-white pb-6 px-6'>
-      <h3 className='text-xl font-semibold'>Transport Expenses </h3>
+      <h3 className='text-xl font-semibold'>Asset Outside Bangladesh</h3>
       <ConfigProvider
         theme={{
           token: {
