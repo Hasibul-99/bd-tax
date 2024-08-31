@@ -235,6 +235,14 @@ export const Create_User_NetWealth = 'asset/userNetWealth/create'
 export const Update_User_NetWealth = 'asset/userNetWealth/update'
 export const Delete_User_NetWealth = 'asset/userNetWealth/delete'
 
+export const Get_AssetOutsideOfBangladesh =
+  'asset/getAllAssetOutsideOfBangladesh'
+export const Create_AssetOutsideOfBangladesh = 'asset/bangladesh/create'
+export const Update_AssetOutsideOfBangladesh =
+  'assetOutsideOfBangladesh-update/'
+export const Delete_AssetOutsideOfBangladesh =
+  'asset/userAssetOutsideOfBangladesh/delete/'
+
 // User Liability
 
 export const get_liability_userLiability = 'liability/userLiability'

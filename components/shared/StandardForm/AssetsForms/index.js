@@ -2,6 +2,7 @@ import {standardStore} from '@/store/standard'
 import {Button, ConfigProvider} from 'antd'
 import {useEffect, useState} from 'react'
 import AgriculturalProperty from './AgriculturalProperty'
+import AssetOutsideBangladesh from './AssetOutsideBangladesh'
 import BusinessCapital from './BusinessCapital'
 import CashAssets from './CashAssets'
 import DirectorShareholdingAssets from './DirectorShareholdingAssets'
@@ -147,6 +148,15 @@ export default function AssetsForms({assetsList, setProsCurrent, setCurrent}) {
             setProsCurrent={setProsCurrent}
             nextActiveTab={getNextActiveTab(29)}
             backActiveTab={getBackActivateTab(29)}
+          />
+        )
+      case 53:
+        return (
+          <AssetOutsideBangladesh
+            setActiveTab={setActiveTab}
+            setProsCurrent={setProsCurrent}
+            nextActiveTab={getNextActiveTab(53)}
+            backActiveTab={getBackActivateTab(53)}
           />
         )
       default:
