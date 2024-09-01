@@ -1,4 +1,4 @@
-import {GET_DOWNLOAD_TAX_FILE} from '@/scripts/api'
+import {GET_DOWNLOAD_TAX_FILE, GET_USER_PROFILE} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
 import {Button} from 'antd'
 import Link from 'next/link'
@@ -6,6 +6,8 @@ import {useEffect, useState} from 'react'
 
 export default function Congratulations() {
   const [fileData, setFileData] = useState()
+  const [userInfo, setUserInfo] = useState()
+
   const getDownloadTaxFile = async () => {
     let res = await getData(GET_DOWNLOAD_TAX_FILE)
 
@@ -15,8 +17,16 @@ export default function Congratulations() {
   }
   const handelTaxFoem = () => {}
 
+  const getUserData = async () => {
+    let res = await getData(GET_USER_PROFILE)
+    if (res) {
+      let masterData = res?.data
+      setUserInfo(masterData)
+    }
+  }
   useEffect(() => {
     getDownloadTaxFile()
+    getUserData()
   }, [])
   return (
     <div className='p-6 '>
@@ -30,7 +40,10 @@ export default function Congratulations() {
           <span className='text-center'>
             You have successfully prepared your tax return. Please download your
             tax return form, sign and submit at{' '}
-            <span className='font-bold'>Tax Circle 2A</span>.
+            <span className='font-bold'>
+              Tax Circle {userInfo?.TaxesCircle}
+            </span>
+            .
           </span>
           <span className='text-center'>
             You can make unlimited edits to your tax return. You can always

@@ -70,7 +70,9 @@ export default function Profile() {
           Contact: masterData.Contact,
           Gender: masterData.Gender,
           DOB: masterData.DOB ? dayjs(masterData.DOB) : undefined,
-          AreaOfResidence: parseInt(masterData.AreaOfResidence),
+          AreaOfResidence: masterData.AreaOfResidence
+            ? parseInt(masterData.AreaOfResidence)
+            : undefined,
           TaxesZone: masterData.TaxesZone,
           TaxesCircle: masterData.TaxesCircle,
           GovernmentEmployee: masterData.GovernmentEmployee,
