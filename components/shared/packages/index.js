@@ -21,23 +21,25 @@ export default function Packages({locale, ssrData}) {
   const [isShowAllPackages, setIsShowAllPackages] = useState(0)
 
   const detailsHightHandel = () => {
-    // Get the div elements by their IDs
-    const div1 = document.getElementById('premium-plus-details')
-    const div2 = document.getElementById('premium-details')
-    const div3 = document.getElementById('standard-details')
+    setTimeout(() => {
+      // Get the div elements by their IDs
+      const div1 = document.getElementById('premium-plus-details')
+      const div2 = document.getElementById('premium-details')
+      const div3 = document.getElementById('standard-details')
 
-    // Get the heights of each div
-    const height1 = div1?.offsetHeight
-    const height2 = div2?.offsetHeight
-    const height3 = div3?.offsetHeight
+      // Get the heights of each div
+      const height1 = div1?.offsetHeight || 0
+      const height2 = div2?.offsetHeight || 0
+      const height3 = div3?.offsetHeight || 0
 
-    // Find the maximum height
-    const maxHeight = Math.max(height1, height2, height3)
+      // Find the maximum height
+      const maxHeight = Math.max(height1, height2, height3)
 
-    // Set the height of all divs to the maximum height
-    if (div1) div1.style.height = `${maxHeight}px`
-    if (div2) div2.style.height = `${maxHeight}px`
-    if (div3) div3.style.height = `${maxHeight}px`
+      // Set the height of all divs to the maximum height
+      if (div1) div1.style.height = `${maxHeight}px`
+      if (div2) div2.style.height = `${maxHeight}px`
+      if (div3) div3.style.height = `${maxHeight}px`
+    }, 500)
   }
 
   const getPackagesList = async () => {
@@ -113,7 +115,10 @@ export default function Packages({locale, ssrData}) {
                           ghost
                           size='large'
                           className='w-full mb-5 view-all-pack font-medium text-sm leading-5 !text-custom-green'
-                          onClick={() => setShowPackages((thumb) => !thumb)}
+                          onClick={() => {
+                            setShowPackages((thumb) => !thumb),
+                              detailsHightHandel()
+                          }}
                         >
                           View All Packages
                         </Button>

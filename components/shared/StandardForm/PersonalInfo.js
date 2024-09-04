@@ -108,7 +108,9 @@ export default function PersonalInfo({setCurrent}) {
           NoOfChildInFamily: masterData.NoOfChildInFamily,
           FreedomFighter: masterData.FreedomFighter,
           GovernmentEmployee: masterData.GovernmentEmployee,
-          AreaOfResidence: parseInt(masterData.AreaOfResidence),
+          AreaOfResidence: masterData.AreaOfResidence
+            ? parseInt(masterData.AreaOfResidence)
+            : undefined,
           TaxesZone: masterData.TaxesZone,
           TaxesCircle: masterData.TaxesCircle,
           DivisionId: masterData.DivisionId,

@@ -67,6 +67,8 @@ export default function PersonalInfo({setCurrent, context}) {
     if (res) {
       let masterData = res?.data
 
+      console.log('masterData', masterData.AreaOfResidence)
+
       if (masterData) {
         form.setFieldsValue({
           first_name: masterData.first_name,
@@ -77,7 +79,9 @@ export default function PersonalInfo({setCurrent, context}) {
           mobile: masterData.Contact,
           gender: masterData.Gender,
           DOB: masterData.DOB ? dayjs(masterData.DOB) : undefined,
-          AreaOfResidence: parseInt(masterData.AreaOfResidence),
+          AreaOfResidence: masterData.AreaOfResidence
+            ? parseInt(masterData.AreaOfResidence)
+            : undefined,
           TaxesZone: masterData.TaxesZone,
           TaxesCircle: masterData.TaxesCircle,
         })

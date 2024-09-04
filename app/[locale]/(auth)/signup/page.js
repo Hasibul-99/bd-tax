@@ -24,9 +24,11 @@ export default function SignUp() {
   const searchParams = useSearchParams()
   const mobile = searchParams.get('mobile')
   const [hearAboutUs, setHearAboutUs] = useState([])
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
   const onFinish = async (values) => {
+    setLoading(true)
     let res = await postData(REGISTRATION, values, 'no_token', 'showError')
 
     if (res) {
@@ -36,6 +38,7 @@ export default function SignUp() {
         alertPop('success', res.message)
         router.push('signin')
       }
+      setLoading(false)
     }
   }
 
@@ -222,7 +225,12 @@ export default function SignUp() {
             </Form.Item>
 
             <Form.Item>
-              <Button className='prime-button' type='primary' htmlType='submit'>
+              <Button
+                className='prime-button'
+                type='primary'
+                htmlType='submit'
+                loading={loading}
+              >
                 Register
               </Button>
             </Form.Item>

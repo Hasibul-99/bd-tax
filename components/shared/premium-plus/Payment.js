@@ -21,7 +21,7 @@ export default function Payment({salaryData, setCurrent, context}) {
 
     if (res) {
       let masterData = res?.data
-      updateTaxDue(masterData?.due_amount || 0)
+      // updateTaxDue(masterData?.due_amount || 0)
       setPaymentData(masterData)
       setCouponCode(masterData?.coupon_code)
       setCancelCoupon(masterData?.coupon_code ? true : false)

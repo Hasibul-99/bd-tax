@@ -1,13 +1,7 @@
 'use client'
 
 import {moreNaveData} from '@/scripts/helper'
-import {
-  docsIcone,
-  HomeIcone,
-  MessageQuestionIcon,
-  More,
-  TaxGeniusIcon,
-} from '@/scripts/icons'
+import {docsIcone, HomeIcone, MessageQuestionIcon, More} from '@/scripts/icons'
 import {Space} from 'antd'
 import Cookies from 'js-cookie'
 import Image from 'next/image'
@@ -91,18 +85,17 @@ export default function Navbar({locale}) {
                   Docs
                 </Space>
               </Link>
-              <Link
+              {/* <Link
                 href={`/${locale}/tax-genius`}
                 className={`py-4 px-2 text-base font-semibold ${
                   isActiveUrl(`/${locale}/tax-genius`) ? 'active' : ''
                 }`}
               >
                 <Space>
-                  {/* <img src='/assets/icons/tax-genius.svg' /> */}
                   {TaxGeniusIcon}
                   Tax Genius
                 </Space>
-              </Link>
+              </Link> */}
               <Link
                 href={`/${locale}/contact-us`}
                 className={`py-4 px-2 text-base font-semibold ${
@@ -193,7 +186,7 @@ export default function Navbar({locale}) {
               </Space>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href={`/${locale}/tax-genius`}
               className='block text-sm px-2 py-4 hover:bg-green-500 transition duration-300'
@@ -203,7 +196,7 @@ export default function Navbar({locale}) {
                 Tax Genius
               </Space>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               href={`/${locale}/contact-us`}

@@ -75,7 +75,7 @@ export default function Profile() {
             : undefined,
           TaxesZone: masterData.TaxesZone,
           TaxesCircle: masterData.TaxesCircle,
-          GovernmentEmployee: masterData.GovernmentEmployee,
+          GovernmentEmployee: masterData.GovernmentEmployee || undefined,
         })
         setUserData(masterData)
       }

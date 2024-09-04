@@ -290,9 +290,9 @@ export default function Doc() {
                           <div className='text-left'>
                             <Title level={5}>{fileName}</Title>
                             <Text>
-                              To change the file, you can either upload a new
-                              one or simply drag and drop the replacement file
-                              into the upload area.
+                              Click "Submit" to upload your file. To replace it,
+                              either upload a new file or drag and drop the
+                              replacement into the upload area.
                             </Text>
                           </div>
                         </Space>

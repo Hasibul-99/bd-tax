@@ -22,16 +22,16 @@ export default function Notification() {
 
   const columns = [
     {
-      title: 'Title',
+      title: 'Message',
       dataIndex: 'title',
       key: 'title',
     },
-    {
-      title: 'Message',
-      dataIndex: 'message',
-      key: 'message',
-      width: 400,
-    },
+    // {
+    //   title: 'Message',
+    //   dataIndex: 'message',
+    //   key: 'message',
+    //   width: 400,
+    // },
     {
       title: 'Created At',
       dataIndex: 'created_at',

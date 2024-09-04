@@ -19,7 +19,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
     if (res) {
       console.log('res', res)
       setReport(res?.data)
-      updateTaxDue(res?.data?.tax_able_income || 0)
+      // updateTaxDue(res?.data?.tax_able_income || 0)
       setTimeout(() => {
         setShowRes(false)
       }, 3000)
