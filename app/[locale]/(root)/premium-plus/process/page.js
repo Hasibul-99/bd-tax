@@ -22,6 +22,8 @@ export default function PremiumPlusProcess() {
   const [salaryData, setSalaryData] = useState()
   const status = searchParams.get('status')
 
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
+
   const onChange = (value) => {
     setCurrent(value || 1)
   }
@@ -32,11 +34,8 @@ export default function PremiumPlusProcess() {
     if (res) {
       let masterData = res?.data
       setSalaryData(masterData)
-      updateTaxDue(masterData?.tax_amount || 0)
     }
   }
-
-  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   const getUserTax = async () => {
     let res = await getData(GET_USER_TAX)
