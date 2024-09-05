@@ -94,26 +94,23 @@ export default function Payment({salaryData, setCurrent, context}) {
         )}
       </Card>
 
-      <Space className='text-[#F97316] my-6 payment-warning'>
-        <img src='/assets/icons/warning.svg' alt='warning' />
-        This amount is not final and only for informational purposes only.
-      </Space>
+      {paymentData?.due_amount !== 0 ? (
+        <>
+          <Space className='text-[#F97316] my-6 payment-warning'>
+            <img src='/assets/icons/warning.svg' alt='warning' />
+            This amount is not final and only for informational purposes only.
+          </Space>
 
-      <p>
-        Please make payment to submit your order and our expert tax consultants
-        will prepare and submit your return with 100% guaranteed accuracy.
-      </p>
+          <p>
+            Please make payment to submit your order and our expert tax
+            consultants will prepare and submit your return with 100% guaranteed
+            accuracy.
+          </p>
+        </>
+      ) : null}
 
       {paymentData?.due_amount == 0 ? (
         <>
-          <Card className='mt-4 border-0 bg-[#EFFEF2] payment-card'>
-            <span className='left-bar'></span>
-            <p className='font-normal text-sm leading-[18px] text-[#1E293B]'>
-              {paymentData?.payment_amount}
-            </p>
-            <p>{paymentData?.payment_amount_message}</p>
-          </Card>
-
           <Button
             type='primary'
             className='prime-button gap-0 w-52 ml-auto mt-6'
@@ -127,6 +124,14 @@ export default function Payment({salaryData, setCurrent, context}) {
         </>
       ) : (
         <>
+          <Card className='mt-4 border-0 bg-[#EFFEF2] payment-card'>
+            <span className='left-bar'></span>
+            <p className='font-normal text-sm leading-[18px] text-[#1E293B]'>
+              {paymentData?.payment_amount}
+            </p>
+            <p>{paymentData?.payment_amount_message}</p>
+          </Card>
+
           <div className='premium-pack-card mt-3  bg-transparent'>
             <ConfigProvider
               theme={{
