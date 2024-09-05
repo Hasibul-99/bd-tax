@@ -19,6 +19,7 @@ export default function Packages({locale, ssrData}) {
   const [packageList, setPackageList] = useState()
   const [showPackages, setShowPackages] = useState(true)
   const [isShowAllPackages, setIsShowAllPackages] = useState(0)
+  // const updatePremiumPlusId = defaultStore((state) => state.updatePremiumPlusId)
 
   const detailsHightHandel = () => {
     setTimeout(() => {
@@ -49,6 +50,8 @@ export default function Packages({locale, ssrData}) {
       setPackageList(res?.data)
       setShowPackages(!res?.data?.current_package_id)
       setIsShowAllPackages(res?.data?.show_more_package)
+      // updatePremiumPlusId(res.data?.premuim_plus_id)
+      Cookies.set('premium_plus_id', res.data?.premuim_plus_id)
 
       detailsHightHandel()
     } else {

@@ -4,17 +4,21 @@ import TaxYear from '@/components/common/Tax-Year'
 import TaxDue from '@/components/common/TaxDue'
 import WelcomeMessage from '@/components/common/WelcomeMessage'
 import GetUserStep from '@/components/shared/get-user-step'
-import {GET_USER_STEP, GET_USER_TAX} from '@/scripts/api'
-import {getData} from '@/scripts/api-service'
+import {GET_USER_STEP, GET_USER_TAX, TEMP_PACKAGES} from '@/scripts/api'
+import {getData, postData} from '@/scripts/api-service'
 import {defaultStore} from '@/store/default'
 import {Button, Space} from 'antd'
-import Link from 'next/link'
+import Cookies from 'js-cookie'
+import {useRouter} from 'next/navigation'
 import {useEffect, useState} from 'react'
 
 export default function Premium() {
+  const router = useRouter()
   const [steps, setSteps] = useState()
   const [addiInfo, setAdiinfo] = useState()
+  const premiumPlusId = Cookies.get('premium_plus_id')
   const updateTaxDue = defaultStore((state) => state.updateTaxDue)
+  const [loading, setLoading] = useState(false)
 
   const getUserStep = async () => {
     let res = await getData(GET_USER_STEP)
@@ -33,6 +37,22 @@ export default function Premium() {
     if (res) {
       updateTaxDue(res?.data?.tax_amount || 0)
     }
+  }
+
+  const handelUpgrade = async () => {
+    setLoading(false)
+    let res = await postData(
+      TEMP_PACKAGES,
+      {package_id: premiumPlusId},
+      null,
+      null,
+      true
+    )
+
+    if (res) {
+      router.push(`premium-plus`)
+    }
+    setLoading(true)
   }
 
   useEffect(() => {
@@ -68,17 +88,21 @@ export default function Premium() {
             hassle free tax submission.
           </div>
           <div className='md:text-right md:ml-auto'>
-            <Link href='/premium-plus'>
-              <Button
-                type='primary'
-                className='w-full pp-upgrade '
-                size='large'
-              >
-                <Space>
-                  <img src='/assets/icons/pp.svg' alt='Premium-Plus' /> Upgrade
-                </Space>
-              </Button>
-            </Link>
+            {/* <Link href='/premium-plus'> */}
+            <Button
+              type='primary'
+              className='w-full pp-upgrade '
+              size='large'
+              loading={loading}
+              onClick={() => {
+                handelUpgrade()
+              }}
+            >
+              <Space>
+                <img src='/assets/icons/pp.svg' alt='Premium-Plus' /> Upgrade{' '}
+              </Space>
+            </Button>
+            {/* </Link> */}
           </div>
         </div>
 
