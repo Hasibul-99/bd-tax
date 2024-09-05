@@ -4,13 +4,15 @@ import TaxYear from '@/components/common/Tax-Year'
 import TaxDue from '@/components/common/TaxDue'
 import WelcomeMessage from '@/components/common/WelcomeMessage'
 import GetUserStep from '@/components/shared/get-user-step'
-import {GET_USER_STEP} from '@/scripts/api'
+import {GET_USER_STEP, GET_USER_TAX} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
+import {defaultStore} from '@/store/default'
 import {useEffect, useState} from 'react'
 
 export default function PremiumPlus() {
   const [steps, setSteps] = useState()
   const [addiInfo, setAdiinfo] = useState()
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   const getUserStep = async () => {
     let res = await getData(GET_USER_STEP)
@@ -23,8 +25,17 @@ export default function PremiumPlus() {
     }
   }
 
+  const getUserTax = async () => {
+    let res = await getData(GET_USER_TAX)
+
+    if (res) {
+      updateTaxDue(res?.data?.tax_amount || 0)
+    }
+  }
+
   useEffect(() => {
     getUserStep()
+    getUserTax()
   }, [])
 
   return (

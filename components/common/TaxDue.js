@@ -6,5 +6,6 @@ export default function TaxDue() {
   const userS = Cookies.get('bdtax_user')
   const taxAmount = parseInt(userS?.tax_amount)
 
-  return <span>{taxDue ? taxDue : taxAmount ? taxAmount : 0}</span>
+  // : taxAmount ? taxAmount
+  return <span>{taxDue ? taxDue : 0}</span>
 }
