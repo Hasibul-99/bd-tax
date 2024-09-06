@@ -4,7 +4,7 @@ import {
   govNetSalaryIncome,
   govNetTaxableIncome,
   govNetTaxWaiver,
-} from './helper'
+} from '../helper'
 
 export default function GovSalaryForm({
   DeleteSalaryForm,
