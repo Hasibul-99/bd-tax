@@ -29,7 +29,11 @@ import {
   Typography,
 } from 'antd'
 import {useEffect, useState} from 'react'
-import {lifeInsurancePremiumCal} from './helper'
+import {
+  lifeInsurancePremiumCal,
+  taxRebateBangladeshGovtTreasuryBond,
+  taxRebateSavingsCertificates,
+} from './helper'
 const {TextArea} = Input
 const {confirm} = Modal
 const {Text, Link} = Typography
@@ -176,11 +180,15 @@ export default function TaxRebate({
         SCECProvidentFund: allValues.SCECProvidentFund_1 || 0,
         SuperAnnuationFund: allValues.SuperAnnuationFund_1 || 0,
         InvestInStockOrShare: allValues.InvestInStockOrShare_1 || 0,
-        DepositPensionScheme: allValues.DepositPensionScheme_1 || 0,
+        DepositPensionScheme:
+          allValues.DepositPensionScheme_1 >= 120000
+            ? 120000
+            : allValues.DepositPensionScheme_1 || 0,
         BenevolentFund: allValues.BenevolentFund_1 || 0,
         ZakatFund: allValues.ZakatFund_1 || 0,
-        SavingsCertificates: allValues.SavingsCertificates_1 || 0,
-        BangladeshGovtTreasuryBond: allValues.BangladeshGovtTreasuryBond_1 || 0,
+        SavingsCertificates: taxRebateSavingsCertificates(allValues),
+        BangladeshGovtTreasuryBond:
+          taxRebateBangladeshGovtTreasuryBond(allValues),
         DonationNLInstitutionFON: allValues.DonationNLInstitutionFON_1 || 0,
         DonationCharityHospitalNBR: allValues.DonationCharityHospitalNBR_1 || 0,
         DonationOrganizationRetardPeople:
@@ -189,7 +197,10 @@ export default function TaxRebate({
         ContributionLiberationWarMuseum:
           allValues.ContributionLiberationWarMuseum_1 || 0,
         DonationEduInstitutionGov: allValues.DonationEduInstitutionGov_1 || 0,
-        MutualFund: allValues.MutualFund_1 || 0,
+        MutualFund:
+          allValues.MutualFund_1 >= 500000
+            ? 500000
+            : allValues.MutualFund_1 || 0,
       }
 
       form.setFieldsValue(formData)
@@ -427,11 +438,11 @@ export default function TaxRebate({
                       {
                         required: false,
                       },
-                      {
-                        type: 'number',
-                        max: 120000,
-                        message: 'The value cannot be greater than 1,20,000',
-                      },
+                      // {
+                      //   type: 'number',
+                      //   max: 120000,
+                      //   message: 'The value cannot be greater than 1,20,000',
+                      // },
                     ]}
                   >
                     <InputNumber className='w-full' />
@@ -451,7 +462,7 @@ export default function TaxRebate({
                 </Col>
               </Row>
 
-              <Row gutter={16}>
+              <Row gutter={16} className='mb-5'>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
                   Contribution to Benevolent Fund and Group Insurance Premium
                 </Col>
@@ -768,11 +779,11 @@ export default function TaxRebate({
                       {
                         required: false,
                       },
-                      {
-                        type: 'number',
-                        max: 500000,
-                        message: 'The value cannot be greater than 5,00,000 ',
-                      },
+                      // {
+                      //   type: 'number',
+                      //   max: 500000,
+                      //   message: 'The value cannot be greater than 5,00,000 ',
+                      // },
                     ]}
                   >
                     <InputNumber className='w-full' />

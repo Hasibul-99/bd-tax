@@ -194,3 +194,42 @@ export const lifeInsurancePremiumCal = (allValues) => {
       : allValues?.LifeInsurancePremium_1
   }
 }
+
+export const taxRebateSavingsCertificates = (allValues) => {
+  // allValues.SavingsCertificates_1 || 0
+  if (allValues && allValues.SavingsCertificates_1) {
+    let BangladeshGovtTreasuryBond = allValues.BangladeshGovtTreasuryBond || 0,
+      SavingsCertificates_1 = allValues.SavingsCertificates_1 || 0
+
+    if (BangladeshGovtTreasuryBond) {
+      let amount = 500000 - BangladeshGovtTreasuryBond
+      if (amount === 0) {
+        return 0
+      } else if (SavingsCertificates_1 >= amount) {
+        return amount
+      } else return SavingsCertificates_1
+    } else if (SavingsCertificates_1 >= 500000) {
+      return 500000
+    } else return SavingsCertificates_1
+  }
+}
+
+export const taxRebateBangladeshGovtTreasuryBond = (allValues) => {
+  // allValues.BangladeshGovtTreasuryBond_1 || 0
+  if (allValues?.BangladeshGovtTreasuryBond_1) {
+    let SavingsCertificates = allValues.SavingsCertificates || 0,
+      BangladeshGovtTreasuryBond_1 = allValues.BangladeshGovtTreasuryBond_1 || 0
+
+    if (SavingsCertificates) {
+      let amount = 500000 - SavingsCertificates
+
+      if (amount === 0) {
+        return 0
+      } else if (BangladeshGovtTreasuryBond_1 >= amount) {
+        return amount
+      } else return BangladeshGovtTreasuryBond_1
+    } else if (BangladeshGovtTreasuryBond_1 >= 500000) {
+      return 500000
+    } else return BangladeshGovtTreasuryBond_1
+  }
+}
