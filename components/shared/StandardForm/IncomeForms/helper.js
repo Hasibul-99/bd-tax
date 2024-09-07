@@ -53,6 +53,8 @@ export const getTotalGrossTaxableIncome1 = (allValues) => {
     (allValues.LeaveEncashment_1 || 0) +
     (allValues.HonorariumOrReward_1 || 0) +
     (allValues.Others_1 || 0) +
+    (allValues.ReceiptLieuOfOrAdditionToSalaryOrWages_1 || 0) +
+    (allValues.AnyOtherFacilityProvidedByEmployer_1 || 0) +
     (allValues.OvertimeAllowance_1 || 0) +
     (allValues.Bonus_1 || 0) +
     (allValues.OtherAllowances_1 || 0) +

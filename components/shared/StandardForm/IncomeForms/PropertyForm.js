@@ -180,25 +180,24 @@ export default function PropertyForm({
           allValues.ResidentOrCommercial === 2
             ? (RepairTotal || 0) * 0.3
             : (RepairTotal || 0) * 0.25,
-        NetIncome =
-          RepairTotal -
-          (allValues.AdjustedAdvanceRent || 0) -
-          (Repair || 0) -
+        othersTotal =
+          (allValues.AdjustedAdvanceRent || 0) +
           (allValues.MunicipalOrLocalTax || 0) -
-          (allValues.LandRevenue || 0) -
-          (allValues.LoanInterestOrMorgageOrCapitalCrg || 0) -
-          (allValues.InsurancePremium || 0) -
-          (allValues.VacancyAllowence || 0) -
-          (allValues.Others || 0) -
-          (allValues.ClaimedExpensesTotal || 0),
-        ShareOfIncome =
-          ((NetIncome || 0) * (allValues.ShareOfProperty || 0)) / 100
+          (allValues.LandRevenue || 0) +
+          (allValues.LoanInterestOrMorgageOrCapitalCrg || 0) +
+          (allValues.InsurancePremium || 0) +
+          (allValues.VacancyAllowence || 0) +
+          (allValues.Others || 0),
+        NetIncome = RepairTotal - (Repair || 0) - (othersTotal || 0),
+        ShareOfIncome = allValues.ShareOfProperty
+          ? ((NetIncome || 0) * (allValues.ShareOfProperty || 0)) / 100
+          : NetIncome || 0
 
       form.setFieldsValue({
-        Repair: Repair,
-        NetIncome: NetIncome,
-        ClaimedExpensesTotal: Repair,
-        ShareOfIncome: ShareOfIncome,
+        Repair: Math.round(Repair),
+        NetIncome: Math.round(NetIncome),
+        ClaimedExpensesTotal: Math.round(Repair + (othersTotal || 0)),
+        ShareOfIncome: Math.round(ShareOfIncome),
       })
     }
   }

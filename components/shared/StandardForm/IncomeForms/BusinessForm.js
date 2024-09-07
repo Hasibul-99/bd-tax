@@ -67,13 +67,17 @@ export default function BusinessForm({
 
     if (find) {
       setSelectedItem(find)
+      find.BusinessIncomeExempted =
+        find.BusinessIncomeExempted === 'Yes' ? true : false
+      find.temp_Amount = find.NetProfit
+      find.temp_NetTaxable = find.NetProfit
       form.setFieldsValue(find)
     }
   }
 
   const onFinish = async (value) => {
     let data = {...value}
-    data.BusinessIncomeExempted = data.BusinessIncomeExempted ? 1 : 0
+    data.BusinessIncomeExempted = value.BusinessIncomeExempted ? 'Yes' : 'No'
     data.Type = selceted
 
     let res = await postData(Save_Income_BsuinessOrProfession, data)

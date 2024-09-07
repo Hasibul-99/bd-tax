@@ -58,10 +58,10 @@ export default function NonGovSalaryForm({
         NetTaxWaiver =
           grossTaxableIncome_2 +
           (allValues.Surgery_HEKLC_1 || 0) +
-          (allValues.InterestAccruedProvidentFund_1 || 0) +
+          Math.round((allValues.InterestAccruedProvidentFund_1 || 0) / 3) +
           (allValues.Gratuity_2 || 0) +
           (allValues.Pension_1 || 0),
-        NetTaxableIncome = addNonNegative(NetSalaryIncome - NetTaxWaiver) //grossTaxableIncome - (allValues.Surgery_HEKLC_1 || 0)
+        NetTaxableIncome = addNonNegative(NetSalaryIncome - NetTaxWaiver)
 
       form.setFieldsValue({
         NetSalaryIncome: NetSalaryIncome,
@@ -79,7 +79,11 @@ export default function NonGovSalaryForm({
         HonorariumOrReward: allValues.HonorariumOrReward_1 || 0,
         HouseRentAllowance: allValues.HouseRentAllowance_1 || 0,
         InterestAccruedProvidentFund:
-          allValues.InterestAccruedProvidentFund_1 || 0,
+          (allValues.InterestAccruedProvidentFund_1 || 0) -
+          Math.round((allValues.InterestAccruedProvidentFund_1 || 0) / 3),
+        InterestAccruedProvidentFund_2: Math.round(
+          (allValues.InterestAccruedProvidentFund_1 || 0) / 3
+        ),
         LeaveAllowance: allValues.LeaveAllowance_1 || 0,
         LeaveEncashment: allValues.LeaveEncashment_1 || 0,
         MedicalAllowance: allValues.MedicalAllowance_1 || 0,
@@ -106,6 +110,10 @@ export default function NonGovSalaryForm({
         Bonus: allValues.Bonus_1 || 0,
         OtherAllowances: allValues.OtherAllowances_1 || 0,
         Others: allValues.Others_1 || 0,
+        ReceiptLieuOfOrAdditionToSalaryOrWages:
+          allValues.ReceiptLieuOfOrAdditionToSalaryOrWages_1 || 0,
+        AnyOtherFacilityProvidedByEmployer:
+          allValues.AnyOtherFacilityProvidedByEmployer_1 || 0,
         Arear: allValues.Arear_1 || 0,
         Gratuity_2: allValues.Gratuity_1
           ? allValues.Gratuity_1 <= 25000000
@@ -937,6 +945,73 @@ export default function NonGovSalaryForm({
         </Col>
         <Col className='gutter-row' xs={24} sm={24} md={5}>
           <Form.Item name='Others'>
+            <InputNumber className='w-full' disabled />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row gutter={16}>
+        <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
+          Receipt in Lieu of or in Addition to Salary or Wages
+          <ExclamationCircleOutlined className='ml-3' />
+        </Col>
+        <Col className='gutter-row' xs={24} sm={24} md={5}>
+          <Form.Item
+            name='ReceiptLieuOfOrAdditionToSalaryOrWages_1'
+            rules={[
+              {
+                required: false,
+                message:
+                  'Please Receipt in Lieu of or in Addition to Salary or Wages',
+              },
+            ]}
+          >
+            <InputNumber
+              className='w-full'
+              placeholder='Enter Receipt in Lieu of or in Addition to Salary or Wages'
+            />
+          </Form.Item>
+        </Col>
+        <Col className='gutter-row' xs={24} sm={24} md={5}>
+          <Form.Item name='ReceiptLieuOfOrAdditionToSalaryOrWages_2'>
+            <InputNumber className='w-full' disabled />
+          </Form.Item>
+        </Col>
+        <Col className='gutter-row' xs={24} sm={24} md={5}>
+          <Form.Item name='ReceiptLieuOfOrAdditionToSalaryOrWages'>
+            <InputNumber className='w-full' disabled />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row gutter={16}>
+        <Col className='gutter-row pt-2' xs={24} sm={24} md={9}>
+          Any Other Facility Provided by Employer
+          <ExclamationCircleOutlined className='ml-3' />
+        </Col>
+        <Col className='gutter-row' xs={24} sm={24} md={5}>
+          <Form.Item
+            name='AnyOtherFacilityProvidedByEmployer_1'
+            rules={[
+              {
+                required: false,
+                message: 'Please Any Other Facility Provided by Employer',
+              },
+            ]}
+          >
+            <InputNumber
+              className='w-full'
+              placeholder='Enter Any Other Facility Provided by Employer'
+            />
+          </Form.Item>
+        </Col>
+        <Col className='gutter-row' xs={24} sm={24} md={5}>
+          <Form.Item name='AnyOtherFacilityProvidedByEmployer_2'>
+            <InputNumber className='w-full' disabled />
+          </Form.Item>
+        </Col>
+        <Col className='gutter-row' xs={24} sm={24} md={5}>
+          <Form.Item name='AnyOtherFacilityProvidedByEmployer'>
             <InputNumber className='w-full' disabled />
           </Form.Item>
         </Col>
