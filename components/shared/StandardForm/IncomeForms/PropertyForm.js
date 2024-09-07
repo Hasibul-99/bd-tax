@@ -182,7 +182,7 @@ export default function PropertyForm({
             : (RepairTotal || 0) * 0.25,
         othersTotal =
           (allValues.AdjustedAdvanceRent || 0) +
-          (allValues.MunicipalOrLocalTax || 0) -
+          (allValues.MunicipalOrLocalTax || 0) +
           (allValues.LandRevenue || 0) +
           (allValues.LoanInterestOrMorgageOrCapitalCrg || 0) +
           (allValues.InsurancePremium || 0) +
