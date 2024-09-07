@@ -11,9 +11,7 @@ const RootLayout = (props) => {
     <>
       <div className='bg-[#F8FAFC]'>
         <Navbar locale={locale} />
-        <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5 pb-16'>
-          {children}
-        </div>
+        {children}
       </div>
       <Footer />
     </>

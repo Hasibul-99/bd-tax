@@ -1,6 +1,7 @@
 import {NextIntlClientProvider} from 'next-intl'
 import {getMessages} from 'next-intl/server'
 import {Poppins} from 'next/font/google'
+import Script from 'next/script'
 
 import '../../style/style.scss'
 import '../globals.css'
@@ -30,6 +31,10 @@ export default async function LocaleLayout(props) {
           {children}
         </NextIntlClientProvider>
       </body>
+      <Script
+        src='https://use.fontawesome.com/1744f3f671.js'
+        strategy='lazyOnload'
+      />
     </html>
   )
 }

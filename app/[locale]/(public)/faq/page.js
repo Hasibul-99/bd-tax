@@ -44,37 +44,39 @@ export default function FAQ() {
     getFaq()
   }, [])
   return (
-    <div className='custom-container-under bg-white py-6 px-6 rounded-2xl'>
-      <h1 className='mx-auto text-center text-3xl font-bold'>
-        Frequently Asked Questions
-      </h1>
-      <Divider
-        variant='dashed'
-        style={{
-          borderColor: '#7cb305',
-        }}
-      ></Divider>
+    <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5 pb-16'>
+      <div className='custom-container-under bg-white py-6 px-6 rounded-2xl'>
+        <h1 className='mx-auto text-center text-3xl font-bold'>
+          Frequently Asked Questions
+        </h1>
+        <Divider
+          variant='dashed'
+          style={{
+            borderColor: '#7cb305',
+          }}
+        ></Divider>
 
-      {haqItems?.length ? (
-        <>
-          <Collapse
-            className='mt-10'
-            defaultActiveKey={['1']}
-            expandIconPosition={'end'}
-            items={haqItems}
-          />
-        </>
-      ) : (
-        <div className='text-center h-[400px] flex justify-items-center items-center relative'>
-          <div>
-            <img
-              className='image'
-              src='/assets/icons/loading.svg'
-              alt='Premium Plus'
+        {haqItems?.length ? (
+          <>
+            <Collapse
+              className='mt-10'
+              defaultActiveKey={['1']}
+              expandIconPosition={'end'}
+              items={haqItems}
             />
+          </>
+        ) : (
+          <div className='text-center h-[400px] flex justify-items-center items-center relative'>
+            <div>
+              <img
+                className='image'
+                src='/assets/icons/loading.svg'
+                alt='Premium Plus'
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

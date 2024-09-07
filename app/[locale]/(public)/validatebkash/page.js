@@ -45,56 +45,58 @@ export default function validatebkash() {
   }, [])
 
   return (
-    <div>
-      {status === 'success' ? (
-        <>
-          <Result
-            status='success'
-            title='Order Successfully Completed!'
-            subTitle='Thank you for your purchase. configuration takes few minutes, please wait.'
-            extra={[
-              <ConfigProvider
-                theme={{
-                  token: {
-                    colorPrimary: '#126A25',
-                  },
-                  components: {
-                    Button: {
+    <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5 pb-16'>
+      <div>
+        {status === 'success' ? (
+          <>
+            <Result
+              status='success'
+              title='Order Successfully Completed!'
+              subTitle='Thank you for your purchase. configuration takes few minutes, please wait.'
+              extra={[
+                <ConfigProvider
+                  theme={{
+                    token: {
                       colorPrimary: '#126A25',
                     },
-                  },
-                }}
-              >
-                <Spin size='large' />
-              </ConfigProvider>,
-            ]}
-          />
-        </>
-      ) : (
-        <>
-          <Result
-            status='error'
-            title='Submission Failed'
-            subTitle="We're sorry, but there was a problem processing your order. Please try again later or contact support for assistance."
-            extra={
-              <ConfigProvider
-                theme={{
-                  token: {
-                    colorPrimary: '#126A25',
-                  },
-                  components: {
-                    Button: {
+                    components: {
+                      Button: {
+                        colorPrimary: '#126A25',
+                      },
+                    },
+                  }}
+                >
+                  <Spin size='large' />
+                </ConfigProvider>,
+              ]}
+            />
+          </>
+        ) : (
+          <>
+            <Result
+              status='error'
+              title='Submission Failed'
+              subTitle="We're sorry, but there was a problem processing your order. Please try again later or contact support for assistance."
+              extra={
+                <ConfigProvider
+                  theme={{
+                    token: {
                       colorPrimary: '#126A25',
                     },
-                  },
-                }}
-              >
-                <Spin size='large' />
-              </ConfigProvider>
-            }
-          />
-        </>
-      )}
+                    components: {
+                      Button: {
+                        colorPrimary: '#126A25',
+                      },
+                    },
+                  }}
+                >
+                  <Spin size='large' />
+                </ConfigProvider>
+              }
+            />
+          </>
+        )}
+      </div>
     </div>
   )
 }

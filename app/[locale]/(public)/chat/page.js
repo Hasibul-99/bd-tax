@@ -23,31 +23,33 @@ export default function Chat() {
   }, [])
   return (
     <>
-      {loading ? (
-        <>
-          <div className='text-center h-[400px] flex justify-items-center items-center relative'>
-            <div>
-              <img
-                className='image'
-                src='/assets/icons/loading.svg'
-                alt='Premium Plus'
-              />
+      <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5 pb-16'>
+        {loading ? (
+          <>
+            <div className='text-center h-[400px] flex justify-items-center items-center relative'>
+              <div>
+                <img
+                  className='image'
+                  src='/assets/icons/loading.svg'
+                  alt='Premium Plus'
+                />
+              </div>
             </div>
+          </>
+        ) : (
+          <div>
+            <Iframe
+              url={chatUrl}
+              // width='640px'
+              height='700px'
+              id=''
+              className='w-full'
+              display='block'
+              position='relative'
+            />
           </div>
-        </>
-      ) : (
-        <div>
-          <Iframe
-            url={chatUrl}
-            // width='640px'
-            height='700px'
-            id=''
-            className='w-full'
-            display='block'
-            position='relative'
-          />
-        </div>
-      )}
+        )}
+      </div>
     </>
   )
   // <div>Chat https://newdevapi.bdtax.com.bd/public/api/get-web-url</div>

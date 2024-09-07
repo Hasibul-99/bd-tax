@@ -38,8 +38,10 @@ export default function page() {
   }, [])
 
   return (
-    <div>
-      <Loading />
+    <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5 pb-16'>
+      <div>
+        <Loading />
+      </div>
     </div>
   )
 }
