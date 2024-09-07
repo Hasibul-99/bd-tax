@@ -3,6 +3,7 @@
 import {HEAR_ABOUT_US, REGISTRATION} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
+import {defaultStore} from '@/store/default'
 import {
   Button,
   ConfigProvider,
@@ -12,6 +13,7 @@ import {
   Space,
   Typography,
 } from 'antd'
+import Cookies from 'js-cookie'
 import Link from 'next/link'
 import {useRouter, useSearchParams} from 'next/navigation'
 
@@ -26,6 +28,7 @@ export default function SignUp() {
   const [hearAboutUs, setHearAboutUs] = useState([])
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+  const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   const onFinish = async (values) => {
     setLoading(true)
@@ -35,8 +38,28 @@ export default function SignUp() {
       if (res.code === 'error') {
         form.setFields(res?.errors)
       } else {
-        alertPop('success', res.message)
-        router.push('signin')
+        // alertPop('success', res.message)
+        // router.push('signin')
+        let masterData = res?.data?.data
+
+        Cookies.set('bdtax_token', masterData?.token)
+        Cookies.set('bdtax_user', JSON.stringify(masterData))
+
+        if (values?.remember) {
+          localStorage.setItem('bdtax_token', masterData?.token)
+          localStorage.setItem('bdtax_user', JSON.stringify(masterData))
+        }
+
+        updateTaxDue(masterData?.tax_amount || 0)
+        alertPop('success', masterData?.message)
+
+        setTimeout(() => {
+          if (masterData.first_time) {
+            window.location = '/'
+          } else {
+            window.location = 'home'
+          }
+        }, 5000)
       }
       setLoading(false)
     }
