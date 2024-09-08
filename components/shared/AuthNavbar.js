@@ -68,7 +68,7 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/`}
+                href={`/${locale}/packages`}
                 className='md:px-5 py-4 block hover:text-green-400'
               >
                 {t(`packages`)}
