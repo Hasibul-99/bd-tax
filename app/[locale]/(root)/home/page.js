@@ -28,7 +28,7 @@ export default function Docs() {
       } else {
         return '/standard'
       }
-    } else return '/'
+    } else return '/packages'
   }
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function Docs() {
                     <p>{orderHistory.title} </p>
                   </div>
                   <div className='text-right ml-auto'>
-                    <Link href={'/'}>
+                    <Link href={'/packages'}>
                       <Button
                         type='primary'
                         size='large'

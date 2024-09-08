@@ -18,7 +18,7 @@ export default function validatebkashInvoice() {
               title='Order Successfully Completed!'
               subTitle='Thank you for your purchase. configuration takes few minutes, please wait.'
               extra={[
-                <Link href={'/'}>
+                <Link href={'/packages'}>
                   <Button
                     className='prime-button w-52 !mx-auto'
                     type='primary'
@@ -37,7 +37,7 @@ export default function validatebkashInvoice() {
               title='Submission Failed'
               subTitle="We're sorry, but there was a problem processing your order. Please try again later or contact support for assistance."
               extra={
-                <Link href={'/'}>
+                <Link href={'/packages'}>
                   <Button
                     className='prime-button w-52 !mx-auto'
                     type='primary'

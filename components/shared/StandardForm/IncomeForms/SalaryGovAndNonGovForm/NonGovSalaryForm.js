@@ -18,6 +18,8 @@ import {
   addNonNegative,
   DeemedFreeAccommodationCal,
   getEmployeeShareSchemes,
+  getInterestAccruedProvidentFund,
+  getInterestAccruedProvidentFund2,
   getTotalGrossTaxableIncome1,
   getTotalGrossTaxableIncome2,
 } from '../helper'
@@ -58,14 +60,14 @@ export default function NonGovSalaryForm({
         NetTaxWaiver =
           grossTaxableIncome_2 +
           (allValues.Surgery_HEKLC_1 || 0) +
-          Math.round((allValues.InterestAccruedProvidentFund_1 || 0) / 3) +
           (allValues.Gratuity_2 || 0) +
           (allValues.Pension_1 || 0),
         NetTaxableIncome = addNonNegative(NetSalaryIncome - NetTaxWaiver)
 
       form.setFieldsValue({
         NetSalaryIncome: NetSalaryIncome,
-        NetTaxWaiver: NetTaxWaiver,
+        NetTaxWaiver:
+          NetTaxWaiver + getInterestAccruedProvidentFund2(allValues),
         NetTaxableIncome: NetTaxableIncome,
         BasicPay: allValues.BasicPay_1 || 0,
         SpecialPay: allValues.SpecialPay_1 || 0,
@@ -79,11 +81,9 @@ export default function NonGovSalaryForm({
         HonorariumOrReward: allValues.HonorariumOrReward_1 || 0,
         HouseRentAllowance: allValues.HouseRentAllowance_1 || 0,
         InterestAccruedProvidentFund:
-          (allValues.InterestAccruedProvidentFund_1 || 0) -
-          Math.round((allValues.InterestAccruedProvidentFund_1 || 0) / 3),
-        InterestAccruedProvidentFund_2: Math.round(
-          (allValues.InterestAccruedProvidentFund_1 || 0) / 3
-        ),
+          getInterestAccruedProvidentFund(allValues),
+        InterestAccruedProvidentFund_2:
+          getInterestAccruedProvidentFund2(allValues),
         LeaveAllowance: allValues.LeaveAllowance_1 || 0,
         LeaveEncashment: allValues.LeaveEncashment_1 || 0,
         MedicalAllowance: allValues.MedicalAllowance_1 || 0,

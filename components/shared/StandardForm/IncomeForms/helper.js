@@ -235,3 +235,53 @@ export const taxRebateBangladeshGovtTreasuryBond = (allValues) => {
     } else return BangladeshGovtTreasuryBond_1
   }
 }
+
+export const getInterestAccruedProvidentFund = (allValues) => {
+  // (allValues.InterestAccruedProvidentFund_1 || 0) -
+  //         Math.round((allValues.InterestAccruedProvidentFund_1 || 0) / 3),
+
+  if (
+    allValues &&
+    allValues.InterestAccruedProvidentFund_1 &&
+    getTotalGrossTaxableIncome1(allValues)
+  ) {
+    let oneThirdAmountOfYearIncome = Math.round(
+      getTotalGrossTaxableIncome1(allValues) / 3
+    )
+
+    if (
+      allValues.InterestAccruedProvidentFund_1 >= oneThirdAmountOfYearIncome
+    ) {
+      return Math.round((allValues.InterestAccruedProvidentFund_1 * 2) / 3)
+    } else {
+      return 0
+    }
+  } else return 0
+}
+
+export const getInterestAccruedProvidentFund2 = (allValues) => {
+  // Math.round(
+  //   (allValues.InterestAccruedProvidentFund_1 || 0) / 3
+  // )
+
+  if (
+    allValues &&
+    allValues.InterestAccruedProvidentFund_1 &&
+    getTotalGrossTaxableIncome1(allValues)
+  ) {
+    let oneThirdAmountOfYearIncome = Math.round(
+      getTotalGrossTaxableIncome1(allValues) / 3
+    )
+
+    if (
+      allValues.InterestAccruedProvidentFund_1 >= oneThirdAmountOfYearIncome
+    ) {
+      return Math.round(
+        allValues.InterestAccruedProvidentFund_1 -
+          (allValues.InterestAccruedProvidentFund_1 * 2) / 3
+      )
+    } else {
+      return allValues.InterestAccruedProvidentFund_1
+    }
+  } else return 0
+}

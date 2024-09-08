@@ -68,9 +68,16 @@ export default function BusinessForm({
     if (find) {
       setSelectedItem(find)
       find.BusinessIncomeExempted =
-        find.BusinessIncomeExempted === 'Yes' ? true : false
+        find.BusinessIncomeExempted === 'Yes' ||
+        find.BusinessIncomeExempted === true
+          ? true
+          : false
       find.temp_Amount = find.NetProfit
-      find.temp_NetTaxable = find.NetProfit
+      find.temp_NetTaxable =
+        find.BusinessIncomeExempted === 'Yes' ||
+        find.BusinessIncomeExempted === true
+          ? find.NetProfit
+          : 0
       form.setFieldsValue(find)
     }
   }
@@ -91,6 +98,8 @@ export default function BusinessForm({
   }
 
   const onValuesChange = (changedValues, allValues) => {
+    console.log('allValues', allValues)
+
     if (allValues) {
       let NetProfit =
           (allValues.GrossProfit || 0) -
@@ -113,7 +122,7 @@ export default function BusinessForm({
         ClosingCapital: ClosingCapital,
         TotalCapitalLiabilities: TotalCapitalLiabilities,
         temp_Amount: NetProfit,
-        temp_NetTaxable: NetProfit,
+        temp_NetTaxable: allValues.BusinessIncomeExempted ? NetProfit : 0,
       })
     }
   }
@@ -125,7 +134,14 @@ export default function BusinessForm({
       if (allValues) {
         if (context === 'IncomeBusinessOrProfessionDetailsId') {
           return allValues.IncomeBusinessOrProfessionDetailsId || 0
-        } else return allValues.NetProfit || 0
+        } else if (context === 'NetTaxable') {
+          return allValues.BusinessIncomeExempted === 'Yes' ||
+            allValues.BusinessIncomeExempted === true
+            ? allValues.NetProfit || 0
+            : 0
+        } else {
+          return allValues.NetProfit || 0
+        }
       } else return 0
     }
   }

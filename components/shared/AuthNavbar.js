@@ -4,7 +4,7 @@ import {useTranslations} from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import LanguageChange from '../common/LanguageChange'
+// import LanguageChange from '../common/LanguageChange'
 
 // https://codepen.io/Blockshot/pen/rNwOYBE
 export default function AuthNavbar({locale}) {
@@ -114,9 +114,9 @@ export default function AuthNavbar({locale}) {
                 {t(`contact_us`)}
               </Link>
             </li>
-            <li>
+            {/* <li>
               <LanguageChange />
-            </li>
+            </li> */}
             <li className='font-normal text-base leading-5 text-[#020617] md:px-2.5 my-6 md:my-0'>
               <Link
                 href={`/${locale}/signin`}
