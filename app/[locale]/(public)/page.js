@@ -3,6 +3,7 @@ import '@/style/css/w3.css'
 import '@/style/css/style.css'
 import '@/style/css/other-style.css'
 import Slider from '@/components/common/Landing/Slider'
+import Login from '@/components/common/Landing/Login'
 
 async function getData() {
   const res = await fetch(
@@ -40,46 +41,7 @@ export default async function Home(props) {
             <div className='w3-col s8 w3-padding'>
               <img src='assets/images/left_lft.jpg' alt width='100%' />
             </div>
-            <div className='w3-col s4 w3-padding'>
-              <form action='/action_page.php' className='form-border'>
-                <h1 className='poppins-bold pt-6'>
-                  #1 tax software in Bangladesh
-                </h1>
-                <h5 className='w3-center p-4'>
-                  Hassle-free tax season starts here
-                </h5>
-                <input
-                  type='text'
-                  id='fname'
-                  name='firstname'
-                  placeholder='Your name..'
-                />
-                <input
-                  type='text'
-                  id='lname'
-                  name='lastname'
-                  placeholder='Your last name..'
-                />
-                <input type='submit' defaultValue='Sign In' />
-              </form>
-              <div className='wrapped w3-center'>
-                <p className='p-2'>
-                  By clicking Sign In, you accept the{' '}
-                  <a href='#'>Terms of service</a>
-                </p>
-                <p className='p-2'>
-                  <span>New to BDTax?</span> <a href='#'>Create Account</a>
-                </p>
-                <div className='w3-center img-center'>
-                  <div className='w3-col s5 w3-padding-small w3-center'>
-                    <img src='assets/images/apple_icon.png' alt height={60} />
-                  </div>
-                  <div className='w3-col s5 w3-padding-small w3-center'>
-                    <img src='assets/images/Frame-(11)_1.png' alt height={60} />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Login />
           </div>
         </div>
       </header>
