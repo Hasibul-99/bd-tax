@@ -76,8 +76,8 @@ export default function BusinessForm({
       find.temp_NetTaxable =
         find.BusinessIncomeExempted === 'Yes' ||
         find.BusinessIncomeExempted === true
-          ? find.NetProfit
-          : 0
+          ? 0
+          : find.NetProfit
       form.setFieldsValue(find)
     }
   }
@@ -122,7 +122,7 @@ export default function BusinessForm({
         ClosingCapital: ClosingCapital,
         TotalCapitalLiabilities: TotalCapitalLiabilities,
         temp_Amount: NetProfit,
-        temp_NetTaxable: allValues.BusinessIncomeExempted ? NetProfit : 0,
+        temp_NetTaxable: allValues.BusinessIncomeExempted ? 0 : NetProfit,
       })
     }
   }
@@ -137,8 +137,8 @@ export default function BusinessForm({
         } else if (context === 'NetTaxable') {
           return allValues.BusinessIncomeExempted === 'Yes' ||
             allValues.BusinessIncomeExempted === true
-            ? allValues.NetProfit || 0
-            : 0
+            ? 0
+            : allValues.NetProfit || 0
         } else {
           return allValues.NetProfit || 0
         }

@@ -245,14 +245,15 @@ export const getInterestAccruedProvidentFund = (allValues) => {
     allValues.InterestAccruedProvidentFund_1 &&
     getTotalGrossTaxableIncome1(allValues)
   ) {
-    let oneThirdAmountOfYearIncome = Math.round(
-      getTotalGrossTaxableIncome1(allValues) / 3
-    )
+    let percentOfNetTaxableIncomeOne =
+      getTotalGrossTaxableIncome1(allValues) * 0.33
 
     if (
-      allValues.InterestAccruedProvidentFund_1 >= oneThirdAmountOfYearIncome
+      allValues.InterestAccruedProvidentFund_1 >= percentOfNetTaxableIncomeOne
     ) {
-      return Math.round((allValues.InterestAccruedProvidentFund_1 * 2) / 3)
+      return Math.round(
+        allValues.InterestAccruedProvidentFund_1 - percentOfNetTaxableIncomeOne
+      )
     } else {
       return 0
     }
@@ -269,16 +270,15 @@ export const getInterestAccruedProvidentFund2 = (allValues) => {
     allValues.InterestAccruedProvidentFund_1 &&
     getTotalGrossTaxableIncome1(allValues)
   ) {
-    let oneThirdAmountOfYearIncome = Math.round(
-      getTotalGrossTaxableIncome1(allValues) / 3
-    )
+    let percentOfNetTaxableIncomeOne =
+      getTotalGrossTaxableIncome1(allValues) * 0.33
 
     if (
-      allValues.InterestAccruedProvidentFund_1 >= oneThirdAmountOfYearIncome
+      allValues.InterestAccruedProvidentFund_1 >= percentOfNetTaxableIncomeOne
     ) {
       return Math.round(
         allValues.InterestAccruedProvidentFund_1 -
-          (allValues.InterestAccruedProvidentFund_1 * 2) / 3
+          getInterestAccruedProvidentFund(allValues)
       )
     } else {
       return allValues.InterestAccruedProvidentFund_1

@@ -61,13 +61,13 @@ export default function NonGovSalaryForm({
           grossTaxableIncome_2 +
           (allValues.Surgery_HEKLC_1 || 0) +
           (allValues.Gratuity_2 || 0) +
-          (allValues.Pension_1 || 0),
+          (allValues.Pension_1 || 0) +
+          getInterestAccruedProvidentFund2(allValues),
         NetTaxableIncome = addNonNegative(NetSalaryIncome - NetTaxWaiver)
 
       form.setFieldsValue({
         NetSalaryIncome: NetSalaryIncome,
-        NetTaxWaiver:
-          NetTaxWaiver + getInterestAccruedProvidentFund2(allValues),
+        NetTaxWaiver: NetTaxWaiver,
         NetTaxableIncome: NetTaxableIncome,
         BasicPay: allValues.BasicPay_1 || 0,
         SpecialPay: allValues.SpecialPay_1 || 0,

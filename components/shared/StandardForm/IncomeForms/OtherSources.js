@@ -359,8 +359,7 @@ export default function OtherSources({
                 name='Others_1'
                 rules={[
                   {
-                    required: true,
-
+                    required: false,
                     message: 'Required *',
                   },
                 ]}
