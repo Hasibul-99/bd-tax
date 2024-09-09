@@ -96,7 +96,7 @@ export default async function Home(props) {
       </div>
 
       {/* Pricing Section */}
-      <div className='container mx-auto min-h-[80vh] mt-5 pb-16 partners'>
+      <div className='container mx-auto min-h-[80vh] mt-5  partners'>
         <div className='custom-container-under mx-auto px-30 '>
           <div className='bg-white pt-6 pb-2 px-4 rounded-t-2xl'>
             <h1 className='w3-center'>Our Packages</h1>
@@ -524,6 +524,27 @@ export default async function Home(props) {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='container pb-16 md:!px-36'>
+        <div className='custom-container-under mx-auto flex flex-col md:flex-row items-start p-[18.5371px] gap-[18.54px] bg-white border border-[#C3C5C9] rounded-[16px]'>
+          <div>
+            <img src='assets/images/message.png' alt='message' />
+          </div>
+
+          <div className='flex flex-col items-start p-0'>
+            <h4 className='font-semibold text-[18px] leading-[30px] text-[#101828]'>
+              Do you have any questions about our packages?
+            </h4>
+            <p>
+              Please call us at{' '}
+              <span className='text-[#418341] underline'>01409-991225</span> or{' '}
+              <Link href='contact-us' className='text-[#418341] underline'>
+                Contact Us
+              </Link>{' '}
+            </p>
           </div>
         </div>
       </div>

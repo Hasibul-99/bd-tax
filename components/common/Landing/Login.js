@@ -45,28 +45,13 @@ export default function Login() {
       }
 
       setLoading(false)
+    } else {
+      setLoading(false)
     }
   }
 
   return (
     <div className='w3-col s4 w3-padding'>
-      {/* <form action='/action_page.php' className='form-border'>
-        <h1 className='poppins-bold pt-6'>#1 tax software in Bangladesh</h1>
-        <h5 className='w3-center p-4'>Hassle-free tax season starts here</h5>
-        <input
-          type='text'
-          id='fname'
-          name='firstname'
-          placeholder='Your name..'
-        />
-        <input
-          type='text'
-          id='lname'
-          name='lastname'
-          placeholder='Your last name..'
-        />
-        <input type='submit' defaultValue='Sign In' />
-      </form> */}
       <ConfigProvider
         theme={{
           token: {

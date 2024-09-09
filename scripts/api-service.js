@@ -76,6 +76,8 @@ export const postData = async (
       error?.response?.data?.data &&
       Object.keys(error?.response?.data?.data).length
     ) {
+      console.log('-----------')
+
       if (error?.response?.data?.message) {
         alertPop('error', error?.response?.data?.message)
       }
@@ -86,6 +88,31 @@ export const postData = async (
         errors.push({
           name: property, // required
           errors: error?.response?.data?.data[property],
+        })
+      }
+      return {
+        code: 'error',
+        errors: errors,
+      }
+    }
+
+    if (
+      showError &&
+      error?.response?.data?.errors &&
+      Object.keys(error?.response?.data?.errors).length
+    ) {
+      console.log('-----------')
+
+      if (error?.response?.data?.message) {
+        alertPop('error', error?.response?.data?.message)
+      }
+
+      let errors = []
+
+      for (const property in error?.response?.data?.errors) {
+        errors.push({
+          name: property, // required
+          errors: error?.response?.data?.errors[property],
         })
       }
       return {

@@ -125,6 +125,9 @@ export default function PropertyForm({
 
       if (res) {
         if (res.code === 'error') {
+          console.log('====================================')
+          console.log(res?.errors)
+          console.log('====================================')
           form.setFields(res?.errors)
         } else {
           alertPop('success', res.data?.message)
@@ -268,7 +271,7 @@ export default function PropertyForm({
 
               <Row gutter={16}>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Address of Property <span className='text-red-700'>*</span>
+                  Address of Property
                   <ExclamationCircleOutlined className='ml-3' />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={18}>
@@ -276,7 +279,7 @@ export default function PropertyForm({
                     name='AdressOfProperty'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: 'Please input Adress Of Property',
                       },
                       {
@@ -292,7 +295,7 @@ export default function PropertyForm({
               </Row>
               <Row gutter={16}>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Total Area <span className='text-red-700'>*</span>
+                  Total Area
                   <ExclamationCircleOutlined className='ml-3' />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={18}>
@@ -300,7 +303,7 @@ export default function PropertyForm({
                     name='AreaOfProperty'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: 'Please input Total Area',
                       },
                     ]}
@@ -323,7 +326,7 @@ export default function PropertyForm({
 
               <Row gutter={16}>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Annual Rental Income <span className='text-red-700'>*</span>
+                  Annual Rental Income
                   <ExclamationCircleOutlined className='ml-3' />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={18}>
@@ -331,7 +334,7 @@ export default function PropertyForm({
                     name='AnnualRentalIncome'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: 'Please input Annual Rental Income',
                       },
                     ]}
@@ -346,7 +349,7 @@ export default function PropertyForm({
 
               <Row gutter={16}>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Advance Rent Received <span className='text-red-700'>*</span>
+                  Advance Rent Received
                   <ExclamationCircleOutlined className='ml-3' />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={18}>
@@ -354,7 +357,7 @@ export default function PropertyForm({
                     name='AdvanceRentReceived'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: 'Please input Advance Rent Received',
                       },
                     ]}
@@ -368,7 +371,6 @@ export default function PropertyForm({
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
                   Value of any Benefit in addition to Rent Received or Annual
                   Value & Advance Rent Received{' '}
-                  <span className='text-red-700'>*</span>
                   <ExclamationCircleOutlined className='ml-3' />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={18}>
@@ -376,7 +378,7 @@ export default function PropertyForm({
                     name='ValueofnyBenefit'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: 'Please input',
                       },
                     ]}
@@ -388,7 +390,7 @@ export default function PropertyForm({
 
               <Row gutter={16}>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Adjusted Advance Rent <span className='text-red-700'>*</span>
+                  Adjusted Advance Rent
                   <ExclamationCircleOutlined className='ml-3' />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={18}>
@@ -396,7 +398,7 @@ export default function PropertyForm({
                     name='AdjustedAdvanceRent'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: 'Please input Adjusted Advance Rent ',
                       },
                     ]}
@@ -408,7 +410,7 @@ export default function PropertyForm({
 
               <Row gutter={16}>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
-                  Repair <span className='text-red-700'>*</span>
+                  Repair
                   <ExclamationCircleOutlined className='ml-3' />
                 </Col>
                 <Col className='gutter-row' xs={24} sm={24} md={18}>
@@ -416,7 +418,7 @@ export default function PropertyForm({
                     name='Repair'
                     rules={[
                       {
-                        required: true,
+                        required: false,
                         message: 'Please input Repair',
                       },
                     ]}
