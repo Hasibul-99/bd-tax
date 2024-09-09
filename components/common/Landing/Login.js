@@ -105,7 +105,7 @@ export default function Login() {
               },
             ]}
           >
-            <Input placeholder='Email *' autocomplete='false' />
+            <Input placeholder='Email Address *' autocomplete='false' />
           </Form.Item>
 
           <Form.Item

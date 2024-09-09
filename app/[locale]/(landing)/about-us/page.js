@@ -6,7 +6,7 @@ export default function AboutUs() {
   return (
     <>
       <div className='mt-6'>
-        <div className='wrapped bg-gray pt-20 pb-20'>
+        <div className='wrapped bg-slate-100 pt-20 pb-20'>
           <div className='section global_h1 container'>
             <h1 className='font-semibold mb-3'>About Us</h1>
             <p>
@@ -88,7 +88,7 @@ export default function AboutUs() {
             </p>
           </div>
         </div>
-        <div className='wrapped bg-gray pt-20 pb-20 mt-6 mb-6'>
+        <div className='hidden wrapped bg-slate-100 pt-20 pb-20 mt-6 mb-6'>
           <div className='section global_h1 container'>
             <h1 className='font-semibold mb-3'>Our Leadership Team</h1>
             <div className='section global_h1'>
@@ -109,7 +109,7 @@ export default function AboutUs() {
                 tailored to meet your individual needs.{' '}
               </p>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 p-10 px-4  bg-gray rounded-[12px]'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 p-10 px-4  bg-slate-100 rounded-[12px]'>
               <div className='team w3-center'>
                 <img
                   src='/assets/images/team/team_pic1.png'

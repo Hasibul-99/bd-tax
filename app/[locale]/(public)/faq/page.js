@@ -1,7 +1,7 @@
 'use client'
 import {GET_FAQ} from '@/scripts/api'
 import {getData} from '@/scripts/api-service'
-import {Collapse, Divider, List, Typography} from 'antd'
+import {Collapse, List, Typography} from 'antd'
 import {useEffect, useState} from 'react'
 const {Title} = Typography
 
@@ -49,12 +49,12 @@ export default function FAQ() {
         <h1 className='mx-auto text-center text-3xl font-bold'>
           Frequently Asked Questions
         </h1>
-        <Divider
+        {/* <Divider
           variant='dashed'
           style={{
             borderColor: '#7cb305',
           }}
-        ></Divider>
+        ></Divider> */}
 
         {haqItems?.length ? (
           <>

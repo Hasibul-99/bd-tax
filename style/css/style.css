@@ -85,6 +85,12 @@ input[type='submit']:hover {
     rgba(255, 255, 255, 1) 100%
   );
 }
+.form-border input::-webkit-input-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+}
+
 form {
   padding: 15px;
 }
