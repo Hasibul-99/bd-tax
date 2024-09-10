@@ -78,127 +78,133 @@ export default function SignIn() {
   }
 
   return (
-    <div className='flex items-center w-full'>
-      <div className='w-full md:p-6 m-4 md:max-w-sm md:mx-auto text-center'>
-        <h1 className='block w-full font-bold mb-2 text-[22px]'>Sign In</h1>
-        <Text type='secondary' className='!text-[#475569] text-[13px]'>
-          Stress-free tax season starts here!
-        </Text>
+    <div className='bg-[#F8FAFC] mx-auto min-h-[80vh]'>
+      <div className='flex items-center w-full'>
+        <div className='w-full md:p-6 m-4 md:max-w-sm md:mx-auto text-center'>
+          <h1 className='block w-full font-bold mb-2 text-[22px]'>Sign In</h1>
+          <Text type='secondary' className='!text-[#475569] text-[13px]'>
+            Stress-free tax season starts here!
+          </Text>
 
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: '#126A25',
-            },
-            components: {
-              Button: {
+          <ConfigProvider
+            theme={{
+              token: {
                 colorPrimary: '#126A25',
               },
-            },
-          }}
-        >
-          <Form
-            className='mt-6 text-left'
-            name='basic'
-            onFinish={onFinish}
-            autoComplete='off'
-            size='large'
-            form={form}
-          >
-            <Form.Item
-              name='email'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input email!',
+              components: {
+                Button: {
+                  colorPrimary: '#126A25',
                 },
-                {
-                  pattern:
-                    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                  message: 'Please enter a valid email address',
-                },
-              ]}
-            >
-              <Input placeholder='Email *' />
-            </Form.Item>
-
-            <Form.Item
-              className='mb-1'
-              name='password'
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input password!',
-                },
-              ]}
-            >
-              <Input.Password placeholder='Password *' />
-            </Form.Item>
-
-            <Form.Item
-              className='text-left mb-1'
-              name='remember'
-              valuePropName='checked'
-            >
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
-            <Form.Item>
-              <Button className='prime-button' type='primary' htmlType='submit'>
-                <Space>
-                  <img
-                    src='/assets/icons/home-white.svg'
-                    alt='sms'
-                    width={20}
-                  />
-                  Log In
-                </Space>
-              </Button>
-            </Form.Item>
-          </Form>
-        </ConfigProvider>
-
-        <Space className='mb-3'>
-          New to BDTax?
-          <Link
-            href='signup'
-            className='text-emerald-700 hover:text-emerald-700'
+              },
+            }}
           >
-            Create Account
-          </Link>
-        </Space>
-        <br />
-        <Space>
-          <Link
-            href='forget-password'
-            className='text-emerald-700 hover:text-emerald-700'
-          >
-            Forgot Password?
-          </Link>
-        </Space>
+            <Form
+              className='mt-6 text-left'
+              name='basic'
+              onFinish={onFinish}
+              autoComplete='off'
+              size='large'
+              form={form}
+            >
+              <Form.Item
+                name='email'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input email!',
+                  },
+                  {
+                    pattern:
+                      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                    message: 'Please enter a valid email address',
+                  },
+                ]}
+              >
+                <Input placeholder='Email *' />
+              </Form.Item>
 
-        <img
-          className='mt-5 mb-4 m-auto'
-          src='/assets/images/Frame.png'
-          alt='logo'
-          width={99}
-          height={105}
-        />
+              <Form.Item
+                className='mb-1'
+                name='password'
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input password!',
+                  },
+                ]}
+              >
+                <Input.Password placeholder='Password *' />
+              </Form.Item>
 
-        <Space>
-          <img src='/assets/icons/sms.svg' alt='sms' width={14} />
-          support@bdtax.com.bd
-        </Space>
-        <br />
-        <Space>
-          <img src='/assets/icons/call.svg' alt='sms' width={14} />
-          01409-991225
-        </Space>
-        <br />
-        <Space className='mt-2'>
-          Made in
-          <img src='/assets/images/bangladesh.png' alt='sms' width={20} />
-        </Space>
+              <Form.Item
+                className='text-left mb-1'
+                name='remember'
+                valuePropName='checked'
+              >
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
+
+              <Form.Item>
+                <Button
+                  className='prime-button'
+                  type='primary'
+                  htmlType='submit'
+                >
+                  <Space>
+                    <img
+                      src='/assets/icons/home-white.svg'
+                      alt='sms'
+                      width={20}
+                    />
+                    Log In
+                  </Space>
+                </Button>
+              </Form.Item>
+            </Form>
+          </ConfigProvider>
+
+          <Space className='mb-3'>
+            New to BDTax?
+            <Link
+              href='signup'
+              className='text-emerald-700 hover:text-emerald-700'
+            >
+              Create Account
+            </Link>
+          </Space>
+          <br />
+          <Space>
+            <Link
+              href='forget-password'
+              className='text-emerald-700 hover:text-emerald-700'
+            >
+              Forgot Password?
+            </Link>
+          </Space>
+
+          <img
+            className='mt-5 mb-4 m-auto'
+            src='/assets/images/Frame.png'
+            alt='logo'
+            width={99}
+            height={105}
+          />
+
+          <Space>
+            <img src='/assets/icons/sms.svg' alt='sms' width={14} />
+            support@bdtax.com.bd
+          </Space>
+          <br />
+          <Space>
+            <img src='/assets/icons/call.svg' alt='sms' width={14} />
+            01409-991225
+          </Space>
+          <br />
+          <Space className='mt-2'>
+            Made in
+            <img src='/assets/images/bangladesh.png' alt='sms' width={20} />
+          </Space>
+        </div>
       </div>
     </div>
   )

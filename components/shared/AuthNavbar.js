@@ -16,8 +16,6 @@ export default function AuthNavbar({locale}) {
     authMenu.classList.toggle('hidden')
   }
 
-  console.log(pathname)
-
   const isActiveUrl = (url) => {
     return url === pathname
   }

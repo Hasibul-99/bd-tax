@@ -111,7 +111,7 @@ export default function Login() {
             />
           </Form.Item>
 
-          <Form.Item>
+          <Form.Item className='mb-0'>
             <Button
               className='prime-button'
               type='primary'
@@ -128,13 +128,13 @@ export default function Login() {
       </ConfigProvider>
 
       <div className='wrapped w3-center'>
-        <p className='p-2'>
-          By clicking Sign In, you accept the{' '}
+        <p className='p-2 pb-0 text-xs'>
+          By clicking Sign In, you accept <br /> the{' '}
           <Link href='#' className='text-[#5cb85c]'>
             Terms of service
           </Link>
         </p>
-        <p className='p-2'>
+        <p className='p-2 pt-0 text-sm'>
           <span>New to BDTax?</span>{' '}
           <Link href='/signup' className='text-[#5cb85c]'>
             Create Account

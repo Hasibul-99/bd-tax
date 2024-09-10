@@ -115,7 +115,7 @@ export default function Slider() {
 
   return (
     <div className='container partners'>
-      <h1 className='w3-center'>What Our Client Says</h1>
+      <h1 className='w3-center text-4xl font-semibold'>What Our Client Says</h1>
       <section id='testim' className='testim bg-[#f9fafc]'>
         <div className='testim-cover '>
           <div className='wrap rounded-[12px]'>

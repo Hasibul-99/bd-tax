@@ -69,8 +69,8 @@ export default async function Home(props) {
 
       {/* Partners Section */}
       <div className='container partners mt-6'>
-        <h1 className='w3-center'>Our Partners</h1>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 gap-x-5  p-10 px-4 bg-slate-100 rounded-[12px]'>
+        <h1 className='w3-center text-4xl font-semibold'>Our Partners</h1>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 gap-x-5  p-10 px-4 bg-[#F9FAFB] rounded-[12px]'>
           <div className>
             <img src='assets/images/logo_1.png' alt width='100%' />
           </div>
@@ -99,7 +99,7 @@ export default async function Home(props) {
       <div className='container mx-auto min-h-[80vh] mt-5  partners'>
         <div className='custom-container-under mx-auto px-30 '>
           <div className='bg-white pt-6 pb-2 px-4 rounded-t-2xl'>
-            <h1 className='w3-center'>Our Packages</h1>
+            <h1 className='w3-center text-4xl font-semibold'>Our Packages</h1>
           </div>
           <div className='rounded-b-[20px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 bg-white pb-10 pt-6 px-4'>
             <div className='mb-5'>
@@ -554,7 +554,7 @@ export default async function Home(props) {
 
       {/* Promo Section Awards */}
       <div className='container partners mt-12 mb-10'>
-        <h1 className='w3-center'>Our Awards</h1>
+        <h1 className='w3-center text-4xl font-semibold'>Our Awards</h1>
         <div className='bg-[#f9fafc] rounded-[12px]'>
           <div className='custom-container-under'>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-5 justify-center'>
@@ -602,7 +602,9 @@ export default async function Home(props) {
       <div>
         {/* Promo Section "FAQ" */}
         <div className='container partners mt-12 mb-10'>
-          <h1 className='w3-center'>Frequently asked questions</h1>
+          <h1 className='w3-center text-4xl font-semibold'>
+            Frequently asked questions
+          </h1>
           <p className='w3-center pb-10'>
             Everything you need to know about our product and taxes.
           </p>

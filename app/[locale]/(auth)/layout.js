@@ -25,7 +25,7 @@ const RootLayout = (props) => {
     <>
       <div>
         <AuthNavbar locale={locale} />
-        <div className='bg-[#F8FAFC] mx-auto min-h-[80vh]'>{children}</div>
+        {children}
       </div>
       <Footer />
       {/* <Script src="js/script.js"></Script> */}
