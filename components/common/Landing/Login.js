@@ -130,7 +130,7 @@ export default function Login() {
       <div className='wrapped w3-center'>
         <p className='p-2 pb-0 text-xs'>
           By clicking Sign In, you accept <br /> the{' '}
-          <Link href='#' className='text-[#5cb85c]'>
+          <Link href='terms-and-conditions' className='text-[#5cb85c]'>
             Terms of service
           </Link>
         </p>

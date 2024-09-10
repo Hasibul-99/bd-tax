@@ -17,7 +17,7 @@ const RootLayout = (props) => {
 
   useEffect(() => {
     if (token) {
-      router.push('/')
+      router.push('packages')
     }
   }, [token])
 

@@ -44,12 +44,12 @@ export const moreNaveData = [
     url: '/more/communiaction',
     name: 'Communications',
   },
-  {
-    id: 7,
-    icon: '/assets/icons/settings.svg',
-    url: '/more/settings',
-    name: 'Settings',
-  },
+  // {
+  //   id: 7,
+  //   icon: '/assets/icons/settings.svg',
+  //   url: '/more/settings',
+  //   name: 'Settings',
+  // },
   {
     id: 8,
     icon: '/assets/icons/contact-us.svg',

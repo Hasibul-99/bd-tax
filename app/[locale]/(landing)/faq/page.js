@@ -49,6 +49,9 @@ export default function FAQ() {
         <h1 className='mx-auto text-center text-3xl font-bold'>
           Frequently Asked Questions
         </h1>
+        <p className='text-xl mx-auto text-center mt-4'>
+          Everything you need to know about our product and taxes.
+        </p>
         {/* <Divider
           variant='dashed'
           style={{
