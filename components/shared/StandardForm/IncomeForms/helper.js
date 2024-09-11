@@ -54,7 +54,7 @@ export const getTotalGrossTaxableIncome1 = (allValues) => {
     (allValues.HonorariumOrReward_1 || 0) +
     (allValues.Others_1 || 0) +
     (allValues.ReceiptLieuOfOrAdditionToSalaryOrWages_1 || 0) +
-    (allValues.AnyOtherFacilityProvidedByEmployer_1 || 0) +
+    Math.round(allValues.AnyOtherFacilityProvidedByEmployer_1 || 0) +
     (allValues.OvertimeAllowance_1 || 0) +
     (allValues.Bonus_1 || 0) +
     (allValues.OtherAllowances_1 || 0) +
@@ -65,7 +65,7 @@ export const getTotalGrossTaxableIncome1 = (allValues) => {
     (allValues.Surgery_HEKLC_1 || 0) +
     (allValues.InterestAccruedProvidentFund_1 || 0) +
     (allValues.DeemedIncomeTransport || 0) +
-    (DeemedFreeAccommodationCal(allValues) || 0) +
+    // (DeemedFreeAccommodationCal(allValues) || 0) +
     (allValues.Gratuity_1 || 0) +
     (allValues.EmployeeShareSchemes_1 || 0)
   )

@@ -10,6 +10,7 @@ import {Button, Col, ConfigProvider, Input, Progress, Row, Space} from 'antd'
 import {useEffect, useState} from 'react'
 
 export default function ProspectsSummary({setProsCurrent, setCurrent}) {
+  const taxDue = defaultStore((state) => state.taxDue)
   const [showRes, setShowRes] = useState(true)
   const [report, setReport] = useState()
 
@@ -284,11 +285,7 @@ export default function ProspectsSummary({setProsCurrent, setCurrent}) {
                     />
                   </Col>
                   <Col xs={20} sm={20} md={18} lg={18} xl={18}>
-                    <Input
-                      size='large'
-                      value={report?.tax_able_income || 0}
-                      readOnly
-                    />
+                    <Input size='large' value={taxDue || 0} readOnly />
                   </Col>
                 </Row>
               </ConfigProvider>

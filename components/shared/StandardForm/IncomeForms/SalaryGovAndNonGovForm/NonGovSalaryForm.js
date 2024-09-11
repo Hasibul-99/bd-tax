@@ -803,8 +803,6 @@ export default function NonGovSalaryForm({
         </Col>
       </Row>
 
-      {console.log('ReceivedAnyHouse', ReceivedAnyHouse)}
-
       {ReceivedAnyHouse === 'Y' ? (
         <>
           <Row gutter={16}>

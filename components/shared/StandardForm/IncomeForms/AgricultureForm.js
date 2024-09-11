@@ -137,7 +137,7 @@ export default function AgricultureForm({
       title: 'Short Description',
       dataIndex: 'LandInBigha',
       key: 'LandInBigha',
-      width: 200,
+      width: 250,
     },
     {
       title: 'Do you have any Books of Account?',
@@ -246,7 +246,7 @@ export default function AgricultureForm({
                 ]}
               >
                 <Select
-                  style={{width: '150px'}}
+                  style={{width: '100px'}}
                   placeholder='Select a option'
                   popupMatchSelectWidth={false}
                   allowClear
@@ -281,7 +281,7 @@ export default function AgricultureForm({
                 <TextArea
                   maxLength={700}
                   rows={2}
-                  style={{width: '150px'}}
+                  style={{width: '120px'}}
                   placeholder='Short Description'
                 />
               </Form.Item>
@@ -296,8 +296,10 @@ export default function AgricultureForm({
                 ]}
               >
                 <Radio.Group>
-                  <Radio value={'Yes'}>Yes</Radio>
-                  <Radio value={'No'}>No</Radio>
+                  <Space direction='vertical'>
+                    <Radio value={'Yes'}>Yes</Radio>
+                    <Radio value={'No'}>No</Radio>
+                  </Space>
                 </Radio.Group>
               </Form.Item>
 

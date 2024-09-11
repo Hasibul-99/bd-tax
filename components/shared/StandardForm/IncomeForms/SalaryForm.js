@@ -45,7 +45,7 @@ export default function SalaryForm({
   const onFinish = async (values) => {
     let data = {...values}
 
-    data.has_transport = hasTranspost === 0 ? 0 : 1
+    data.has_transport = hasTranspost === 0 ? 0 : hasTranspost
     data.transport_month = tranportMonth
     data.HEKLCNetTaxable = data.HEKLCNetTaxable ? 'Y' : 'N'
     data.EmployerName = employerName || ''
