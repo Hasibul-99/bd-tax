@@ -22,3 +22,27 @@ a.disabled {
   pointer-events: none;
   cursor: default;
 }
+
+.footer_top {
+  border-bottom: 1px solid #cbd5e1;
+  margin-bottom: 20px;
+}
+.footer_logo img {
+  width: 100px;
+  margin: auto;
+}
+
+.footer_nav ul {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer_nav ul a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer_nav ul a:hover {
+  color: #5cb85c;
+  text-decoration: underline;
+}
