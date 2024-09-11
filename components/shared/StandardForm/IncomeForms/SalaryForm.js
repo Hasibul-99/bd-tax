@@ -40,9 +40,16 @@ export default function SalaryForm({
   const [ReceivedAnyHouse, setReceivedAnyHouse] = useState('N')
   const [PaidAnyPartOfRent, setPaidAnyPartOfRent] = useState()
   const [employerName, setEmployerName] = useState()
+  const [enRequiredError, setEnRequiredError] = useState(false)
   const [salariesData, setSalariesData] = useState()
 
   const onFinish = async (values) => {
+    if (!employerName) {
+      setEnRequiredError(true)
+      alertPop('error', 'Employer Name is Required!')
+      return false
+    }
+
     let data = {...values}
 
     data.has_transport = hasTranspost === 0 ? 0 : hasTranspost
@@ -136,9 +143,16 @@ export default function SalaryForm({
                       }}
                     >
                       <Input
+                        status={enRequiredError ? 'error' : ''}
                         value={employerName}
-                        onChange={(e) => setEmployerName(e.target.value)}
+                        onChange={(e) => {
+                          setEmployerName(e.target.value),
+                            setEnRequiredError(false)
+                        }}
                       />
+                      {enRequiredError ? (
+                        <Text type='danger'>Employer Name is Required!</Text>
+                      ) : null}
                     </ConfigProvider>
                   </span>
                 </div>

@@ -57,8 +57,7 @@ export default function AdjustmentOfTaxRefund({
       <p>
         {ajValue?.AdjustmentTaxRefund
           ? `Did you have any adjustments to your tax refund? Current value is ${ajValue?.AdjustmentTaxRefund}.
-        You can change the value below and press store Adjustment of tax refund
-        Did you have any adjustments to your tax refund?`
+        You can change the value below and press store Adjustment of tax refund`
           : 'Did you have any adjustments to your tax refund? Adjustment of tax refund'}
       </p>
 

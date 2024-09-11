@@ -188,6 +188,9 @@ export default function AdvancePaidTax({
                 }
               >
                 <Option value='Car Advance Tax'>Car Advance Tax</Option>
+                <Option value='Environmental Surcharge'>
+                  Environmental Surcharge
+                </Option>
                 <Option value='Other'>Other</Option>
               </Select>
             </Form.Item>
