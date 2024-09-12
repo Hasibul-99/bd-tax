@@ -76,7 +76,7 @@ export default function Login() {
           <h5 className='w3-center p-4'>Hassle-free tax season starts here</h5>
 
           <Form.Item
-            className='mb-2'
+            className='mb-5'
             name='email'
             rules={[
               {
@@ -106,7 +106,7 @@ export default function Login() {
           >
             <Input.Password
               autocomplete='new-password'
-              className='py-3'
+              // className='py-3'
               placeholder='Password *'
             />
           </Form.Item>
@@ -119,7 +119,7 @@ export default function Login() {
               loading={loading}
             >
               <Space>
-                <img src='/assets/icons/home-white.svg' alt='sms' width={20} />
+                {/* <img src='/assets/icons/home-white.svg' alt='sms' width={20} /> */}
                 Sign In
               </Space>
             </Button>

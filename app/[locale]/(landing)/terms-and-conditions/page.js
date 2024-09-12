@@ -7,7 +7,7 @@ export default function page() {
     <div className='mt-4 terms'>
       <div className='wrapped pt-20 pb-20 container'>
         <div className='section global_h1 custom-container'>
-          <h1 className='font-semibold mb-3 w3-center'>Terms and conditions</h1>
+          <h1 className='font-semibold mb-3 w3-center'>Terms and Conditions</h1>
           <p>
             Thank you for selecting the Software offered by BDTax. Please review
             these license terms ("Agreement") thoroughly. This Agreement is a
@@ -20,7 +20,7 @@ export default function page() {
           </p>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>AGREEMENT</h1>
+          <h3 className='font-semibold mb-3 normal-case'>Agreement</h3>
           <ul>
             <li>
               This Agreement, including additional terms below and any content,
@@ -35,7 +35,7 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>LICENSE GRANT AND RESTRICTIONS</h1>
+          <h3 className='font-semibold mb-3'>License Grant and Restrictions</h3>
           <ul>
             <li>
               The Software is protected by copyright, trade secret, and other
@@ -58,9 +58,9 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>
-            YOUR PRIVACY AND PERSONAL INFORMATION
-          </h1>
+          <h3 className='font-semibold mb-3'>
+            Your Privacy and Personal Information
+          </h3>
           <ul>
             <li>
               At BD Tax Technology Limited we place the highest importance on
@@ -83,7 +83,7 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>CONTENT</h1>
+          <h3 className='font-semibold mb-3'>Content</h3>
           <ul>
             <li>
               You are responsible for all materials ("Content") uploaded,
@@ -107,7 +107,7 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>ADDITIONAL TERMS</h1>
+          <h3 className='font-semibold mb-3'>Additional Terms</h3>
           <ul>
             <li>
               You may be offered other services, products, or promotions by BD
@@ -133,7 +133,7 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>DISCLAIMER OF WARRANTIES</h1>
+          <h3 className='font-semibold mb-3'>Disclaimer Of Warranties</h3>
           <ul>
             <li>
               The Software may periodically be updated with tools, utilities,
@@ -160,9 +160,9 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>
-            LIMITATION OF LIABILITY AND INDEMNITY
-          </h1>
+          <h3 className='font-semibold mb-3'>
+            Limitation Of Liability and Indemnity
+          </h3>
           <ul>
             <li>
               BD Tax Technology Limited, its affiliates and suppliers disclaim
@@ -187,7 +187,7 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>CHANGES</h1>
+          <h3 className='font-semibold mb-3'>Changes</h3>
           <ul>
             <li>
               BD Tax Technology Limited reserves the right to change this
@@ -200,7 +200,7 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>TERMINATION</h1>
+          <h3 className='font-semibold mb-3'>Termination</h3>
           <ul>
             <li>
               BD Tax Technology Limited may immediately, in its sole discretion,
@@ -212,7 +212,7 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>GOVERNING LAW</h1>
+          <h3 className='font-semibold mb-3'>Governing Law</h3>
           <ul>
             <li>
               BD Tax Technology Limited follows the Bangladesh income tax law.
@@ -221,7 +221,7 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>DISPUTES</h1>
+          <h3 className='font-semibold mb-3'>Disputes</h3>
           <ul>
             <li>
               Any dispute or claim relating in any way to the BD Tax Technology
@@ -230,9 +230,9 @@ export default function page() {
           </ul>
         </div>
         <div className='section pt-6 global_h1 container'>
-          <h1 className='font-semibold mb-3'>
-            BD TAX TECHNOLOGY LIMITED SERVICES
-          </h1>
+          <h3 className='font-semibold mb-3'>
+            BD TAX Technology Limited Services
+          </h3>
           <ul>
             <li>
               BD Tax Technology Limited may provide the following or additional
