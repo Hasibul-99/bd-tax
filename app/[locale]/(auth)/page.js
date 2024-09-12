@@ -8,6 +8,7 @@ import '@/style/css/other-style.css'
 import FAQ from '@/components/common/Landing/FAQ'
 import Link from 'next/link'
 import PackagePricing from '@/components/common/Landing/PackagePricing'
+import Slider2 from '@/components/common/Landing/Slider2'
 
 async function getData() {
   const res = await fetch(
@@ -128,7 +129,8 @@ export default async function Home(props) {
       </div>
 
       {/* Promo Section - "What our client say" */}
-      <Slider />
+      {/* <Slider /> */}
+      <Slider2 />
 
       {/* Promo Section Awards */}
       <div className='container partners mt-12 mb-10'>
