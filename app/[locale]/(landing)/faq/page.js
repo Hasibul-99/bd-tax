@@ -18,7 +18,12 @@ export default function FAQ() {
       masterData.forEach((item, idx) => {
         items.push({
           key: (idx + 1).toString(),
-          label: <Title level={5}> {item.title}</Title>,
+          label: (
+            <h4 level={5} className='font-medium text-lg leading-7'>
+              {' '}
+              {item.title}
+            </h4>
+          ),
           children: <div>{showFaqBody(item.description)}</div>,
         })
       })
@@ -32,11 +37,19 @@ export default function FAQ() {
       return (
         <List
           dataSource={description}
-          renderItem={(item) => <List.Item>{item}</List.Item>}
+          renderItem={(item) => (
+            <List.Item>
+              <div className='font-normal text-base leading-6'>{item}</div>
+            </List.Item>
+          )}
         />
       )
     } else if (description.length) {
-      return description[0]
+      return (
+        <div className='font-normal text-base leading-6'>
+          {description.at(0)}
+        </div>
+      )
     } else return null
   }
 

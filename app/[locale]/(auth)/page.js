@@ -177,28 +177,28 @@ export default async function Home(props) {
         </div>
       </div>
 
-      <div>
-        {/* Promo Section "FAQ" */}
-        <div className='container partners mt-12 mb-10'>
-          <h1 className='w3-center text-4xl font-semibold'>
-            Frequently asked questions
-          </h1>
-          <p className='w3-center pb-10'>
-            Everything you need to know about our product and taxes.
-          </p>
-          <FAQ faq={faq.data} />
-        </div>
-        {/* Promo Section "Call To Action" */}
-        <div className='container mt-12 mb-10'>
-          <div className='container call-bg text-[16px] rounded-[12px]'>
-            <div className='custom-container-under'>
-              <div className='section-center md:!w-[415px]'>
-                <h3 className='w3-center font-bold'>Try Premium Plus Now</h3>
-                <p className='w3-center p-4'>
-                  Relax! Our Tax experts at BDTax handle it all. Trust us for
-                  seamless tax prep and submission. Stress-free tax season
-                  starts here
-                </p>
+      {/* Promo Section "FAQ" */}
+      <div className='container partners mt-12 mb-10  mb-16'>
+        <h1 className='w3-center text-4xl font-semibold'>
+          Frequently asked questions
+        </h1>
+        <p className='w3-center pb-10'>
+          Everything you need to know about our product and taxes.
+        </p>
+        <FAQ faq={faq.data} />
+      </div>
+      {/* Promo Section "Call To Action" */}
+      <div className='container !mt-12 !mb-10'>
+        <div className='container call-bg text-[16px] rounded-[12px]'>
+          <div className='custom-container-under'>
+            <div className='section-center md:!w-[415px]'>
+              <h3 className='w3-center font-bold'>Try Premium Plus Now</h3>
+              <p className='w3-center p-4'>
+                Relax! Our Tax experts at BDTax handle it all. Trust us for
+                seamless tax prep and submission. Stress-free tax season starts
+                here
+              </p>
+              <Link href='signin'>
                 <button
                   type='button'
                   className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button font-semibold w-auto mx-auto'
@@ -209,12 +209,13 @@ export default async function Home(props) {
                   />
                   <span>Try Premium Plus</span>
                 </button>
-                <div className='my-5 text-center'>OR</div>
-                <div className='text-center mx-auto'>
-                  <Link href='packages' className='font-semibold underline'>
-                    View All Packages
-                  </Link>
-                </div>
+              </Link>
+
+              <div className='my-5 text-center'>OR</div>
+              <div className='text-center mx-auto'>
+                <Link href='packages' className='font-semibold underline'>
+                  View All Packages
+                </Link>
               </div>
             </div>
           </div>

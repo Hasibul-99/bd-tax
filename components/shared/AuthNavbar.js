@@ -76,6 +76,16 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
+                href={`/${locale}/about-us`}
+                className={`md:px-5 py-4 block hover:text-green-400 ${
+                  isActiveBaseUrl(`/${locale}/about-us`) ? 'active' : ''
+                }`}
+              >
+                {t(`about_us`)}
+              </Link>
+            </li>
+            <li className='font-normal text-base leading-5 text-[#020617]'>
+              <Link
                 href={`/${locale}/packages`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
                   isActiveBaseUrl(`/${locale}/packages`) ? 'active' : ''
@@ -96,7 +106,7 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/blog`}
+                href={`https://blog.bdtax.com.bd/`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
                   isActiveBaseUrl(`/${locale}/blog`) ? 'active' : ''
                 }`}
@@ -116,12 +126,12 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/about-us`}
+                href={`/${locale}/referral`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveBaseUrl(`/${locale}/about-us`) ? 'active' : ''
+                  isActiveBaseUrl(`/${locale}/referral`) ? 'active' : ''
                 }`}
               >
-                {t(`about_us`)}
+                Referral
               </Link>
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>

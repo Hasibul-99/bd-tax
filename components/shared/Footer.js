@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <div className=' bg-[#F1F5F9] border border-solid border-[#E2E8F0]'>
+    <div className=' bg-[#F1F5F9] border border-solid border-[#E2E8F0] mt-16'>
       <div className='container mx-auto py-8'>
         <div className='footer_top'>
           <div className='footer_logo w3-center mx-auto pb-6'>
@@ -20,9 +20,6 @@ export default function Footer() {
                 <Link href='investor-relations'>Investor Relations</Link>
               </li>
               <li>
-                <a href='#'>Privacy Policy </a>
-              </li>
-              <li>
                 <Link href='terms-and-conditions'>Terms and conditions</Link>
               </li>
             </ul>
@@ -38,6 +35,47 @@ export default function Footer() {
           <p className='mt-4 text-sm sm:order-first sm:mt-0'>
             info@bdtax.com.bd | 01409-991225
           </p>
+
+          <div className='mt-3 md:mt-0 pt-3 md:pt-0 px-8 md:px-0 border-t-2 md:border-t-0'>
+            <ul className='flex flex-row items-start justify-center flex-wrap content-start p-0 gap-4'>
+              <li>
+                <Link
+                  target='_blank'
+                  href='https://nbr.gov.bd/regulations/acts/finance-acts/eng'
+                  className='underline'
+                >
+                  Finance Act
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='https://nbr.gov.bd/regulations/acts/income-tax-acts/eng'
+                  target='_blank'
+                  className='underline'
+                >
+                  Income Tax Act
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='https://nbr.gov.bd/taxtypes/income-tax/income-tax-paripatra/eng'
+                  target='_blank'
+                  className='underline'
+                >
+                  Poripatra
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='https://secure.incometax.gov.bd/TINHome'
+                  target='_blank'
+                  className='underline'
+                >
+                  ETIN
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
