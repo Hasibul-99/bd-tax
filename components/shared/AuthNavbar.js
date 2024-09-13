@@ -107,6 +107,7 @@ export default function AuthNavbar({locale}) {
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`https://blog.bdtax.com.bd/`}
+                target='_blank'
                 className={`md:px-5 py-4 block hover:text-green-400 ${
                   isActiveBaseUrl(`/${locale}/blog`) ? 'active' : ''
                 }`}

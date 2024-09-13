@@ -32,7 +32,8 @@ export default function SignUp() {
 
   const onFinish = async (values) => {
     setLoading(true)
-    let res = await postData(REGISTRATION, values, 'no_token', 'showError')
+    let data = {...values, ...{reg_source: 'Web'}}
+    let res = await postData(REGISTRATION, data, 'no_token', 'showError')
 
     if (res) {
       if (res.code === 'error') {

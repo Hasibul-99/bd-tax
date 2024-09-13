@@ -48,6 +48,35 @@ export default function NonGovSalaryForm({
     setTranportMonth(val)
   }
 
+  const handelReceivedAnyHouse = (e) => {
+    if (e.target.value === 'N') {
+      form.resetFields([
+        'RentalValueOfHouse',
+        'RentalValueOfHouse_1',
+        'RentalValueOfHouse_2',
+        'PaidAnyPartOfRent',
+        'PaidPartOfRentValue',
+        'PaidPartOfRentValue_1',
+        'PaidPartOfRentValue_2',
+        'DeemedFreeAccommodation',
+        'DeemedFreeAccommodation_1',
+        'DeemedFreeAccommodation_2',
+      ])
+    }
+    setReceivedAnyHouse(e.target.value)
+  }
+
+  const handelPaidAnyPartOfRent = (e) => {
+    if (e.target.value === 'N') {
+      form.resetFields([
+        'PaidPartOfRentValue',
+        'PaidPartOfRentValue_1',
+        'PaidPartOfRentValue_2',
+      ])
+    }
+    setPaidAnyPartOfRent(e.target.value)
+  }
+
   const onValuesChange = (changedValues, allValues) => {
     console.log('Changed values:', changedValues)
     console.log('All values:', allValues)
@@ -59,11 +88,14 @@ export default function NonGovSalaryForm({
         NetSalaryIncome = grossTaxableIncome_1,
         NetTaxWaiver =
           grossTaxableIncome_2 +
-          (allValues.Surgery_HEKLC_1 || 0) +
+          (!allValues.HEKLCNetTaxable ? allValues.Surgery_HEKLC_1 || 0 : 0) +
           (allValues.Gratuity_2 || 0) +
           (allValues.Pension_1 || 0) +
           getInterestAccruedProvidentFund2(allValues),
         NetTaxableIncome = addNonNegative(NetSalaryIncome - NetTaxWaiver)
+
+      console.log('grossTaxableIncome_1', grossTaxableIncome_1)
+      console.log('grossTaxableIncome_2', grossTaxableIncome_2)
 
       form.setFieldsValue({
         NetSalaryIncome: NetSalaryIncome,
@@ -90,12 +122,10 @@ export default function NonGovSalaryForm({
         MedicalAllowanceForDisability:
           allValues.MedicalAllowanceForDisability_1 || 0,
         OvertimeAllowance: allValues.OvertimeAllowance_1 || 0,
-        // PaidPartOfRentValue: allValues.PaidPartOfRentValue_1 || 0,
         Pension_2: allValues.Pension_1 || 0,
         Pension: 0,
         RecognizedProvidentFundIncome:
           allValues.RecognizedProvidentFundIncome_1 || 0,
-        // RentalValueOfHouse: allValues.RentalValueOfHouse_1 || 0,
         DeemedFreeAccommodation: DeemedFreeAccommodationCal(allValues),
         ServantAllowance: allValues.ServantAllowance_1 || 0,
         SpecialPay: allValues.SpecialPay_1 || 0,
@@ -778,24 +808,8 @@ export default function NonGovSalaryForm({
         </Col>
 
         <Col className='gutter-row' xs={24} sm={24} md={5}>
-          {/* <Form.Item name='ReceivedAnyHouse'>
-    <Radio.Group
-    value={'N'}
-    onChange={(e) => {
-      setReceivedAnyHouse(e.target.value)
-    }}
-    >
-      <Radio value='Y'>Yes</Radio>
-      <Radio value='N'>No</Radio>
-    </Radio.Group>
-  </Form.Item> */}
-
           <Form.Item name='ReceivedAnyHouse'>
-            <Radio.Group
-              onChange={(e) => {
-                setReceivedAnyHouse(e.target.value)
-              }}
-            >
+            <Radio.Group onChange={handelReceivedAnyHouse}>
               <Radio value='Y'>Yes</Radio>
               <Radio value='N'>No</Radio>
             </Radio.Group>
@@ -847,11 +861,7 @@ export default function NonGovSalaryForm({
 
             <Col className='gutter-row' xs={24} sm={24} md={5}>
               <Form.Item name='PaidAnyPartOfRent'>
-                <Radio.Group
-                  onChange={(e) => {
-                    setPaidAnyPartOfRent(e.target.value)
-                  }}
-                >
+                <Radio.Group onChange={handelPaidAnyPartOfRent}>
                   <Radio value={'Y'}>Yes</Radio>
                   <Radio value={'N'}>No</Radio>
                 </Radio.Group>

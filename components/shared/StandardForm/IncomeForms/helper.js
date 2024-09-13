@@ -28,12 +28,6 @@ export const getEmployeeShareSchemes = (allValues) => {
       ? (allValues.EmployeeShareSchemes_1 || 0) / 2
       : 0
 
-  console.log(
-    allValues.EmployeeShareSchemes_1,
-    allValues.EmployeeShareSchemes_2,
-    total
-  )
-
   return (allValues.EmployeeShareSchemes_2 || 0) >= halfOf1
     ? addNonNegative(halfOf1)
     : addNonNegative(total)
@@ -54,7 +48,7 @@ export const getTotalGrossTaxableIncome1 = (allValues) => {
     (allValues.HonorariumOrReward_1 || 0) +
     (allValues.Others_1 || 0) +
     (allValues.ReceiptLieuOfOrAdditionToSalaryOrWages_1 || 0) +
-    Math.round(allValues.AnyOtherFacilityProvidedByEmployer_1 || 0) +
+    (allValues.AnyOtherFacilityProvidedByEmployer_1 || 0) +
     (allValues.OvertimeAllowance_1 || 0) +
     (allValues.Bonus_1 || 0) +
     (allValues.OtherAllowances_1 || 0) +
@@ -67,8 +61,34 @@ export const getTotalGrossTaxableIncome1 = (allValues) => {
     (allValues.DeemedIncomeTransport || 0) +
     // (DeemedFreeAccommodationCal(allValues) || 0) +
     (allValues.Gratuity_1 || 0) +
-    (allValues.EmployeeShareSchemes_1 || 0)
+    (allValues.EmployeeShareSchemes_1 || 0) +
+    RentalValueOfHouseAndPaidPartOfRent(allValues)
   )
+}
+
+const RentalValueOfHouseAndPaidPartOfRent = (allValues) => {
+  if (allValues.ReceivedAnyHouse === 'Y') {
+    if (!allValues.PaidAnyPartOfRent || allValues.PaidAnyPartOfRent === 'N') {
+      console.log('72')
+
+      return allValues.RentalValueOfHouse_1 || 0
+    } else if (allValues.PaidAnyPartOfRent === 'Y') {
+      console.log('76')
+
+      let count =
+        (allValues.RentalValueOfHouse_1 || 0) -
+        (allValues.PaidPartOfRentValue_1 || 0)
+      if (count < 0) {
+        console.log('82')
+
+        return 0
+      } else {
+        console.log('86')
+
+        return count
+      }
+    } else return 0
+  } else return 0
 }
 
 export const getTotalGrossTaxableIncome2 = (allValues) => {
