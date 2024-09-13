@@ -86,6 +86,11 @@ export default function SalaryForm({
         setEmployerName(masterData.EmployerName)
         setSalariesData(masterData)
 
+        masterData.HEKLCNetTaxable =
+          masterData.HEKLCNetTaxable && masterData.HEKLCNetTaxable === 'Y'
+            ? true
+            : false
+
         let formData = {...masterData}
 
         form.setFieldsValue(formData)

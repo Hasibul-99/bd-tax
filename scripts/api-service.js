@@ -5,7 +5,7 @@ import {alertPop, checkRes} from './helper'
 axios.defaults.headers.post['Accept'] = 'application/json'
 const base_url =
   process.env.NEXT_PUBLIC_BASE_URL ||
-  'https://newdevapi.bdtax.com.bd/public/api/'
+  'https://bdtaxliveapi.bdtax.com.bd/public/api/'
 
 /* query ---> api url to query with
    no_token ---> acts as a flag for no need to use token */

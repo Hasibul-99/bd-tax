@@ -52,5 +52,5 @@ export default function Chat() {
       </div>
     </>
   )
-  // <div>Chat https://newdevapi.bdtax.com.bd/public/api/get-web-url</div>
+  // <div>Chat https://bdtaxliveapi.bdtax.com.bd/public/api/get-web-url</div>
 }

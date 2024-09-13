@@ -13,7 +13,7 @@ import Slider2 from '@/components/common/Landing/Slider2'
 async function getData() {
   const res = await fetch(
     `${
-      process.env.BASE_URL || 'https://newdevapi.bdtax.com.bd/public/api/'
+      process.env.BASE_URL || 'https://bdtaxliveapi.bdtax.com.bd/public/api/'
     }${GUEST_PACKAGE_LIST}`,
     {next: {revalidate: 3600}}
   )
@@ -32,7 +32,7 @@ async function getData() {
 async function getFaq() {
   const res = await fetch(
     `${
-      process.env.BASE_URL || 'https://newdevapi.bdtax.com.bd/public/api/'
+      process.env.BASE_URL || 'https://bdtaxliveapi.bdtax.com.bd/public/api/'
     }${GET_FAQ}`,
     {next: {revalidate: 3600}}
   )

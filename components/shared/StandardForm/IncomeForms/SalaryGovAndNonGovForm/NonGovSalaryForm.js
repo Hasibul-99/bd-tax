@@ -94,9 +94,6 @@ export default function NonGovSalaryForm({
           getInterestAccruedProvidentFund2(allValues),
         NetTaxableIncome = addNonNegative(NetSalaryIncome - NetTaxWaiver)
 
-      console.log('grossTaxableIncome_1', grossTaxableIncome_1)
-      console.log('grossTaxableIncome_2', grossTaxableIncome_2)
-
       form.setFieldsValue({
         NetSalaryIncome: NetSalaryIncome,
         NetTaxWaiver: NetTaxWaiver,

@@ -33,7 +33,6 @@ export default function SignIn() {
       } else {
         let masterData = res?.data?.data
 
-        setLoading(true)
         Cookies.set('bdtax_token', masterData?.token)
         Cookies.set('bdtax_user', JSON.stringify(masterData))
 
@@ -53,6 +52,9 @@ export default function SignIn() {
           }
         }, 5000)
       }
+      setLoading(true)
+    } else {
+      setLoading(true)
     }
   }
 

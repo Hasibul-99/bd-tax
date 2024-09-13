@@ -7,7 +7,7 @@ import PackagePricing from '@/components/common/Landing/PackagePricing'
 async function getData() {
   const res = await fetch(
     `${
-      process.env.BASE_URL || 'https://newdevapi.bdtax.com.bd/public/api/'
+      process.env.BASE_URL || 'https://bdtaxliveapi.bdtax.com.bd/public/api/'
     }${GUEST_PACKAGE_LIST}`,
     {next: {revalidate: 3600}}
   )

@@ -63,6 +63,8 @@ export default function SignUp() {
         }, 5000)
       }
       setLoading(false)
+    } else {
+      setLoading(false)
     }
   }
 
