@@ -1,15 +1,17 @@
 export const DeemedFreeAccommodationCal = (allValues) => {
-  if (!allValues.PaidAnyPartOfRent || allValues.PaidAnyPartOfRent === 'N') {
-    return allValues.RentalValueOfHouse_1
-  } else if (allValues.PaidAnyPartOfRent === 'Y') {
-    if (allValues.RentalValueOfHouse_1 - allValues.PaidPartOfRentValue_1 < 0) {
-      return 0
-    } else {
-      return (
+  if (allValues.ReceivedAnyHouse === 'Y') {
+    if (!allValues.PaidAnyPartOfRent || allValues.PaidAnyPartOfRent === 'N') {
+      return allValues.RentalValueOfHouse_1 || 0
+    } else if (allValues.PaidAnyPartOfRent === 'Y') {
+      let count =
         (allValues.RentalValueOfHouse_1 || 0) -
         (allValues.PaidPartOfRentValue_1 || 0)
-      )
-    }
+      if (count < 0) {
+        return 0
+      } else {
+        return count
+      }
+    } else return 0
   } else return 0
 }
 
@@ -62,33 +64,8 @@ export const getTotalGrossTaxableIncome1 = (allValues) => {
     // (DeemedFreeAccommodationCal(allValues) || 0) +
     (allValues.Gratuity_1 || 0) +
     (allValues.EmployeeShareSchemes_1 || 0) +
-    RentalValueOfHouseAndPaidPartOfRent(allValues)
+    DeemedFreeAccommodationCal(allValues)
   )
-}
-
-const RentalValueOfHouseAndPaidPartOfRent = (allValues) => {
-  if (allValues.ReceivedAnyHouse === 'Y') {
-    if (!allValues.PaidAnyPartOfRent || allValues.PaidAnyPartOfRent === 'N') {
-      console.log('72')
-
-      return allValues.RentalValueOfHouse_1 || 0
-    } else if (allValues.PaidAnyPartOfRent === 'Y') {
-      console.log('76')
-
-      let count =
-        (allValues.RentalValueOfHouse_1 || 0) -
-        (allValues.PaidPartOfRentValue_1 || 0)
-      if (count < 0) {
-        console.log('82')
-
-        return 0
-      } else {
-        console.log('86')
-
-        return count
-      }
-    } else return 0
-  } else return 0
 }
 
 export const getTotalGrossTaxableIncome2 = (allValues) => {
