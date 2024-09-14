@@ -4,11 +4,14 @@ import {useTranslations} from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
+import Cookies from 'js-cookie'
 // import LanguageChange from '../common/LanguageChange'
 
 // https://codepen.io/Blockshot/pen/rNwOYBE
 export default function AuthNavbar({locale}) {
   const pathname = usePathname()
+  const token =
+    Cookies.get('bdtax_token') || localStorage?.getItem('bdtax_token')
   const t = useTranslations('navigation')
 
   const handelToggle = () => {
@@ -66,7 +69,7 @@ export default function AuthNavbar({locale}) {
             <li className='font-normal text-base leading-5 text-[#020617] '>
               {/* ${locale}/home */}
               <Link
-                href={`/`}
+                href={token ? `/${locale}/home` : '/'}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
                   isActiveUrl(`/${locale}`) ? 'active' : ''
                 }`}
@@ -148,30 +151,34 @@ export default function AuthNavbar({locale}) {
             {/* <li>
               <LanguageChange />
             </li> */}
-            <li className='font-normal text-base leading-5 text-[#020617] md:px-2.5 my-6 md:my-0'>
-              <Link
-                href={`/${locale}/signin`}
-                className={
-                  isActiveUrl(`/${locale}/signin`)
-                    ? 'rounded-[12px] py-2 px-10 md:px-4 bg-custom-gradient text-white '
-                    : 'md:px-5 py-4 block hover:text-green-400'
-                }
-              >
-                {t(`login`)}
-              </Link>
-            </li>
-            <li className='font-normal text-base leading-5 text-[#020617]'>
-              <Link
-                href={`/${locale}/signup`}
-                className={
-                  isActiveUrl(`/${locale}/signup`)
-                    ? 'rounded-[12px] py-2 px-10 md:px-4 bg-custom-gradient text-white'
-                    : 'md:px-5 py-4 block hover:text-green-400'
-                }
-              >
-                {t(`sign_up`)}
-              </Link>
-            </li>
+            {!token ? (
+              <>
+                <li className='font-normal text-base leading-5 text-[#020617] md:px-2.5 my-6 md:my-0'>
+                  <Link
+                    href={`/${locale}/signin`}
+                    className={
+                      isActiveUrl(`/${locale}/signin`)
+                        ? 'rounded-[12px] py-2 px-10 md:px-4 bg-custom-gradient text-white '
+                        : 'md:px-5 py-4 block hover:text-green-400'
+                    }
+                  >
+                    {t(`login`)}
+                  </Link>
+                </li>
+                <li className='font-normal text-base leading-5 text-[#020617]'>
+                  <Link
+                    href={`/${locale}/signup`}
+                    className={
+                      isActiveUrl(`/${locale}/signup`)
+                        ? 'rounded-[12px] py-2 px-10 md:px-4 bg-custom-gradient text-white'
+                        : 'md:px-5 py-4 block hover:text-green-400'
+                    }
+                  >
+                    {t(`sign_up`)}
+                  </Link>
+                </li>
+              </>
+            ) : null}
           </ul>
         </div>
       </nav>
