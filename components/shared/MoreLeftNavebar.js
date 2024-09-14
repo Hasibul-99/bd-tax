@@ -16,7 +16,9 @@ export default function MoreLeftNavebar({locale}) {
 
       localStorage.removeItem('bdtax_token')
       localStorage.removeItem('bdtax_user')
-      window.location = '/en/signin'
+      if (typeof window !== 'undefined') {
+        window.location = '/en/signin'
+      }
     }
   }
 

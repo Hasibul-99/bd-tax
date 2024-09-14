@@ -19,7 +19,6 @@ export default function TaxPlanning() {
   }
 
   const handelPurchase = (item) => {
-    // window.open(url, '_blank')
     confirm({
       title: item?.confirm_message,
       icon: <ExclamationCircleFilled />,

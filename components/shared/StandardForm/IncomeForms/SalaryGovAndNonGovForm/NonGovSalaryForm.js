@@ -22,6 +22,8 @@ import {
   getInterestAccruedProvidentFund2,
   getTotalGrossTaxableIncome1,
   getTotalGrossTaxableIncome2,
+  salaryGratuity,
+  salaryGratuity_2,
 } from '../helper'
 const {Text, Link} = Typography
 const {confirm} = Modal
@@ -89,7 +91,7 @@ export default function NonGovSalaryForm({
         NetTaxWaiver =
           grossTaxableIncome_2 +
           (!allValues.HEKLCNetTaxable ? allValues.Surgery_HEKLC_1 || 0 : 0) +
-          (allValues.Gratuity_2 || 0) +
+          salaryGratuity_2(allValues) +
           (allValues.Pension_1 || 0) +
           getInterestAccruedProvidentFund2(allValues),
         NetTaxableIncome = addNonNegative(NetSalaryIncome - NetTaxWaiver)
@@ -106,7 +108,6 @@ export default function NonGovSalaryForm({
         EmployeeShareSchemes: getEmployeeShareSchemes(allValues),
         EmployersContributionProvidentFund:
           allValues.EmployersContributionProvidentFund_1 || 0,
-        Gratuity: allValues.Gratuity_1 || 0,
         HonorariumOrReward: allValues.HonorariumOrReward_1 || 0,
         HouseRentAllowance: allValues.HouseRentAllowance_1 || 0,
         InterestAccruedProvidentFund:
@@ -142,16 +143,8 @@ export default function NonGovSalaryForm({
         AnyOtherFacilityProvidedByEmployer:
           allValues.AnyOtherFacilityProvidedByEmployer_1 || 0,
         Arear: allValues.Arear_1 || 0,
-        Gratuity_2: allValues.Gratuity_1
-          ? allValues.Gratuity_1 <= 25000000
-            ? allValues.Gratuity_1
-            : 25000000
-          : 0,
-        Gratuity: allValues.Gratuity_1
-          ? allValues.Gratuity_1 <= 25000000
-            ? 0
-            : allValues.Gratuity_1 - 25000000
-          : 0,
+        Gratuity_2: salaryGratuity_2(allValues),
+        Gratuity: salaryGratuity(allValues),
       })
     }
   }

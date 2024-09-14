@@ -31,7 +31,9 @@ export default function Payment({salaryData, setCurrent, context}) {
   const updateTaxDue = defaultStore((state) => state.updateTaxDue)
 
   const makePayment = (url) => {
-    window.location = paymentData?.sslgatewayLink
+    if (typeof window !== 'undefined') {
+      window.location = paymentData?.sslgatewayLink
+    }
   }
 
   const handelCouponSave = async () => {

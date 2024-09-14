@@ -282,3 +282,19 @@ export const getInterestAccruedProvidentFund2 = (allValues) => {
     }
   } else return 0
 }
+
+export const salaryGratuity = (allValues) => {
+  return allValues.Gratuity_1
+    ? allValues.Gratuity_1 <= 25000000
+      ? 0
+      : allValues.Gratuity_1 - 25000000
+    : 0
+}
+
+export const salaryGratuity_2 = (allValues) => {
+  return allValues.Gratuity_1
+    ? allValues.Gratuity_1 <= 25000000
+      ? allValues.Gratuity_1
+      : 25000000
+    : 0
+}

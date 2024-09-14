@@ -23,8 +23,10 @@ export default function SignIn() {
   const [form] = Form.useForm()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [buttonLoading, setButtonLoading] = useState(false)
 
   const onFinish = async (values) => {
+    setButtonLoading(true)
     let res = await postData(LOGIN, values, 'no_token')
 
     if (res) {
@@ -44,6 +46,8 @@ export default function SignIn() {
         updateTaxDue(masterData?.tax_amount || 0)
         alertPop('success', masterData?.message)
 
+        setLoading(true)
+
         setTimeout(() => {
           if (masterData.first_time) {
             window.location = 'packages'
@@ -52,9 +56,9 @@ export default function SignIn() {
           }
         }, 5000)
       }
-      setLoading(true)
+      setButtonLoading(false)
     } else {
-      setLoading(true)
+      setButtonLoading(false)
     }
   }
 
@@ -151,6 +155,7 @@ export default function SignIn() {
                   className='prime-button'
                   type='primary'
                   htmlType='submit'
+                  loading={buttonLoading}
                 >
                   <Space>
                     <img

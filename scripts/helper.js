@@ -72,13 +72,17 @@ export const checkRes = (param) => {
     Cookies.remove('bdtax_user')
     localStorage.removeItem('bdtax_token')
     localStorage.removeItem('bdtax_user')
-    window.location = '/signin'
+    if (typeof window !== 'undefined') {
+      window.location = '/signin'
+    }
   } else if (param === 403) {
     Cookies.remove('bdtax_token')
     Cookies.remove('bdtax_user')
     localStorage.removeItem('bdtax_token')
     localStorage.removeItem('bdtax_user')
-    window.location = '/signin'
+    if (typeof window !== 'undefined') {
+      window.location = '/signin'
+    }
   } else {
     return false
   }

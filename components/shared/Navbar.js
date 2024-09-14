@@ -33,7 +33,9 @@ export default function Navbar({locale}) {
 
       localStorage.removeItem('bdtax_token')
       localStorage.removeItem('bdtax_user')
-      window.location = '/signin'
+      if (typeof window !== 'undefined') {
+        window.location = '/signin'
+      }
     }
   }
 

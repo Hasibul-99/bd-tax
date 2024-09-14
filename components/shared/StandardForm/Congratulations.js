@@ -64,7 +64,9 @@ export default function Congratulations() {
             className='prime-button w-auto md:w-full px-6'
             type='primary'
             onClick={() => {
-              window.open(fileData?.pdf_file_path, '_blank')
+              typeof window !== 'undefined'
+                ? window.open(fileData?.pdf_file_path, '_blank')
+                : console.log('pdf_file_path', fileData?.pdf_file_path)
             }}
           >
             Download My Tax Form
