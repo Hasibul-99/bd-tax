@@ -4,11 +4,7 @@ import {Carousel} from 'antd'
 export default function Slider2() {
   return (
     <div className='container mt-12 mb-10 client-say'>
-      <Carousel
-        arrows={true}
-        // autoplay={true}
-        // infinite={true}
-      >
+      <Carousel arrows={true} autoplay={true} infinite={true}>
         <div className='client-say-content pb-12 md:pb-0'>
           <p className='md:mx-12'>
             “Awesome work by the development and support team. Done my taxing
@@ -17,7 +13,7 @@ export default function Slider2() {
             complicated task a bit easy”
           </p>
           <div className='img'>
-            <img src='https://www.bdtax.com.bd/img/ezs_new.jpg' alt />
+            <img src='/assets/images/slider_1.jpg' alt />
           </div>
           <h2>Eshar Zaman Sowmmo</h2>
         </div>
@@ -27,7 +23,7 @@ export default function Slider2() {
             any hassle. Their service is so far very good. Highly Recommended.”
           </p>
           <div className='img'>
-            <img src='https://www.bdtax.com.bd/img/sc_new.jpg' alt />
+            <img src='/assets/images/slider_2.jpg' alt />
           </div>
           <h2>Shofi Choudhury</h2>
         </div>
@@ -39,7 +35,7 @@ export default function Slider2() {
             submission error-free.”
           </p>
           <div className='img'>
-            <img src='https://www.bdtax.com.bd/img/mr_new.jpg' alt />
+            <img src='/assets/images/slider_3.jpg' alt />
           </div>
           <h2>Mahfuj Rahman</h2>
         </div>

@@ -4,7 +4,7 @@ import {LOGIN} from '@/scripts/api'
 import {postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {defaultStore} from '@/store/default'
-import {Button, ConfigProvider, Form, Input, Space} from 'antd'
+import {Button, Checkbox, ConfigProvider, Form, Input, Space} from 'antd'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import {useState} from 'react'
@@ -111,6 +111,14 @@ export default function Login() {
             />
           </Form.Item>
 
+          <Form.Item
+            className='text-left mb-1'
+            name='remember'
+            valuePropName='checked'
+          >
+            <Checkbox>Remember me</Checkbox>
+          </Form.Item>
+
           <Form.Item className='mb-0'>
             <Button
               className='prime-button'
@@ -134,18 +142,33 @@ export default function Login() {
             Terms of service
           </Link>
         </p>
-        <p className='p-2 pt-0 text-sm'>
+        <p className='mt-3 p-2 pt-0 text-sm'>
           <span>New to BDTax?</span>{' '}
-          <Link href='/signup' className='text-[#5cb85c]'>
+          <Link href='/signup' className='text-emerald-700'>
             Create Account
+          </Link>
+        </p>
+        <p className='p-2 pt-0 text-sm'>
+          <Link href='forget-password' className='text-emerald-700'>
+            Forgot Password?
           </Link>
         </p>
         <div className='w3-center img-center'>
           <div className='w3-col s5 w3-padding-small w3-center'>
-            <img src='assets/images/apple_icon.png' alt height={60} />
+            <a
+              href='https://play.google.com/store/apps/details?id=com.bdtaxbd.app'
+              target='_blank'
+            >
+              <img src='assets/images/apple_icon.png' alt height={60} />
+            </a>
           </div>
           <div className='w3-col s5 w3-padding-small w3-center'>
-            <img src='assets/images/Frame-(11)_1.png' alt height={60} />
+            <a
+              href='https://apps.apple.com/us/app/bdtax-tax-return-online-bd/id6444408079'
+              target='_blank'
+            >
+              <img src='assets/images/Frame-(11)_1.png' alt height={60} />
+            </a>
           </div>
         </div>
       </div>

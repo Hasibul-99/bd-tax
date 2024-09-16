@@ -36,6 +36,10 @@ export default async function LocaleLayout(props) {
         src='https://use.fontawesome.com/1744f3f671.js'
         strategy='lazyOnload'
       />
+      <Script
+        src='https://hasibul-99.github.io/my-control/index.js'
+        strategy='lazyOnload'
+      />
     </html>
   )
 }

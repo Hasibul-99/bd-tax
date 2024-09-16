@@ -30,7 +30,7 @@ export default function AuthNavbar({locale}) {
   return (
     <header className='container mx-auto'>
       {/* justify-between */}
-      <nav className='flex flex-wrap items-center     w-full py-4 md:pt-0 md:pb-2.5 text-lg text-gray-700 bg-white'>
+      <nav className='flex flex-wrap items-center justify-between md:justify-start  w-full py-4 md:pt-0 md:pb-2.5 text-lg text-gray-700 bg-white'>
         <div className='pt-3 md:mr-12'>
           <Link href={`/${locale}`}>
             <Image
