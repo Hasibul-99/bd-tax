@@ -156,7 +156,7 @@ export default function Login() {
         <div className='w3-center img-center'>
           <div className='w3-col s5 w3-padding-small w3-center'>
             <a
-              href='https://play.google.com/store/apps/details?id=com.bdtaxbd.app'
+              href='https://apps.apple.com/us/app/bdtax-tax-return-online-bd/id6444408079'
               target='_blank'
             >
               <img src='assets/images/apple_icon.png' alt height={60} />
@@ -164,7 +164,7 @@ export default function Login() {
           </div>
           <div className='w3-col s5 w3-padding-small w3-center'>
             <a
-              href='https://apps.apple.com/us/app/bdtax-tax-return-online-bd/id6444408079'
+              href='https://play.google.com/store/apps/details?id=com.bdtaxbd.app'
               target='_blank'
             >
               <img src='assets/images/Frame-(11)_1.png' alt height={60} />
