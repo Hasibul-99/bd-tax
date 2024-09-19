@@ -69,9 +69,9 @@ export default function AuthNavbar({locale}) {
             <li className='font-normal text-base leading-5 text-[#020617] '>
               {/* ${locale}/home */}
               <Link
-                href={token ? `/${locale}/home` : '/'}
+                href={token ? `/home` : '/'}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveUrl(`/${locale}`) ? 'active' : ''
+                  isActiveUrl(`/`) ? 'active' : ''
                 }`}
               >
                 {t(`home`)}
@@ -79,9 +79,9 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/about-us`}
+                href={`/about-us`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveBaseUrl(`/${locale}/about-us`) ? 'active' : ''
+                  isActiveBaseUrl(`/about-us`) ? 'active' : ''
                 }`}
               >
                 {t(`about_us`)}
@@ -89,9 +89,9 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/packages`}
+                href={`/packages`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveBaseUrl(`/${locale}/packages`) ? 'active' : ''
+                  isActiveBaseUrl(`/packages`) ? 'active' : ''
                 }`}
               >
                 {t(`packages`)}
@@ -99,9 +99,9 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/news`}
+                href={`/news`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveBaseUrl(`/${locale}/news`) ? 'active' : ''
+                  isActiveBaseUrl(`/news`) ? 'active' : ''
                 }`}
               >
                 {t(`news`)}
@@ -112,7 +112,7 @@ export default function AuthNavbar({locale}) {
                 href={`https://blog.bdtax.com.bd/`}
                 target='_blank'
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveBaseUrl(`/${locale}/blog`) ? 'active' : ''
+                  isActiveBaseUrl(`blog`) ? 'active' : ''
                 }`}
               >
                 {t(`blog`)}
@@ -120,9 +120,9 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/faq`}
+                href={`/faq`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveBaseUrl(`/${locale}/faq`) ? 'active' : ''
+                  isActiveBaseUrl(`/faq`) ? 'active' : ''
                 }`}
               >
                 {t(`faq`)}
@@ -130,9 +130,9 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/referral`}
+                href={`/referral`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveBaseUrl(`/${locale}/referral`) ? 'active' : ''
+                  isActiveBaseUrl(`/referral`) ? 'active' : ''
                 }`}
               >
                 Referral
@@ -140,7 +140,7 @@ export default function AuthNavbar({locale}) {
             </li>
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
-                href={`/${locale}/contact-us`}
+                href={`/contact-us`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
                   isActiveBaseUrl(`/${locale}/contact-us`) ? 'active' : ''
                 }`}
@@ -155,9 +155,9 @@ export default function AuthNavbar({locale}) {
               <>
                 <li className='font-normal text-base leading-5 text-[#020617] md:px-2.5 my-6 md:my-0'>
                   <Link
-                    href={`/${locale}/signin`}
+                    href={`/signin`}
                     className={
-                      isActiveUrl(`/${locale}/signin`)
+                      isActiveUrl(`/signin`)
                         ? 'rounded-[12px] py-2 px-10 md:px-4 bg-custom-gradient text-white '
                         : 'md:px-5 py-4 block hover:text-green-400'
                     }
@@ -167,9 +167,9 @@ export default function AuthNavbar({locale}) {
                 </li>
                 <li className='font-normal text-base leading-5 text-[#020617]'>
                   <Link
-                    href={`/${locale}/signup`}
+                    href={`/signup`}
                     className={
-                      isActiveUrl(`/${locale}/signup`)
+                      isActiveUrl(`/signup`)
                         ? 'rounded-[12px] py-2 px-10 md:px-4 bg-custom-gradient text-white'
                         : 'md:px-5 py-4 block hover:text-green-400'
                     }

@@ -80,11 +80,12 @@ export default function AboutUs() {
           <div className='section global_h1 container'>
             <h1 className='font-semibold mb-3'>Our Mission</h1>
             <p>
-              Established in 2014, bdtax.com.bd is driven by a passion for
-              revolutionizing the landscape of digital tax preparation and
-              submission in Bangladesh. Our journey began with a singular focus
-              on enhancing the user experience and ensuring unparalleled
-              accuracy throughout every step of the process.
+              At bdtax.com.bd, our mission is clear: to provide comprehensive,
+              system-driven tax planning, preparation and submission services
+              that empower taxpayers to navigate the complexities of Bangladesh
+              tax law with ease. We understand the importance of minimizing tax
+              liabilities while ensuring compliance, and our solutions are
+              meticulously designed to achieve just that.
             </p>
           </div>
         </div>

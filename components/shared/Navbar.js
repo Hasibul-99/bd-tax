@@ -49,8 +49,8 @@ export default function Navbar({locale}) {
         <div className='flex justify-between mx-6 md:mx-0 bg-white rounded-[100px] px-4 py-2.5'>
           <div className='flex space-x-7'>
             <div className=''>
-              <a
-                href='/'
+              <Link
+                href='/packages'
                 className='flex items-center bg-[#F8FAFC] rounded-[100px] px-4 py-1'
               >
                 <Image
@@ -59,14 +59,14 @@ export default function Navbar({locale}) {
                   src='/assets/images/logo-2.png'
                   alt='logo'
                 />
-              </a>
+              </Link>
             </div>
             {/* Primary Navbar items */}
             <div className='hidden md:flex items-center space-x-1 gap-x-5 navbar-content bg-[#F8FAFC] rounded-[100px] px-4'>
               <Link
-                href={`/${locale}/home`}
+                href={`/home`}
                 className={`py-4 px-2 text-base font-semibold ${
-                  isActiveUrl(`/${locale}/home`) ? 'active' : ''
+                  isActiveUrl(`/home`) ? 'active' : ''
                 }`}
               >
                 <Space>
@@ -76,13 +76,12 @@ export default function Navbar({locale}) {
                 </Space>
               </Link>
               <Link
-                href={`/${locale}/docs`}
+                href={`/docs`}
                 className={`py-4 px-2 text-base font-semibold ${
-                  isActiveUrl(`/${locale}/docs`) ? 'active' : ''
+                  isActiveUrl(`/docs`) ? 'active' : ''
                 }`}
               >
                 <Space>
-                  {/* <img src='/assets/icons/docs.svg' /> */}
                   {docsIcone}
                   Docs
                 </Space>
@@ -99,9 +98,9 @@ export default function Navbar({locale}) {
                 </Space>
               </Link> */}
               <Link
-                href={`/${locale}/contact-us`}
+                href={`/contact-us`}
                 className={`py-4 px-2 text-base font-semibold ${
-                  isActiveUrl(`/${locale}/contact-us`) ? 'active' : ''
+                  isActiveUrl(`/contact-us`) ? 'active' : ''
                 }`}
               >
                 <Space>
@@ -111,9 +110,9 @@ export default function Navbar({locale}) {
                 </Space>
               </Link>
               <Link
-                href={token ? `/${locale}/more/profile` : `/${locale}/signin`}
+                href={token ? `/more/profile` : `/signin`}
                 className={`py-4 px-2 text-base font-semibold ${
-                  isActiveUrl(`/${locale}/more/`) ? 'active' : ''
+                  isActiveUrl(`/more/`) ? 'active' : ''
                 }`}
               >
                 <Space>
@@ -168,7 +167,7 @@ export default function Navbar({locale}) {
         <ul className>
           <li className='active'>
             <Link
-              href={`/${locale}/home`}
+              href={`/home`}
               className='block text-sm px-2 py-4 text-white bg-green-500 font-semibold'
             >
               <Space>
@@ -179,7 +178,7 @@ export default function Navbar({locale}) {
           </li>
           <li>
             <Link
-              href={`/${locale}/docs`}
+              href={`/docs`}
               className='block text-sm px-2 py-4 hover:bg-green-500 transition duration-300'
             >
               <Space>
@@ -201,7 +200,7 @@ export default function Navbar({locale}) {
           </li> */}
           <li>
             <Link
-              href={`/${locale}/contact-us`}
+              href={`/contact-us`}
               className='hidden md:block text-sm px-2 py-4 hover:bg-green-500 transition duration-300'
             >
               <Space>

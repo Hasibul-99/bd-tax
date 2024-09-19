@@ -29,7 +29,7 @@ export default function PackagePricing({data}) {
 
 const PremiumPlus = ({premiumPlus}) => {
   return (
-    <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative'>
+    <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative h-full'>
       <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] font-semibold start-1/3'>
         Most Popular
       </div>
@@ -85,7 +85,7 @@ const PremiumPlus = ({premiumPlus}) => {
 
 const Premium = ({premium}) => {
   return (
-    <div className='block rounded-[20px]  border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative'>
+    <div className='block rounded-[20px]  border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative h-full'>
       <div className='premium-card-landing'>
         <div className='packages-price'>
           <div className='p-image'>
@@ -138,7 +138,7 @@ const Premium = ({premium}) => {
 
 const Standard = ({standard}) => {
   return (
-    <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative'>
+    <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative h-full'>
       <div className='standard-card-landing'>
         <div className='packages-price'>
           <div className='s-image'>

@@ -24,6 +24,8 @@ export default function validatesslcom() {
   }
 
   useEffect(() => {
+    console.log('validatesslcom')
+
     handelOnload()
   }, [])
 

@@ -70,35 +70,37 @@ export default async function Home(props) {
       </header>
 
       {/* Partners Section */}
-      <div className='container partners mt-6'>
-        <h1 className='w3-center text-4xl font-semibold'>Our Partners</h1>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 gap-x-5  p-10 px-4 bg-[#F9FAFB] rounded-[12px]'>
+      <div className='container partners !mt-6 !mb-10'>
+        <h1 className='w3-center text-4xl font-semibold !mb-10'>
+          Our Partners
+        </h1>
+        <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-7 gap-10 md:gap-x-5  p-10 px-4 bg-[#F9FAFB] rounded-[12px]'>
           <div className>
-            <img src='assets/images/logo_1.png' alt width='100%' />
+            <img src='assets/images/logo_1.png' alt className />
           </div>
           <div className>
-            <img src='assets/images/logo_2.png' alt width='100%' />
+            <img src='assets/images/logo_2.png' alt />
           </div>
           <div className>
-            <img src='assets/images/logo_3.png' alt width='100%' />
+            <img src='assets/images/logo_3.png' alt />
           </div>
           <div className>
-            <img src='assets/images/logo_4.png' alt width='100%' />
+            <img src='assets/images/logo_5.png' alt />
+          </div>
+          <div className='col-span-2  md:col-span-1'>
+            <img src='assets/images/logo_6.png' className='mx-auto' alt />
           </div>
           <div className>
-            <img src='assets/images/logo_5.png' alt width='100%' />
+            <img src='assets/images/logo_4.png' alt />
           </div>
           <div className>
-            <img src='assets/images/logo_6.png' alt width='100%' />
-          </div>
-          <div className>
-            <img src='assets/images/logo_7.png' alt width='100%' />
+            <img src='assets/images/logo_7.png' alt />
           </div>
         </div>
       </div>
 
       {/* Pricing Section */}
-      <div className='container mx-auto min-h-[80vh] mt-5  partners'>
+      <div className='container mx-auto min-h-[80vh] mt-5 partners'>
         <div className='custom-container-under mx-auto px-30 '>
           <div className='bg-white pt-6 pb-2 px-4 rounded-t-2xl'>
             <h1 className='w3-center text-4xl font-semibold'>Our Packages</h1>
@@ -129,34 +131,43 @@ export default async function Home(props) {
       </div>
 
       {/* Promo Section - "What our client say" */}
-      {/* <Slider /> */}
-      <Slider2 />
+      <div className='mb-20'>
+        <div className='bg-white pt-6 pb-2 px-4 rounded-t-2xl mb-10'>
+          <h1 className='w3-center text-4xl font-semibold'>
+            What Our Clients Say
+          </h1>
+        </div>
+        {/* <Slider /> */}
+        <Slider2 />
+      </div>
 
       {/* Promo Section Awards */}
-      <div className='container partners mt-12 mb-10'>
-        <h1 className='w3-center text-4xl font-semibold'>Our Awards</h1>
+      <div className='container partners mt-12 !mb-20'>
+        <h1 className='w3-center text-4xl font-semibold md:!mb-10'>
+          Our Awards
+        </h1>
         <div className='bg-[#f9fafc] rounded-[12px]'>
           <div className='custom-container-under'>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-5 justify-center'>
-              <div className='p-5'>
+              <div className='px-20 py-10 md:p-5'>
                 {' '}
                 <img
                   src='assets/images/Image (5).png'
                   alt='Premium Plus'
-                  width='200'
+                  width='100%'
                   className='mt-1'
                 />
               </div>
-              <div className='p-5'>
+              <div className='px-20 py-10 md:p-5'>
                 {' '}
                 <img
                   src='assets/images/Image (6).png'
                   alt='Premium Plus'
-                  width='200'
+                  width='100%'
                   className='mt-1'
                 />
               </div>
-              <div className='p-5'>
+              <div className='px-20 py-10 md:p-5'>
                 {' '}
                 <img
                   src='assets/images/Image (7).png'
@@ -165,7 +176,7 @@ export default async function Home(props) {
                   className='mt-1'
                 />
               </div>
-              <div className='p-5'>
+              <div className='px-20 py-10 md:p-5'>
                 {' '}
                 <img
                   src='assets/images/Image (8).png'
@@ -180,7 +191,7 @@ export default async function Home(props) {
       </div>
 
       {/* Promo Section "FAQ" */}
-      <div className='container partners mt-12 mb-10  mb-16'>
+      <div className='container partners mt-12 mb-10'>
         <h1 className='w3-center text-4xl font-semibold'>
           Frequently asked questions
         </h1>

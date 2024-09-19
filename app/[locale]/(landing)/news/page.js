@@ -1,6 +1,7 @@
 import '@/style/css/w3.css'
 import '@/style/css/style.css'
 import '@/style/css/other-style.css'
+import Link from 'next/link'
 
 export default function page() {
   return (
@@ -29,23 +30,29 @@ export default function page() {
             </div>
           </div>
         </div>
-        <div className='card'>
-          <div className='card-header'>
-            <img src='/assets/images/news/Frame (1).jpg' alt='ballons' />
-          </div>
-          <div className='card-body'>
-            <h4>CNI BD</h4>
-            <p>
-              অনলাইনেই তৈরি আয়কর রিটার্ন ফর্মঅনলাইনেই তৈরি আয়কর রিটার্ন
-              ফর্মঅনলাইনেই তৈরি আয়কর রিটার্ন ফর্ম
-            </p>
-            <div className='user'>
-              <div className='user-info'>
-                <h5>February 9th, 2020</h5>
+        <Link
+          href='https://www.kalerkantho.com/print-edition/techbishwa/2020/02/09/872333'
+          target='_blank'
+        >
+          <div className='card'>
+            <div className='card-header'>
+              <img src='/assets/images/news/Frame (1).jpg' alt='ballons' />
+            </div>
+            <div className='card-body'>
+              <h4>kalerkantho</h4>
+              <p>
+                অনলাইনেই তৈরি আয়কর রিটার্ন ফর্মঅনলাইনেই তৈরি আয়কর রিটার্ন
+                ফর্মঅনলাইনেই তৈরি আয়কর রিটার্ন ফর্ম
+              </p>
+              <div className='user'>
+                <div className='user-info'>
+                  <h5>February 9th, 2020</h5>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Link>
+
         <div className='card'>
           <div className='card-header'>
             <img src='/assets/images/news/Frame (2).jpg' alt='city' />

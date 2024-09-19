@@ -246,6 +246,12 @@ form h1 {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
+
+@media (max-width: 600px) {
+  .process-main .steps-col-3:not(:first-child):before {
+    border-top: none;
+  }
+}
 .process-step-cont {
   font-size: 16px;
   text-transform: uppercase;
