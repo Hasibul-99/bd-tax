@@ -93,7 +93,7 @@ export default function ShowDownloadTaxFile({setShow}) {
           <Button
             type='primary'
             disabled={!isConfirm}
-            className='prime-button w-52 m-auto mt-4'
+            className='prime-button !w-52 m-auto mt-4'
             onClick={() => {
               handelSubmit()
             }}

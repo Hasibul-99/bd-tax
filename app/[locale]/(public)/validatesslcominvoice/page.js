@@ -45,7 +45,7 @@ export default function Validatesslcominvoice() {
                 extra={[
                   <Link href={'/packages'}>
                     <Button
-                      className='prime-button w-52 !mx-auto'
+                      className='prime-button !w-52 !mx-auto'
                       type='primary'
                       key='console'
                     >
@@ -64,7 +64,7 @@ export default function Validatesslcominvoice() {
                 extra={
                   <Link href={'/packages'}>
                     <Button
-                      className='prime-button w-52 !mx-auto'
+                      className='prime-button !w-52 !mx-auto'
                       type='primary'
                       key='console'
                     >

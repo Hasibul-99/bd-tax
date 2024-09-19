@@ -1006,7 +1006,7 @@ export default function PersonalInfo({setCurrent}) {
             <Button
               type='primary'
               htmlType='submit'
-              className='prime-button gap-0 w-52 m-auto'
+              className='prime-button gap-0 !w-52 m-auto'
             >
               Next
               <RightOutlined style={{fontSize: '13px'}} />

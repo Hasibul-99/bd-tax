@@ -53,7 +53,7 @@ export default function Docs() {
                       <Button
                         type='primary'
                         size='large'
-                        className='prime-button w-52 gap-0'
+                        className='prime-button !w-52 gap-0'
                       >
                         {orderHistory.button_title}{' '}
                         <RightOutlined style={{fontSize: '14px'}} />

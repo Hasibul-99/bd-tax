@@ -340,7 +340,7 @@ export default function Doc({setCurrent, nextCurrent}) {
             <Button
               type='primary'
               htmlType='submit'
-              className='prime-button gap-0 w-52 m-auto mt-8'
+              className='prime-button gap-0 !w-52 m-auto mt-8'
               onClick={() => {
                 setCurrent(nextCurrent || 3)
               }}

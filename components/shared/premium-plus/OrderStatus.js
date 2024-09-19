@@ -174,7 +174,7 @@ export default function OrderStatus({
               {/* {showNextButton ? (
                 <Button
                   type='primary'
-                  className='prime-button gap-0 w-52 m-auto'
+                  className='prime-button gap-0 !w-52 m-auto'
                   onClick={() => {
                     setCurrent(5)
                   }}

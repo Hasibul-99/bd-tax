@@ -57,7 +57,7 @@ export default function GetUserStep({
           <Button
             type='primary'
             size='large'
-            className='prime-button w-52 m-auto'
+            className='prime-button !w-52 m-auto'
           >
             {addiInfo?.go_button_title || "Let's GO"}
           </Button>

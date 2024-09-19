@@ -115,7 +115,7 @@ export default function Payment({salaryData, setCurrent, context}) {
         <>
           <Button
             type='primary'
-            className='prime-button gap-0 w-52 ml-auto mt-6'
+            className='prime-button gap-0 !w-52 ml-auto mt-6'
             onClick={() => {
               setCurrent(context === 'standard' ? 6 : 4)
             }}
@@ -250,7 +250,7 @@ export default function Payment({salaryData, setCurrent, context}) {
               <Button
                 disabled={!paymentData?.sslgatewayLink}
                 type='primary'
-                className='prime-button w-52 m-auto'
+                className='prime-button !w-52 m-auto'
                 onClick={() => makePayment()}
               >
                 <Space>

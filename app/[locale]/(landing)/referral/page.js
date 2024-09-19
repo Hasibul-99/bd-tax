@@ -118,7 +118,7 @@ export default async function page() {
       <div className='container mx-auto mt-5 partners'>
         <div className='custom-container-under mx-auto px-30 '>
           <div className='bg-white pt-6 pb-2 px-4 rounded-t-2xl'>
-            <h1 className='w3-center'>Compare Our Packages</h1>
+            <h1 className='w3-center'>Our Packages</h1>
           </div>
           <PackagePricing data={data.data} />
         </div>

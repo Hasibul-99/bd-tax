@@ -68,7 +68,7 @@ export default function SignatureUpload({offsetWidth = 1000, setShow}) {
           <Upload {...props}>
             <Button
               type='primary'
-              className='refer-friend-button py-1.5 rounded-md w-52 '
+              className='refer-friend-button py-1.5 rounded-md !w-52 '
             >
               {/* <FileTextOutlined /> */}
               <img
@@ -136,7 +136,7 @@ export default function SignatureUpload({offsetWidth = 1000, setShow}) {
             <Button
               type='primary'
               disabled={!isConfirm}
-              className='prime-button w-52 m-auto mt-5'
+              className='prime-button !w-52 m-auto mt-5'
               onClick={() => {
                 handelSubmit()
               }}
