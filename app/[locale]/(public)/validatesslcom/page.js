@@ -1,5 +1,7 @@
 'use client'
 
+import {GET_PAYMENT_STATUS} from '@/scripts/api'
+import {getData} from '@/scripts/api-service'
 import {ConfigProvider, Result, Spin} from 'antd'
 import {useRouter, useSearchParams} from 'next/navigation'
 import {useEffect} from 'react'
@@ -11,21 +13,32 @@ export default function validatesslcom() {
   const status = searchParams.get('status')
   const [loading, setLoading] = useState(true)
 
-  const handelOnload = () => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 500)
+  const handelOnload = async () => {
+    // setTimeout(() => {
+    //   setLoading(false)
+    // }, 500)
 
-    setTimeout(() => {
-      router.push(
-        `${localStorage.getItem('packageType')}/process?status=${status}`
-      )
-    }, 5000)
+    // setTimeout(() => {
+    //   router.push(
+    //     `${localStorage.getItem('packageType')}/process?status=${status}`
+    //   )
+    // }, 5000)
+    const res = await getData(GET_PAYMENT_STATUS)
+
+    if (res) {
+      let masterData = res?.data
+
+      setTimeout(() => {
+        router.push(
+          `${localStorage.getItem('packageType')}/process?status=${
+            masterData.payment_status === 1 ? 'success' : 'fail'
+          }`
+        )
+      }, 3000)
+    }
   }
 
   useEffect(() => {
-    console.log('validatesslcom')
-
     handelOnload()
   }, [])
 

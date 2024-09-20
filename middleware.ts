@@ -8,7 +8,7 @@ export default createMiddleware({
   defaultLocale: 'en',
   localePrefix: 'as-needed',
   // Disable auto-redirect from '/' to '/en'
-  // localeDetection: false,
+  localeDetection: false,
 })
 
 export const config = {

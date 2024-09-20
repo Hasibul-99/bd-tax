@@ -76,7 +76,7 @@ export default function ContactUs() {
                     },
                   ]}
                 >
-                  <Input placeholder='Your Name *' />
+                  <Input placeholder='Name *' />
                 </Form.Item>
 
                 <Form.Item
@@ -93,7 +93,7 @@ export default function ContactUs() {
                     },
                   ]}
                 >
-                  <Input placeholder='Email Adderss *' />
+                  <Input placeholder='Email Address *' />
                 </Form.Item>
 
                 <Form.Item
@@ -111,7 +111,7 @@ export default function ContactUs() {
                     },
                   ]}
                 >
-                  <TextArea rows={8} placeholder='Some Text' />
+                  <TextArea rows={8} placeholder='Message *' />
                 </Form.Item>
 
                 <Form.Item className='text-right'>
