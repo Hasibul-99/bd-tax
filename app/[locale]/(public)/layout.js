@@ -7,8 +7,6 @@ const RootLayout = (props) => {
     params: {locale},
   } = props
 
-  console.log('public layout')
-
   return (
     <>
       <div className='bg-[#F8FAFC]'>

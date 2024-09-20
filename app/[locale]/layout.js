@@ -24,8 +24,6 @@ export default async function LocaleLayout(props) {
   const {children, params} = props
   const messages = await getMessages()
 
-  console.log('root layout')
-
   return (
     <html lang={params?.locale || 'en'}>
       {/* <Script src='js/script.js'></Script> */}

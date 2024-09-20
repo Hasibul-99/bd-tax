@@ -12,6 +12,7 @@ export const TEMP_PACKAGES = 'tempPackages'
 
 // Get user step
 export const GET_USER_STEP = 'get-user-step'
+export const GET_NEWS = 'get-news'
 
 // Get Profile
 export const GET_USER_PROFILE = 'get-user-profile'
