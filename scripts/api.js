@@ -34,6 +34,7 @@ export const GET_ORDER_HISTORY = 'get-order-history'
 export const GET_ORDER_STATUS = 'get-order-status'
 export const GET_PAYMENT_STATUS = 'get-payment-status'
 export const GET_VALIDATE_BKASH = 'validate-bkash'
+export const GET_VALIDATE_PUBALI = 'validate-pubali'
 
 // User Docs
 export const GET_ALL_TAX_YEAR = 'getAllTaxYear'

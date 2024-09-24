@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import Cookies from 'js-cookie'
+import {More} from '@/scripts/icons'
+import {Space} from 'antd'
 // import LanguageChange from '../common/LanguageChange'
 
 // https://codepen.io/Blockshot/pen/rNwOYBE
@@ -151,7 +153,24 @@ export default function AuthNavbar({locale}) {
             {/* <li>
               <LanguageChange />
             </li> */}
-            {!token ? (
+            {token ? (
+              <>
+                <li className='font-normal text-base leading-5 text-[#020617]'>
+                  <Link
+                    href={`/more/profile`}
+                    className={`md:px-4 pt-5 py-4 block hover:text-green-400 ${
+                      isActiveBaseUrl(`/more/`) ? 'active' : ''
+                    }`}
+                  >
+                    <Space>
+                      {/* <img src='/assets/icons/more.svg' /> */}
+                      {More}
+                      More
+                    </Space>
+                  </Link>
+                </li>
+              </>
+            ) : (
               <>
                 <li className='font-normal text-base leading-5 text-[#020617] md:px-2.5 my-6 md:my-0'>
                   <Link
@@ -178,7 +197,7 @@ export default function AuthNavbar({locale}) {
                   </Link>
                 </li>
               </>
-            ) : null}
+            )}
           </ul>
         </div>
       </nav>

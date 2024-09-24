@@ -189,61 +189,93 @@ export default function Payment({salaryData, setCurrent, context}) {
               <p>{paymentData?.payment_amount_message}</p>
             </div>
             <div className='flex flex-row items-start p-0 gap-[14.26px] md:ml-auto'>
-              <a
-                href={paymentData?.sslgatewayLink}
-                className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
-              >
-                <img
-                  src='/assets/images/visa.png'
-                  alt='warning'
-                  width={60}
-                  height={40}
-                />
-              </a>
-              <a
-                href={paymentData?.sslgatewayLink}
-                className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
-              >
-                <img
-                  src='/assets/images/master.png'
-                  alt='warning'
-                  width={60}
-                  height={40}
-                />
-              </a>
-              <a
-                href={paymentData?.sslgatewayLink}
-                className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
-              >
-                <img
-                  src='/assets/images/discover.png'
-                  alt='warning'
-                  width={60}
-                  height={40}
-                />
-              </a>
-              <a
-                href={paymentData?.sslgatewayLink}
-                className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
-              >
-                <img
-                  src='/assets/images/amex.png'
-                  alt='warning'
-                  width={60}
-                  height={40}
-                />
-              </a>
-              <a
-                href={paymentData?.bkashURL}
-                className={!paymentData?.bkashURL ? 'disabled' : ''}
-              >
-                <img
-                  src='/assets/images/bkash.png'
-                  alt='warning'
-                  width={60}
-                  height={40}
-                />
-              </a>
+              {paymentData?.sslgatewayLink ? (
+                <a
+                  href={paymentData?.sslgatewayLink}
+                  className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+                >
+                  <img
+                    src='/assets/images/visa.png'
+                    alt='warning'
+                    width={60}
+                    height={40}
+                  />
+                </a>
+              ) : null}
+
+              {paymentData?.sslgatewayLink ? (
+                <a
+                  href={paymentData?.sslgatewayLink}
+                  className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+                >
+                  <img
+                    src='/assets/images/master.png'
+                    alt='warning'
+                    width={60}
+                    height={40}
+                  />
+                </a>
+              ) : null}
+
+              {paymentData?.sslgatewayLink ? (
+                <a
+                  href={paymentData?.sslgatewayLink}
+                  className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+                >
+                  <img
+                    src='/assets/images/discover.png'
+                    alt='warning'
+                    width={60}
+                    height={40}
+                  />
+                </a>
+              ) : null}
+
+              {paymentData?.sslgatewayLink ? (
+                <a
+                  href={paymentData?.sslgatewayLink}
+                  className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
+                >
+                  <img
+                    src='/assets/images/amex.png'
+                    alt='warning'
+                    width={60}
+                    height={40}
+                  />
+                </a>
+              ) : null}
+
+              {paymentData?.bkashURL ? (
+                <a
+                  href={paymentData?.bkashURL}
+                  className={!paymentData?.bkashURL ? 'disabled' : ''}
+                >
+                  <img
+                    src='/assets/images/bkash.png'
+                    alt='warning'
+                    width={60}
+                    height={40}
+                  />
+                </a>
+              ) : null}
+
+              {paymentData?.pubaliUrl ? (
+                <a
+                  href={paymentData?.pubaliUrl}
+                  className={
+                    !paymentData?.pubaliUrl
+                      ? 'disabled'
+                      : 'border-2 rounded border-slate-600'
+                  }
+                >
+                  <img
+                    src='/assets/images/pubali-bank.png'
+                    alt='warning'
+                    width={150}
+                    height={40}
+                  />
+                </a>
+              ) : null}
             </div>
 
             {/* <div className='md:text-right md:ml-auto'>

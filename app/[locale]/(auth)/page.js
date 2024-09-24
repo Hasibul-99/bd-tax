@@ -56,13 +56,17 @@ export default async function Home(props) {
     <>
       {/* Header with full-height image */}
       <header
-        className='bgimg-1 w3-display-container w3-grayscale-min md:pt-16'
+        className='bgimg-1 w3-display-container w3-grayscale-min md:pt-16 md:mb-24'
         id='home'
       >
         <div className='grid'>
           <div className='row'>
             <div className='w3-col s8 w3-padding'>
               <img src='assets/images/left_lft.jpg' alt width='100%' />
+
+              <p className='mx-auto text-center font-medium text-[16px] leading-[150%] text-[#020617]'>
+                Effortless Tax Filing: Upload and Be Done!
+              </p>
             </div>
             <Login />
           </div>

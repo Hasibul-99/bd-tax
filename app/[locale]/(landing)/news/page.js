@@ -28,7 +28,9 @@ export default async function page() {
   return (
     <div className='container parents'>
       <div className='bg-white pt-6 pb-6 px-4 rounded-t-2xl'>
-        <h1 className='w3-center'>In The NEWS</h1>
+        <h1 className='font-semibold text-[36px] leading-[44px] text-center tracking-[-0.02em] text-[#020617]'>
+          In the news
+        </h1>
         <p className='w3-center'>
           Discover where our product has made headlines
         </p>
