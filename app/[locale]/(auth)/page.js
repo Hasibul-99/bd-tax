@@ -9,6 +9,7 @@ import FAQ from '@/components/common/Landing/FAQ'
 import Link from 'next/link'
 import PackagePricing from '@/components/common/Landing/PackagePricing'
 import Slider2 from '@/components/common/Landing/Slider2'
+import Image from 'next/image'
 
 async function getData() {
   const res = await fetch(
@@ -62,8 +63,16 @@ export default async function Home(props) {
         <div className='grid'>
           <div className='row'>
             <div className='w3-col s8 w3-padding'>
-              <img src='assets/images/left_lft.jpg' alt width='100%' />
-
+              {/* <img src='assets/images/left_lft.jpg' alt width='100%' /> */}
+              <Image
+                src='/assets/images/left_lft.jpg'
+                width={1200}
+                height={500}
+                full={true}
+                loading='lazy'
+                quality={100}
+                alt='banar-image'
+              />
               <p className='mx-auto text-center font-medium text-[16px] leading-[150%] text-[#020617]'>
                 Effortless Tax Filing: Upload and Be Done!
               </p>
