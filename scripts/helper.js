@@ -29,7 +29,7 @@ export const moreNaveData = [
   {
     id: 4,
     icon: '/assets/icons/package.svg',
-    url: '/packages',
+    url: '/my-packages',
     name: 'Packages',
   },
   {
