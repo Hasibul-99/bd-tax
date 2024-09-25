@@ -144,7 +144,7 @@ export default function AuthNavbar({locale}) {
               <Link
                 href={`/contact-us`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
-                  isActiveBaseUrl(`/${locale}/contact-us`) ? 'active' : ''
+                  isActiveBaseUrl(`/contact-us`) ? 'active' : ''
                 }`}
               >
                 {t(`contact_us`)}

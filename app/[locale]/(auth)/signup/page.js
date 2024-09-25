@@ -56,7 +56,7 @@ export default function SignUp() {
 
         setTimeout(() => {
           if (masterData.first_time) {
-            window.location = 'packages'
+            window.location = 'my-packages'
           } else {
             window.location = 'home'
           }

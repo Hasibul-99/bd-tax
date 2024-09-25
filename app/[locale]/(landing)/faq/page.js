@@ -57,8 +57,8 @@ export default function FAQ() {
     getFaq()
   }, [])
   return (
-    <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5 pb-16'>
-      <div className='custom-container-under bg-white py-6 px-6 rounded-2xl'>
+    <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5  pb-16'>
+      <div className='custom-container-under bg-white md:mt-10 py-6 px-6 rounded-2xl'>
         <h1 className='mx-auto text-center text-3xl font-bold'>
           Frequently Asked Questions
         </h1>

@@ -1,6 +1,5 @@
-import PackagePricing from '@/components/common/Landing/PackagePricing'
+import Packages from '@/components/shared/packages'
 import {GUEST_PACKAGE_LIST} from '@/scripts/api'
-import React from 'react'
 
 async function getData() {
   const res = await fetch(
@@ -9,7 +8,6 @@ async function getData() {
     }${GUEST_PACKAGE_LIST}`,
     {next: {revalidate: 3600}}
   )
-
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -21,19 +19,16 @@ async function getData() {
   return res.json()
 }
 
-export default async function Package() {
+export default async function Home(props) {
+  const {
+    params: {locale},
+  } = props
   const data = await getData()
 
   return (
-    <div className='container parents '>
-      <div className='bg-white pt-6 md:mt-10 pb-6 px-4 rounded-t-2xl'>
-        <h1 className='font-semibold text-[36px] leading-[44px] text-center tracking-[-0.02em] text-[#020617]'>
-          Compare Our Packages
-        </h1>
-      </div>
-
+    <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5 pb-16'>
       <div className='custom-container-under mx-auto px-30 '>
-        <PackagePricing data={data.data} />
+        <Packages locale={locale} ssrData={data?.data} />
       </div>
     </div>
   )

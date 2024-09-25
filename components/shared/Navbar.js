@@ -50,7 +50,7 @@ export default function Navbar({locale}) {
           <div className='flex space-x-7'>
             <div className=''>
               <Link
-                href='/packages'
+                href='/my-packages'
                 className='flex items-center bg-[#F8FAFC] rounded-[100px] px-4 py-1'
               >
                 <Image

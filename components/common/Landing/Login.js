@@ -37,7 +37,7 @@ export default function Login() {
 
         setTimeout(() => {
           if (masterData.first_time) {
-            window.location = 'packages'
+            window.location = 'my-packages'
           } else {
             window.location = 'home'
           }

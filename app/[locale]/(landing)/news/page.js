@@ -27,7 +27,7 @@ export default async function page() {
   const res = await getData()
   return (
     <div className='container parents'>
-      <div className='bg-white pt-6 pb-6 px-4 rounded-t-2xl'>
+      <div className='bg-white pt-6 md:mt-10 pb-6 px-4 rounded-t-2xl'>
         <h1 className='font-semibold text-[36px] leading-[44px] text-center tracking-[-0.02em] text-[#020617]'>
           In the news
         </h1>

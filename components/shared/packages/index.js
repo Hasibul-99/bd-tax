@@ -12,6 +12,7 @@ import {useEffect, useState} from 'react'
 import CardViewPremium from './cardView/Premium'
 import CardViewPremiumPlus from './cardView/PremiumPlus'
 import CardViewStandard from './cardView/Standard'
+import PackagePricing from '@/components/common/Landing/PackagePricing'
 
 export default function Packages({locale, ssrData}) {
   const token =
@@ -85,110 +86,111 @@ export default function Packages({locale, ssrData}) {
             </div>
           </div>
 
-          {packageList.current_package_id ? (
-            <>
-              <div className='mb-10 bg-white pb-10 rounded-b-2xl md:px-4'>
-                <Row>
-                  <Col
-                    xs={{
-                      span: 24,
-                      offset: 0,
-                    }}
-                    sm={{
-                      span: 24,
-                      offset: 0,
-                    }}
-                    md={{
-                      span: 24,
-                      offset: 1,
-                    }}
-                    lg={{
-                      span: 10,
-                      offset: 8,
-                    }}
-                    xl={{
-                      span: 10,
-                      offset: 8,
-                    }}
-                  >
-                    {isShowAllPackages ? (
-                      <>
-                        <Button
-                          type='primary'
-                          ghost
-                          size='large'
-                          className='w-full mb-5 view-all-pack font-medium text-sm leading-5 !text-custom-green'
-                          onClick={() => {
-                            setShowPackages((thumb) => !thumb),
-                              detailsHightHandel()
-                          }}
-                        >
-                          View All Packages
-                        </Button>
-                      </>
-                    ) : (
-                      ''
-                    )}
-
-                    {packageList.current_package_type === 'premiumPlus' ? (
-                      <CardViewPremiumPlus
-                        locale={locale}
-                        packageList={packageList}
-                      />
-                    ) : packageList.current_package_type === 'premium' ? (
-                      <CardViewPremium
-                        locale={locale}
-                        packageList={packageList}
-                      />
-                    ) : packageList.current_package_type === 'standard' ? (
-                      <CardViewStandard
-                        locale={locale}
-                        packageList={packageList}
-                      />
-                    ) : (
-                      ''
-                    )}
-                  </Col>
-                </Row>
-              </div>
-            </>
-          ) : (
-            ''
-          )}
-
           {showPackages ? (
-            <div
-              className={`${
-                packageList.current_package_id
-                  ? 'rounded-[20px]'
-                  : 'rounded-b-[20px]'
-              } grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${
-                packageList.current_package_id ? '2' : '3'
-              } gap-x-5 bg-white pb-10 pt-6 px-4`}
-            >
-              {packageList.packages?.length ? (
+            <PackagePricing data={packageList} />
+          ) : (
+            // <div
+            //   className={`${
+            //     packageList.current_package_id
+            //       ? 'rounded-[20px]'
+            //       : 'rounded-b-[20px]'
+            //   } grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${
+            //     packageList.current_package_id ? '2' : '3'
+            //   } gap-x-5 bg-white pb-10 pt-6 px-4`}
+            // >
+            //   {packageList.packages?.length ? (
+            //     <>
+            //       {packageList.packages.map((item, idx) => {
+            //         return item.package_type === 'premiumPlus' &&
+            //           packageList.current_package_type !== 'premiumPlus' ? (
+            //           <PremiumPlus key={idx} locale={locale} pack={item} />
+            //         ) : item.package_type === 'premium' &&
+            //           packageList.current_package_type !== 'premium' ? (
+            //           <Premium key={idx} locale={locale} pack={item} />
+            //         ) : item.package_type === 'standard' &&
+            //           packageList.current_package_type !== 'standard' ? (
+            //           <Standard key={idx} locale={locale} pack={item} />
+            //         ) : (
+            //           ''
+            //         )
+            //       })}
+            //     </>
+            //   ) : (
+            //     ''
+            //   )}
+            // </div>
+            <>
+              {packageList.current_package_id ? (
                 <>
-                  {packageList.packages.map((item, idx) => {
-                    return item.package_type === 'premiumPlus' &&
-                      packageList.current_package_type !== 'premiumPlus' ? (
-                      <PremiumPlus key={idx} locale={locale} pack={item} />
-                    ) : item.package_type === 'premium' &&
-                      packageList.current_package_type !== 'premium' ? (
-                      <Premium key={idx} locale={locale} pack={item} />
-                    ) : item.package_type === 'standard' &&
-                      packageList.current_package_type !== 'standard' ? (
-                      <Standard key={idx} locale={locale} pack={item} />
-                    ) : (
-                      ''
-                    )
-                  })}
+                  <div className='mb-10 bg-white pb-10 rounded-b-2xl md:px-4'>
+                    <Row>
+                      <Col
+                        xs={{
+                          span: 24,
+                          offset: 0,
+                        }}
+                        sm={{
+                          span: 24,
+                          offset: 0,
+                        }}
+                        md={{
+                          span: 24,
+                          offset: 1,
+                        }}
+                        lg={{
+                          span: 10,
+                          offset: 8,
+                        }}
+                        xl={{
+                          span: 10,
+                          offset: 8,
+                        }}
+                      >
+                        {isShowAllPackages ? (
+                          <>
+                            <Button
+                              type='primary'
+                              ghost
+                              size='large'
+                              className='w-full mb-5 view-all-pack font-medium text-sm leading-5 !text-custom-green'
+                              onClick={() => {
+                                setShowPackages((thumb) => !thumb),
+                                  detailsHightHandel()
+                              }}
+                            >
+                              View All Packages
+                            </Button>
+                          </>
+                        ) : (
+                          ''
+                        )}
+
+                        {packageList.current_package_type === 'premiumPlus' ? (
+                          <CardViewPremiumPlus
+                            locale={locale}
+                            packageList={packageList}
+                          />
+                        ) : packageList.current_package_type === 'premium' ? (
+                          <CardViewPremium
+                            locale={locale}
+                            packageList={packageList}
+                          />
+                        ) : packageList.current_package_type === 'standard' ? (
+                          <CardViewStandard
+                            locale={locale}
+                            packageList={packageList}
+                          />
+                        ) : (
+                          ''
+                        )}
+                      </Col>
+                    </Row>
+                  </div>
                 </>
               ) : (
                 ''
               )}
-            </div>
-          ) : (
-            ''
+            </>
           )}
         </>
       ) : (

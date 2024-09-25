@@ -1,7 +1,14 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
+import {useState} from 'react'
+import {useEffect} from 'react'
+import Cookies from 'js-cookie'
 
 export default function PackagePricing({data}) {
+  const [token, setToken] = useState()
+
   const premiumPlus = data?.packages?.length
     ? data?.packages.find((item) => item.package_type === 'premiumPlus')
     : null
@@ -12,22 +19,33 @@ export default function PackagePricing({data}) {
     ? data.packages.find((item) => item.package_type === 'standard')
     : null
 
+  useEffect(() => {
+    const cotoken = Cookies.get('bdtax_token'),
+      locatToken = localStorage?.getItem('bdtax_token')
+
+    if (cotoken || locatToken) {
+      setToken(cotoken || locatToken)
+    }
+  }, [])
+
   return (
     <div className='rounded-b-[20px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 bg-white pb-10 pt-6 px-4'>
       <div className='mb-5'>
-        {premiumPlus ? <PremiumPlus premiumPlus={premiumPlus} /> : null}
+        {premiumPlus ? (
+          <PremiumPlus premiumPlus={premiumPlus} token={token} />
+        ) : null}
       </div>
       <div className='mb-5'>
-        {premium ? <Premium premium={premium} /> : null}
+        {premium ? <Premium premium={premium} token={token} /> : null}
       </div>
       <div className='mb-5'>
-        {standard ? <Standard standard={standard} /> : null}
+        {standard ? <Standard standard={standard} token={token} /> : null}
       </div>
     </div>
   )
 }
 
-const PremiumPlus = ({premiumPlus}) => {
+const PremiumPlus = ({premiumPlus, token}) => {
   return (
     <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative h-full'>
       <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] font-semibold start-1/3'>
@@ -49,7 +67,7 @@ const PremiumPlus = ({premiumPlus}) => {
         >
           <p>{premiumPlus.description}</p>
         </div>
-        <Link href='signin' className='w-full'>
+        <Link href={token ? '/premium-plus' : '/signin'} className='w-full'>
           <button
             type='button'
             className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button font-semibold '
@@ -83,7 +101,7 @@ const PremiumPlus = ({premiumPlus}) => {
   )
 }
 
-const Premium = ({premium}) => {
+const Premium = ({premium, token}) => {
   return (
     <div className='block rounded-[20px]  border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative h-full'>
       <div className='premium-card-landing'>
@@ -102,7 +120,7 @@ const Premium = ({premium}) => {
         >
           <p>{premium.description}</p>
         </div>
-        <Link href='signin' className='w-full'>
+        <Link href={token ? '/premium' : '/signin'} className='w-full'>
           <button
             type='button'
             className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button font-semibold'
@@ -136,7 +154,7 @@ const Premium = ({premium}) => {
   )
 }
 
-const Standard = ({standard}) => {
+const Standard = ({standard, token}) => {
   return (
     <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative h-full'>
       <div className='standard-card-landing'>
@@ -155,7 +173,7 @@ const Standard = ({standard}) => {
         >
           <p>{standard.description}</p>
         </div>
-        <Link href='signin' className='w-full'>
+        <Link href={token ? '/standard' : '/signin'} className='w-full'>
           <button
             type='button'
             className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button font-semibold'

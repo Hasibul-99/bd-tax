@@ -239,7 +239,7 @@ export default async function Home(props) {
 
               <div className='my-5 text-center'>OR</div>
               <div className='text-center mx-auto'>
-                <Link href='packages' className='font-semibold underline'>
+                <Link href='/packages' className='font-semibold underline'>
                   View All Packages
                 </Link>
               </div>

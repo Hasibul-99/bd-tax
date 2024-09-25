@@ -30,7 +30,7 @@ export default async function page() {
     <div>
       {/* Pricing Section */}
       <div className='container mx-auto mt-5 pb-10'>
-        <div className='custom-container-under mx-auto px-30 '>
+        <div className='custom-container-under mx-auto px-30 md:mt-10'>
           <div className='bg-white pt-6 pb-6 px-4 rounded-t-2xl'>
             <h1 className='w3-center'>BDTax Referral program</h1>
             <p className='w3-center'>Refer and earn points</p>

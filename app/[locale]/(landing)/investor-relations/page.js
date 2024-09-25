@@ -1,6 +1,7 @@
 import '@/style/css/w3.css'
 import '@/style/css/style.css'
 import '@/style/css/other-style.css'
+import Link from 'next/link'
 
 export default function page() {
   return (
@@ -94,9 +95,12 @@ export default function page() {
           <h3 className='font-semibold mb-3'>Get in Touch</h3>
           <p className='pb-2'>
             For inquiries regarding investment opportunities or to learn more
-            about BDTax, please contact our Investor Relations team. We look
-            forward to exploring mutually beneficial partnerships and creating
-            value together.
+            about BDTax, please{' '}
+            <Link href='/contact-us' className='font-semibold'>
+              contact
+            </Link>{' '}
+            our Investor Relations team. We look forward to exploring mutually
+            beneficial partnerships and creating value together.
           </p>
           <p className='pb-2'>
             Thank you for your interest in BDTax. Together, let's build a
