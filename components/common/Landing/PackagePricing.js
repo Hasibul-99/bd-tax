@@ -67,14 +67,23 @@ const PremiumPlus = ({premiumPlus, token}) => {
         >
           <p>{premiumPlus.description}</p>
         </div>
-        <Link href={token ? '/premium-plus' : '/signin'} className='w-full'>
+        {premiumPlus?.show_selection === 0 ? (
           <button
             type='button'
-            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button font-semibold '
+            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button font-semibold cursor-not-allowed'
           >
             <span>Select</span>
           </button>
-        </Link>
+        ) : (
+          <Link href={token ? '/premium-plus' : '/signin'} className='w-full'>
+            <button
+              type='button'
+              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button font-semibold '
+            >
+              <span>Select</span>
+            </button>
+          </Link>
+        )}
       </div>
       <div className='p-4'>
         {premiumPlus?.more?.length ? (
@@ -120,14 +129,23 @@ const Premium = ({premium, token}) => {
         >
           <p>{premium.description}</p>
         </div>
-        <Link href={token ? '/premium' : '/signin'} className='w-full'>
+        {premium?.show_selection === 0 ? (
           <button
             type='button'
-            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button font-semibold'
+            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button font-semibold cursor-not-allowed'
           >
             <span>Select</span>
           </button>
-        </Link>
+        ) : (
+          <Link href={token ? '/premium' : '/signin'} className='w-full'>
+            <button
+              type='button'
+              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button font-semibold'
+            >
+              <span>Select</span>
+            </button>
+          </Link>
+        )}
       </div>
       <div className='p-4'>
         {premium?.more?.length ? (
@@ -173,14 +191,23 @@ const Standard = ({standard, token}) => {
         >
           <p>{standard.description}</p>
         </div>
-        <Link href={token ? '/standard' : '/signin'} className='w-full'>
+        {standard?.show_selection === 0 ? (
           <button
             type='button'
-            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button font-semibold'
+            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button font-semibold !bg-slate-50 cursor-not-allowed'
           >
             <span>Select</span>
           </button>
-        </Link>
+        ) : (
+          <Link href={token ? '/standard' : '/signin'} className='w-full'>
+            <button
+              type='button'
+              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button font-semibold'
+            >
+              <span>Select</span>
+            </button>
+          </Link>
+        )}
       </div>
       <div className='p-4'>
         {standard?.more?.length ? (

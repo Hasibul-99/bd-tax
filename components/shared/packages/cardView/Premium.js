@@ -85,7 +85,7 @@ export default function CardViewPremium(props) {
                 <Link href={`/${locale}/premium`}>
                   <Button
                     type='primary'
-                    className='primary-Button w-full min-w-80 font-semibold'
+                    className='primary-Button w-72 font-semibold'
                     size='large'
                     // onClick={() => tempUserPackages()}
                   >

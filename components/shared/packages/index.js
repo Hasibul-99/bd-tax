@@ -123,68 +123,45 @@ export default function Packages({locale, ssrData}) {
               {packageList.current_package_id ? (
                 <>
                   <div className='mb-10 bg-white pb-10 rounded-b-2xl md:px-4'>
-                    <Row>
-                      <Col
-                        xs={{
-                          span: 24,
-                          offset: 0,
-                        }}
-                        sm={{
-                          span: 24,
-                          offset: 0,
-                        }}
-                        md={{
-                          span: 24,
-                          offset: 1,
-                        }}
-                        lg={{
-                          span: 10,
-                          offset: 8,
-                        }}
-                        xl={{
-                          span: 10,
-                          offset: 8,
-                        }}
-                      >
-                        {isShowAllPackages ? (
-                          <>
-                            <Button
-                              type='primary'
-                              ghost
-                              size='large'
-                              className='w-full mb-5 view-all-pack font-medium text-sm leading-5 !text-custom-green'
-                              onClick={() => {
-                                setShowPackages((thumb) => !thumb),
-                                  detailsHightHandel()
-                              }}
-                            >
-                              View All Packages
-                            </Button>
-                          </>
-                        ) : (
-                          ''
-                        )}
+                    <div className='md:w-80 mx-auto'>
+                      {isShowAllPackages ? (
+                        <>
+                          <Button
+                            type='primary'
+                            ghost
+                            size='large'
+                            className='w-full mb-5 view-all-pack font-medium text-sm leading-5 !text-custom-green'
+                            onClick={() => {
+                              setShowPackages((thumb) => !thumb),
+                                detailsHightHandel()
+                            }}
+                          >
+                            View All Packages
+                          </Button>
+                        </>
+                      ) : (
+                        ''
+                      )}
 
-                        {packageList.current_package_type === 'premiumPlus' ? (
-                          <CardViewPremiumPlus
-                            locale={locale}
-                            packageList={packageList}
-                          />
-                        ) : packageList.current_package_type === 'premium' ? (
-                          <CardViewPremium
-                            locale={locale}
-                            packageList={packageList}
-                          />
-                        ) : packageList.current_package_type === 'standard' ? (
-                          <CardViewStandard
-                            locale={locale}
-                            packageList={packageList}
-                          />
-                        ) : (
-                          ''
-                        )}
-                      </Col>
-                    </Row>
+                      {packageList.current_package_type === 'premiumPlus' ? (
+                        <CardViewPremiumPlus
+                          locale={locale}
+                          packageList={packageList}
+                        />
+                      ) : packageList.current_package_type === 'premium' ? (
+                        <CardViewPremium
+                          locale={locale}
+                          packageList={packageList}
+                        />
+                      ) : packageList.current_package_type === 'standard' ? (
+                        <CardViewStandard
+                          locale={locale}
+                          packageList={packageList}
+                        />
+                      ) : (
+                        ''
+                      )}
+                    </div>
                   </div>
                 </>
               ) : (

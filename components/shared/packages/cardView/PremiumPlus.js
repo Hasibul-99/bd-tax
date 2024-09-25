@@ -40,7 +40,7 @@ export default function CardViewPremiumPlus(props) {
 
               <Button
                 type='primary'
-                className='w-full primary-plus-Button'
+                className='w-72 primary-plus-Button'
                 size='large'
               >
                 <Link href={`/${locale}/premium-plus`}>Let's Continue</Link>

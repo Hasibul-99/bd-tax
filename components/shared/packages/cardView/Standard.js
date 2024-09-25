@@ -90,7 +90,7 @@ export default function CardViewStandard(props) {
                 <Link href={`/${locale}/standard`}>
                   <Button
                     type='primary'
-                    className='standard-button w-full min-w-80 font-semibold'
+                    className='standard-button w-72 font-semibold'
                     size='large'
                     // onClick={() => tempUserPackages()}
                   >
