@@ -259,7 +259,9 @@ export default function AgricultureForm({
                 >
                   {AgricultureType?.length &&
                     AgricultureType.map((item) => (
-                      <Option value={item}>{item}</Option>
+                      <Option value={item} key={item}>
+                        {item}
+                      </Option>
                     ))}
                 </Select>
               </Form.Item>

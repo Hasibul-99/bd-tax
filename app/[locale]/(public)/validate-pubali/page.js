@@ -33,11 +33,17 @@ export default function page() {
     setPackageType(localStorage.getItem('packageType'))
   }, [])
   return (
-    <div className='bg-[#F8FAFC] container mx-auto min-h-[80vh] mt-5 pb-16'>
+    <div className='bg-white container mx-auto min-h-[80vh] mt-5 pb-16'>
       <div>
         <>
           <Result
-            status='error'
+            icon={
+              <img
+                src='/assets/images/pubali-bank.png'
+                alt='success'
+                className='w-60 mx-auto'
+              />
+            }
             title='Verifying Payment Status'
             subTitle="Please wait while we verify your payment. This won't take long."
             extra={

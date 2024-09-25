@@ -27,6 +27,7 @@ import {
   Space,
 } from 'antd'
 import {useEffect, useState} from 'react'
+import {Fragment} from 'react'
 const {TextArea} = Input
 const {confirm} = Modal
 
@@ -197,8 +198,8 @@ export default function BusinessForm({
         </Row>
 
         {dpType?.length &&
-          dpType[0].map((item) => (
-            <>
+          dpType[0].map((item, idx) => (
+            <Fragment key={idx}>
               <Row gutter={16} className='my-5'>
                 <Col className='gutter-row ' xs={24} sm={24} md={6}>
                   {item === 'IncomeFromBusiness1'
@@ -245,7 +246,7 @@ export default function BusinessForm({
                   </Space>
                 </Col>
               </Row>
-            </>
+            </Fragment>
           ))}
       </ConfigProvider>
       <Divider />

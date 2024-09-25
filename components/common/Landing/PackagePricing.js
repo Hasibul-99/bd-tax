@@ -5,6 +5,8 @@ import React from 'react'
 import {useState} from 'react'
 import {useEffect} from 'react'
 import Cookies from 'js-cookie'
+import {postData} from '@/scripts/api-service'
+import {TEMP_PACKAGES} from '@/scripts/api'
 
 export default function PackagePricing({data}) {
   const [token, setToken] = useState()
@@ -19,6 +21,20 @@ export default function PackagePricing({data}) {
     ? data.packages.find((item) => item.package_type === 'standard')
     : null
 
+  const tempUserPackages = async (packId) => {
+    let res = await postData(
+      TEMP_PACKAGES,
+      {package_id: packId},
+      null,
+      null,
+      true
+    )
+
+    if (res) {
+      // router.push(`/${locale}/premium`)
+    }
+  }
+
   useEffect(() => {
     const cotoken = Cookies.get('bdtax_token'),
       locatToken = localStorage?.getItem('bdtax_token')
@@ -32,20 +48,36 @@ export default function PackagePricing({data}) {
     <div className='rounded-b-[20px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 bg-white pb-10 pt-6 px-4'>
       <div className='mb-5'>
         {premiumPlus ? (
-          <PremiumPlus premiumPlus={premiumPlus} token={token} />
+          <PremiumPlus
+            premiumPlus={premiumPlus}
+            token={token}
+            tempUserPackages={tempUserPackages}
+          />
         ) : null}
       </div>
       <div className='mb-5'>
-        {premium ? <Premium premium={premium} token={token} /> : null}
+        {premium ? (
+          <Premium
+            premium={premium}
+            token={token}
+            tempUserPackages={tempUserPackages}
+          />
+        ) : null}
       </div>
       <div className='mb-5'>
-        {standard ? <Standard standard={standard} token={token} /> : null}
+        {standard ? (
+          <Standard
+            standard={standard}
+            token={token}
+            tempUserPackages={tempUserPackages}
+          />
+        ) : null}
       </div>
     </div>
   )
 }
 
-const PremiumPlus = ({premiumPlus, token}) => {
+const PremiumPlus = ({premiumPlus, token, tempUserPackages}) => {
   return (
     <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative h-full'>
       <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] font-semibold start-1/3'>
@@ -79,6 +111,7 @@ const PremiumPlus = ({premiumPlus, token}) => {
             <button
               type='button'
               className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button font-semibold '
+              onClick={() => tempUserPackages(premiumPlus.id)}
             >
               <span>Select</span>
             </button>
@@ -110,7 +143,7 @@ const PremiumPlus = ({premiumPlus, token}) => {
   )
 }
 
-const Premium = ({premium, token}) => {
+const Premium = ({premium, token, tempUserPackages}) => {
   return (
     <div className='block rounded-[20px]  border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative h-full'>
       <div className='premium-card-landing'>
@@ -141,6 +174,7 @@ const Premium = ({premium, token}) => {
             <button
               type='button'
               className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button font-semibold'
+              onClick={() => tempUserPackages(premium.id)}
             >
               <span>Select</span>
             </button>
@@ -151,7 +185,7 @@ const Premium = ({premium, token}) => {
         {premium?.more?.length ? (
           <ul>
             {premium.more.map((item, idx) => (
-              <li className='package-details'>
+              <li className='package-details' key={idx}>
                 <div className='pp-details'>
                   <img
                     src='/assets/icons/post-icons/star_2.svg'
@@ -172,7 +206,7 @@ const Premium = ({premium, token}) => {
   )
 }
 
-const Standard = ({standard, token}) => {
+const Standard = ({standard, token, tempUserPackages}) => {
   return (
     <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative h-full'>
       <div className='standard-card-landing'>
@@ -203,6 +237,7 @@ const Standard = ({standard, token}) => {
             <button
               type='button'
               className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button font-semibold'
+              onClick={() => tempUserPackages(standard.id)}
             >
               <span>Select</span>
             </button>
