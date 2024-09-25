@@ -21,9 +21,9 @@ export default function Docs() {
 
   const getRouteHandel = (order) => {
     if (order) {
-      if (order.package === 'Premium Plus') {
+      if (order.package_type === 'premiumPlus') {
         return '/premium-plus'
-      } else if (order.package === 'Premium') {
+      } else if (order.package_type === 'premium') {
         return '/premium'
       } else {
         return '/standard'
