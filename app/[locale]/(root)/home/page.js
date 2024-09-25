@@ -23,7 +23,7 @@ export default function Docs() {
     if (order) {
       if (order.package === 'Premium Plus') {
         return '/premium-plus'
-      } else if (order.package === 'Premium ') {
+      } else if (order.package === 'Premium') {
         return '/premium'
       } else {
         return '/standard'
