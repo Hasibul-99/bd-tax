@@ -65,15 +65,16 @@ export default async function Home(props) {
             <div className='w3-col s8 w3-padding'>
               {/* <img src='assets/images/left_lft.jpg' alt width='100%' /> */}
               <Image
-                src='/assets/images/left_lft.jpg'
+                src='/assets/images/left_lft.png'
                 width={1200}
-                height={500}
+                height={300}
                 full={true}
                 loading='lazy'
                 quality={100}
                 alt='banar-image'
+                className='rounded-2xl'
               />
-              <p className='mx-auto text-center font-medium text-[16px] leading-[150%] text-[#020617]'>
+              <p className='mx-auto text-center font-medium text-[16px] leading-[150%] text-[#020617] mt-5'>
                 Effortless Tax Filing: Upload and Be Done!
               </p>
             </div>

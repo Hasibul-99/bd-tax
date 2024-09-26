@@ -96,7 +96,7 @@ export default function page() {
           <p className='pb-2'>
             For inquiries regarding investment opportunities or to learn more
             about BDTax, please{' '}
-            <Link href='/contact-us' className='font-semibold'>
+            <Link href='/contact-us' className='font-semibold text-blue-600'>
               contact
             </Link>{' '}
             our Investor Relations team. We look forward to exploring mutually

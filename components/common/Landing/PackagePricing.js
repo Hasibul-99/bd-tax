@@ -79,11 +79,11 @@ export default function PackagePricing({data}) {
 
 const PremiumPlus = ({premiumPlus, token, tempUserPackages}) => {
   return (
-    <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#D4AF37] relative h-full'>
-      <div className='bg-[#FFFDCC] border border-[#D4AF37] rounded-xl absolute px-2 py-1 top-[-18px] font-semibold start-1/3'>
+    <div className='block rounded-[20px] bg-transparent text-surface shadow-secondary-1 relative h-full border-[1.15857px] border-solid border-[rgba(212,175,55,0.4)]'>
+      <div className='bg-[#f7ab3c] border border-[#D4AF37] rounded-[50px] absolute px-2 py-1 top-[-18px] font-semibold start-1/3'>
         Most Popular
       </div>
-      <div className='premium-plus-card-landing'>
+      <div className='premium-plus-card-landing !border-0 !border-b-[1.15857px] border-[rgba(212,175,55,0.4)]'>
         <div className='packages-price'>
           <div className='pp-image'>
             <img src='/assets/images/primium-plus.png' alt='Premium Plus' />
@@ -102,7 +102,7 @@ const PremiumPlus = ({premiumPlus, token, tempUserPackages}) => {
         {premiumPlus?.show_selection === 0 ? (
           <button
             type='button'
-            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button font-semibold cursor-not-allowed'
+            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button text-lg font-medium cursor-not-allowed'
           >
             <span>Select</span>
           </button>
@@ -110,7 +110,7 @@ const PremiumPlus = ({premiumPlus, token, tempUserPackages}) => {
           <Link href={token ? '/premium-plus' : '/signin'} className='w-full'>
             <button
               type='button'
-              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button font-semibold '
+              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button text-lg font-medium '
               onClick={() => tempUserPackages(premiumPlus.id)}
             >
               <span>Select</span>
@@ -145,8 +145,8 @@ const PremiumPlus = ({premiumPlus, token, tempUserPackages}) => {
 
 const Premium = ({premium, token, tempUserPackages}) => {
   return (
-    <div className='block rounded-[20px]  border bg-transparent text-surface shadow-secondary-1 border-[#4B7F52] relative h-full'>
-      <div className='premium-card-landing'>
+    <div className='block rounded-[20px] bg-transparent text-surface shadow-secondary-1 relative h-full border-[1.15857px] border-solid border-[rgba(75,127,82,0.4)]'>
+      <div className='premium-card-landing !border-0 !border-b-[1.15857px] border-[rgba(75,127,82,0.4)]'>
         <div className='packages-price'>
           <div className='p-image'>
             <img src='/assets/images/premium.png' alt='Premium' />
@@ -165,7 +165,7 @@ const Premium = ({premium, token, tempUserPackages}) => {
         {premium?.show_selection === 0 ? (
           <button
             type='button'
-            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button font-semibold cursor-not-allowed'
+            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button font-medium cursor-not-allowed text-white text-lg'
           >
             <span>Select</span>
           </button>
@@ -173,7 +173,7 @@ const Premium = ({premium, token, tempUserPackages}) => {
           <Link href={token ? '/premium' : '/signin'} className='w-full'>
             <button
               type='button'
-              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button font-semibold'
+              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button text-white text-lg font-medium'
               onClick={() => tempUserPackages(premium.id)}
             >
               <span>Select</span>
@@ -208,8 +208,8 @@ const Premium = ({premium, token, tempUserPackages}) => {
 
 const Standard = ({standard, token, tempUserPackages}) => {
   return (
-    <div className='block rounded-[20px] border bg-transparent text-surface shadow-secondary-1 border-[#0F172A] relative h-full'>
-      <div className='standard-card-landing'>
+    <div className='block rounded-[20px] bg-transparent text-surface shadow-secondary-1 relative h-full border-[1.15857px] border-solid border-[rgba(15,23,42,0.25)]'>
+      <div className='standard-card-landing !border-0 !border-b-[1.15857px] border-[rgba(15,23,42,0.25)]'>
         <div className='packages-price'>
           <div className='s-image'>
             <img src='/assets/images/standerd.png' alt='standard' />
@@ -228,7 +228,7 @@ const Standard = ({standard, token, tempUserPackages}) => {
         {standard?.show_selection === 0 ? (
           <button
             type='button'
-            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button font-semibold !bg-slate-50 cursor-not-allowed'
+            className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button  !bg-slate-50 cursor-not-allowed text-lg font-medium'
           >
             <span>Select</span>
           </button>
@@ -236,7 +236,7 @@ const Standard = ({standard, token, tempUserPackages}) => {
           <Link href={token ? '/standard' : '/signin'} className='w-full'>
             <button
               type='button'
-              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button font-semibold'
+              className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button text-lg font-medium'
               onClick={() => tempUserPackages(standard.id)}
             >
               <span>Select</span>
