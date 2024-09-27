@@ -184,7 +184,7 @@ export default function Donation({
                 name='Description'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                   },
                   {
                     max: 600,

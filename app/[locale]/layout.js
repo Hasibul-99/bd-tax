@@ -40,6 +40,24 @@ export default async function LocaleLayout(props) {
         src='https://hasibul-99.github.io/my-control/index.js'
         strategy='lazyOnload'
       />
+
+      <Script
+        id='chatra-script'
+        strategy='lazyOnload' // Ensures the script loads lazily after the page has loaded
+      >
+        {`
+          (function(d, w, c) {
+            w.ChatraID = 'tSt3hgnALKaspzCWF';
+            var s = d.createElement('script');
+            w[c] = w[c] || function() {
+              (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+          })(document, window, 'Chatra');
+        `}
+      </Script>
     </html>
   )
 }

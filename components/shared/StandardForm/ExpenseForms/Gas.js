@@ -184,7 +184,7 @@ export default function Gas({
                 name='Description'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                   },
                   {
                     max: 600,

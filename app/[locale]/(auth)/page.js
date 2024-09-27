@@ -65,7 +65,7 @@ export default async function Home(props) {
             <div className='w3-col s8 w3-padding'>
               {/* <img src='assets/images/left_lft.jpg' alt width='100%' /> */}
               <Image
-                src='/assets/images/left_lft.png'
+                src='/assets/images/left_lft.jpeg'
                 width={1200}
                 height={300}
                 full={true}

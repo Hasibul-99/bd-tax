@@ -187,7 +187,7 @@ export default function OtherTransportation({
                 name='Description'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                   },
                   {
                     max: 600,

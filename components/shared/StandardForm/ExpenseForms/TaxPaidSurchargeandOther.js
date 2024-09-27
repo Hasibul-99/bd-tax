@@ -189,7 +189,7 @@ export default function TaxPaidSurchargeandOther({
                 name='Description'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                   },
                   {
                     max: 600,

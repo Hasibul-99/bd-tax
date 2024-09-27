@@ -186,7 +186,7 @@ export default function Electricity({
                 name='Description'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                   },
                   {
                     max: 600,

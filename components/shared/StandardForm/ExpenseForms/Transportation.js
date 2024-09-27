@@ -186,7 +186,7 @@ export default function Transportation({
                 name='Description'
                 rules={[
                   {
-                    required: true,
+                    required: false,
                   },
                   {
                     max: 600,

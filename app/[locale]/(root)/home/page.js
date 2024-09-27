@@ -49,7 +49,7 @@ export default function Docs() {
                     <p>{orderHistory.title} </p>
                   </div>
                   <div className='text-right ml-auto'>
-                    <Link href={'/packages'}>
+                    <Link href={'/my-packages'}>
                       <Button
                         type='primary'
                         size='large'
