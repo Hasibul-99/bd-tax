@@ -10,6 +10,7 @@ import Link from 'next/link'
 import PackagePricing from '@/components/common/Landing/PackagePricing'
 import Slider2 from '@/components/common/Landing/Slider2'
 import Image from 'next/image'
+import OurPartners from '@/components/common/Landing/OurPartners'
 
 async function getData() {
   const res = await fetch(
@@ -84,34 +85,7 @@ export default async function Home(props) {
       </header>
 
       {/* Partners Section */}
-      <div className='container partners !mt-6 !mb-10'>
-        <h1 className='w3-center text-4xl font-semibold !mb-10'>
-          Our Partners
-        </h1>
-        <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-7 gap-10 md:gap-x-5  p-10 px-4 bg-[#F9FAFB] rounded-[12px]'>
-          <div className>
-            <img src='assets/images/logo_1.png' alt className />
-          </div>
-          <div className>
-            <img src='assets/images/logo_2.png' alt />
-          </div>
-          <div className>
-            <img src='assets/images/logo_3.png' alt />
-          </div>
-          <div className>
-            <img src='assets/images/logo_5.png' alt />
-          </div>
-          <div className='col-span-2  md:col-span-1'>
-            <img src='assets/images/logo_6.png' className='mx-auto' alt />
-          </div>
-          <div className>
-            <img src='assets/images/logo_4.png' alt />
-          </div>
-          <div className>
-            <img src='assets/images/logo_7.png' alt />
-          </div>
-        </div>
-      </div>
+      <OurPartners />
 
       {/* Pricing Section */}
       <div className='container mx-auto min-h-[80vh] mt-5 partners'>
