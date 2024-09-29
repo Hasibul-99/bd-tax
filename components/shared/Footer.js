@@ -11,16 +11,19 @@ export default function Footer() {
           <div className='footer_nav '>
             <ul className='md:flex items-center space-x-1 gap-x-5 text-center'>
               <li>
-                <Link href='join-our-team'>Join Our Team</Link>
+                <Link href='/join-our-team'>Join Our Team</Link>
               </li>
               <li>
-                <Link href='become-a-partner'>Become a Partner</Link>
+                <Link href='/become-a-partner'>Become a Partner</Link>
               </li>
               <li>
-                <Link href='investor-relations'>Investor Relations</Link>
+                <Link href='/referral'>Referral</Link>
               </li>
               <li>
-                <Link href='terms-and-conditions'>Terms and conditions</Link>
+                <Link href='/investor-relations'>Investor Relations</Link>
+              </li>
+              <li>
+                <Link href='/terms-and-conditions'>Terms and conditions</Link>
               </li>
             </ul>
           </div>

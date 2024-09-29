@@ -130,7 +130,7 @@ export default function AuthNavbar({locale}) {
                 {t(`faq`)}
               </Link>
             </li>
-            <li className='font-normal text-base leading-5 text-[#020617]'>
+            {/* <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/referral`}
                 className={`md:px-5 py-4 block hover:text-green-400 ${
@@ -139,7 +139,7 @@ export default function AuthNavbar({locale}) {
               >
                 Referral
               </Link>
-            </li>
+            </li> */}
             <li className='font-normal text-base leading-5 text-[#020617]'>
               <Link
                 href={`/contact-us`}
