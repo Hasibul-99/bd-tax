@@ -4,6 +4,7 @@ import Footer from '@/components/shared/Footer'
 import Navbar from '@/components/shared/Navbar'
 import Cookies from 'js-cookie'
 import {useRouter} from 'next/navigation'
+import Script from 'next/script'
 import {useEffect} from 'react'
 
 const RootLayout = (props) => {
@@ -19,6 +20,18 @@ const RootLayout = (props) => {
     if (!token) {
       router.push('/signin')
     }
+
+    setTimeout(() => {
+      const element = document.getElementById('chatra-script')
+      if (element) {
+        element.remove()
+      }
+
+      const element2 = document.getElementById('chatra')
+      if (element2) {
+        element2.remove()
+      }
+    }, 5000)
   }, [token])
 
   return (
