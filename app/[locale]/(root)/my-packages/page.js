@@ -6,7 +6,7 @@ async function getData() {
     `${
       process.env.BASE_URL || 'https://bdtaxliveapi.bdtax.com.bd/public/api/'
     }${GUEST_PACKAGE_LIST}`,
-    {next: {revalidate: 3600}}
+    {next: {revalidate: 60}}
   )
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.

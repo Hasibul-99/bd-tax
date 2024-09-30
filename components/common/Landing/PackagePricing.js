@@ -107,7 +107,7 @@ const PremiumPlus = ({premiumPlus, token, tempUserPackages}) => {
             <span>Select</span>
           </button>
         ) : (
-          <Link href={token ? '/premium-plus' : '/signin'} className='w-full'>
+          <Link href={token ? '/premium-plus' : '/signup'} className='w-full'>
             <button
               type='button'
               className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-plus-Button text-lg font-medium '
@@ -170,7 +170,7 @@ const Premium = ({premium, token, tempUserPackages}) => {
             <span>Select</span>
           </button>
         ) : (
-          <Link href={token ? '/premium' : '/signin'} className='w-full'>
+          <Link href={token ? '/premium' : '/signup'} className='w-full'>
             <button
               type='button'
               className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg primary-Button text-white text-lg font-medium'
@@ -233,7 +233,7 @@ const Standard = ({standard, token, tempUserPackages}) => {
             <span>Select</span>
           </button>
         ) : (
-          <Link href={token ? '/standard' : '/signin'} className='w-full'>
+          <Link href={token ? '/standard' : '/signup'} className='w-full'>
             <button
               type='button'
               className='ant-btn css-mzwlov ant-btn-primary ant-btn-lg standard-button text-lg font-medium'

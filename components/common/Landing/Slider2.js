@@ -4,7 +4,7 @@ import {Carousel} from 'antd'
 export default function Slider2() {
   return (
     <div className='container mt-12 mb-10 client-say'>
-      <Carousel arrows={true} autoplay={true} infinite={true}>
+      <Carousel arrows={true} autoplay={true} infinite={true} dots={false}>
         <div className='client-say-content pb-12 md:pb-0'>
           <p className='md:mx-12'>
             “Awesome work by the development and support team. Done my taxing

@@ -9,7 +9,7 @@ async function getData() {
     `${
       process.env.BASE_URL || 'https://bdtaxliveapi.bdtax.com.bd/public/api/'
     }${GET_NEWS}`,
-    {next: {revalidate: 3600}}
+    {next: {revalidate: 60}}
   )
 
   // The return value is *not* serialized
