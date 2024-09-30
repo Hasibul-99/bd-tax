@@ -20,59 +20,6 @@ export default function CardViewStandard(props) {
                   : 'rounded-b-[25px]'
               } `}
             >
-              {/* <h1 className='font-bold'>
-                <Space>
-                  <img
-                    src='/assets/images/Premium-Plus.png'
-                    alt='Premium Plus'
-                  />
-                  <span>
-                    {packageList.current_package_id_title} (৳{' '}
-                    {packageList.current_package_id_price})
-                  </span>
-                </Space>
-              </h1>
-              <p className='my-2'>
-                {packageList.current_package_id_moredescription}
-              </p>
-
-              <ConfigProvider
-                theme={{
-                  token: {
-                    colorPrimary: '#ccc',
-                  },
-                  components: {
-                    Button: {
-                      colorPrimary: '#ccc',
-                    },
-                  },
-                }}
-              >
-                <Link href={`/${locale}/standard`}>
-                  <Button
-                    type='primary'
-                    className='w-full border-[#0F172A] text-[#0F172A] hover:!text-[#0F172A]'
-                    size='large'
-                  >
-                    Let's Continue
-                  </Button>
-                </Link>
-              </ConfigProvider>
-              <div className='text-center mt-5'>
-                <Button
-                  type='text'
-                  onClick={() => setShowDetails((thumb) => !thumb)}
-                >
-                  <Space>
-                    <span>Learn more </span>
-                    <img
-                      className={showDetails ? 'rotate-180' : ''}
-                      src='/assets/icons/arrow-down.svg'
-                      alt='Premium Plus'
-                    />
-                  </Space>
-                </Button>
-              </div> */}
               <div className='standard-card-landing'>
                 <div className='packages-price'>
                   <div className='s-image'>
@@ -87,10 +34,10 @@ export default function CardViewStandard(props) {
                   <p>{packageList.current_package_id_moredescription}</p>
                 </div>
 
-                <Link href={`/${locale}/standard`}>
+                <Link className='w-full' href={`/${locale}/standard`}>
                   <Button
                     type='primary'
-                    className='standard-button w-72 font-semibold'
+                    className='standard-button font-semibold'
                     size='large'
                     // onClick={() => tempUserPackages()}
                   >

@@ -20,54 +20,6 @@ export default function CardViewPremium(props) {
                   : 'rounded-b-[25px]'
               }`}
             >
-              {/* <h1 className='font-bold'>
-                <Space>
-                  <img
-                    src='/assets/images/Premium-Plus.png'
-                    alt='Premium Plus'
-                  />
-                  <span>
-                    {packageList.current_package_id_title} (৳{' '}
-                    {packageList.current_package_id_price})
-                  </span>
-                </Space>
-              </h1>
-              <p className='my-2'>
-                {packageList.current_package_id_moredescription}
-              </p>
-
-              <ConfigProvider
-                theme={{
-                  token: {
-                    colorPrimary: '#4B7F52',
-                  },
-                  components: {
-                    Button: {
-                      colorPrimary: '#4B7F52',
-                    },
-                  },
-                }}
-              >
-                <Button type='primary' className='w-full' size='large'>
-                  <Link href={`/${locale}/premium`}>Let's Continue</Link>
-                </Button>
-              </ConfigProvider>
-
-              <div className='text-center mt-5'>
-                <Button
-                  type='text'
-                  onClick={() => setShowDetails((thumb) => !thumb)}
-                >
-                  <Space>
-                    <span>Learn more </span>
-                    <img
-                      className={showDetails ? 'rotate-180' : ''}
-                      src='/assets/icons/arrow-down.svg'
-                      alt='Premium Plus'
-                    />
-                  </Space>
-                </Button>
-              </div> */}
               <div className='premium-card-landing '>
                 <div className='packages-price'>
                   <div className='p-image'>
@@ -82,10 +34,10 @@ export default function CardViewPremium(props) {
                   <p>{packageList.current_package_id_moredescription}</p>
                 </div>
 
-                <Link href={`/${locale}/premium`}>
+                <Link className='w-full' href={`/${locale}/premium`}>
                   <Button
                     type='primary'
-                    className='primary-Button w-72 font-semibold'
+                    className='primary-Button font-semibold'
                     size='large'
                     // onClick={() => tempUserPackages()}
                   >

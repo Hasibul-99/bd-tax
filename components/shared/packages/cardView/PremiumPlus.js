@@ -37,14 +37,15 @@ export default function CardViewPremiumPlus(props) {
               <div className='pack-details mt-4 mb-4'>
                 {packageList.current_package_id_moredescription}
               </div>
-
-              <Button
-                type='primary'
-                className='w-72 primary-plus-Button'
-                size='large'
-              >
-                <Link href={`/${locale}/premium-plus`}>Let's Continue</Link>
-              </Button>
+              <Link className='w-full' href={`/${locale}/premium-plus`}>
+                <Button
+                  type='primary'
+                  className='primary-plus-Button'
+                  size='large'
+                >
+                  Let's Continue
+                </Button>
+              </Link>
               <div className='text-center mt-5'>
                 <Button
                   type='text'
