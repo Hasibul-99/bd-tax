@@ -66,6 +66,7 @@ export default function PersonalInfo({setCurrent}) {
       SpouseName: values.SpouseName,
       SpouseETIN: values.SpouseETIN,
       EmployerName: values.EmployerName,
+      EmployerAddress: values.EmployerAddress,
     }
 
     let res = await postData(PACKAGE_WISE_PROFILE, profile, null, 'showError')
@@ -129,6 +130,7 @@ export default function PersonalInfo({setCurrent}) {
           SpouseName: masterData.SpouseName,
           SpouseETIN: masterData.SpouseETIN,
           EmployerName: masterData.EmployerName,
+          EmployerAddress: masterData.EmployerAddress,
         })
       }
     }
