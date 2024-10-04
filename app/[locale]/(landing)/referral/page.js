@@ -115,7 +115,7 @@ export default async function page() {
         </div>
       </div>
       {/* Pricing Section */}
-      <div className='container mx-auto mt-5 partners'>
+      <div className='container mx-auto mt-10 md:mt-5  partners overflow-hidden'>
         <div className='custom-container-under mx-auto px-30 '>
           <div className='bg-white pt-6 pb-2 px-4 rounded-t-2xl'>
             <h1 className='w3-center'>Our Packages</h1>
@@ -124,8 +124,8 @@ export default async function page() {
         </div>
       </div>
       {/* After price Section */}
-      <div className=' container mb-10'>
-        <div className='custom-container p-4 bg-[#F1F5F9] border border-solid border-[#E2E8F0] rounded-[12px]'>
+      <div className=' container !mb-10'>
+        <div className='custom-container !p-4 bg-[#F1F5F9] border border-solid border-[#E2E8F0] rounded-[12px]'>
           bdtax.com.bd is the first online income tax return preparation,
           processing and submission software in Bangladesh. bdtax.com.bd will
           support you to file income tax return through online easily at minimum

@@ -114,3 +114,14 @@ a.disabled {
     }
   }
 }
+// slick-dots li button:before
+
+.slick-dots {
+  li {
+    button {
+      &:before {
+        display: none;
+      }
+    }
+  }
+}

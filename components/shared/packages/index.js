@@ -78,7 +78,7 @@ export default function Packages({locale, ssrData}) {
         <>
           <div className='bg-white pt-6 pb-2 px-4 rounded-t-2xl'>
             <WelcomeMessage />
-            <div className='text-center bg-slate-100 mt-4 py-5 rounded-[12px] '>
+            <div className='text-center bg-slate-100 mt-4 py-5 px-3 rounded-[12px] '>
               <h5 className='text-base font-semibold'>
                 {packageList.page_tite_tax_year}
               </h5>
