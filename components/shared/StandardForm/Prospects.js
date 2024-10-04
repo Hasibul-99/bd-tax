@@ -20,6 +20,27 @@ export default function Prospects({setCurrent, prospectData}) {
   const expenceOptions = standardStore((state) => state.expenceOptions)
   const incomeOptions = standardStore((state) => state.incomeOptions)
   const libilityOptions = standardStore((state) => state.libilityOptions)
+  const checkAllIncome = incomeOptions?.length === prospectData?.income?.length
+  const indeterminateIncome =
+    incomeOptions?.length > 0 &&
+    incomeOptions?.length < prospectData?.income?.length
+
+  const checkAllAssets = assetsOptions?.length === prospectData?.assets?.length
+  const indeterminateAssets =
+    assetsOptions?.length > 0 &&
+    assetsOptions?.length < prospectData?.assets?.length
+
+  const checkAllExpence =
+    expenceOptions?.length === prospectData?.expence?.length
+  const indeterminateExpence =
+    expenceOptions?.length > 0 &&
+    expenceOptions?.length < prospectData?.expence?.length
+
+  const checkAllLiabilities =
+    libilityOptions?.length === prospectData?.libility?.length
+  const indeterminateLiabilities =
+    libilityOptions?.length > 0 &&
+    libilityOptions?.length < prospectData?.libility?.length
 
   const updateIncomeOptions = standardStore(
     (state) => state.updateIncomeOptions
@@ -101,30 +122,66 @@ export default function Prospects({setCurrent, prospectData}) {
     }
   }
 
+  const onCheckAllChangeIncome = (e) => {
+    if (e.target.checked) {
+      let values = prospectData?.income.map((item) => item.id)
+      updateIncomeOptions(values)
+    } else {
+      updateIncomeOptions([])
+    }
+  }
+
+  const onCheckAllChangeAssets = (e) => {
+    if (e.target.checked) {
+      let values = prospectData?.assets.map((item) => item.id)
+      updateAssetsOptions(values)
+    } else {
+      updateAssetsOptions([])
+    }
+  }
+
+  const onCheckAllChangeExpence = (e) => {
+    if (e.target.checked) {
+      let values = prospectData?.expence.map((item) => item.id)
+      updateExpenceOptions(values)
+    } else {
+      updateExpenceOptions([])
+    }
+  }
+
+  const onCheckAllChangeLiabilities = (e) => {
+    if (e.target.checked) {
+      let values = prospectData?.libility.map((item) => item.id)
+      updateLibilityOptions(values)
+    } else {
+      updateLibilityOptions([])
+    }
+  }
+
   useEffect(() => {
     if (prospectData) {
-      if (prospectData?.income?.length) {
+      if (prospectData?.income?.length && !incomeOptions?.length) {
         let activeIcome = prospectData.income
           .filter((item) => item.status === 1)
           .map((item) => item.id)
         updateIncomeOptions(activeIcome)
       }
 
-      if (prospectData?.assets?.length) {
+      if (prospectData?.assets?.length && !assetsOptions?.length) {
         let activeAssets = prospectData.assets
           .filter((item) => item.status === 1)
           .map((item) => item.id)
         updateAssetsOptions(activeAssets)
       }
 
-      if (prospectData?.libility?.length) {
+      if (prospectData?.libility?.length && !libilityOptions?.length) {
         let activeLibility = prospectData.libility
           .filter((item) => item.status === 1)
           .map((item) => item.id)
         updateLibilityOptions(activeLibility)
       }
 
-      if (prospectData?.expence?.length) {
+      if (prospectData?.expence?.length && !expenceOptions?.length) {
         let activeExpence = prospectData.expence
           .filter((item) => item.status === 1)
           .map((item) => item.id)
@@ -153,8 +210,18 @@ export default function Prospects({setCurrent, prospectData}) {
             <Text>
               Please select the source of your income from the options below
             </Text>
+            <div className='mt-5'>
+              <Checkbox
+                indeterminate={indeterminateIncome}
+                onChange={onCheckAllChangeIncome}
+                checked={checkAllIncome}
+              >
+                Select All
+              </Checkbox>
+              <Divider className='mb-0 mt-3' />
+            </div>
             <Checkbox.Group
-              defaultValue={showIncomeDefault()}
+              value={incomeOptions} //{showIncomeDefault()}
               className='my-5 w-full'
               onChange={(val) => updateIncomeOptions(val)}
             >
@@ -177,8 +244,18 @@ export default function Prospects({setCurrent, prospectData}) {
 
           <div>
             <Title level={5}>Your assets</Title>
+            <div className='mt-5'>
+              <Checkbox
+                indeterminate={indeterminateAssets}
+                onChange={onCheckAllChangeAssets}
+                checked={checkAllAssets}
+              >
+                Select All
+              </Checkbox>
+              <Divider className='mb-0 mt-3' />
+            </div>
             <Checkbox.Group
-              defaultValue={showAssetsDefault()}
+              value={assetsOptions} //{showAssetsDefault()}
               className='my-5 w-full'
               onChange={(val) => updateAssetsOptions(val)}
             >
@@ -201,8 +278,18 @@ export default function Prospects({setCurrent, prospectData}) {
 
           <div>
             <Title level={5}>Your Expense</Title>
+            <div className='mt-5'>
+              <Checkbox
+                indeterminate={indeterminateExpence}
+                onChange={onCheckAllChangeExpence}
+                checked={checkAllExpence}
+              >
+                Select All
+              </Checkbox>
+              <Divider className='mb-0 mt-3' />
+            </div>
             <Checkbox.Group
-              defaultValue={showExpenceDefault()}
+              value={expenceOptions} //{showExpenceDefault()}
               className='my-5 w-full'
               onChange={(val) => updateExpenceOptions(val)}
             >
@@ -225,8 +312,18 @@ export default function Prospects({setCurrent, prospectData}) {
 
           <div>
             <Title level={5}>Your Liabilities</Title>
+            <div className='mt-5'>
+              <Checkbox
+                indeterminate={indeterminateLiabilities}
+                onChange={onCheckAllChangeLiabilities}
+                checked={checkAllLiabilities}
+              >
+                Select All
+              </Checkbox>
+              <Divider className='mb-0 mt-3' />
+            </div>
             <Checkbox.Group
-              defaultValue={showLibilityDefault()}
+              value={libilityOptions} //{showLibilityDefault()}
               className='my-5 w-full'
               onChange={(val) => updateLibilityOptions(val)}
             >

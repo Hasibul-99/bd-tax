@@ -2,6 +2,7 @@ import {GET_AREAS, GET_USER_PROFILE, PACKAGE_WISE_PROFILE} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {RightOutlined} from '@ant-design/icons'
+import parse from 'html-react-parser'
 import {
   Button,
   Col,
@@ -12,6 +13,7 @@ import {
   InputNumber,
   Row,
   Select,
+  notification,
 } from 'antd'
 import dayjs from 'dayjs'
 import {useEffect, useState} from 'react'
@@ -47,7 +49,12 @@ export default function PersonalInfo({setCurrent, context}) {
         form.setFields(res?.errors)
       } else {
         let masterData = res.data
-        alertPop('success', masterData?.message)
+        // alertPop('success', masterData?.message)
+        notification.success({
+          message: 'Success',
+          description: parse(masterData?.message),
+          duration: 10,
+        })
 
         if (
           context === 'premium_plus' &&

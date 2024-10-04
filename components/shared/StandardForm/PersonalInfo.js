@@ -7,6 +7,7 @@ import {
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {RightOutlined} from '@ant-design/icons'
+import parse from 'html-react-parser'
 import {
   Button,
   Col,
@@ -15,6 +16,7 @@ import {
   Form,
   Input,
   InputNumber,
+  notification,
   Row,
   Select,
 } from 'antd'
@@ -73,7 +75,12 @@ export default function PersonalInfo({setCurrent}) {
         form.setFields(res?.errors)
       } else {
         let masterData = res.data
-        alertPop('success', masterData?.message)
+        // alertPop('success', masterData?.message)
+        notification.success({
+          message: 'Success',
+          description: parse(masterData?.message),
+          duration: 10,
+        })
         setCurrent(2)
       }
     }
