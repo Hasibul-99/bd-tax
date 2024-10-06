@@ -61,10 +61,10 @@ export default function SignatureUpload({offsetWidth = 1000, setShow}) {
   return (
     <div className='mt-12 p-10'>
       <Row gutter={16} className='mb-3'>
-        <Col className='gutter-row' span={16}>
+        <Col className='gutter-row' xs={24} sm={24} md={16}>
           <Title level={4}>Please sign the box below with your finger</Title>
         </Col>
-        <Col className='gutter-row text-right' span={8}>
+        <Col className='gutter-row text-right' xs={24} sm={24} md={8}>
           <Upload {...props}>
             <Button
               type='primary'

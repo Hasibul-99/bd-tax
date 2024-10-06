@@ -111,7 +111,7 @@ export default function PersonalInfo({setCurrent, context}) {
   }, [])
 
   return (
-    <div className='py-10 px-20'>
+    <div className='py-10 px-5 md:px-20'>
       <h3 className='text-xl font-semibold'>Please enter your personal info</h3>
 
       <ConfigProvider
@@ -135,10 +135,10 @@ export default function PersonalInfo({setCurrent, context}) {
           size='large'
         >
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               First Name *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 name='first_name'
                 rules={[
@@ -154,10 +154,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Last Name *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 label=''
                 name='last_name'
@@ -174,10 +174,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               ETIN *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 name='ETIN'
                 rules={[
@@ -203,10 +203,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               National ID *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 name='NationalId'
                 rules={[
@@ -227,10 +227,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Email *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 name='email'
                 rules={[
@@ -251,10 +251,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Mobile *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 name='mobile'
                 rules={[
@@ -274,10 +274,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               DOB *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 name='DOB'
                 rules={[
@@ -296,10 +296,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Gender *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 label=''
                 name='gender'
@@ -328,10 +328,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Taxes Circle *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 label=''
                 name='TaxesCircle'
@@ -348,10 +348,10 @@ export default function PersonalInfo({setCurrent, context}) {
           </Row>
 
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Taxes Zone *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 label=''
                 name='TaxesZone'
@@ -367,10 +367,10 @@ export default function PersonalInfo({setCurrent, context}) {
             </Col>
           </Row>
           <Row gutter={16}>
-            <Col className='gutter-row' span={4}>
+            <Col className='gutter-row' xs={24} sm={24} md={4}>
               Area of residence *
             </Col>
-            <Col className='gutter-row' span={20}>
+            <Col className='gutter-row' xs={24} sm={24} md={20}>
               <Form.Item
                 label=''
                 name='AreaOfResidence'

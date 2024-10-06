@@ -134,7 +134,7 @@ export default function Payment({salaryData, setCurrent, context}) {
             <p>{paymentData?.payment_amount_message}</p>
           </Card>
 
-          <div className='premium-pack-card mt-3  bg-transparent'>
+          <div className='premium-pack-card flex-col md:flex-row mt-3  bg-transparent'>
             <ConfigProvider
               theme={{
                 token: {
@@ -156,7 +156,7 @@ export default function Payment({salaryData, setCurrent, context}) {
                 />
                 <Text type='success'>{paymentData?.discount_text || null}</Text>
               </div>
-              <div className='ml-auto'>
+              <div className='md:ml-auto'>
                 {canCancelCoupon ? (
                   <Button
                     disabled={!couponCode}
