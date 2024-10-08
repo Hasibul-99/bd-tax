@@ -1,20 +1,27 @@
-import {CANCEL_COUPON, GET_PAYMENT_METHOD, SAVE_COUPON} from '@/scripts/api'
+import {
+  CANCEL_COUPON,
+  COMPLETE_MINISITE_PAYMENT,
+  CREATE_BKASH_MINISITE_PAYMENT,
+  GET_Bkash_minisite_token,
+  GET_PAYMENT_METHOD,
+  SAVE_COUPON,
+} from '@/scripts/api'
 import {getData, postData} from '@/scripts/api-service'
 import {alertPop} from '@/scripts/helper'
 import {defaultStore} from '@/store/default'
 import {RightOutlined} from '@ant-design/icons'
 import {Button, Card, ConfigProvider, Input, Space, Typography} from 'antd'
 import {useEffect, useState} from 'react'
+import $ from 'jquery'
+
 const {Text, Link} = Typography
-// https://sandbox.sslcommerz.com/EasyCheckOut/testcdedbb9361db7eb1cae0445373d49a881ca
-const sslgatewayLink = ''
 
 export default function Payment({salaryData, setCurrent, context}) {
   const [paymentData, setPaymentData] = useState()
   const [couponCode, setCouponCode] = useState()
   const [canCancelCoupon, setCancelCoupon] = useState(false)
-
-  console.log('salaryData', salaryData)
+  const [bkashToken, setBkashToken] = useState()
+  const [countdown, setCountdown] = useState(0)
 
   const getPaymentData = async () => {
     let res = await getData(GET_PAYMENT_METHOD + '?request_from=web')
@@ -57,10 +64,103 @@ export default function Payment({salaryData, setCurrent, context}) {
     }
   }
 
+  const getBkashAppToken = async () => {
+    let res = await postData(GET_Bkash_minisite_token, {})
+
+    if (res) {
+      let masterData = res?.data?.data
+      setBkashToken(masterData?.token)
+    }
+  }
+
+  const createBkashPayment = async (req) => {
+    let res = await postData(CREATE_BKASH_MINISITE_PAYMENT, {
+      amount: req.amount,
+      invoice: req.merchantInvoiceNumber,
+      b_token: req.b_token,
+    })
+
+    if (res) {
+      let masterData = res?.data?.data
+      console.log('masterData', masterData)
+      return masterData
+    }
+  }
+
+  const initBkashPayment = () => {
+    const scriptLink = process.env.NEXT_PUBLIC_BKASH_URL
+    let paymentId = ''
+    $.getScript(scriptLink)
+      .done(function (script) {
+        // Call the bKash init function after the script is loaded
+        bKash.init({
+          paymentMode: 'checkout',
+          paymentRequest: {
+            amount: paymentData.due_amount.toString(),
+            currency: 'BDT',
+            intent: 'sale',
+            merchantInvoiceNumber: paymentData.tran_id,
+            b_token: bkashToken,
+          },
+
+          createRequest: function (request) {
+            createBkashPayment(request).then((res) => {
+              console.log('res', res)
+              if (res?.paymentID) {
+                paymentId = res?.paymentID
+                bKash.create().onSuccess(res)
+              } else {
+                bKash.create().onError()
+              }
+            })
+          },
+          executeRequestOnAuthorization: function () {
+            console.log('-----------------', paymentId)
+
+            handelCompleteMinisitePayment(paymentId)
+            // Call your backend's execute method
+            // Simulate successful execution
+            // window.location.href = '/success'
+          },
+          onClose: function () {
+            // Handle close event
+            console.log('bKash checkout closed')
+          },
+        })
+
+        // Enable the payment button after initialization
+        $('#bKash_button').removeAttr('disabled')
+      })
+      .fail(function () {
+        console.log('Failed to load bKash script.')
+      })
+  }
+
+  const handelCompleteMinisitePayment = async (paymentId) => {
+    let res = await postData(COMPLETE_MINISITE_PAYMENT, {
+      paymentID: paymentId,
+      token: bkashToken,
+    })
+
+    if (res) {
+      bKash.execute().onError()
+      setCurrent(context === 'standard' ? 6 : 4)
+    }
+  }
+
   useEffect(() => {
     getPaymentData()
+    getBkashAppToken()
     localStorage.setItem('packageType', context)
   }, [])
+
+  useEffect(() => {
+    if (paymentData?.due_amount && bkashToken && countdown === 0) {
+      // createBkashPayment()
+      initBkashPayment()
+      setCountdown(1)
+    }
+  }, [paymentData?.due_amount, bkashToken])
 
   return (
     <div className='p-5'>
@@ -163,7 +263,10 @@ export default function Payment({salaryData, setCurrent, context}) {
                     danger
                     type='primary'
                     size='large'
-                    onClick={() => handelCouponCancel()}
+                    onClick={() => {
+                      handelCouponCancel()
+                      setCountdown(0)
+                    }}
                   >
                     Cancel Coupon
                   </Button>
@@ -172,7 +275,10 @@ export default function Payment({salaryData, setCurrent, context}) {
                     disabled={!couponCode}
                     type='primary'
                     size='large'
-                    onClick={() => handelCouponSave()}
+                    onClick={() => {
+                      handelCouponSave()
+                      setCountdown(0)
+                    }}
                   >
                     Save Coupon
                   </Button>
@@ -189,7 +295,7 @@ export default function Payment({salaryData, setCurrent, context}) {
               <p>{paymentData?.payment_amount_message}</p>
             </div>
             <div className='flex flex-row items-start p-0 gap-[14.26px] md:ml-auto'>
-              {paymentData?.sslgatewayLink ? (
+              {/* {paymentData?.sslgatewayLink ? (
                 <a
                   href={paymentData?.sslgatewayLink}
                   className={!paymentData?.sslgatewayLink ? 'disabled' : ''}
@@ -275,22 +381,15 @@ export default function Payment({salaryData, setCurrent, context}) {
                     height={40}
                   />
                 </a>
-              ) : null}
-            </div>
+              ) : null} */}
 
-            {/* <div className='md:text-right md:ml-auto'>
-              <Button
-                disabled={!paymentData?.sslgatewayLink}
-                type='primary'
-                className='prime-button !w-52 m-auto'
-                onClick={() => makePayment()}
+              <button
+                id='bKash_button'
+                className='bg-[#E2136E] border-[#E2136E] px-4 py-2 text-[0.8203125rem] leading-[1.5] rounded-[0.2rem] text-white'
               >
-                <Space>
-                  <img src='/assets/icons/lock.svg' alt='Premium-Plus' /> Make
-                  Payment
-                </Space>
-              </Button>
-            </div> */}
+                Pay With bKash
+              </button>
+            </div>
           </div>
         </>
       )}

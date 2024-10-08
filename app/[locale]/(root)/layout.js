@@ -12,6 +12,7 @@ const RootLayout = (props) => {
     children,
     params: {locale},
   } = props
+  window.$ = window.jQuery = require('jquery')
   const router = useRouter()
   const token =
     Cookies.get('bdtax_token') || localStorage.getItem('bdtax_token')

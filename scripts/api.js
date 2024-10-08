@@ -435,3 +435,8 @@ export const GET_NOTIFICATION = 'get-notification'
 export const SAVE_COUPON = 'save-coupon'
 export const CANCEL_COUPON = 'cancel-coupon'
 export const GET_USER_TAX = 'get-user-tax'
+
+// Bkash
+export const GET_Bkash_minisite_token = 'get-bkash-minisite-token'
+export const CREATE_BKASH_MINISITE_PAYMENT = 'create-bkash-minisite-payment'
+export const COMPLETE_MINISITE_PAYMENT = 'complete-minisite-payment'
