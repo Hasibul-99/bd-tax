@@ -8,7 +8,7 @@ export default function Footer() {
           <div className='footer_logo w3-center mx-auto pb-6'>
             <img src='/assets/images/logo-2-footer.png' width={100} />
           </div>
-          <div className='footer_nav '>
+          {/* <div className='footer_nav '>
             <ul className='md:flex items-center space-x-1 gap-x-5 text-center'>
               <li>
                 <Link href='/join-our-team'>Join Our Team</Link>
@@ -26,7 +26,7 @@ export default function Footer() {
                 <Link href='/terms-and-conditions'>Terms and conditions</Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         <div className='text-center sm:flex sm:justify-between sm:text-left'>
@@ -41,7 +41,7 @@ export default function Footer() {
             info@bdtax.com.bd | 01409-991225
           </p>
 
-          <div className='mt-3 md:mt-0 pt-3 md:pt-0 px-8 md:px-0 border-t-2 md:border-t-0'>
+          {/* <div className='mt-3 md:mt-0 pt-3 md:pt-0 px-8 md:px-0 border-t-2 md:border-t-0'>
             <ul className='flex flex-row items-start justify-center flex-wrap content-start p-0 gap-4'>
               <li>
                 <Link
@@ -80,7 +80,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
