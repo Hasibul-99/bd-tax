@@ -158,6 +158,24 @@ export default function Prospects({setCurrent, prospectData}) {
     }
   }
 
+  const onCheckAllChange = (e) => {
+    if (e.target.checked) {
+      let activeIcome = prospectData.income.map((item) => item.id)
+      updateIncomeOptions(activeIcome)
+      let activeAssets = prospectData.assets.map((item) => item.id)
+      updateAssetsOptions(activeAssets)
+      let activeLibility = prospectData.libility.map((item) => item.id)
+      updateLibilityOptions(activeLibility)
+      let activeExpence = prospectData.expence.map((item) => item.id)
+      updateExpenceOptions(activeExpence)
+    } else {
+      updateIncomeOptions([])
+      updateAssetsOptions([])
+      updateLibilityOptions([])
+      updateExpenceOptions([])
+    }
+  }
+
   useEffect(() => {
     if (prospectData) {
       if (prospectData?.income?.length && !incomeOptions?.length) {
@@ -205,6 +223,16 @@ export default function Prospects({setCurrent, prospectData}) {
             },
           }}
         >
+          <div className='mt-5'>
+            <Checkbox
+              // indeterminate={indeterminateIncome}
+              onChange={onCheckAllChange}
+              // checked={checkAllIncome}
+            >
+              Select All Prospects
+            </Checkbox>
+            <Divider className='mb-3' />
+          </div>
           <div>
             <Title level={5}>Your income sources</Title>
             <Text>
