@@ -50,12 +50,12 @@ export const moreNaveData = [
   //   url: '/more/settings',
   //   name: 'Settings',
   // },
-  {
-    id: 8,
-    icon: '/assets/icons/contact-us.svg',
-    url: '/contact-us',
-    name: 'Contact Us',
-  },
+  // {
+  //   id: 8,
+  //   icon: '/assets/icons/contact-us.svg',
+  //   url: '/contact-us',
+  //   name: 'Contact Us',
+  // },
   {
     id: 9,
     icon: '/assets/icons/logout.svg',
