@@ -98,9 +98,9 @@ export default function Navbar({locale}) {
                 </Space>
               </Link> */}
               <Link
-                href={`/contact-us`}
+                href={`/contactus`}
                 className={`py-4 px-2 text-base font-semibold ${
-                  isActiveUrl(`/contact-us`) ? 'active' : ''
+                  isActiveUrl(`/contactus`) ? 'active' : ''
                 }`}
               >
                 <Space>
@@ -200,7 +200,7 @@ export default function Navbar({locale}) {
           </li> */}
           <li>
             <Link
-              href={`/contact-us`}
+              href={`/contactus`}
               className='hidden md:block text-sm px-2 py-4 hover:bg-green-500 transition duration-300'
             >
               <Space>
